@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    
+    <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="chrome=1">
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="referrer" content="no-referrer">
+
+<title>
+    使用国内pypi源加速pip安装 - My New Hugo Site
+</title>
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/sass/style.sass" integrity="" crossorigin="anonymous" media="screen">
+
+
+
+
+  
+
+
+
+
+
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Didact+Gothic">
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="使用国内pypi源加速pip安装"/>
+<meta name="twitter:description" content="在解决将AWS Cloudwatch的监控信息展示在Zabbix上时，需要安装AWS的一个python 工具包boto3，但是在安装过程中，碰到了如上图的错误信息；问题是由于国内网络问题导致连接python库超时，所以将库改为国内
+国内pypi源站点&nbsp;¶  http://pypi.douban.com/simple 豆瓣 http://pypi.hustunique.com/simple 华中理工大学 http://pypi.sdutlinux.org/simple 山东理工大学 http://pypi.mirrors.ustc.edu.cn/simple 中国科学技术大学  Windows 修改&nbsp;¶ 编辑 %HOMEPATH%\pip\pip.ini
+[global] index-url = http://pypi.douban.com/simple  Linux 修改&nbsp;¶ 编辑 ~/.pip/pip.conf ， 如果文件不存在，可以先创建
+[global] index-url = http://pypi.douban.com/simple  修改easy_install 源&nbsp;¶ 编辑 ~/.pydistutils.cfg
+[global] index-url = http://pypi.douban.com/simple  临时使用&nbsp;¶ 如果你不想修改源，只是临时使用的话，可以在pip安装时使用-i参数临时指定源站点
+pip -i http://pypi.douban.com/simple install boto3 "/>
+
+<meta property="og:title" content="使用国内pypi源加速pip安装" />
+<meta property="og:description" content="在解决将AWS Cloudwatch的监控信息展示在Zabbix上时，需要安装AWS的一个python 工具包boto3，但是在安装过程中，碰到了如上图的错误信息；问题是由于国内网络问题导致连接python库超时，所以将库改为国内
+国内pypi源站点&nbsp;¶  http://pypi.douban.com/simple 豆瓣 http://pypi.hustunique.com/simple 华中理工大学 http://pypi.sdutlinux.org/simple 山东理工大学 http://pypi.mirrors.ustc.edu.cn/simple 中国科学技术大学  Windows 修改&nbsp;¶ 编辑 %HOMEPATH%\pip\pip.ini
+[global] index-url = http://pypi.douban.com/simple  Linux 修改&nbsp;¶ 编辑 ~/.pip/pip.conf ， 如果文件不存在，可以先创建
+[global] index-url = http://pypi.douban.com/simple  修改easy_install 源&nbsp;¶ 编辑 ~/.pydistutils.cfg
+[global] index-url = http://pypi.douban.com/simple  临时使用&nbsp;¶ 如果你不想修改源，只是临时使用的话，可以在pip安装时使用-i参数临时指定源站点
+pip -i http://pypi.douban.com/simple install boto3 " />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://example.org/posts/%E4%BD%BF%E7%94%A8%E5%9B%BD%E5%86%85pypi%E6%BA%90%E5%8A%A0%E9%80%9Fpip%E5%AE%89%E8%A3%85/" /><meta property="article:section" content="posts" />
+
+
+
+
+
+    
+
+    
+    
+    
+    <title>
+        
+        使用国内pypi源加速pip安装
+        
+    </title>
+</head>
+
+<body>
+    
+    
+    <header class="wrap flex-container">
+        <h1>使用国内pypi源加速pip安装</h1>
+    </header>
+    
+    <main class="wrap">
+        
+<div class="flex-container">
+    <aside role="complementary">
+        Mon Jan 01, 0001 &#183; 45 words
+        <div class="tag-container">
+            
+        </div>
+    </aside>
+    <hr />
+    <article role="article">
+        <p><p style="text-align:center;">
+    <img src="https://samzong.oss-cn-shenzhen.aliyuncs.com/blog/mxb19.png" alt=""  />
+</p>
+</p>
+<p>在解决将AWS Cloudwatch的监控信息展示在Zabbix上时，需要安装AWS的一个python 工具包boto3，但是在安装过程中，碰到了如上图的错误信息；问题是由于国内网络问题导致连接python库超时，所以将库改为国内</p>
+
+<h4 id="国内pypi源站点" class="anchor-link"><a href="#%e5%9b%bd%e5%86%85pypi%e6%ba%90%e7%ab%99%e7%82%b9">国内pypi源站点<span class="pilcrow">&nbsp;¶</span></a></h4>
+<ul>
+<li><a href="http://pypi.douban.com/simple">http://pypi.douban.com/simple</a>  豆瓣</li>
+<li><a href="http://pypi.hustunique.com/simple">http://pypi.hustunique.com/simple</a>  华中理工大学</li>
+<li><a href="http://pypi.sdutlinux.org/simple">http://pypi.sdutlinux.org/simple</a>  山东理工大学</li>
+<li><a href="http://pypi.mirrors.ustc.edu.cn/simple">http://pypi.mirrors.ustc.edu.cn/simple</a>  中国科学技术大学</li>
+</ul>
+
+<h4 id="windows-修改" class="anchor-link"><a href="#windows-%e4%bf%ae%e6%94%b9">Windows 修改<span class="pilcrow">&nbsp;¶</span></a></h4>
+<p>编辑 %HOMEPATH%\pip\pip.ini</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#f92672">[</span>global<span style="color:#f92672">]</span>
+index-url <span style="color:#f92672">=</span> http://pypi.douban.com/simple
+</code></pre></div>
+<h4 id="linux-修改" class="anchor-link"><a href="#linux-%e4%bf%ae%e6%94%b9">Linux 修改<span class="pilcrow">&nbsp;¶</span></a></h4>
+<p>编辑 ~/.pip/pip.conf ， 如果文件不存在，可以先创建</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#f92672">[</span>global<span style="color:#f92672">]</span>
+index-url <span style="color:#f92672">=</span> http://pypi.douban.com/simple
+</code></pre></div>
+<h4 id="修改easy_install-源" class="anchor-link"><a href="#%e4%bf%ae%e6%94%b9easy_install-%e6%ba%90">修改easy_install 源<span class="pilcrow">&nbsp;¶</span></a></h4>
+<p>编辑 ~/.pydistutils.cfg</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#f92672">[</span>global<span style="color:#f92672">]</span>
+index-url <span style="color:#f92672">=</span> http://pypi.douban.com/simple
+</code></pre></div>
+<h4 id="临时使用" class="anchor-link"><a href="#%e4%b8%b4%e6%97%b6%e4%bd%bf%e7%94%a8">临时使用<span class="pilcrow">&nbsp;¶</span></a></h4>
+<p>如果你不想修改源，只是临时使用的话，可以在pip安装时使用-i参数临时指定源站点</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">pip -i http://pypi.douban.com/simple install boto3
+</code></pre></div>
+    </article>
+</div>
+
+
+        
+<nav role="navigation" class="flex-container bottom-menu">
+    
+<hr />
+<p>
+
+
+    
+        <a href="/posts">back</a>
+        
+    
+
+    
+</p>
+</nav>
+
+    </main>
+    
+    <footer class="flex-container footer">
+</footer>
+    
+    
+</body>
+
+</html>
