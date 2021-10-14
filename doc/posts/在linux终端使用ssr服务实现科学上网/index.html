@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh-CN" lang="zh-CN">
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="generator" content="Hugo 0.88.1" />
+
+  <title>在Linux终端使用SSR服务实现科学上网 &middot; SAMZONG</title>
+
+  <meta name="description" content="" />
+
+  
+
+<meta itemprop="name" content="在Linux终端使用SSR服务实现科学上网">
+<meta itemprop="description" content="昨天在群内看到有朋友在询问如何在Linux终端内使用SSR来实现科学上网，所以抽空研究了下在Linux中如何使用，本文参考了Otokaze 和 Django 两位的博客，文章链接在博文最后；SSR服务提供商依然采用了ssGlobal，在Google的过程中，找了不少解决方案，这里仅做一种简单整理，实验操作系统有CentOS 7.4 &amp; Ubuntu 16.04.3。
+ssr 代理服务 下载 1 2 3 4 5 6  # 需要本地git 环境 yum install -y git git clone https://github.">
+
+<meta itemprop="wordCount" content="565">
+<meta itemprop="keywords" content="Shadowsocks," />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="在Linux终端使用SSR服务实现科学上网"/>
+<meta name="twitter:description" content="昨天在群内看到有朋友在询问如何在Linux终端内使用SSR来实现科学上网，所以抽空研究了下在Linux中如何使用，本文参考了Otokaze 和 Django 两位的博客，文章链接在博文最后；SSR服务提供商依然采用了ssGlobal，在Google的过程中，找了不少解决方案，这里仅做一种简单整理，实验操作系统有CentOS 7.4 &amp; Ubuntu 16.04.3。
+ssr 代理服务 下载 1 2 3 4 5 6  # 需要本地git 环境 yum install -y git git clone https://github."/>
+
+
+<meta property="og:title" content="在Linux终端使用SSR服务实现科学上网" />
+<meta property="og:description" content="昨天在群内看到有朋友在询问如何在Linux终端内使用SSR来实现科学上网，所以抽空研究了下在Linux中如何使用，本文参考了Otokaze 和 Django 两位的博客，文章链接在博文最后；SSR服务提供商依然采用了ssGlobal，在Google的过程中，找了不少解决方案，这里仅做一种简单整理，实验操作系统有CentOS 7.4 &amp; Ubuntu 16.04.3。
+ssr 代理服务 下载 1 2 3 4 5 6  # 需要本地git 环境 yum install -y git git clone https://github." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://example.com/posts/%E5%9C%A8linux%E7%BB%88%E7%AB%AF%E4%BD%BF%E7%94%A8ssr%E6%9C%8D%E5%8A%A1%E5%AE%9E%E7%8E%B0%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/" /><meta property="article:section" content="posts" />
+
+
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type":"Person",
+      "@id": "https://example.com#author",
+      "name": "samzong.lu",
+      "image": {
+        "@type":"ImageObject",
+        "url": "https://www.gravatar.com/avatar/c02c426714361366ea7d583950aa8fb4?s=400&d=mp"
+      },
+      "description": "Samzong's Blog"
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://example.com#website",
+      "url": "https://example.com",
+      "name": "SAMZONG",
+      "description": "Samzong's Blog",
+      "publisher": {
+        "@id": "https://example.com#author"
+      },
+      "inLanguage": "zh-CN"
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://example.com/posts/%E5%9C%A8linux%E7%BB%88%E7%AB%AF%E4%BD%BF%E7%94%A8ssr%E6%9C%8D%E5%8A%A1%E5%AE%9E%E7%8E%B0%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/#webpage",
+      "url": "https://example.com/posts/%E5%9C%A8linux%E7%BB%88%E7%AB%AF%E4%BD%BF%E7%94%A8ssr%E6%9C%8D%E5%8A%A1%E5%AE%9E%E7%8E%B0%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/",
+      "name": "在Linux终端使用SSR服务实现科学上网",
+      "isPartOf": {
+        "@id": "https://example.com#website"
+      },
+      "about": {
+         "@id": "https://example.com#author"
+      },
+      "description": "昨天在群内看到有朋友在询问如何在Linux终端内使用SSR来实现科学上网，所以抽空研究了下在Linux中如何使用，本文参考了Otokaze 和 Django 两位的博客，文章链接在博文最后；SSR服务提供商依然采用了ssGlobal，在Google的过程中，找了不少解决方案，这里仅做一种简单整理，实验操作系统有CentOS 7.4 \u0026amp; Ubuntu 16.04.3。\nssr 代理服务 下载 1 2 3 4 5 6  # 需要本地git 环境 yum install -y git git clone https://github.",
+      "inLanguage": "zh-CN",
+      "potentialAction": [
+        {
+          "@type": "ReadAction",
+          "target": [
+            "https://example.com/posts/%E5%9C%A8linux%E7%BB%88%E7%AB%AF%E4%BD%BF%E7%94%A8ssr%E6%9C%8D%E5%8A%A1%E5%AE%9E%E7%8E%B0%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/"
+          ]
+        }
+      ]
+    },
+    {
+      "@type": "Article",
+      "isPartOf": {
+        "@id": "https://example.com/posts/%E5%9C%A8linux%E7%BB%88%E7%AB%AF%E4%BD%BF%E7%94%A8ssr%E6%9C%8D%E5%8A%A1%E5%AE%9E%E7%8E%B0%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/#webpage"
+      },
+      "mainEntityOfPage": {
+        "@id": "https://example.com/posts/%E5%9C%A8linux%E7%BB%88%E7%AB%AF%E4%BD%BF%E7%94%A8ssr%E6%9C%8D%E5%8A%A1%E5%AE%9E%E7%8E%B0%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/#webpage"
+      },
+      "headline": "在Linux终端使用SSR服务实现科学上网",
+      "publisher": {
+        "@id": "https://example.com#author"
+      },
+      "keywords": [
+        "Shadowsocks"
+      ],
+      "articleSection": [
+        "Shadowsocks"
+      ],
+      "inLanguage": "zh-CN",
+      "author": {
+        "@type": "Person",
+        "name":  null 
+      },
+      "potentialAction": [
+        {
+          "@type": "CommentAction",
+          "name": "Comment",
+          "target": [
+            "https://example.com/posts/%E5%9C%A8linux%E7%BB%88%E7%AB%AF%E4%BD%BF%E7%94%A8ssr%E6%9C%8D%E5%8A%A1%E5%AE%9E%E7%8E%B0%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/#comments"
+          ]
+        }
+      ]
+    }
+  ]
+}
+</script>
+
+
+
+  <link type="text/css"
+        rel="stylesheet"
+        href="/css/print.css"
+        media="print">
+
+  <link type="text/css"
+        rel="stylesheet"
+        href="/css/poole.css">
+
+  <link type="text/css"
+        rel="stylesheet"
+        href="/css/hyde.css">
+
+  
+
+
+  <link type="text/css" rel="stylesheet" href="/css/blog.css">
+
+  <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700&display=swap">
+
+  <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css"
+        integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk="
+        crossorigin="anonymous" />
+
+  <link rel="apple-touch-icon-precomposed"
+        sizes="144x144"
+        href="/apple-touch-icon-144-precomposed.png">
+
+  <link rel="shortcut icon" href="/favicon.png">
+
+  
+  </head>
+<body>
+  <aside class="sidebar">
+  <div class="container">
+    <div class="sidebar-about">
+      
+      <div class="author-image">
+        <a href="https://example.com">
+          <img src="https://www.gravatar.com/avatar/c02c426714361366ea7d583950aa8fb4?s=200&d=mp" class="img-circle img-headshot center" alt="Gravatar">
+        </a>
+      </div>
+      
+
+      <h1>SAMZONG</h1>
+
+      
+      <p class="lead">Samzong&#39;s Blog</p>
+      
+    </div>
+
+    <nav>
+      <ul class="sidebar-nav">
+        <li>
+          <a href="https://example.com">Home</a>
+        </li>
+        <li>
+          <a href="/posts/">Posts</a>
+        </li><li>
+          <a href="/about/">About</a>
+        </li>
+      </ul>
+    </nav>
+
+    <section class="social-icons">
+      
+      <a href="https://www.linkedin.com/in/samzong/" rel="me" title="Linkedin" target="_blank">
+        <i class="fab fa-linkedin" aria-hidden="true"></i>
+      </a>
+      
+      <a href="https://github.com/samzong" rel="me" title="GitHub" target="_blank">
+        <i class="fab fa-github" aria-hidden="true"></i>
+      </a>
+      
+      <a href="https://twitter.com/samzong_lu" rel="me" title="Twitter" target="_blank">
+        <i class="fab fa-twitter" aria-hidden="true"></i>
+      </a>
+      
+    </section>
+  </div>
+</aside>
+
+
+  <main class="content container">
+  <div class="post">
+  <h1 class="title">在Linux终端使用SSR服务实现科学上网</h1>
+  
+
+  <div class="post-date">
+    <time datetime="0001-01-01T00:00:00Z">Jan 1, 0001</time> <span class="readtime">&middot; 3 min read</span>
+  </div>
+
+  <div>
+  <p>昨天在群内看到有朋友在询问如何在Linux终端内使用SSR来实现科学上网，所以抽空研究了下在Linux中如何使用，本文参考了<a href="https://www.zfl9.com/">Otokaze</a> 和 <a href="https://www.djangoz.com">Django</a> 两位的博客，文章链接在博文最后；SSR服务提供商依然采用了<a href="http://ssglobal.co/wp">ssGlobal</a>，在Google的过程中，找了不少解决方案，这里仅做一种简单整理，实验操作系统有CentOS 7.4 &amp; Ubuntu 16.04.3。</p>
+<h4 id="ssr-代理服务">ssr 代理服务</h4>
+<h5 id="下载">下载</h5>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-shell" data-lang="shell"><span style="color:#75715e"># 需要本地git 环境</span>
+yum install -y git
+git clone https://github.com/SAMZONG/gfwlist2privoxy.git
+cd gfwlist2privoxy/
+mv ssr /usr/local/bin
+chmod +x /usr/local/bin/ssr
+</code></pre></td></tr></table>
+</div>
+</div><h5 id="安装配置">安装配置</h5>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">26
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">27
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">28
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">29
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">30
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">31
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">32
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">33
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-shell" data-lang="shell"><span style="color:#f92672">[</span>root@localhost ~<span style="color:#f92672">]</span><span style="color:#75715e"># ssr install</span>
+Cloning into <span style="color:#e6db74">&#39;/usr/local/share/shadowsocksr&#39;</span>...
+remote: Counting objects: 5490, <span style="color:#66d9ef">done</span>.
+remote: Total <span style="color:#ae81ff">5490</span> <span style="color:#f92672">(</span>delta 0<span style="color:#f92672">)</span>, reused <span style="color:#ae81ff">0</span> <span style="color:#f92672">(</span>delta 0<span style="color:#f92672">)</span>, pack-reused <span style="color:#ae81ff">5490</span>
+Receiving objects: 100% <span style="color:#f92672">(</span>5490/5490<span style="color:#f92672">)</span>, 1.71 MiB | 410.00 KiB/s, <span style="color:#66d9ef">done</span>.
+Resolving deltas: 100% <span style="color:#f92672">(</span>3799/3799<span style="color:#f92672">)</span>, <span style="color:#66d9ef">done</span>.
+
+<span style="color:#f92672">[</span>root@localhost ~<span style="color:#f92672">]</span><span style="color:#75715e"># ssr config 		# 配置文件路径 /usr/local/share/shadowsocksr/config.json</span>
+<span style="color:#f92672">{</span>
+    <span style="color:#e6db74">&#34;server&#34;</span>: <span style="color:#e6db74">&#34;0..0.0.0&#34;</span>,	// ssr服务器ip
+    <span style="color:#e6db74">&#34;server_ipv6&#34;</span>: <span style="color:#e6db74">&#34;::&#34;</span>,
+    <span style="color:#e6db74">&#34;server_port&#34;</span>: 8080,	// ssr服务器端口
+    <span style="color:#e6db74">&#34;local_address&#34;</span>: <span style="color:#e6db74">&#34;127.0.0.1&#34;</span>,
+    <span style="color:#e6db74">&#34;local_port&#34;</span>: 1080,
+
+    <span style="color:#e6db74">&#34;password&#34;</span>: <span style="color:#e6db74">&#34;123456&#34;</span>,		// 对应password
+    <span style="color:#e6db74">&#34;method&#34;</span>: <span style="color:#e6db74">&#34;none&#34;</span>,			// 这里对应SSGlobal配置中的Encryption
+    <span style="color:#e6db74">&#34;protocol&#34;</span>: <span style="color:#e6db74">&#34;auth_chain_a&#34;</span>,		//对应protocl
+    <span style="color:#e6db74">&#34;protocol_param&#34;</span>: <span style="color:#e6db74">&#34;&#34;</span>,
+    <span style="color:#e6db74">&#34;obfs&#34;</span>: <span style="color:#e6db74">&#34;http_simple&#34;</span>,		//对应obfs
+    <span style="color:#e6db74">&#34;obfs_param&#34;</span>: <span style="color:#e6db74">&#34;hello.world&#34;</span>,	//对应obfs_param
+    <span style="color:#e6db74">&#34;speed_limit_per_con&#34;</span>: 0,
+    <span style="color:#e6db74">&#34;speed_limit_per_user&#34;</span>: 0,
+
+    <span style="color:#e6db74">&#34;additional_ports&#34;</span> : <span style="color:#f92672">{}</span>, // only works under multi-user mode
+    <span style="color:#e6db74">&#34;additional_ports_only&#34;</span> : false, // only works under multi-user mode
+    <span style="color:#e6db74">&#34;timeout&#34;</span>: 120,
+    <span style="color:#e6db74">&#34;udp_timeout&#34;</span>: 60,
+    <span style="color:#e6db74">&#34;dns_ipv6&#34;</span>: false,
+    <span style="color:#e6db74">&#34;connect_verbose_info&#34;</span>: 0,
+    <span style="color:#e6db74">&#34;redirect&#34;</span>: <span style="color:#e6db74">&#34;&#34;</span>,
+    <span style="color:#e6db74">&#34;fast_open&#34;</span>: false
+<span style="color:#f92672">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h5 id="启动关闭">启动/关闭</h5>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-shell" data-lang="shell">ssr start
+ssr stop 
+</code></pre></td></tr></table>
+</div>
+</div><h5 id="卸载">卸载</h5>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-shell" data-lang="shell">ssr uninstall <span style="color:#75715e"># 这里操作会删除/usr/local/share/shadowsocksr</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>以上，本地监听服务已经配置完成了，在填写的过程中，要注意你的本地监听地址和监听端口，默认是127.0.0.1:1080，如果你修改了设置，那么在后续配置中也要配合修改。</p>
+<h4 id="privoxy-配置">Privoxy 配置</h4>
+<p>首先，需要安装privoxy</p>
+<h6 id="centos-74">CentOS 7.4</h6>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-shell" data-lang="shell">yum install -y epel-release
+yum install -y privoxy
+</code></pre></td></tr></table>
+</div>
+</div><h6 id="ubuntu-1604">Ubuntu 16.04</h6>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-shell" data-lang="shell">apt install -y privoxy
+</code></pre></td></tr></table>
+</div>
+</div><h5 id="全局模式">全局模式</h5>
+<p>代理模式同其他平台上方式，将所有http/https请求走代理服务，如果需要全局代理的话按照如下操作即可，如果要使用PAC模式，请跳过此部分。</p>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-shell" data-lang="shell"><span style="color:#75715e"># 添加本地ssr服务到配置文件</span>
+echo <span style="color:#e6db74">&#39;forward-socks5 / 127.0.0.1:1080 .&#39;</span> &gt;&gt; /etc/privoxy/config
+
+<span style="color:#75715e"># Privoxy 默认监听端口是是8118</span>
+export http_proxy<span style="color:#f92672">=</span>http://127.0.0.1:8118
+export https_proxy<span style="color:#f92672">=</span>http://127.0.0.1:8118
+export no_proxy<span style="color:#f92672">=</span>localhost
+
+<span style="color:#75715e"># 启动服务</span>
+systemctl start privoxy.service
+</code></pre></td></tr></table>
+</div>
+</div><h5 id="pac模式">PAC模式</h5>
+<p>使用GFWList是由AutoProxy官方维护，由众多网民收集整理的一个中国大陆防火长城的屏蔽列表，这里感谢<a href="https://www.zfl9.com/">@Otokaze</a> 为我们提供了转换shell自动转换脚本，为了方便修改，我fork了这个项目，将这篇教程所用到的资源进行了汇总，你可以在最开始<code>git clone</code>的目录中找到执行脚本。</p>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-shell" data-lang="shell"><span style="color:#f92672">[</span>root@localhost ~<span style="color:#f92672">]</span><span style="color:#75715e"># cd gfwlist2privoxy/</span>
+<span style="color:#f92672">[</span>root@localhost gfwlist2privoxy<span style="color:#f92672">]</span><span style="color:#75715e"># ls</span>
+gfw.action  gfwlist2privoxy  README.md  ssr
+<span style="color:#f92672">[</span>root@localhost gfwlist2privoxy<span style="color:#f92672">]</span><span style="color:#75715e"># bash gfwlist2privoxy</span>
+proxy<span style="color:#f92672">(</span>socks5<span style="color:#f92672">)</span>: 127.0.0.1:1080		<span style="color:#75715e"># 注意，如果你修改了ssr本地监听端口是需要设置对应的</span>
+<span style="color:#f92672">{</span>+forward-override<span style="color:#f92672">{</span>forward-socks5 127.0.0.1:1080 .<span style="color:#f92672">}}</span>
+
+<span style="color:#f92672">=================================================================</span>
+
+<span style="color:#e6db74">&#34;cp -af /root/gfwlist2privoxy/gfw.action /etc/privoxy/&#34;</span>
+
+<span style="color:#f92672">[</span>root@localhost ~<span style="color:#f92672">]</span><span style="color:#75715e"># cp -af gfw.action /etc/privoxy/</span>
+<span style="color:#f92672">[</span>root@localhost ~<span style="color:#f92672">]</span><span style="color:#75715e"># echo &#39;actionsfile gfw.action&#39; &gt;&gt; /etc/privoxy/config</span>
+
+<span style="color:#75715e"># Privoxy 默认监听端口是是8118</span>
+export http_proxy<span style="color:#f92672">=</span>http://127.0.0.1:8118
+export https_proxy<span style="color:#f92672">=</span>http://127.0.0.1:8118
+export no_proxy<span style="color:#f92672">=</span>localhost
+
+<span style="color:#75715e"># 启动服务</span>
+systemctl start privoxy.service
+</code></pre></td></tr></table>
+</div>
+</div><h5 id="proxy-环境变量">proxy 环境变量</h5>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">8
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">9
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-shell" data-lang="shell"><span style="color:#75715e"># privoxy默认监听端口为8118</span>
+export http_proxy<span style="color:#f92672">=</span>http://127.0.0.1:8118
+export https_proxy<span style="color:#f92672">=</span>http://127.0.0.1:8118
+export no_proxy<span style="color:#f92672">=</span>localhost
+
+<span style="color:#75715e"># no_proxy是不经过privoxy代理的地址</span>
+<span style="color:#75715e"># 只能填写具体的ip、域名后缀，多个条目之间使用&#39;,&#39;逗号隔开</span>
+<span style="color:#75715e"># 比如: export no_proxy=&#34;localhost, 192.168.1.1, ip.cn, chinaz.com&#34;</span>
+<span style="color:#75715e"># 访问 localhost、192.168.1.1、ip.cn、*.ip.cn、chinaz.com、*.chinaz.com 将不使用代理</span>
+</code></pre></td></tr></table>
+</div>
+</div><h4 id="代理测试">代理测试</h4>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-shell" data-lang="shell"><span style="color:#75715e"># 访问各大网站，如果都有网页源码输出说明代理没问题</span>
+curl -sL www.baidu.com
+curl -sL www.google.com
+curl -sL www.google.com.hk
+curl -sL www.google.co.jp
+curl -sL www.youtube.com
+curl -sL mail.google.com
+curl -sL facebook.com
+curl -sL twitter.com
+curl -sL www.wikipedia.org
+
+<span style="color:#75715e"># 获取当前 IP 地址</span>
+<span style="color:#75715e"># 如果使用 privoxy 全局模式，则应该显示 ss 服务器的 IP</span>
+<span style="color:#75715e"># 如果使用 privoxy gfwlist模式，则应该显示本地公网 IP</span>
+curl -sL ip.chinaz.com/getip.aspx
+</code></pre></td></tr></table>
+</div>
+</div><h5 id="管理脚本">管理脚本</h5>
+<p>在以上部署操作完成后，应该已经可以正常科学上网了，但是如果需要进行管理时，需要分别管理ssr和privoxy，为了方便管理，这里写了一个shell脚本方便管理: ssr_manager</p>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">26
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">27
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">28
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-shell" data-lang="shell"><span style="color:#75715e">#!/bin/bash
+</span><span style="color:#75715e"></span><span style="color:#75715e"># Author Samzong.lu</span>
+
+<span style="color:#66d9ef">case</span> $1 in
+	start<span style="color:#f92672">)</span>
+		ssr start &amp;&gt; /var/log/ssr-local.log
+		systemctl start privoxy.service
+		export http_proxy<span style="color:#f92672">=</span>http://127.0.0.1:8118
+		export https_proxy<span style="color:#f92672">=</span>http://127.0.0.1:8118
+		export no_proxy<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;localhost, ip.cn, chinaz.com&#34;</span>
+		;;
+	stop<span style="color:#f92672">)</span>
+		unset http_proxy https_proxy no_proxy
+		systemctl stop privoxy.service
+		ssr stop &amp;&gt; /var/log/ssr-log.log
+		;;
+	autostart<span style="color:#f92672">)</span>
+		echo <span style="color:#e6db74">&#34;ssr start&#34;</span> &gt;&gt; /etc/rc.local
+		systemctl enable privoxy.service
+		echo <span style="color:#e6db74">&#34;http_proxy=http://127.0.0.1:8118&#34;</span> &gt;&gt; /etc/bashrc
+		echo <span style="color:#e6db74">&#34;https_proxy=http://127.0.0.1:8118&#34;</span> &gt;&gt; /etc/bashrc
+		echo <span style="color:#e6db74">&#34;no_proxy=&#39;localhost, ip.cn, chinaz.com&#39;&#34;</span> &gt;&gt; /etc/bashrc
+		;;
+	*<span style="color:#f92672">)</span>
+		echo <span style="color:#e6db74">&#34;usage: source </span>$0<span style="color:#e6db74"> start|stop|autostart&#34;</span>
+		exit <span style="color:#ae81ff">1</span>
+		;;
+<span style="color:#66d9ef">esac</span>
+</code></pre></td></tr></table>
+</div>
+</div><h5 id="使用">使用</h5>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-shell" data-lang="shell">mv gfwlist2privoxy/ssr_manager /usr/local/bin
+chmod +x ssr_manager
+
+<span style="color:#75715e"># 启动服务</span>
+ssr_manager start
+
+<span style="color:#75715e"># 关闭服务</span>
+ssr_manager stop 
+
+<span style="color:#75715e"># 添加开机自启动</span>
+ssr_manager autostart
+</code></pre></td></tr></table>
+</div>
+</div><h4 id="参考链接">参考链接</h4>
+<ul>
+<li><a href="https://www.zfl9.com/ss-local.html">https://www.zfl9.com/ss-local.html</a></li>
+<li><a href="https://www.djangoz.com/2017/08/16/linux_setup_ssr/">https://www.djangoz.com/2017/08/16/linux_setup_ssr/</a></li>
+</ul>
+
+  </div>
+
+  
+<div>
+  <ul class="tags">
+  <li>
+    <a href="https://example.com/tags/shadowsocks/" class="tag-link">Shadowsocks</a>
+  </li>
+  </ul>
+</div>
+
+
+
+  <div class="share-buttons">
+  <a class="twitter-share-button"
+     href="#"
+     title="Share on Twitter"
+     data-url="https://example.com/posts/%E5%9C%A8linux%E7%BB%88%E7%AB%AF%E4%BD%BF%E7%94%A8ssr%E6%9C%8D%E5%8A%A1%E5%AE%9E%E7%8E%B0%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/"
+     data-text="在Linux终端使用SSR服务实现科学上网"><i class="fab fa-twitter"></i></a>
+
+  <a class="linkedin-share-button"
+     href="#"
+     title="Share on LinkedIn"
+     data-url="https://example.com/posts/%E5%9C%A8linux%E7%BB%88%E7%AB%AF%E4%BD%BF%E7%94%A8ssr%E6%9C%8D%E5%8A%A1%E5%AE%9E%E7%8E%B0%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/"
+     data-text="在Linux终端使用SSR服务实现科学上网"><i class="fab fa-linkedin-in"></i></a>
+
+  <a class="facebook-share-button"
+     href="#"
+     title="Share on Facebook"
+     data-url="https://example.com/posts/%E5%9C%A8linux%E7%BB%88%E7%AB%AF%E4%BD%BF%E7%94%A8ssr%E6%9C%8D%E5%8A%A1%E5%AE%9E%E7%8E%B0%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/"
+     data-text="在Linux终端使用SSR服务实现科学上网"><i class="fab fa-facebook"></i></a>
+
+  <a class="telegram-share-button"
+     href="#"
+     title="Share on Telegram"
+     data-url="https://example.com/posts/%E5%9C%A8linux%E7%BB%88%E7%AB%AF%E4%BD%BF%E7%94%A8ssr%E6%9C%8D%E5%8A%A1%E5%AE%9E%E7%8E%B0%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/"
+     data-text="在Linux终端使用SSR服务实现科学上网"><i class="fab fa-telegram"></i></a>
+
+  <a class="pinterest-share-button"
+     href="#"
+     title="Share on Pinterest"
+     data-url="https://example.com/posts/%E5%9C%A8linux%E7%BB%88%E7%AB%AF%E4%BD%BF%E7%94%A8ssr%E6%9C%8D%E5%8A%A1%E5%AE%9E%E7%8E%B0%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/"
+     data-text="在Linux终端使用SSR服务实现科学上网"><i class="fab fa-pinterest"></i></a>
+</div>
+
+
+  
+</div>
+  </main>
+
+  <footer>
+  <div>
+    <p>
+      &copy; samzong.lu 2021
+
+      &middot; <a href="https://creativecommons.org/licenses/by-sa/4.0" target="_blank">CC BY-SA 4.0</a>
+
+      
+    </p>
+  </div>
+</footer>
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/js/all.min.js"
+          integrity="sha256-MAgcygDRahs+F/Nk5Vz387whB4kSK9NXlDN3w58LLq0="
+          crossorigin="anonymous"></script>
+
+
+  <script src="/js/jquery.min.js"></script>
+  <script src="/js/soho.js"></script>
+
+  <script src="/js/blog.js"></script>
+
+  
+</body>
+</html>

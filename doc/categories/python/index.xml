@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Python on SAMZONG</title>
+    <link>https://example.com/categories/python/</link>
+    <description>Recent content in Python on SAMZONG</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Thu, 08 Dec 2016 20:12:37 +0000</lastBuildDate><atom:link href="https://example.com/categories/python/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>HowTo Install Python3 on CentOS 6.x</title>
+      <link>https://example.com/posts/howto-install-python3-on-centos-6-x/</link>
+      <pubDate>Thu, 08 Dec 2016 20:12:37 +0000</pubDate>
+      
+      <guid>https://example.com/posts/howto-install-python3-on-centos-6-x/</guid>
+      <description>接触过Python2.x与Python3.x的应该知道，它们二者的区别也是蛮大的，而随着Python3.x的盛行，越来越多的应用运行与Python3.x的环境之上，但是我们的CentOS的系列，目前都默认安装时Python2.x（CentOS 7.x也是），所以不得不我们需要自己行动手安装Python 3.x的环境。
+Mirosoft平台与Mac平台，不在考虑范围，他们都有相应的软件包与图形化安装工具，可以很好的解决这个问题，所以今天我们的环境是在CentOS 6.x系列上进行。
+ Demo ：CentOS 6.8
+ Method 1.</description>
+    </item>
+    
+    <item>
+      <title>Python(1) 基础</title>
+      <link>https://example.com/posts/python-1-%E5%9F%BA%E7%A1%80/</link>
+      <pubDate>Fri, 11 Nov 2016 00:32:13 +0000</pubDate>
+      
+      <guid>https://example.com/posts/python-1-%E5%9F%BA%E7%A1%80/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>HowTo Install Python 2.7.8 on CentOS 6.x</title>
+      <link>https://example.com/posts/howto-install-python-2-7-8-on-centos-6-x/</link>
+      <pubDate>Wed, 04 May 2016 11:04:19 +0000</pubDate>
+      
+      <guid>https://example.com/posts/howto-install-python-2-7-8-on-centos-6-x/</guid>
+      <description>CentOS 6.5 still come with Python 2.6 and I need 2.</description>
+    </item>
+    
+    <item>
+      <title>bypy-百度网盘Python客户端</title>
+      <link>https://example.com/posts/%E7%99%BE%E5%BA%A6%E7%BD%91%E7%9B%98python%E5%AE%A2%E6%88%B7%E7%AB%AF/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://example.com/posts/%E7%99%BE%E5%BA%A6%E7%BD%91%E7%9B%98python%E5%AE%A2%E6%88%B7%E7%AB%AF/</guid>
+      <description>最近在GitHub上发现一个有趣的项目，百度网盘Python客户端(bypy)，主要使用在Linux命令行下，这样很大的一个好处是可以利用到百度云盘2TB的存储空间(如果你是会员有6TB)；你可以在任何服务器上，利用自动化脚本实现一些数据文件、日志文件等等备份操作，同时也提供丰富的文件列表、上传、下载、对比、同步以及批量操作等。
+ 虽然百度网盘Python客户端提供很大的便利，但是我强烈不建议将一些重要数据放到百度云盘
+ 实验目的 数据库备份文件自动上传到百度网盘
+环境依赖  Python 2.7 or 3.</description>
+    </item>
+    
+    <item>
+      <title>使用国内pypi源加速pip安装</title>
+      <link>https://example.com/posts/%E4%BD%BF%E7%94%A8%E5%9B%BD%E5%86%85pypi%E6%BA%90%E5%8A%A0%E9%80%9Fpip%E5%AE%89%E8%A3%85/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://example.com/posts/%E4%BD%BF%E7%94%A8%E5%9B%BD%E5%86%85pypi%E6%BA%90%E5%8A%A0%E9%80%9Fpip%E5%AE%89%E8%A3%85/</guid>
+      <description>在解决将AWS Cloudwatch的监控信息展示在Zabbix上时，需要安装AWS的一个python 工具包boto3，但是在安装过程中，碰到了如上图的错误信息；问题是由于国内网络问题导致连接python库超时，所以将库改为国内
+国内pypi源站点  http://pypi.douban.com/simple 豆瓣 http://pypi.hustunique.com/simple 华中理工大学 http://pypi.sdutlinux.org/simple 山东理工大学 http://pypi.</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Ghost on SAMZONG</title>
+    <link>https://example.com/categories/ghost/</link>
+    <description>Recent content in Ghost on SAMZONG</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Mon, 20 Feb 2017 14:39:15 +0000</lastBuildDate><atom:link href="https://example.com/categories/ghost/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>HowTo Upgrade Your Ghost Version</title>
+      <link>https://example.com/posts/howto-upgrade-your-ghost-version/</link>
+      <pubDate>Mon, 20 Feb 2017 14:39:15 +0000</pubDate>
+      
+      <guid>https://example.com/posts/howto-upgrade-your-ghost-version/</guid>
+      <description>curl -LOk https://ghost.org/zip/ghost-latest.zip 2. 创建临时目录，并解压ghost-latest.zip到此 mkdir /usr/ghost-tmp unzip ghost-latest.zip -d /usr/ghost-tmp 3.</description>
+    </item>
+    
+    <item>
+      <title>Ghost(2) 增加评论模块</title>
+      <link>https://example.com/posts/ghost-2-%E5%A2%9E%E5%8A%A0%E8%AF%84%E8%AE%BA%E6%A8%A1%E5%9D%97/</link>
+      <pubDate>Fri, 18 Nov 2016 12:09:13 +0000</pubDate>
+      
+      <guid>https://example.com/posts/ghost-2-%E5%A2%9E%E5%8A%A0%E8%AF%84%E8%AE%BA%E6%A8%A1%E5%9D%97/</guid>
+      <description> &amp;amp;lt;/footer&amp;amp;gt; &amp;amp;lt;/article&amp;amp;gt;  &amp;lt;/main&amp;gt; </description>
+    </item>
+    
+    <item>
+      <title>在网页中插入歌曲</title>
+      <link>https://example.com/posts/%E5%9C%A8%E7%BD%91%E9%A1%B5%E4%B8%AD%E6%8F%92%E5%85%A5%E6%AD%8C%E6%9B%B2/</link>
+      <pubDate>Mon, 01 Aug 2016 00:12:29 +0000</pubDate>
+      
+      <guid>https://example.com/posts/%E5%9C%A8%E7%BD%91%E9%A1%B5%E4%B8%AD%E6%8F%92%E5%85%A5%E6%AD%8C%E6%9B%B2/</guid>
+      <description>纠正下，在下面博文中的错误，关于单曲不能生成外链的问题，现已经纠正。
+我试过百度音乐、QQ音乐、虾米音乐和网易云音乐，目前只有网易云音乐有此功能，先在网易云音乐选择歌曲即可：
+分享单曲 分享专辑，歌单 </description>
+    </item>
+    
+    <item>
+      <title>HowTo Add Piwik Tracking to Ghost</title>
+      <link>https://example.com/posts/howto-add-piwik-tracking-to-ghost/</link>
+      <pubDate>Wed, 27 Apr 2016 16:51:58 +0000</pubDate>
+      
+      <guid>https://example.com/posts/howto-add-piwik-tracking-to-ghost/</guid>
+      <description>This is what about piwik on wiki. goto
+Step 1 - Getting your Piwik Tracking code The first step to having Piwik tracking your Ghost blog will be to add a new website in Piwik, if you are unfamiliar with this process you can checkout the Piwik documention on Managing Websites.</description>
+    </item>
+    
+    <item>
+      <title>HowTo Install piwik with nginx on centos 6.x</title>
+      <link>https://example.com/posts/howto-install-piwik-with-nginx-on-centos-6-x/</link>
+      <pubDate>Wed, 27 Apr 2016 16:00:44 +0000</pubDate>
+      
+      <guid>https://example.com/posts/howto-install-piwik-with-nginx-on-centos-6-x/</guid>
+      <description>This is my nginx config. server { listen blog.ultraera.org:80; server_name blog.</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Tomcat on SAMZONG</title>
+    <link>https://example.com/tags/tomcat/</link>
+    <description>Recent content in Tomcat on SAMZONG</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Wed, 05 Apr 2017 15:21:03 +0000</lastBuildDate><atom:link href="https://example.com/tags/tomcat/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>HowTo set Tomcat 7 automatic startup with CentOS 7</title>
+      <link>https://example.com/posts/howto-set-tomcat-7-automatic-startup-with-centos-7/</link>
+      <pubDate>Wed, 05 Apr 2017 15:21:03 +0000</pubDate>
+      
+      <guid>https://example.com/posts/howto-set-tomcat-7-automatic-startup-with-centos-7/</guid>
+      <description>因CentOS7与6在系统上，变化较大，所以在之前的文章中讲到的使用Tomcat7开机自启动的方式在CentOS7是是无法使用的，所以这篇文章的目的是如何在CentOS7上将Tomcat7设置为开机自启动。
+安装JAVA环境  [root@7 ~]# curl -LO -H &amp;quot;Cookie: oraclelicense=accept-securebackup-cookie&amp;quot; \ &amp;quot;http://download.</description>
+    </item>
+    
+    <item>
+      <title>Tomcat(2) 利用JDK自身keytool实现HTTPS</title>
+      <link>https://example.com/posts/tomcat-2-%E5%88%A9%E7%94%A8jdk%E8%87%AA%E8%BA%ABkeytool%E5%AE%9E%E7%8E%B0https/</link>
+      <pubDate>Sat, 03 Dec 2016 18:41:13 +0000</pubDate>
+      
+      <guid>https://example.com/posts/tomcat-2-%E5%88%A9%E7%94%A8jdk%E8%87%AA%E8%BA%ABkeytool%E5%AE%9E%E7%8E%B0https/</guid>
+      <description>因为一个偶然机会，想把自己的webserver通过https加密访问，这里就采用JDK自带的keytool工具实现，tomcat官方也推荐这种方式，英文好的同学走这里：官方配置
+ demo: CentOS 6.6 &amp;amp; Tomcat 7 &amp;amp; JDK 1.</description>
+    </item>
+    
+    <item>
+      <title>Tomcat(1) java.lang.OutOfMemoryError</title>
+      <link>https://example.com/posts/tomcat-1-java-lang-outofmemoryerror/</link>
+      <pubDate>Tue, 29 Nov 2016 02:19:38 +0000</pubDate>
+      
+      <guid>https://example.com/posts/tomcat-1-java-lang-outofmemoryerror/</guid>
+      <description>1. 什么是 PermGen space ? PermGen space的全称是Permanent Generation space，是指内存的永久保存区域，这块内存主要是被JVM存放Class和Meta信息的，Class在被Loader时就会被放到PermGen space中，它和存放类实例(Instance)的Heap区域不同，GC(Garbage Collection)不会在主程序运行期对PermGen space进行清理，所以如果你的应用中有很CLASS的话，就很可能出现PermGen space错误，这种错误常见在web服务器对JSP进行pre compile的时候。如果你的WEB APP下都用了大量的第三方jar，其大小超过了jvm默认的大小(4M)那么就会产生此错误信息了。</description>
+    </item>
+    
+    <item>
+      <title>HowTo Install a Tomcat Server 7</title>
+      <link>https://example.com/posts/howto-install-a-tomcat-server-7/</link>
+      <pubDate>Mon, 19 Sep 2016 10:25:53 +0000</pubDate>
+      
+      <guid>https://example.com/posts/howto-install-a-tomcat-server-7/</guid>
+      <description>本文件是采用的模板是CentOS 6，同样适用于CentOS 系列其他发行版本。
+1. 测试环境  VMware Fushion 8 Pro # windows Use VirtualBox CentOS-6.</description>
+    </item>
+    
+    <item>
+      <title>Tomcat(3) 优化设定</title>
+      <link>https://example.com/posts/tomcat-3-%E4%BC%98%E5%8C%96%E8%AE%BE%E5%AE%9A/</link>
+      <pubDate>Thu, 16 Jun 2016 02:28:35 +0000</pubDate>
+      
+      <guid>https://example.com/posts/tomcat-3-%E4%BC%98%E5%8C%96%E8%AE%BE%E5%AE%9A/</guid>
+      <description>设置JVM空间大小，Xms和Xmx一样大：JVM初始分配的内存由-Xms指定，默认是物理内存的1/64；JVM最大分配的内存由-Xmx指定，默认是物理内存的1/4。默认空余堆内存小于 40%时，JVM就会增大堆直到-Xmx的最大限制；空余堆内存大于70%时，JVM会减少堆直到-Xms的最小限制。因此服务器一般设置-Xms、 -Xmx相等以避免在每次GC 后调整堆的大小。
+  关闭dns查询
+  增加线程数量</description>
+    </item>
+    
+  </channel>
+</rss>

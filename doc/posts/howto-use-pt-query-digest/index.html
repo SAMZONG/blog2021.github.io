@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh-CN" lang="zh-CN">
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="generator" content="Hugo 0.88.1" />
+
+  <title>HowTo Use pt-query-digest &middot; SAMZONG</title>
+
+  <meta name="description" content="" />
+
+  
+
+<meta itemprop="name" content="HowTo Use pt-query-digest">
+<meta itemprop="description" content="1. 简介 索引可以我们更快速的执行查询，但是肯定存在不合理的索引，如果想找到那些索引不是很合适的查询，并在它们成为问题前进行优化，则可以使用pt-query-digest的查询审查“review”功能，分析其EXPLAIN出来的执行计划。
+pt-query-digest是用于分析mysql慢查询的一个工具，它可以分析binlog、General log、slowlog，也可以通过SHOWPROCESSLIST或者通过tcpdump抓取的MySQL协议数据来进行分析。可以把分析结果输出到文件中，分析过程是先对查询语句的条件进行参数化，然后对参数化以后的查询进行分组统计，统计出各查询的执行时间、次数、占比等，可以借助分析结果找出问题进行优化。
+2. Install Percona Toolkit &amp; pt-query-digest percona-toolkit是一组高级命令行工具的集合，用来执行各种通过手工执行非常复杂和麻烦的mysql和系统任务。这些任务包括："><meta itemprop="datePublished" content="2016-09-22T15:20:12+00:00" />
+<meta itemprop="dateModified" content="2016-09-22T15:20:12+00:00" />
+<meta itemprop="wordCount" content="575">
+<meta itemprop="keywords" content="MySQL," />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="HowTo Use pt-query-digest"/>
+<meta name="twitter:description" content="1. 简介 索引可以我们更快速的执行查询，但是肯定存在不合理的索引，如果想找到那些索引不是很合适的查询，并在它们成为问题前进行优化，则可以使用pt-query-digest的查询审查“review”功能，分析其EXPLAIN出来的执行计划。
+pt-query-digest是用于分析mysql慢查询的一个工具，它可以分析binlog、General log、slowlog，也可以通过SHOWPROCESSLIST或者通过tcpdump抓取的MySQL协议数据来进行分析。可以把分析结果输出到文件中，分析过程是先对查询语句的条件进行参数化，然后对参数化以后的查询进行分组统计，统计出各查询的执行时间、次数、占比等，可以借助分析结果找出问题进行优化。
+2. Install Percona Toolkit &amp; pt-query-digest percona-toolkit是一组高级命令行工具的集合，用来执行各种通过手工执行非常复杂和麻烦的mysql和系统任务。这些任务包括："/>
+
+
+<meta property="og:title" content="HowTo Use pt-query-digest" />
+<meta property="og:description" content="1. 简介 索引可以我们更快速的执行查询，但是肯定存在不合理的索引，如果想找到那些索引不是很合适的查询，并在它们成为问题前进行优化，则可以使用pt-query-digest的查询审查“review”功能，分析其EXPLAIN出来的执行计划。
+pt-query-digest是用于分析mysql慢查询的一个工具，它可以分析binlog、General log、slowlog，也可以通过SHOWPROCESSLIST或者通过tcpdump抓取的MySQL协议数据来进行分析。可以把分析结果输出到文件中，分析过程是先对查询语句的条件进行参数化，然后对参数化以后的查询进行分组统计，统计出各查询的执行时间、次数、占比等，可以借助分析结果找出问题进行优化。
+2. Install Percona Toolkit &amp; pt-query-digest percona-toolkit是一组高级命令行工具的集合，用来执行各种通过手工执行非常复杂和麻烦的mysql和系统任务。这些任务包括：" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://example.com/posts/howto-use-pt-query-digest/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2016-09-22T15:20:12+00:00" />
+<meta property="article:modified_time" content="2016-09-22T15:20:12+00:00" />
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type":"Person",
+      "@id": "https://example.com#author",
+      "name": "samzong.lu",
+      "image": {
+        "@type":"ImageObject",
+        "url": "https://www.gravatar.com/avatar/c02c426714361366ea7d583950aa8fb4?s=400&d=mp"
+      },
+      "description": "Samzong's Blog"
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://example.com#website",
+      "url": "https://example.com",
+      "name": "SAMZONG",
+      "description": "Samzong's Blog",
+      "publisher": {
+        "@id": "https://example.com#author"
+      },
+      "inLanguage": "zh-CN"
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://example.com/posts/howto-use-pt-query-digest/#webpage",
+      "url": "https://example.com/posts/howto-use-pt-query-digest/",
+      "name": "HowTo Use pt-query-digest",
+      "isPartOf": {
+        "@id": "https://example.com#website"
+      },
+      "about": {
+         "@id": "https://example.com#author"
+      },
+      "datePublished": "2016-09-22T15:20:12+00:00",
+      "dateModified": "2016-09-22T15:20:12+00:00",
+      "description": "1. 简介 索引可以我们更快速的执行查询，但是肯定存在不合理的索引，如果想找到那些索引不是很合适的查询，并在它们成为问题前进行优化，则可以使用pt-query-digest的查询审查“review”功能，分析其EXPLAIN出来的执行计划。\npt-query-digest是用于分析mysql慢查询的一个工具，它可以分析binlog、General log、slowlog，也可以通过SHOWPROCESSLIST或者通过tcpdump抓取的MySQL协议数据来进行分析。可以把分析结果输出到文件中，分析过程是先对查询语句的条件进行参数化，然后对参数化以后的查询进行分组统计，统计出各查询的执行时间、次数、占比等，可以借助分析结果找出问题进行优化。\n2. Install Percona Toolkit \u0026amp; pt-query-digest percona-toolkit是一组高级命令行工具的集合，用来执行各种通过手工执行非常复杂和麻烦的mysql和系统任务。这些任务包括：",
+      "inLanguage": "zh-CN",
+      "potentialAction": [
+        {
+          "@type": "ReadAction",
+          "target": [
+            "https://example.com/posts/howto-use-pt-query-digest/"
+          ]
+        }
+      ]
+    },
+    {
+      "@type": "Article",
+      "isPartOf": {
+        "@id": "https://example.com/posts/howto-use-pt-query-digest/#webpage"
+      },
+      "mainEntityOfPage": {
+        "@id": "https://example.com/posts/howto-use-pt-query-digest/#webpage"
+      },
+      "headline": "HowTo Use pt-query-digest",
+      "datePublished": "2016-09-22T15:20:12+00:00",
+      "dateModified": "2016-09-22T15:20:12+00:00",
+      "publisher": {
+        "@id": "https://example.com#author"
+      },
+      "keywords": [
+        "MySQL"
+      ],
+      "articleSection": [
+        "MySQL"
+      ],
+      "inLanguage": "zh-CN",
+      "author": {
+        "@type": "Person",
+        "name":  null 
+      },
+      "potentialAction": [
+        {
+          "@type": "CommentAction",
+          "name": "Comment",
+          "target": [
+            "https://example.com/posts/howto-use-pt-query-digest/#comments"
+          ]
+        }
+      ]
+    }
+  ]
+}
+</script>
+
+
+
+  <link type="text/css"
+        rel="stylesheet"
+        href="/css/print.css"
+        media="print">
+
+  <link type="text/css"
+        rel="stylesheet"
+        href="/css/poole.css">
+
+  <link type="text/css"
+        rel="stylesheet"
+        href="/css/hyde.css">
+
+  
+
+
+  <link type="text/css" rel="stylesheet" href="/css/blog.css">
+
+  <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700&display=swap">
+
+  <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css"
+        integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk="
+        crossorigin="anonymous" />
+
+  <link rel="apple-touch-icon-precomposed"
+        sizes="144x144"
+        href="/apple-touch-icon-144-precomposed.png">
+
+  <link rel="shortcut icon" href="/favicon.png">
+
+  
+  </head>
+<body>
+  <aside class="sidebar">
+  <div class="container">
+    <div class="sidebar-about">
+      
+      <div class="author-image">
+        <a href="https://example.com">
+          <img src="https://www.gravatar.com/avatar/c02c426714361366ea7d583950aa8fb4?s=200&d=mp" class="img-circle img-headshot center" alt="Gravatar">
+        </a>
+      </div>
+      
+
+      <h1>SAMZONG</h1>
+
+      
+      <p class="lead">Samzong&#39;s Blog</p>
+      
+    </div>
+
+    <nav>
+      <ul class="sidebar-nav">
+        <li>
+          <a href="https://example.com">Home</a>
+        </li>
+        <li>
+          <a href="/posts/">Posts</a>
+        </li><li>
+          <a href="/about/">About</a>
+        </li>
+      </ul>
+    </nav>
+
+    <section class="social-icons">
+      
+      <a href="https://www.linkedin.com/in/samzong/" rel="me" title="Linkedin" target="_blank">
+        <i class="fab fa-linkedin" aria-hidden="true"></i>
+      </a>
+      
+      <a href="https://github.com/samzong" rel="me" title="GitHub" target="_blank">
+        <i class="fab fa-github" aria-hidden="true"></i>
+      </a>
+      
+      <a href="https://twitter.com/samzong_lu" rel="me" title="Twitter" target="_blank">
+        <i class="fab fa-twitter" aria-hidden="true"></i>
+      </a>
+      
+    </section>
+  </div>
+</aside>
+
+
+  <main class="content container">
+  <div class="post">
+  <h1 class="title">HowTo Use pt-query-digest</h1>
+  
+
+  <div class="post-date">
+    <time datetime="2016-09-22T15:20:12Z">Sep 22, 2016</time> <span class="readtime">&middot; 3 min read</span>
+  </div>
+
+  <div>
+  <h3 id="1-简介">1. 简介</h3>
+<p>索引可以我们更快速的执行查询，但是肯定存在不合理的索引，如果想找到那些索引不是很合适的查询，并在它们成为问题前进行优化，则可以使用pt-query-digest的查询审查“review”功能，分析其EXPLAIN出来的执行计划。</p>
+<p>pt-query-digest是用于分析mysql慢查询的一个工具，它可以分析binlog、General log、slowlog，也可以通过SHOWPROCESSLIST或者通过tcpdump抓取的MySQL协议数据来进行分析。可以把分析结果输出到文件中，分析过程是先对查询语句的条件进行参数化，然后对参数化以后的查询进行分组统计，统计出各查询的执行时间、次数、占比等，可以借助分析结果找出问题进行优化。</p>
+<h3 id="2-install-percona-toolkit--pt-query-digest">2. Install Percona Toolkit &amp; pt-query-digest</h3>
+<p>percona-toolkit是一组高级命令行工具的集合，用来执行各种通过手工执行非常复杂和麻烦的mysql和系统任务。这些任务包括：</p>
+<ul>
+<li>检查master和slave数据的一致性</li>
+<li>有效地对记录进行归档</li>
+<li>查找重复的索引</li>
+<li>对服务器信息进行汇总</li>
+<li>分析来自日志和tcpdump的查询</li>
+<li>当系统出问题的时候收集重要的系统信息</li>
+</ul>
+<pre tabindex="0"><code>[root@ultrera ~]# wget percona.com/get/percona-toolkit.tar.gz
+--2016-09-22 09:17:00--  http://percona.com/get/percona-toolkit.tar.gz
+Resolving percona.com... 74.121.199.234, 74.121.199.234
+Connecting to percona.com|74.121.199.234|:80... connected.
+HTTP request sent, awaiting response... 301 Moved Permanently
+Location: https://www.percona.com/get/percona-toolkit.tar.gz [following]
+--2016-09-22 09:17:02--  https://www.percona.com/get/percona-toolkit.tar.gz
+Resolving www.percona.com... 74.121.199.234, 74.121.199.234
+Connecting to www.percona.com|74.121.199.234|:443... connected.
+HTTP request sent, awaiting response... 302 Found
+Location: https://www.percona.com/downloads/percona-toolkit/2.2.19/tarball/percona-toolkit-2.2.19.tar.gz [following]
+--2016-09-22 09:17:03--  https://www.percona.com/downloads/percona-toolkit/2.2.19/tarball/percona-toolkit-2.2.19.tar.gz
+Reusing existing connection to www.percona.com:443.
+HTTP request sent, awaiting response... 200 OK
+Length: 1425623 (1.4M) [application/x-gzip]
+Saving to: “percona-toolkit.tar.gz”
+
+100%[=======================&gt;] 1,425,623    766K/s   in 1.8s
+
+2016-09-22 09:17:05 (766 KB/s) - “percona-toolkit.tar.gz” saved [1425623/1425623]
+
+[root@ultrera ~]# tar xf percona-toolkit.tar.gz
+[root@ultrera ~]# ls
+percona-toolkit-2.2.19  percona-toolkit.tar.gz
+[root@ultrera ~]# cd percona-toolkit-2.2.19
+[root@ultrera percona-toolkit-2.2.19]# perl Makefile.PL
+Warning: prerequisite DBD::mysql 3 not found.
+Writing Makefile for percona-toolkit
+[root@ultrera percona-toolkit-2.2.19]# make
+cp bin/pt-mysql-summary blib/script/pt-mysql-summary
+....
+Manifying blib/man1/pt-index-usage.1p
+Manifying blib/man1/pt-duplicate-key-checker.1p
+Manifying blib/man1/pt-config-diff.1p
+Manifying blib/man1/pt-stalk.1p
+[root@ultrera percona-toolkit-2.2.19]# make install
+Installing /usr/local/share/man/man1/pt-query-digest.1p
+...
+Installing /usr/local/bin/pt-query-digest
+...
+Appending installation info to /usr/lib64/perl5/perllocal.pod
+</code></pre><blockquote>
+<p>运行工具可能会遇到下面的错误: Can&rsquo;t locate Time/HiRes.pm in @INC</p>
+</blockquote>
+<pre tabindex="0"><code># 解决办法：
+[root@ultrera ~]# yum install -y perl-Time-HiRes
+[root@ultrera ~]# pt-query-digest --version
+pt-query-digest 2.2.19
+</code></pre><h3 id="3-开启-mysql慢日志">3. 开启 mysql慢日志</h3>
+<h5 id="a-查看当前slow_query_log-状态">a. 查看当前‘slow_query_log’ 状态：</h5>
+<pre tabindex="0"><code>mysql&gt; show variables like '%query%';
++------------------------------+---------------------------------+
+| Variable_name                | Value                           |
++------------------------------+---------------------------------+
+| binlog_rows_query_log_events | OFF                             |
+| ft_query_expansion_limit     | 20                              |
+| have_query_cache             | YES                             |
+| long_query_time              | 10.000000                       |
+| query_alloc_block_size       | 8192                            |
+| query_cache_limit            | 1048576                         |
+| query_cache_min_res_unit     | 4096                            |
+| query_cache_size             | 1048576                         |
+| query_cache_type             | OFF                             |
+| query_cache_wlock_invalidate | OFF                             |
+| query_prealloc_size          | 8192                            |
+| slow_query_log               | OFF                             |
+| slow_query_log_file          | /var/lib/mysql/ultrera-slow.log |
++------------------------------+---------------------------------+
+13 rows in set (0.00 sec)
+
+mysql&gt; show variables like 'log_queries_not_using_indexes';
++-------------------------------+-------+
+| Variable_name                 | Value |
++-------------------------------+-------+
+| log_queries_not_using_indexes | OFF   |
++-------------------------------+-------+
+1 row in set (0.00 sec)
+</code></pre><h5 id="b-启动slow_log-配置">b. 启动slow_log, 配置</h5>
+<pre tabindex="0"><code># 设定记录大于2s的sql
+mysql&gt; set global long_query_time=2;
+Query OK, 0 rows affected (0.00 sec)
+
+# 设定log存放路径
+mysql&gt; set global slow_query_log_file='/tmp/ultraera-slow.log';
+Query OK, 0 rows affected (0.00 sec)
+
+# 启用慢日志
+mysql&gt; set global slow_query_log=ON;
+Query OK, 0 rows affected (0.00 sec)
+
+# 同时记录没有使用索引的sql
+mysql&gt; set global log_queries_not_using_indexes=on;
+Query OK, 0 rows affected (0.00 sec)
+</code></pre><blockquote>
+<p>等待一段时间，slow.log 增大的非常快，实际生产中，注意不要被slow.log将磁盘撑满，影响到正常生产使用。</p>
+</blockquote>
+<h3 id="4-分析">4. 分析</h3>
+<p>pt-query-digest可以从普通MySQL日志，慢查询日志以及二进制日志中分析查询，甚至可以从SHOW PROCESSLIST和MySQL协议的tcpdump中进行分析，如果没有指定文件，它从标准输入流（STDIN）中读取数据。</p>
+<h5 id="a-简单使用方法">a. 简单使用方法：</h5>
+<pre tabindex="0"><code>pt-query-digest slow.logs
+</code></pre><p>输出信息如下：</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<h5 id="b-从tcpdump包中分析通过tcpdump命令抓取一定时间网络数据包然后进行分析">b. 从tcpdump包中分析：通过tcpdump命令抓取一定时间网络数据包，然后进行分析：</h5>
+<pre tabindex="0"><code>pt-query-digest --type tcpdump mysql.tcp.txt
+</code></pre><h5 id="c-pt-query-digest-还支持很对其他的数据包分析形势但是我们主要使用的还是针对慢日志进行分析">c. pt-query-digest 还支持很对其他的数据包分析形势，但是我们主要使用的还是针对慢日志进行分析</h5>
+<blockquote>
+<p>更多的帮助文档，请查看官方文档：http://www.percona.com/doc/percona-toolkit/2.2/pt-query-digest.html</p>
+</blockquote>
+<h3 id="5-使用anemometer将pt-query-digest的mysql慢查询可视化">5. 使用Anemometer将pt-query-digest的MySQL慢查询可视化</h3>
+<ul>
+<li>需要安装php 5.3 and over</li>
+<li>需要预先配置mysql数据库</li>
+<li>需要预先安装好pt-query-digest</li>
+</ul>
+<h5 id="51-安装">5.1 安装</h5>
+<pre tabindex="0"><code>[root@ultrera ~]# git clone https://github.com/box/Anemometer.git anemometer
+
+[root@ultrera ~]# mv anemometer /var/www/html
+[root@ultrera ~]# cd /var/www/html/anemometer/
+[root@ultrera anemometer]# mysql -h localhost -u root -p &lt; mysql56-install.sql
+[root@ultrera anemometer]# mysql -h localhost -u root -p -e &quot;grant all privileges on slow_query_log.* to 'anemometer'@'%' identified by 'anemometer';&quot;
+</code></pre><h5 id="52-配置">5.2 配置</h5>
+<pre tabindex="0"><code>[root@ultrera anemometer]# cp conf/sample.config.inc.php conf/config.inc.php
+[root@ultrera anemometer]# vim conf/config.inc.php
+
+# line 48,49 and line 284,285
+设置数据库的用户名和密码;
+
+[root@ultrera anemometer]# vim conf/config.inc.php
+# line 7,8
+设置数据库的用户名和密码;
+</code></pre><h5 id="53-导入">5.3 导入</h5>
+<p>将pt-query-digest 的分析结果到anemometer；</p>
+<blockquote>
+<p>pt-query-digest version &lt; 2.2</p>
+</blockquote>
+<pre tabindex="0"><code>$ pt-query-digest --user=anemometer --password=superSecurePass \
+                  --review h=db.example.com,D=slow_query_log,t=global_query_review \
+                  --review-history h=db.example.com,D=slow_query_log,t=global_query_review_history \
+                  --no-report --limit=0% \
+                  --filter=&quot; \$event-&gt;{Bytes} = length(\$event-&gt;{arg}) and \$event-&gt;{hostname}=\&quot;$HOSTNAME\&quot;&quot; \
+                  /var/lib/mysql/db.example.com-slow.log
+</code></pre><blockquote>
+<p>pt-query-digest version &gt;= 2.2</p>
+</blockquote>
+<pre tabindex="0"><code>pt-query-digest --user=anemometer --password=superSecurePass \
+                  --review h=db.example.com,D=slow_query_log,t=global_query_review \
+                  --history h=db.example.com,D=slow_query_log,t=global_query_review_history \
+                  --no-report --limit=0% \
+                  --filter=&quot; \$event-&gt;{Bytes} = length(\$event-&gt;{arg}) and \$event-&gt;{hostname}=\&quot;$HOSTNAME\&quot;&quot; \
+                  /var/lib/mysql/db.example.com-slow.log
+
+
+Pipeline process 11 (aggregate fingerprint) caused an error: Argument &quot;57A&quot; isn't numeric in numeric gt (&gt;) at (eval 40) line 6, &lt;&gt; line 27.
+Pipeline process 11 (aggregate fingerprint) caused an error: Argument &quot;57B&quot; isn't numeric in numeric gt (&gt;) at (eval 40) line 6, &lt;&gt; line 28.
+Pipeline process 11 (aggregate fingerprint) caused an error: Argument &quot;57C&quot; isn't numeric in numeric gt (&gt;) at (eval 40) line 6, &lt;&gt; line 29.
+</code></pre>
+  </div>
+
+  
+<div>
+  <ul class="tags">
+  <li>
+    <a href="https://example.com/tags/mysql/" class="tag-link">MySQL</a>
+  </li>
+  </ul>
+</div>
+
+
+
+  <div class="share-buttons">
+  <a class="twitter-share-button"
+     href="#"
+     title="Share on Twitter"
+     data-url="https://example.com/posts/howto-use-pt-query-digest/"
+     data-text="HowTo Use pt-query-digest"><i class="fab fa-twitter"></i></a>
+
+  <a class="linkedin-share-button"
+     href="#"
+     title="Share on LinkedIn"
+     data-url="https://example.com/posts/howto-use-pt-query-digest/"
+     data-text="HowTo Use pt-query-digest"><i class="fab fa-linkedin-in"></i></a>
+
+  <a class="facebook-share-button"
+     href="#"
+     title="Share on Facebook"
+     data-url="https://example.com/posts/howto-use-pt-query-digest/"
+     data-text="HowTo Use pt-query-digest"><i class="fab fa-facebook"></i></a>
+
+  <a class="telegram-share-button"
+     href="#"
+     title="Share on Telegram"
+     data-url="https://example.com/posts/howto-use-pt-query-digest/"
+     data-text="HowTo Use pt-query-digest"><i class="fab fa-telegram"></i></a>
+
+  <a class="pinterest-share-button"
+     href="#"
+     title="Share on Pinterest"
+     data-url="https://example.com/posts/howto-use-pt-query-digest/"
+     data-text="HowTo Use pt-query-digest"><i class="fab fa-pinterest"></i></a>
+</div>
+
+
+  
+</div>
+  </main>
+
+  <footer>
+  <div>
+    <p>
+      &copy; samzong.lu 2021
+
+      &middot; <a href="https://creativecommons.org/licenses/by-sa/4.0" target="_blank">CC BY-SA 4.0</a>
+
+      
+    </p>
+  </div>
+</footer>
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/js/all.min.js"
+          integrity="sha256-MAgcygDRahs+F/Nk5Vz387whB4kSK9NXlDN3w58LLq0="
+          crossorigin="anonymous"></script>
+
+
+  <script src="/js/jquery.min.js"></script>
+  <script src="/js/soho.js"></script>
+
+  <script src="/js/blog.js"></script>
+
+  
+</body>
+</html>

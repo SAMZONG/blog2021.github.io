@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>CentOS on SAMZONG</title>
+    <link>https://example.com/tags/centos/</link>
+    <description>Recent content in CentOS on SAMZONG</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Sun, 19 Feb 2017 09:56:42 +0000</lastBuildDate><atom:link href="https://example.com/tags/centos/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>HowTo Automatic Updates CENTOS/RHEL Using YUM</title>
+      <link>https://example.com/posts/howto-automatic-updates-centos-rhel-using-yum/</link>
+      <pubDate>Sun, 19 Feb 2017 09:56:42 +0000</pubDate>
+      
+      <guid>https://example.com/posts/howto-automatic-updates-centos-rhel-using-yum/</guid>
+      <description>大家若工作遇到需要管理的Linux集群机器较多时，同时我们知道系统的安全更新补丁维护这些非常重要，无论你在安装时优化维护做的再好，随着时间的推移，如果不去更新的话，系统早晚都会不安全，所以定期更新我们的系统补丁是一个运维人员的基本工作内容
+Install yum-cron sudo yum install -y yum-cron 因为我的服务器系统多为CentOS 6，6的配置文件在/etc/sysconfig/yum-cron，你可以用以下命令查看配置文件位置：</description>
+    </item>
+    
+    <item>
+      <title>HowTo Trun Off IPv6 in CentOS 6.x</title>
+      <link>https://example.com/posts/howto-trun-off-ipv6-in-centos-6-x/</link>
+      <pubDate>Fri, 29 Jul 2016 07:26:19 +0000</pubDate>
+      
+      <guid>https://example.com/posts/howto-trun-off-ipv6-in-centos-6-x/</guid>
+      <description>1. CentOS 6.x CentOS 6 上是默认打开了IPv6，但其实在我们实际使用中很难用到它，所以本篇的内容就是如何关闭IPv6。
+＃ 可以看到 inet6 ，说明还没关闭。</description>
+    </item>
+    
+    <item>
+      <title>CentOS 7(2) 系统服务管理方式</title>
+      <link>https://example.com/posts/centos-7-2-%E7%B3%BB%E7%BB%9F%E6%9C%8D%E5%8A%A1%E7%AE%A1%E7%90%86%E6%96%B9%E5%BC%8F/</link>
+      <pubDate>Thu, 05 May 2016 05:43:55 +0000</pubDate>
+      
+      <guid>https://example.com/posts/centos-7-2-%E7%B3%BB%E7%BB%9F%E6%9C%8D%E5%8A%A1%E7%AE%A1%E7%90%86%E6%96%B9%E5%BC%8F/</guid>
+      <description>关闭防火墙：  systemctl stop firewalld.service # 关闭 systemctl disable firewalld.service # 开机不自启动 </description>
+    </item>
+    
+    <item>
+      <title>CentOS 7(1) 修改系统主机名</title>
+      <link>https://example.com/posts/centos-7-1-%E4%BF%AE%E6%94%B9%E7%B3%BB%E7%BB%9F%E4%B8%BB%E6%9C%BA%E5%90%8D/</link>
+      <pubDate>Thu, 05 May 2016 05:41:39 +0000</pubDate>
+      
+      <guid>https://example.com/posts/centos-7-1-%E4%BF%AE%E6%94%B9%E7%B3%BB%E7%BB%9F%E4%B8%BB%E6%9C%BA%E5%90%8D/</guid>
+      <description>CentOS 7 修改主机名 方法1: hostname 主机名 这种方式，只能修改临时的主机名，当重启机器后，主机名称又变回来了。
+方法2: hostnamectl set-hostname &amp;lt;主机名&amp;gt;  使用这种方式修改，可以永久性的修改主机名称！</description>
+    </item>
+    
+    <item>
+      <title>如何在CentOS 6 安装更高版本的PHP</title>
+      <link>https://example.com/posts/%E5%A6%82%E4%BD%95%E5%9C%A8centos-6-%E5%AE%89%E8%A3%85%E6%9B%B4%E9%AB%98%E7%89%88%E6%9C%AC%E7%9A%84php/</link>
+      <pubDate>Fri, 01 Apr 2016 14:57:45 +0000</pubDate>
+      
+      <guid>https://example.com/posts/%E5%A6%82%E4%BD%95%E5%9C%A8centos-6-%E5%AE%89%E8%A3%85%E6%9B%B4%E9%AB%98%E7%89%88%E6%9C%AC%E7%9A%84php/</guid>
+      <description>实验环境：CentOS 6.4 解决办法是采用了remi源仓库已经适配的相应php版本
+ 经过测试，该升级办法同样适用目前CentOS 6.x 所有版本
+ 1. 安装Remi源 # 因为remi依赖epel源仓库，所有我们要先安装它。 [root@visionet8 ~]# yum install -y epel-release [root@visionet8 ~]# wget http://rpms.</description>
+    </item>
+    
+    <item>
+      <title>CentOS 6(2) 初始安装基本优化操作</title>
+      <link>https://example.com/posts/centos-6-2-%E5%88%9D%E5%A7%8B%E5%AE%89%E8%A3%85%E5%9F%BA%E6%9C%AC%E4%BC%98%E5%8C%96%E6%93%8D%E4%BD%9C/</link>
+      <pubDate>Sat, 19 Mar 2016 05:54:23 +0000</pubDate>
+      
+      <guid>https://example.com/posts/centos-6-2-%E5%88%9D%E5%A7%8B%E5%AE%89%E8%A3%85%E5%9F%BA%E6%9C%AC%E4%BC%98%E5%8C%96%E6%93%8D%E4%BD%9C/</guid>
+      <description>CentOS 6.x 初始安装基本优化操作  本文件是采用的模板是centos 6.x，相较于centos 5.x与centos 7.x系列有些区别，不能一概而论。
+1. 测试环境  MacBook Pro 15-inch i7 8GB VMware Fushion 8 Pro CentOS-6.</description>
+    </item>
+    
+    <item>
+      <title>CentOS 7 Configure DNS Server</title>
+      <link>https://example.com/posts/centos7_configure_bind_dns_server/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://example.com/posts/centos7_configure_bind_dns_server/</guid>
+      <description>今天介绍下如何在CentOS 7下部署DNS Server，测试环境中服务端搭建在了CentOS 7，客户端分别在Windows和Linux实现测试。
+因为目的是让自建DNS服务器解析公司内部的自定义域名，所以当客户端需要访问外网域名时，DNS服务器会将解析请求转发给ISP的DNS服务器，并会将解析结果缓存，并且只对内网主机的解析请求进行转发，而不会对公网的主机解析请求进行转发。
+DNS服务介绍 DNS服务由BIND提供，启动后服务名为named，管理工具为rndc，debug工具为dig，主要配置文件在/etc/named.conf。
+安装 推荐选择bind-chroot来安装，提高服务的安全性：
+1  ➜ ~ yum install -y bind-chroot   安装完成之后，启动named-chroot服务，并设置为开机自启动：</description>
+    </item>
+    
+  </channel>
+</rss>

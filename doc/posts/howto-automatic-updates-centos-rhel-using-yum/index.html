@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh-CN" lang="zh-CN">
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="generator" content="Hugo 0.88.1" />
+
+  <title>HowTo Automatic Updates CENTOS/RHEL Using YUM &middot; SAMZONG</title>
+
+  <meta name="description" content="" />
+
+  
+
+<meta itemprop="name" content="HowTo Automatic Updates CENTOS/RHEL Using YUM">
+<meta itemprop="description" content="大家若工作遇到需要管理的Linux集群机器较多时，同时我们知道系统的安全更新补丁维护这些非常重要，无论你在安装时优化维护做的再好，随着时间的推移，如果不去更新的话，系统早晚都会不安全，所以定期更新我们的系统补丁是一个运维人员的基本工作内容
+Install yum-cron sudo yum install -y yum-cron 因为我的服务器系统多为CentOS 6，6的配置文件在/etc/sysconfig/yum-cron，你可以用以下命令查看配置文件位置："><meta itemprop="datePublished" content="2017-02-19T09:56:42+00:00" />
+<meta itemprop="dateModified" content="2017-02-19T09:56:42+00:00" />
+<meta itemprop="wordCount" content="43">
+<meta itemprop="keywords" content="CentOS," />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="HowTo Automatic Updates CENTOS/RHEL Using YUM"/>
+<meta name="twitter:description" content="大家若工作遇到需要管理的Linux集群机器较多时，同时我们知道系统的安全更新补丁维护这些非常重要，无论你在安装时优化维护做的再好，随着时间的推移，如果不去更新的话，系统早晚都会不安全，所以定期更新我们的系统补丁是一个运维人员的基本工作内容
+Install yum-cron sudo yum install -y yum-cron 因为我的服务器系统多为CentOS 6，6的配置文件在/etc/sysconfig/yum-cron，你可以用以下命令查看配置文件位置："/>
+
+
+<meta property="og:title" content="HowTo Automatic Updates CENTOS/RHEL Using YUM" />
+<meta property="og:description" content="大家若工作遇到需要管理的Linux集群机器较多时，同时我们知道系统的安全更新补丁维护这些非常重要，无论你在安装时优化维护做的再好，随着时间的推移，如果不去更新的话，系统早晚都会不安全，所以定期更新我们的系统补丁是一个运维人员的基本工作内容
+Install yum-cron sudo yum install -y yum-cron 因为我的服务器系统多为CentOS 6，6的配置文件在/etc/sysconfig/yum-cron，你可以用以下命令查看配置文件位置：" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://example.com/posts/howto-automatic-updates-centos-rhel-using-yum/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2017-02-19T09:56:42+00:00" />
+<meta property="article:modified_time" content="2017-02-19T09:56:42+00:00" />
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type":"Person",
+      "@id": "https://example.com#author",
+      "name": "samzong.lu",
+      "image": {
+        "@type":"ImageObject",
+        "url": "https://www.gravatar.com/avatar/c02c426714361366ea7d583950aa8fb4?s=400&d=mp"
+      },
+      "description": "Samzong's Blog"
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://example.com#website",
+      "url": "https://example.com",
+      "name": "SAMZONG",
+      "description": "Samzong's Blog",
+      "publisher": {
+        "@id": "https://example.com#author"
+      },
+      "inLanguage": "zh-CN"
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://example.com/posts/howto-automatic-updates-centos-rhel-using-yum/#webpage",
+      "url": "https://example.com/posts/howto-automatic-updates-centos-rhel-using-yum/",
+      "name": "HowTo Automatic Updates CENTOS/RHEL Using YUM",
+      "isPartOf": {
+        "@id": "https://example.com#website"
+      },
+      "about": {
+         "@id": "https://example.com#author"
+      },
+      "datePublished": "2017-02-19T09:56:42+00:00",
+      "dateModified": "2017-02-19T09:56:42+00:00",
+      "description": "大家若工作遇到需要管理的Linux集群机器较多时，同时我们知道系统的安全更新补丁维护这些非常重要，无论你在安装时优化维护做的再好，随着时间的推移，如果不去更新的话，系统早晚都会不安全，所以定期更新我们的系统补丁是一个运维人员的基本工作内容\nInstall yum-cron sudo yum install -y yum-cron 因为我的服务器系统多为CentOS 6，6的配置文件在/etc/sysconfig/yum-cron，你可以用以下命令查看配置文件位置：",
+      "inLanguage": "zh-CN",
+      "potentialAction": [
+        {
+          "@type": "ReadAction",
+          "target": [
+            "https://example.com/posts/howto-automatic-updates-centos-rhel-using-yum/"
+          ]
+        }
+      ]
+    },
+    {
+      "@type": "Article",
+      "isPartOf": {
+        "@id": "https://example.com/posts/howto-automatic-updates-centos-rhel-using-yum/#webpage"
+      },
+      "mainEntityOfPage": {
+        "@id": "https://example.com/posts/howto-automatic-updates-centos-rhel-using-yum/#webpage"
+      },
+      "headline": "HowTo Automatic Updates CENTOS/RHEL Using YUM",
+      "datePublished": "2017-02-19T09:56:42+00:00",
+      "dateModified": "2017-02-19T09:56:42+00:00",
+      "publisher": {
+        "@id": "https://example.com#author"
+      },
+      "keywords": [
+        "CentOS"
+      ],
+      "articleSection": [
+        "CentOS"
+      ],
+      "inLanguage": "zh-CN",
+      "author": {
+        "@type": "Person",
+        "name":  null 
+      },
+      "potentialAction": [
+        {
+          "@type": "CommentAction",
+          "name": "Comment",
+          "target": [
+            "https://example.com/posts/howto-automatic-updates-centos-rhel-using-yum/#comments"
+          ]
+        }
+      ]
+    }
+  ]
+}
+</script>
+
+
+
+  <link type="text/css"
+        rel="stylesheet"
+        href="/css/print.css"
+        media="print">
+
+  <link type="text/css"
+        rel="stylesheet"
+        href="/css/poole.css">
+
+  <link type="text/css"
+        rel="stylesheet"
+        href="/css/hyde.css">
+
+  
+
+
+  <link type="text/css" rel="stylesheet" href="/css/blog.css">
+
+  <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700&display=swap">
+
+  <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css"
+        integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk="
+        crossorigin="anonymous" />
+
+  <link rel="apple-touch-icon-precomposed"
+        sizes="144x144"
+        href="/apple-touch-icon-144-precomposed.png">
+
+  <link rel="shortcut icon" href="/favicon.png">
+
+  
+  </head>
+<body>
+  <aside class="sidebar">
+  <div class="container">
+    <div class="sidebar-about">
+      
+      <div class="author-image">
+        <a href="https://example.com">
+          <img src="https://www.gravatar.com/avatar/c02c426714361366ea7d583950aa8fb4?s=200&d=mp" class="img-circle img-headshot center" alt="Gravatar">
+        </a>
+      </div>
+      
+
+      <h1>SAMZONG</h1>
+
+      
+      <p class="lead">Samzong&#39;s Blog</p>
+      
+    </div>
+
+    <nav>
+      <ul class="sidebar-nav">
+        <li>
+          <a href="https://example.com">Home</a>
+        </li>
+        <li>
+          <a href="/posts/">Posts</a>
+        </li><li>
+          <a href="/about/">About</a>
+        </li>
+      </ul>
+    </nav>
+
+    <section class="social-icons">
+      
+      <a href="https://www.linkedin.com/in/samzong/" rel="me" title="Linkedin" target="_blank">
+        <i class="fab fa-linkedin" aria-hidden="true"></i>
+      </a>
+      
+      <a href="https://github.com/samzong" rel="me" title="GitHub" target="_blank">
+        <i class="fab fa-github" aria-hidden="true"></i>
+      </a>
+      
+      <a href="https://twitter.com/samzong_lu" rel="me" title="Twitter" target="_blank">
+        <i class="fab fa-twitter" aria-hidden="true"></i>
+      </a>
+      
+    </section>
+  </div>
+</aside>
+
+
+  <main class="content container">
+  <div class="post">
+  <h1 class="title">HowTo Automatic Updates CENTOS/RHEL Using YUM</h1>
+  
+
+  <div class="post-date">
+    <time datetime="2017-02-19T09:56:42Z">Feb 19, 2017</time> <span class="readtime">&middot; 1 min read</span>
+  </div>
+
+  <div>
+  <p>大家若工作遇到需要管理的Linux集群机器较多时，同时我们知道系统的安全更新补丁维护这些非常重要，无论你在安装时优化维护做的再好，随着时间的推移，如果不去更新的话，系统早晚都会不安全，所以定期更新我们的系统补丁是一个运维人员的基本工作内容</p>
+<h3 id="install-yum-cron">Install yum-cron</h3>
+<pre tabindex="0"><code>sudo yum install -y yum-cron
+</code></pre><p>因为我的服务器系统多为CentOS 6，6的配置文件在<!-- raw HTML omitted -->/etc/sysconfig/yum-cron<!-- raw HTML omitted -->，你可以用以下命令查看配置文件位置：</p>
+<pre tabindex="0"><code>rpm -ql yum-cron
+/etc/cron.daily/0yum.cron
+/etc/rc.d/init.d/yum-cron
+/etc/sysconfig/yum-cron
+/etc/yum/yum-daily.yum
+/etc/yum/yum-weekly.yum
+/usr/share/doc/yum-cron-3.2.29
+/usr/share/doc/yum-cron-3.2.29/COPYING
+/usr/share/man/man8/yum-cron.8.gz
+</code></pre><h3 id="configure-etcsysconfigyum-cron">Configure “/etc/sysconfig/yum-cron”</h3>
+<p>yum-cron的默认设置是会在每天自动检查和安装系统更新包，在安装完成后有些配置需要注意下：</p>
+<h5 id="1-对于不需要更新的可以忽略掉">1. 对于不需要更新的可以忽略掉</h5>
+<pre tabindex="0"><code>YUM_PARAMETER=&quot;--exclude='kernel*' --exclude='php*'&quot;
+</code></pre><h5 id="2-设置管理员邮箱">2. 设置管理员邮箱</h5>
+<pre tabindex="0"><code>MAILTO=&quot;luchuanjia@msn.com&quot;
+</code></pre><h5 id="3-不自动安装仅检查通知管理邮箱">3. 不自动安装，仅检查，通知管理邮箱</h5>
+<pre tabindex="0"><code>CHECK_ONLY=yes
+</code></pre><h5 id="4-不自动安装仅下载">4. 不自动安装，仅下载</h5>
+<pre tabindex="0"><code>DOWNLOAD_ONLY=yes
+</code></pre><h3 id="automatic-starting-yum-cron">Automatic Starting yum-cron</h3>
+<pre tabindex="0"><code>chkconfig yum-cron on
+</code></pre>
+  </div>
+
+  
+<div>
+  <ul class="tags">
+  <li>
+    <a href="https://example.com/tags/centos/" class="tag-link">CentOS</a>
+  </li>
+  </ul>
+</div>
+
+
+
+  <div class="share-buttons">
+  <a class="twitter-share-button"
+     href="#"
+     title="Share on Twitter"
+     data-url="https://example.com/posts/howto-automatic-updates-centos-rhel-using-yum/"
+     data-text="HowTo Automatic Updates CENTOS/RHEL Using YUM"><i class="fab fa-twitter"></i></a>
+
+  <a class="linkedin-share-button"
+     href="#"
+     title="Share on LinkedIn"
+     data-url="https://example.com/posts/howto-automatic-updates-centos-rhel-using-yum/"
+     data-text="HowTo Automatic Updates CENTOS/RHEL Using YUM"><i class="fab fa-linkedin-in"></i></a>
+
+  <a class="facebook-share-button"
+     href="#"
+     title="Share on Facebook"
+     data-url="https://example.com/posts/howto-automatic-updates-centos-rhel-using-yum/"
+     data-text="HowTo Automatic Updates CENTOS/RHEL Using YUM"><i class="fab fa-facebook"></i></a>
+
+  <a class="telegram-share-button"
+     href="#"
+     title="Share on Telegram"
+     data-url="https://example.com/posts/howto-automatic-updates-centos-rhel-using-yum/"
+     data-text="HowTo Automatic Updates CENTOS/RHEL Using YUM"><i class="fab fa-telegram"></i></a>
+
+  <a class="pinterest-share-button"
+     href="#"
+     title="Share on Pinterest"
+     data-url="https://example.com/posts/howto-automatic-updates-centos-rhel-using-yum/"
+     data-text="HowTo Automatic Updates CENTOS/RHEL Using YUM"><i class="fab fa-pinterest"></i></a>
+</div>
+
+
+  
+</div>
+  </main>
+
+  <footer>
+  <div>
+    <p>
+      &copy; samzong.lu 2021
+
+      &middot; <a href="https://creativecommons.org/licenses/by-sa/4.0" target="_blank">CC BY-SA 4.0</a>
+
+      
+    </p>
+  </div>
+</footer>
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/js/all.min.js"
+          integrity="sha256-MAgcygDRahs+F/Nk5Vz387whB4kSK9NXlDN3w58LLq0="
+          crossorigin="anonymous"></script>
+
+
+  <script src="/js/jquery.min.js"></script>
+  <script src="/js/soho.js"></script>
+
+  <script src="/js/blog.js"></script>
+
+  
+</body>
+</html>

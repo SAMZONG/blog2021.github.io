@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh-CN" lang="zh-CN">
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="generator" content="Hugo 0.88.1" />
+
+  <title>SAMZONG</title>
+
+  <meta name="description" content="Samzong&#39;s Blog" />
+
+  
+
+<meta itemprop="name" content="SAMZONG">
+<meta itemprop="description" content="Samzong&#39;s Blog">
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="SAMZONG"/>
+<meta name="twitter:description" content="Samzong&#39;s Blog"/>
+
+
+<meta property="og:title" content="SAMZONG" />
+<meta property="og:description" content="Samzong&#39;s Blog" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://example.com/" />
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type":"Person",
+      "@id": "https://example.com#author",
+      "name": "samzong.lu",
+      "image": {
+        "@type":"ImageObject",
+        "url": "https://www.gravatar.com/avatar/c02c426714361366ea7d583950aa8fb4?s=400&d=mp"
+      },
+      "description": "Samzong's Blog"
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://example.com#website",
+      "url": "https://example.com",
+      "name": "SAMZONG",
+      "description": "Samzong's Blog",
+      "publisher": {
+        "@id": "https://example.com#author"
+      },
+      "inLanguage": "zh-CN"
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://example.com/#webpage",
+      "url": "https://example.com/",
+      "name": "SAMZONG",
+      "isPartOf": {
+        "@id": "https://example.com#website"
+      },
+      "about": {
+         "@id": "https://example.com#author"
+      },
+      "dateModified": "2021-06-02T00:54:38+00:00",
+      "description": "Samzong's Blog",
+      "inLanguage": "zh-CN",
+      "potentialAction": [
+        {
+          "@type": "ReadAction",
+          "target": [
+            "https://example.com/"
+          ]
+        }
+      ]
+    }
+  ]
+}
+</script>
+
+
+
+  <link type="text/css"
+        rel="stylesheet"
+        href="/css/print.css"
+        media="print">
+
+  <link type="text/css"
+        rel="stylesheet"
+        href="/css/poole.css">
+
+  <link type="text/css"
+        rel="stylesheet"
+        href="/css/hyde.css">
+
+  
+
+
+  <link type="text/css" rel="stylesheet" href="/css/blog.css">
+
+  <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700&display=swap">
+
+  <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css"
+        integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk="
+        crossorigin="anonymous" />
+
+  <link rel="apple-touch-icon-precomposed"
+        sizes="144x144"
+        href="/apple-touch-icon-144-precomposed.png">
+
+  <link rel="shortcut icon" href="/favicon.png">
+
+  
+  <link href="https://example.com/index.xml" rel="alternate" type="application/rss+xml" title="SAMZONG" />
+  </head>
+<body>
+  <aside class="sidebar">
+  <div class="container">
+    <div class="sidebar-about">
+      
+      <div class="author-image">
+        <a href="https://example.com">
+          <img src="https://www.gravatar.com/avatar/c02c426714361366ea7d583950aa8fb4?s=200&d=mp" class="img-circle img-headshot center" alt="Gravatar">
+        </a>
+      </div>
+      
+
+      <h1>SAMZONG</h1>
+
+      
+      <p class="lead">Samzong&#39;s Blog</p>
+      
+    </div>
+
+    <nav>
+      <ul class="sidebar-nav">
+        <li>
+          <a href="https://example.com">Home</a>
+        </li>
+        <li>
+          <a href="/posts/">Posts</a>
+        </li><li>
+          <a href="/about/">About</a>
+        </li>
+      </ul>
+    </nav>
+
+    <section class="social-icons">
+      
+      <a href="https://www.linkedin.com/in/samzong/" rel="me" title="Linkedin" target="_blank">
+        <i class="fab fa-linkedin" aria-hidden="true"></i>
+      </a>
+      
+      <a href="https://github.com/samzong" rel="me" title="GitHub" target="_blank">
+        <i class="fab fa-github" aria-hidden="true"></i>
+      </a>
+      
+      <a href="https://twitter.com/samzong_lu" rel="me" title="Twitter" target="_blank">
+        <i class="fab fa-twitter" aria-hidden="true"></i>
+      </a>
+      
+    </section>
+  </div>
+</aside>
+
+
+  <main class="content container">
+  <div class="posts">
+      <article class="post">
+        <h1 class="post-title">
+          <a href="https://example.com/posts/tomcat-2-%E5%88%A9%E7%94%A8jdk%E8%87%AA%E8%BA%ABkeytool%E5%AE%9E%E7%8E%B0https/">Tomcat(2) 利用JDK自身keytool实现HTTPS</a>
+        </h1>
+
+        <div class="post-date">
+          <time datetime="2016-12-03T18:41:13Z">Dec 3, 2016</time> &middot; 2 min read
+        </div>
+
+        <div>
+          因为一个偶然机会，想把自己的webserver通过https加密访问，这里就采用JDK自带的keytool工具实现，tomcat官方也推荐这种方式，英文好的同学走这里：官方配置
+ demo: CentOS 6.6 &amp; Tomcat 7 &amp; JDK 1.
+        </div>
+
+        <div class="read-more-link">
+          <a href="https://example.com/posts/tomcat-2-%E5%88%A9%E7%94%A8jdk%E8%87%AA%E8%BA%ABkeytool%E5%AE%9E%E7%8E%B0https/">Read More</a>
+        </div>
+      </article>
+      <article class="post">
+        <h1 class="post-title">
+          <a href="https://example.com/posts/aws-1-use-s3cmd%E5%91%BD%E4%BB%A4%E8%A1%8C%E7%AE%A1%E7%90%86s3%E5%AD%98%E5%82%A8/">AWS(1) Use s3cmd命令行管理S3存储</a>
+        </h1>
+
+        <div class="post-date">
+          <time datetime="2016-11-30T23:45:54Z">Nov 30, 2016</time> &middot; 3 min read
+        </div>
+
+        <div>
+          S3 是AWS公有云服务提供的云存储服务，提供海量数据存储服务，同时基于AWS S3提供的一系列网络服务接口，也有大量已经开发完成的工具供我们使用，以利用起AWS庞大的存储资源，这篇文章的目录选取了其中一个用Linux命令行工具s3cmd来管理AWS S3云存储其中的数据。
+s3cmd 是非常优秀的S3命令行管理工具，用python编写，支持python 2.6 &amp; 2.7 ，但是尚不支持python3，但是目前绝大多数的Linux发行版默认都是python2.x 系列。
+        </div>
+
+        <div class="read-more-link">
+          <a href="https://example.com/posts/aws-1-use-s3cmd%E5%91%BD%E4%BB%A4%E8%A1%8C%E7%AE%A1%E7%90%86s3%E5%AD%98%E5%82%A8/">Read More</a>
+        </div>
+      </article>
+      <article class="post">
+        <h1 class="post-title">
+          <a href="https://example.com/posts/tomcat-1-java-lang-outofmemoryerror/">Tomcat(1) java.lang.OutOfMemoryError</a>
+        </h1>
+
+        <div class="post-date">
+          <time datetime="2016-11-29T02:19:38Z">Nov 29, 2016</time> &middot; 1 min read
+        </div>
+
+        <div>
+          1. 什么是 PermGen space ? PermGen space的全称是Permanent Generation space，是指内存的永久保存区域，这块内存主要是被JVM存放Class和Meta信息的，Class在被Loader时就会被放到PermGen space中，它和存放类实例(Instance)的Heap区域不同，GC(Garbage Collection)不会在主程序运行期对PermGen space进行清理，所以如果你的应用中有很CLASS的话，就很可能出现PermGen space错误，这种错误常见在web服务器对JSP进行pre compile的时候。如果你的WEB APP下都用了大量的第三方jar，其大小超过了jvm默认的大小(4M)那么就会产生此错误信息了。
+        </div>
+
+        <div class="read-more-link">
+          <a href="https://example.com/posts/tomcat-1-java-lang-outofmemoryerror/">Read More</a>
+        </div>
+      </article>
+      <article class="post">
+        <h1 class="post-title">
+          <a href="https://example.com/posts/howto-install-lnmp-on-centos-6-x/">HowTo Install LNMP on CentOS 6.x</a>
+        </h1>
+
+        <div class="post-date">
+          <time datetime="2016-11-28T10:33:09Z">Nov 28, 2016</time> &middot; 5 min read
+        </div>
+
+        <div>
+          egrep -v &ldquo;^ *#|^ *$&rdquo; 去除所有以#号开头的文件
+ Demo system [Alex@Test01 ~]$ uname -a Linux Test01 2.
+        </div>
+
+        <div class="read-more-link">
+          <a href="https://example.com/posts/howto-install-lnmp-on-centos-6-x/">Read More</a>
+        </div>
+      </article>
+      <article class="post">
+        <h1 class="post-title">
+          <a href="https://example.com/posts/denyhosts%E5%A2%9E%E5%8A%A0%E6%9C%8D%E5%8A%A1%E5%99%A8ssh%E9%BB%91%E5%90%8D%E5%8D%95%E6%9C%BA%E5%88%B6/">Denyhosts增加服务器SSH黑名单机制</a>
+        </h1>
+
+        <div class="post-date">
+          <time datetime="2016-11-23T16:24:40Z">Nov 23, 2016</time> &middot; 1 min read
+        </div>
+
+        <div>
+          查看当前服务器失败登录的统计： cat /var/log/secure | awk '/Failed/{print $(NF-3)}' | sort | uniq -c | sort -n | awk '{print $2&quot; = &quot;$1}' Install denyhosts # 需要预先安装epel源 sudo yum install -y epel-release sudo yum install -y denyhosts 配置文件解析 默认配置文件/etc/denyhosts。
+        </div>
+
+        <div class="read-more-link">
+          <a href="https://example.com/posts/denyhosts%E5%A2%9E%E5%8A%A0%E6%9C%8D%E5%8A%A1%E5%99%A8ssh%E9%BB%91%E5%90%8D%E5%8D%95%E6%9C%BA%E5%88%B6/">Read More</a>
+        </div>
+      </article>
+      <article class="post">
+        <h1 class="post-title">
+          <a href="https://example.com/posts/ghost-2-%E5%A2%9E%E5%8A%A0%E8%AF%84%E8%AE%BA%E6%A8%A1%E5%9D%97/">Ghost(2) 增加评论模块</a>
+        </h1>
+
+        <div class="post-date">
+          <time datetime="2016-11-18T12:09:13Z">Nov 18, 2016</time> &middot; 1 min read
+        </div>
+
+        <div>
+           &amp;lt;/footer&amp;gt; &amp;lt;/article&amp;gt;  &lt;/main&gt; 
+        </div>
+
+        <div class="read-more-link">
+          <a href="https://example.com/posts/ghost-2-%E5%A2%9E%E5%8A%A0%E8%AF%84%E8%AE%BA%E6%A8%A1%E5%9D%97/">Read More</a>
+        </div>
+      </article>
+      <article class="post">
+        <h1 class="post-title">
+          <a href="https://example.com/posts/python-1-%E5%9F%BA%E7%A1%80/">Python(1) 基础</a>
+        </h1>
+
+        <div class="post-date">
+          <time datetime="2016-11-11T00:32:13Z">Nov 11, 2016</time> &middot; 0 min read
+        </div>
+
+        <div>
+          
+        </div>
+
+        <div class="read-more-link">
+          <a href="https://example.com/posts/python-1-%E5%9F%BA%E7%A1%80/">Read More</a>
+        </div>
+      </article>
+      <article class="post">
+        <h1 class="post-title">
+          <a href="https://example.com/posts/mysql-5-%E6%B8%85%E7%A9%BA%E8%A1%A8%E5%91%BD%E4%BB%A4%E4%B9%8Btruncate%E4%B8%8Edelete%E5%8C%BA%E5%88%AB/">MySQL(5) 清空表命令之：truncate与delete区别</a>
+        </h1>
+
+        <div class="post-date">
+          <time datetime="2016-11-10T02:53:13Z">Nov 10, 2016</time> &middot; 1 min read
+        </div>
+
+        <div>
+          在实际工作中，有时我们会想要去清空一张表的所有数据，常用的命令有delete和truncate这两个命令。
+1. delete  在很多情况，我们对于delete的应用更多，因为它支持更多的匹配模式，我们可以使用where条件语句，清理一些特定的数据，关于delete的操作，这里不做过多解释，有空就专门写写delete的使用和原理。delete 在清空表时，如果表内有自增ID的设定，那么在delete清空之后，再插入数据时，自增ID不会从1开始，默认会继续增加; 除非我们使用OPTIMIZE TABLE，重置表属性；
+mysql&gt; delete from piwik_tmp; Query OK, 0 rows affected (0.
+        </div>
+
+        <div class="read-more-link">
+          <a href="https://example.com/posts/mysql-5-%E6%B8%85%E7%A9%BA%E8%A1%A8%E5%91%BD%E4%BB%A4%E4%B9%8Btruncate%E4%B8%8Edelete%E5%8C%BA%E5%88%AB/">Read More</a>
+        </div>
+      </article>
+      <article class="post">
+        <h1 class="post-title">
+          <a href="https://example.com/posts/ssh-linux-security-settings/">SSH LINUX Security Settings</a>
+        </h1>
+
+        <div class="post-date">
+          <time datetime="2016-10-29T06:23:59Z">Oct 29, 2016</time> &middot; 3 min read
+        </div>
+
+        <div>
+          SSH 配置安全控制限制登录 1. 只允许某个IP登录，拒绝其他所有IP 在 /etc/hosts.allow 增加:
+sshd: 1.2.3.4 在 /etc/hosts.
+        </div>
+
+        <div class="read-more-link">
+          <a href="https://example.com/posts/ssh-linux-security-settings/">Read More</a>
+        </div>
+      </article>
+      <article class="post">
+        <h1 class="post-title">
+          <a href="https://example.com/posts/howto-install-postgresql-9-5-on-centos-6-x/">HowTo Install PostgreSQL 9.5 on CentOS 6.x</a>
+        </h1>
+
+        <div class="post-date">
+          <time datetime="2016-10-20T07:25:37Z">Oct 20, 2016</time> &middot; 1 min read
+        </div>
+
+        <div>
+          CentOS 6 1. Install PostgreSQL repository and the PostgreSQL server by running the following: sudo yum install https://download.
+        </div>
+
+        <div class="read-more-link">
+          <a href="https://example.com/posts/howto-install-postgresql-9-5-on-centos-6-x/">Read More</a>
+        </div>
+      </article>
+  </div>
+
+  
+    <ul class="pagination pagination-default">
+      <li class="page-item">
+        <a href="/" aria-label="First" class="page-link" role="button"><span aria-hidden="true">&laquo;&laquo;</span></a>
+      </li>
+      <li class="page-item">
+        <a href="/page/2/" aria-label="Previous" class="page-link" role="button"><span aria-hidden="true">&laquo;</span></a>
+      </li>
+      <li class="page-item">
+        <a href="/" aria-label="Page 1" class="page-link" role="button">1</a>
+      </li>
+      <li class="page-item">
+        <a href="/page/2/" aria-label="Page 2" class="page-link" role="button">2</a>
+      </li>
+      <li class="page-item active">
+        <a href="#" aria-current="page" aria-label="Page 3" class="page-link" role="button">3</a>
+      </li>
+      <li class="page-item">
+        <a href="/page/4/" aria-label="Page 4" class="page-link" role="button">4</a>
+      </li>
+      <li class="page-item">
+        <a href="/page/5/" aria-label="Page 5" class="page-link" role="button">5</a>
+      </li>
+      <li class="page-item">
+        <a href="/page/4/" aria-label="Next" class="page-link" role="button"><span aria-hidden="true">&raquo;</span></a>
+      </li>
+      <li class="page-item">
+        <a href="/page/10/" aria-label="Last" class="page-link" role="button"><span aria-hidden="true">&raquo;&raquo;</span></a>
+      </li>
+    </ul>
+  </main>
+
+  <footer>
+  <div>
+    <p>
+      &copy; samzong.lu 2021
+
+      &middot; <a href="https://creativecommons.org/licenses/by-sa/4.0" target="_blank">CC BY-SA 4.0</a>
+
+      
+    </p>
+  </div>
+</footer>
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/js/all.min.js"
+          integrity="sha256-MAgcygDRahs+F/Nk5Vz387whB4kSK9NXlDN3w58LLq0="
+          crossorigin="anonymous"></script>
+
+
+  <script src="/js/jquery.min.js"></script>
+  <script src="/js/soho.js"></script>
+
+  <script src="/js/blog.js"></script>
+
+  
+</body>
+</html>

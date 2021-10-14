@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>CentOS on SAMZONG</title>
+    <link>https://example.com/categories/centos/</link>
+    <description>Recent content in CentOS on SAMZONG</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Tue, 18 Apr 2017 17:48:57 +0000</lastBuildDate><atom:link href="https://example.com/categories/centos/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>CentOS增加新硬盘给根文件系统扩容</title>
+      <link>https://example.com/posts/centos%E5%A2%9E%E5%8A%A0%E6%96%B0%E7%A1%AC%E7%9B%98%E7%BB%99%E6%A0%B9%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F%E6%89%A9%E5%AE%B9/</link>
+      <pubDate>Tue, 18 Apr 2017 17:48:57 +0000</pubDate>
+      
+      <guid>https://example.com/posts/centos%E5%A2%9E%E5%8A%A0%E6%96%B0%E7%A1%AC%E7%9B%98%E7%BB%99%E6%A0%B9%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F%E6%89%A9%E5%AE%B9/</guid>
+      <description>由于刚开始做磁盘空间规划时，失误给根分区分配磁盘较小，导致后续实验环境无法进行，所以在经过研究后，决定尝试增加根分区的磁盘空间，注意这仅适用于创建在LVM上的文件系统。
+实验环境  Parallels Desktop 12 CentOS 6.9 根分区空间 6.5GB 已使用 5.</description>
+    </item>
+    
+    <item>
+      <title>HowTo install Zoomdata</title>
+      <link>https://example.com/posts/howto-install-zoomdata/</link>
+      <pubDate>Mon, 06 Mar 2017 09:44:47 +0000</pubDate>
+      
+      <guid>https://example.com/posts/howto-install-zoomdata/</guid>
+      <description>Zoomdata是一个大数据可视化展示的工具，由ZoomData企业创建，是为数不多的同时支持移动端的数据分析公司，Zoomdata的可视化可将大数据流转化为触屏友好的，艺术感十足的三维形态，Zoomdata的定位是非ETL(传统的提取、转换和加载的数据处理过程)工具，Zoomdata支持多种数据源，包括社交媒体等，其中应用最主流是大数据平台的展示工具，并且Zoomdata对Cloudera Impala做了很好的支持，所以我们做了Zoomdata+Cloudera技术实施。[^1]
+系统要求 Zoomdata最新版是v2.4，支持常见主流的操作系统，并且有非常友好的安装帮助，但是Zoomdata不支持安装在32位的操作系统之上    biaoti biaoti baiiti     list file china   letian zhong hongkong    </description>
+    </item>
+    
+    <item>
+      <title>HowTo Install NextCloud</title>
+      <link>https://example.com/posts/howto-install-nextcloud/</link>
+      <pubDate>Mon, 27 Feb 2017 14:57:00 +0000</pubDate>
+      
+      <guid>https://example.com/posts/howto-install-nextcloud/</guid>
+      <description>随着最近一个云盘厂家不再提供个人服务，或者开始各种收费限速，自己存放在第三方云盘厂商的数据被盗取，数据的安全性和数据的稳定性都得不到保证，而且随着智能终端的普及，我也有一些更加高质量的图片文件需要大量储存，所以我想到了自建存储服务的方式，在甄别了OwnCloud，Seafiles和NextCloud，最后选择了NextCloud作为自己今后数据存储节点，NextCloud源自OwnCloud，但是近些年来OwnCloud的发展进度几乎停滞，多数开发者也转战NextCloud，当然NextCloud也继承了搭建简单，依赖于PHP环境的特性。
+运行环境  阿里云ECS CentOS 6.x 免费SSL证书(腾讯云申请)  搭建LNMP环境 软件版本  PHP 5.</description>
+    </item>
+    
+    <item>
+      <title>HowTo Install Redmine</title>
+      <link>https://example.com/posts/howto-install-redmine/</link>
+      <pubDate>Wed, 22 Feb 2017 12:30:36 +0000</pubDate>
+      
+      <guid>https://example.com/posts/howto-install-redmine/</guid>
+      <description>Runtime environment  CentOS 6.x Redmine 3.3.2 Ruby 2.2.6 rails 4.</description>
+    </item>
+    
+    <item>
+      <title>HowTo Automatic Updates CENTOS/RHEL Using YUM</title>
+      <link>https://example.com/posts/howto-automatic-updates-centos-rhel-using-yum/</link>
+      <pubDate>Sun, 19 Feb 2017 09:56:42 +0000</pubDate>
+      
+      <guid>https://example.com/posts/howto-automatic-updates-centos-rhel-using-yum/</guid>
+      <description>大家若工作遇到需要管理的Linux集群机器较多时，同时我们知道系统的安全更新补丁维护这些非常重要，无论你在安装时优化维护做的再好，随着时间的推移，如果不去更新的话，系统早晚都会不安全，所以定期更新我们的系统补丁是一个运维人员的基本工作内容
+Install yum-cron sudo yum install -y yum-cron 因为我的服务器系统多为CentOS 6，6的配置文件在/etc/sysconfig/yum-cron，你可以用以下命令查看配置文件位置：</description>
+    </item>
+    
+    <item>
+      <title>HowTo Install LNMP on CentOS 6.x</title>
+      <link>https://example.com/posts/howto-install-lnmp-on-centos-6-x/</link>
+      <pubDate>Mon, 28 Nov 2016 10:33:09 +0000</pubDate>
+      
+      <guid>https://example.com/posts/howto-install-lnmp-on-centos-6-x/</guid>
+      <description>egrep -v &amp;ldquo;^ *#|^ *$&amp;rdquo; 去除所有以#号开头的文件
+ Demo system [Alex@Test01 ~]$ uname -a Linux Test01 2.</description>
+    </item>
+    
+    <item>
+      <title>Denyhosts增加服务器SSH黑名单机制</title>
+      <link>https://example.com/posts/denyhosts%E5%A2%9E%E5%8A%A0%E6%9C%8D%E5%8A%A1%E5%99%A8ssh%E9%BB%91%E5%90%8D%E5%8D%95%E6%9C%BA%E5%88%B6/</link>
+      <pubDate>Wed, 23 Nov 2016 16:24:40 +0000</pubDate>
+      
+      <guid>https://example.com/posts/denyhosts%E5%A2%9E%E5%8A%A0%E6%9C%8D%E5%8A%A1%E5%99%A8ssh%E9%BB%91%E5%90%8D%E5%8D%95%E6%9C%BA%E5%88%B6/</guid>
+      <description>查看当前服务器失败登录的统计： cat /var/log/secure | awk &#39;/Failed/{print $(NF-3)}&#39; | sort | uniq -c | sort -n | awk &#39;{print $2&amp;quot; = &amp;quot;$1}&#39; Install denyhosts # 需要预先安装epel源 sudo yum install -y epel-release sudo yum install -y denyhosts 配置文件解析 默认配置文件/etc/denyhosts。</description>
+    </item>
+    
+    <item>
+      <title>HowTo Install Openfire  on CentOS</title>
+      <link>https://example.com/posts/howto-install-openfire-on-centos/</link>
+      <pubDate>Tue, 02 Aug 2016 16:04:48 +0000</pubDate>
+      
+      <guid>https://example.com/posts/howto-install-openfire-on-centos/</guid>
+      <description>Install Centos 6.x x86_64 略.
+安装依赖软件 yum -y install wget java glibc.</description>
+    </item>
+    
+    <item>
+      <title>HowTo Trun Off IPv6 in CentOS 6.x</title>
+      <link>https://example.com/posts/howto-trun-off-ipv6-in-centos-6-x/</link>
+      <pubDate>Fri, 29 Jul 2016 07:26:19 +0000</pubDate>
+      
+      <guid>https://example.com/posts/howto-trun-off-ipv6-in-centos-6-x/</guid>
+      <description>1. CentOS 6.x CentOS 6 上是默认打开了IPv6，但其实在我们实际使用中很难用到它，所以本篇的内容就是如何关闭IPv6。
+＃ 可以看到 inet6 ，说明还没关闭。</description>
+    </item>
+    
+    <item>
+      <title>Yum中$releasever和$basearch的取值</title>
+      <link>https://example.com/posts/yum%E4%B8%AD-releasever%E5%92%8C-basearch%E7%9A%84%E5%8F%96%E5%80%BC/</link>
+      <pubDate>Wed, 27 Jul 2016 10:27:54 +0000</pubDate>
+      
+      <guid>https://example.com/posts/yum%E4%B8%AD-releasever%E5%92%8C-basearch%E7%9A%84%E5%8F%96%E5%80%BC/</guid>
+      <description>查看/etc/yum.repos.d/CentOS-Base.repo [base] name=CentOS-$releasever - Base mirrorlist=http://mirrorlist.centos.org/?release=$releasever&amp;amp;arch=$basearch&amp;amp;repo=os&amp;amp;infra=$infra #baseurl=http://mirror.centos.org/centos/$releasever/os/$basearch/ gpgcheck=1 gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-6  $releasever的值,这个表示当前系统的发行版本  [root@ultraera /]# rpm -qi centos-release Name : centos-release Relocations: (not relocatable) Version : 6 Vendor: CentOS Release : 7.</description>
+    </item>
+    
+    <item>
+      <title>HowTo Use Fuse-sshfs to Mount Remote Filesystems</title>
+      <link>https://example.com/posts/howto-use-fuse-sshfs-to-mount-remote-filesystems/</link>
+      <pubDate>Tue, 05 Jul 2016 01:58:03 +0000</pubDate>
+      
+      <guid>https://example.com/posts/howto-use-fuse-sshfs-to-mount-remote-filesystems/</guid>
+      <description>传统我们服务器之间文件共享的方式有采用NFS、Samba等等，但是在我看来配置都有一定的复杂性，当然复杂也有它们的优势，这里推荐一个依赖于SSH的文件共享工具，Fuse-sshfs。SSH 是一个强大且安全的工具，我们除了可以用它来远程管理主机外，还可以通过它建立 SSH tunnel 作 Proxy 用，远程传输文件等等。而这里我想要介绍另外一个功能，那就是结合 sshfs 这个工具可以把远程主机的文件系统映射到本地主机上，透过 SSH 把远程文件系统挂载到本机上，这样我们可以不必使用 scp 工具就可以做到直接复制及删除远程主机的文件了，就像操作本地磁盘一样方便。 sshfs 是基于 FUSE 构建的 SSH 文件系统客户端程序，通过它远程主机的配置无需作任何改变，就可以透过 SSH 协议来挂载远程文件系统了，非常方便及安全。 Install fuse-sshfs [cent@localhost ~]$ sudo yum install -y epel-relese [cent@localhost ~]$ sudo yum --enablerepo=epel install -y fuse-sshfs 挂载远程 ssh文件系统 [cent@localhost ~]$ mkdir .</description>
+    </item>
+    
+    <item>
+      <title>HowTo Install Fabric on CentOS 7.x</title>
+      <link>https://example.com/posts/howto-install-fabric-on-centos-7-x/</link>
+      <pubDate>Thu, 05 May 2016 05:54:08 +0000</pubDate>
+      
+      <guid>https://example.com/posts/howto-install-fabric-on-centos-7-x/</guid>
+      <description>Installed CentOS 7. yum update -y reboot yum install -y epel-release python -V # 2.</description>
+    </item>
+    
+    <item>
+      <title>CentOS 7(2) 系统服务管理方式</title>
+      <link>https://example.com/posts/centos-7-2-%E7%B3%BB%E7%BB%9F%E6%9C%8D%E5%8A%A1%E7%AE%A1%E7%90%86%E6%96%B9%E5%BC%8F/</link>
+      <pubDate>Thu, 05 May 2016 05:43:55 +0000</pubDate>
+      
+      <guid>https://example.com/posts/centos-7-2-%E7%B3%BB%E7%BB%9F%E6%9C%8D%E5%8A%A1%E7%AE%A1%E7%90%86%E6%96%B9%E5%BC%8F/</guid>
+      <description>关闭防火墙：  systemctl stop firewalld.service # 关闭 systemctl disable firewalld.service # 开机不自启动 </description>
+    </item>
+    
+    <item>
+      <title>CentOS 7(1) 修改系统主机名</title>
+      <link>https://example.com/posts/centos-7-1-%E4%BF%AE%E6%94%B9%E7%B3%BB%E7%BB%9F%E4%B8%BB%E6%9C%BA%E5%90%8D/</link>
+      <pubDate>Thu, 05 May 2016 05:41:39 +0000</pubDate>
+      
+      <guid>https://example.com/posts/centos-7-1-%E4%BF%AE%E6%94%B9%E7%B3%BB%E7%BB%9F%E4%B8%BB%E6%9C%BA%E5%90%8D/</guid>
+      <description>CentOS 7 修改主机名 方法1: hostname 主机名 这种方式，只能修改临时的主机名，当重启机器后，主机名称又变回来了。
+方法2: hostnamectl set-hostname &amp;lt;主机名&amp;gt;  使用这种方式修改，可以永久性的修改主机名称！</description>
+    </item>
+    
+    <item>
+      <title>如何在CentOS 6 安装更高版本的PHP</title>
+      <link>https://example.com/posts/%E5%A6%82%E4%BD%95%E5%9C%A8centos-6-%E5%AE%89%E8%A3%85%E6%9B%B4%E9%AB%98%E7%89%88%E6%9C%AC%E7%9A%84php/</link>
+      <pubDate>Fri, 01 Apr 2016 14:57:45 +0000</pubDate>
+      
+      <guid>https://example.com/posts/%E5%A6%82%E4%BD%95%E5%9C%A8centos-6-%E5%AE%89%E8%A3%85%E6%9B%B4%E9%AB%98%E7%89%88%E6%9C%AC%E7%9A%84php/</guid>
+      <description>实验环境：CentOS 6.4 解决办法是采用了remi源仓库已经适配的相应php版本
+ 经过测试，该升级办法同样适用目前CentOS 6.x 所有版本
+ 1. 安装Remi源 # 因为remi依赖epel源仓库，所有我们要先安装它。 [root@visionet8 ~]# yum install -y epel-release [root@visionet8 ~]# wget http://rpms.</description>
+    </item>
+    
+    <item>
+      <title>CentOS 6(1) 使用createrepo搭建本地源</title>
+      <link>https://example.com/posts/centos-6-1-%E4%BD%BF%E7%94%A8createrepo%E6%90%AD%E5%BB%BA%E6%9C%AC%E5%9C%B0%E6%BA%90/</link>
+      <pubDate>Tue, 29 Mar 2016 03:37:31 +0000</pubDate>
+      
+      <guid>https://example.com/posts/centos-6-1-%E4%BD%BF%E7%94%A8createrepo%E6%90%AD%E5%BB%BA%E6%9C%AC%E5%9C%B0%E6%BA%90/</guid>
+      <description>Tips: 本地搭建本地yum源采用的rpm全部来自CentOS-6.7-bin-DVD1&amp;amp;DVD2
+ 1. 测试环境  MacBook Pro 15-inch i7 16GB VMware Fushion 8 Pro CentOS-6.</description>
+    </item>
+    
+    <item>
+      <title>在CentOS中配置 SFTP 环境</title>
+      <link>https://example.com/posts/%E5%9C%A8centos%E4%B8%AD%E9%85%8D%E7%BD%AE-sftp-%E7%8E%AF%E5%A2%83/</link>
+      <pubDate>Thu, 24 Mar 2016 14:55:03 +0000</pubDate>
+      
+      <guid>https://example.com/posts/%E5%9C%A8centos%E4%B8%AD%E9%85%8D%E7%BD%AE-sftp-%E7%8E%AF%E5%A2%83/</guid>
+      <description>做运维工作的，应该经常会碰到这样的问题，需要新上一个web项目，需要上传文件到服务器上，解决方法有很多种，常见的如sftp和ftp，今天讲如何使用sftp让系统用户用户上传项目的权限，并且实现chroot和无法使用ssh登录到系统。
+ SFTP是指SSH文件传输协议（SSH File Transfer protocol）或安全文件传输协议（Secure File Transfer Protocol），它提供了可信数据流下的文件访问、文件传输以及文件管理功能。当我们为SFTP配置chroot环境后，只有被许可的用户可以访问，并被限制到他们的家目录中，换言之：被许可的用户将处于牢笼环境中，在此环境中它们甚至不能切换它们的目录。</description>
+    </item>
+    
+    <item>
+      <title>CentOS 7 Configure DNS Server</title>
+      <link>https://example.com/posts/centos7_configure_bind_dns_server/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://example.com/posts/centos7_configure_bind_dns_server/</guid>
+      <description>今天介绍下如何在CentOS 7下部署DNS Server，测试环境中服务端搭建在了CentOS 7，客户端分别在Windows和Linux实现测试。
+因为目的是让自建DNS服务器解析公司内部的自定义域名，所以当客户端需要访问外网域名时，DNS服务器会将解析请求转发给ISP的DNS服务器，并会将解析结果缓存，并且只对内网主机的解析请求进行转发，而不会对公网的主机解析请求进行转发。
+DNS服务介绍 DNS服务由BIND提供，启动后服务名为named，管理工具为rndc，debug工具为dig，主要配置文件在/etc/named.conf。
+安装 推荐选择bind-chroot来安装，提高服务的安全性：
+1  ➜ ~ yum install -y bind-chroot   安装完成之后，启动named-chroot服务，并设置为开机自启动：</description>
+    </item>
+    
+  </channel>
+</rss>

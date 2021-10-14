@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh-CN" lang="zh-CN">
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="generator" content="Hugo 0.88.1" />
+
+  <title>HowTo Trun Off IPv6 in CentOS 6.x &middot; SAMZONG</title>
+
+  <meta name="description" content="" />
+
+  
+
+<meta itemprop="name" content="HowTo Trun Off IPv6 in CentOS 6.x">
+<meta itemprop="description" content="1. CentOS 6.x CentOS 6 上是默认打开了IPv6，但其实在我们实际使用中很难用到它，所以本篇的内容就是如何关闭IPv6。
+＃ 可以看到 inet6 ，说明还没关闭。"><meta itemprop="datePublished" content="2016-07-29T07:26:19+00:00" />
+<meta itemprop="dateModified" content="2016-07-29T07:26:19+00:00" />
+<meta itemprop="wordCount" content="139">
+<meta itemprop="keywords" content="CentOS," />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="HowTo Trun Off IPv6 in CentOS 6.x"/>
+<meta name="twitter:description" content="1. CentOS 6.x CentOS 6 上是默认打开了IPv6，但其实在我们实际使用中很难用到它，所以本篇的内容就是如何关闭IPv6。
+＃ 可以看到 inet6 ，说明还没关闭。"/>
+
+
+<meta property="og:title" content="HowTo Trun Off IPv6 in CentOS 6.x" />
+<meta property="og:description" content="1. CentOS 6.x CentOS 6 上是默认打开了IPv6，但其实在我们实际使用中很难用到它，所以本篇的内容就是如何关闭IPv6。
+＃ 可以看到 inet6 ，说明还没关闭。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://example.com/posts/howto-trun-off-ipv6-in-centos-6-x/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2016-07-29T07:26:19+00:00" />
+<meta property="article:modified_time" content="2016-07-29T07:26:19+00:00" />
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type":"Person",
+      "@id": "https://example.com#author",
+      "name": "samzong.lu",
+      "image": {
+        "@type":"ImageObject",
+        "url": "https://www.gravatar.com/avatar/c02c426714361366ea7d583950aa8fb4?s=400&d=mp"
+      },
+      "description": "Samzong's Blog"
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://example.com#website",
+      "url": "https://example.com",
+      "name": "SAMZONG",
+      "description": "Samzong's Blog",
+      "publisher": {
+        "@id": "https://example.com#author"
+      },
+      "inLanguage": "zh-CN"
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://example.com/posts/howto-trun-off-ipv6-in-centos-6-x/#webpage",
+      "url": "https://example.com/posts/howto-trun-off-ipv6-in-centos-6-x/",
+      "name": "HowTo Trun Off IPv6 in CentOS 6.x",
+      "isPartOf": {
+        "@id": "https://example.com#website"
+      },
+      "about": {
+         "@id": "https://example.com#author"
+      },
+      "datePublished": "2016-07-29T07:26:19+00:00",
+      "dateModified": "2016-07-29T07:26:19+00:00",
+      "description": "1. CentOS 6.x CentOS 6 上是默认打开了IPv6，但其实在我们实际使用中很难用到它，所以本篇的内容就是如何关闭IPv6。\n＃ 可以看到 inet6 ，说明还没关闭。",
+      "inLanguage": "zh-CN",
+      "potentialAction": [
+        {
+          "@type": "ReadAction",
+          "target": [
+            "https://example.com/posts/howto-trun-off-ipv6-in-centos-6-x/"
+          ]
+        }
+      ]
+    },
+    {
+      "@type": "Article",
+      "isPartOf": {
+        "@id": "https://example.com/posts/howto-trun-off-ipv6-in-centos-6-x/#webpage"
+      },
+      "mainEntityOfPage": {
+        "@id": "https://example.com/posts/howto-trun-off-ipv6-in-centos-6-x/#webpage"
+      },
+      "headline": "HowTo Trun Off IPv6 in CentOS 6.x",
+      "datePublished": "2016-07-29T07:26:19+00:00",
+      "dateModified": "2016-07-29T07:26:19+00:00",
+      "publisher": {
+        "@id": "https://example.com#author"
+      },
+      "keywords": [
+        "CentOS"
+      ],
+      "articleSection": [
+        "CentOS"
+      ],
+      "inLanguage": "zh-CN",
+      "author": {
+        "@type": "Person",
+        "name":  null 
+      },
+      "potentialAction": [
+        {
+          "@type": "CommentAction",
+          "name": "Comment",
+          "target": [
+            "https://example.com/posts/howto-trun-off-ipv6-in-centos-6-x/#comments"
+          ]
+        }
+      ]
+    }
+  ]
+}
+</script>
+
+
+
+  <link type="text/css"
+        rel="stylesheet"
+        href="/css/print.css"
+        media="print">
+
+  <link type="text/css"
+        rel="stylesheet"
+        href="/css/poole.css">
+
+  <link type="text/css"
+        rel="stylesheet"
+        href="/css/hyde.css">
+
+  
+
+
+  <link type="text/css" rel="stylesheet" href="/css/blog.css">
+
+  <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700&display=swap">
+
+  <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css"
+        integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk="
+        crossorigin="anonymous" />
+
+  <link rel="apple-touch-icon-precomposed"
+        sizes="144x144"
+        href="/apple-touch-icon-144-precomposed.png">
+
+  <link rel="shortcut icon" href="/favicon.png">
+
+  
+  </head>
+<body>
+  <aside class="sidebar">
+  <div class="container">
+    <div class="sidebar-about">
+      
+      <div class="author-image">
+        <a href="https://example.com">
+          <img src="https://www.gravatar.com/avatar/c02c426714361366ea7d583950aa8fb4?s=200&d=mp" class="img-circle img-headshot center" alt="Gravatar">
+        </a>
+      </div>
+      
+
+      <h1>SAMZONG</h1>
+
+      
+      <p class="lead">Samzong&#39;s Blog</p>
+      
+    </div>
+
+    <nav>
+      <ul class="sidebar-nav">
+        <li>
+          <a href="https://example.com">Home</a>
+        </li>
+        <li>
+          <a href="/posts/">Posts</a>
+        </li><li>
+          <a href="/about/">About</a>
+        </li>
+      </ul>
+    </nav>
+
+    <section class="social-icons">
+      
+      <a href="https://www.linkedin.com/in/samzong/" rel="me" title="Linkedin" target="_blank">
+        <i class="fab fa-linkedin" aria-hidden="true"></i>
+      </a>
+      
+      <a href="https://github.com/samzong" rel="me" title="GitHub" target="_blank">
+        <i class="fab fa-github" aria-hidden="true"></i>
+      </a>
+      
+      <a href="https://twitter.com/samzong_lu" rel="me" title="Twitter" target="_blank">
+        <i class="fab fa-twitter" aria-hidden="true"></i>
+      </a>
+      
+    </section>
+  </div>
+</aside>
+
+
+  <main class="content container">
+  <div class="post">
+  <h1 class="title">HowTo Trun Off IPv6 in CentOS 6.x</h1>
+  
+
+  <div class="post-date">
+    <time datetime="2016-07-29T07:26:19Z">Jul 29, 2016</time> <span class="readtime">&middot; 1 min read</span>
+  </div>
+
+  <div>
+  <h2 id="1-centos-6x">1. CentOS 6.x</h2>
+<p>CentOS 6 上是默认打开了IPv6，但其实在我们实际使用中很难用到它，所以本篇的内容就是如何关闭IPv6。</p>
+<p>＃ 可以看到 inet6 ，说明还没关闭。</p>
+<pre tabindex="0"><code>[root@ultraera ~]# ifconfig eth0
+eth0      Link encap:Ethernet  HWaddr 00:0C:29:3A:F9:6F
+          inet addr:172.16.102.161  Bcast:172.16.102.255  Mask:255.255.255.0
+          inet6 addr: fe80::20c:29ff:fe3a:f96f/64 Scope:Link
+          UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1
+          RX packets:199 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:122 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:1000
+          RX bytes:20124 (19.6 KiB)  TX bytes:17182 (16.7 KiB)
+</code></pre><p>＃ 修改/etc/modprobe.d/dist.conf</p>
+<pre tabindex="0"><code>[root@ultraera ~]# vi /etc/modprobe.d/dist.conf
+# 添加下面两行内容
+alias net-pf-10 off
+alias ipv6 off
+# 保存退出，并且重新启动系统
+
+# 开机不启动
+[root@ultraera ~]# chkconfig ip6tables off
+</code></pre><p>＃ 系统重启完成后，检查是否加载IPv6</p>
+<pre tabindex="0"><code>[root@ultraera ~]# lsmod | grep v6
+</code></pre><p>＃ 补充</p>
+<ul>
+<li>修改/etc/sysconfig/network，追加</li>
+</ul>
+<pre tabindex="0"><code>NETWORKING_IPV6=no
+</code></pre><ul>
+<li>修改/etc/hosts文件，把ipv6的那句本地主机名解析的也注释掉</li>
+</ul>
+<pre tabindex="0"><code>#::1   localhost localhost6 localhost6.localdomain6
+</code></pre><!-- raw HTML omitted -->
+<h2 id="2-centos-7x">2. CentOS 7.x</h2>
+<h4 id="setup-1-修改grub文件在启动引导时不加载ipv6">Setup 1. 修改grub文件，在启动引导时不加载ipv6</h4>
+<pre tabindex="0"><code>[root@ultraera ~]# vim /etc/default/grub
+
+# 在GRUB_CMDLINE_LINUX=&quot; &quot; ,中增加
+ipv6.disable＝1
+
+# 重新生产启动引导文件，注意，这里重启系统是没用的，需要手动重建引导文件
+[root@ultraera ~]# grub2-mkconfig -o /boot/grub2/grub.cfg
+[root@ultraera ~]# reboot
+</code></pre><p>＃ 验证是否关闭</p>
+<pre tabindex="0"><code>[root@ultraera ~]# lsmod | grep ipv6
+</code></pre><h4 id="setup-2-第二种方式">Setup 2. 第二种方式</h4>
+<pre tabindex="0"><code># 修改/etc/sysctl.conf,增加以下：
+net.ipv6.conf.all.disable_ipv6 = 1
+
+reboot
+</code></pre><blockquote>
+<p>IPv6是默认支持的，所以当你要重新开起IPv6支持时，将以上添加的指令注释掉即可。</p>
+</blockquote>
+<blockquote>
+<p><!-- raw HTML omitted --><!-- raw HTML omitted -->之前碰到过安装某些服务时，不能启动，后来检查原因是因为关闭ipv6的问题，因为在这些服务的conf文件，指定了类似监听ipv6,因为关闭了ipv6导致服务无法启动，将其关闭即可。<!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+</blockquote>
+
+  </div>
+
+  
+<div>
+  <ul class="tags">
+  <li>
+    <a href="https://example.com/tags/centos/" class="tag-link">CentOS</a>
+  </li>
+  </ul>
+</div>
+
+
+
+  <div class="share-buttons">
+  <a class="twitter-share-button"
+     href="#"
+     title="Share on Twitter"
+     data-url="https://example.com/posts/howto-trun-off-ipv6-in-centos-6-x/"
+     data-text="HowTo Trun Off IPv6 in CentOS 6.x"><i class="fab fa-twitter"></i></a>
+
+  <a class="linkedin-share-button"
+     href="#"
+     title="Share on LinkedIn"
+     data-url="https://example.com/posts/howto-trun-off-ipv6-in-centos-6-x/"
+     data-text="HowTo Trun Off IPv6 in CentOS 6.x"><i class="fab fa-linkedin-in"></i></a>
+
+  <a class="facebook-share-button"
+     href="#"
+     title="Share on Facebook"
+     data-url="https://example.com/posts/howto-trun-off-ipv6-in-centos-6-x/"
+     data-text="HowTo Trun Off IPv6 in CentOS 6.x"><i class="fab fa-facebook"></i></a>
+
+  <a class="telegram-share-button"
+     href="#"
+     title="Share on Telegram"
+     data-url="https://example.com/posts/howto-trun-off-ipv6-in-centos-6-x/"
+     data-text="HowTo Trun Off IPv6 in CentOS 6.x"><i class="fab fa-telegram"></i></a>
+
+  <a class="pinterest-share-button"
+     href="#"
+     title="Share on Pinterest"
+     data-url="https://example.com/posts/howto-trun-off-ipv6-in-centos-6-x/"
+     data-text="HowTo Trun Off IPv6 in CentOS 6.x"><i class="fab fa-pinterest"></i></a>
+</div>
+
+
+  
+</div>
+  </main>
+
+  <footer>
+  <div>
+    <p>
+      &copy; samzong.lu 2021
+
+      &middot; <a href="https://creativecommons.org/licenses/by-sa/4.0" target="_blank">CC BY-SA 4.0</a>
+
+      
+    </p>
+  </div>
+</footer>
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/js/all.min.js"
+          integrity="sha256-MAgcygDRahs+F/Nk5Vz387whB4kSK9NXlDN3w58LLq0="
+          crossorigin="anonymous"></script>
+
+
+  <script src="/js/jquery.min.js"></script>
+  <script src="/js/soho.js"></script>
+
+  <script src="/js/blog.js"></script>
+
+  
+</body>
+</html>

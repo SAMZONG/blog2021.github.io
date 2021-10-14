@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh-CN" lang="zh-CN">
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="generator" content="Hugo 0.88.1" />
+
+  <title>MySQL(3) mysqldump常用参数 &middot; SAMZONG</title>
+
+  <meta name="description" content="" />
+
+  
+
+<meta itemprop="name" content="MySQL(3) mysqldump常用参数">
+<meta itemprop="description" content="常用的mysqldump命令组合。
+备份数据库 mysqldump db_name &gt; bak_name.sql mysqldump -A -u [dbuser] -p db_name &gt; bak_name."><meta itemprop="datePublished" content="2016-05-05T04:30:11+00:00" />
+<meta itemprop="dateModified" content="2016-05-05T04:30:11+00:00" />
+<meta itemprop="wordCount" content="297">
+<meta itemprop="keywords" content="MySQL," />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="MySQL(3) mysqldump常用参数"/>
+<meta name="twitter:description" content="常用的mysqldump命令组合。
+备份数据库 mysqldump db_name &gt; bak_name.sql mysqldump -A -u [dbuser] -p db_name &gt; bak_name."/>
+
+
+<meta property="og:title" content="MySQL(3) mysqldump常用参数" />
+<meta property="og:description" content="常用的mysqldump命令组合。
+备份数据库 mysqldump db_name &gt; bak_name.sql mysqldump -A -u [dbuser] -p db_name &gt; bak_name." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://example.com/posts/mysql-3-mysqldump%E5%B8%B8%E7%94%A8%E5%8F%82%E6%95%B0/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2016-05-05T04:30:11+00:00" />
+<meta property="article:modified_time" content="2016-05-05T04:30:11+00:00" />
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type":"Person",
+      "@id": "https://example.com#author",
+      "name": "samzong.lu",
+      "image": {
+        "@type":"ImageObject",
+        "url": "https://www.gravatar.com/avatar/c02c426714361366ea7d583950aa8fb4?s=400&d=mp"
+      },
+      "description": "Samzong's Blog"
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://example.com#website",
+      "url": "https://example.com",
+      "name": "SAMZONG",
+      "description": "Samzong's Blog",
+      "publisher": {
+        "@id": "https://example.com#author"
+      },
+      "inLanguage": "zh-CN"
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://example.com/posts/mysql-3-mysqldump%E5%B8%B8%E7%94%A8%E5%8F%82%E6%95%B0/#webpage",
+      "url": "https://example.com/posts/mysql-3-mysqldump%E5%B8%B8%E7%94%A8%E5%8F%82%E6%95%B0/",
+      "name": "MySQL(3) mysqldump常用参数",
+      "isPartOf": {
+        "@id": "https://example.com#website"
+      },
+      "about": {
+         "@id": "https://example.com#author"
+      },
+      "datePublished": "2016-05-05T04:30:11+00:00",
+      "dateModified": "2016-05-05T04:30:11+00:00",
+      "description": "常用的mysqldump命令组合。\n备份数据库 mysqldump db_name \u0026gt; bak_name.sql mysqldump -A -u [dbuser] -p db_name \u0026gt; bak_name.",
+      "inLanguage": "zh-CN",
+      "potentialAction": [
+        {
+          "@type": "ReadAction",
+          "target": [
+            "https://example.com/posts/mysql-3-mysqldump%E5%B8%B8%E7%94%A8%E5%8F%82%E6%95%B0/"
+          ]
+        }
+      ]
+    },
+    {
+      "@type": "Article",
+      "isPartOf": {
+        "@id": "https://example.com/posts/mysql-3-mysqldump%E5%B8%B8%E7%94%A8%E5%8F%82%E6%95%B0/#webpage"
+      },
+      "mainEntityOfPage": {
+        "@id": "https://example.com/posts/mysql-3-mysqldump%E5%B8%B8%E7%94%A8%E5%8F%82%E6%95%B0/#webpage"
+      },
+      "headline": "MySQL(3) mysqldump常用参数",
+      "datePublished": "2016-05-05T04:30:11+00:00",
+      "dateModified": "2016-05-05T04:30:11+00:00",
+      "publisher": {
+        "@id": "https://example.com#author"
+      },
+      "keywords": [
+        "MySQL"
+      ],
+      "articleSection": [
+        "MySQL"
+      ],
+      "inLanguage": "zh-CN",
+      "author": {
+        "@type": "Person",
+        "name":  null 
+      },
+      "potentialAction": [
+        {
+          "@type": "CommentAction",
+          "name": "Comment",
+          "target": [
+            "https://example.com/posts/mysql-3-mysqldump%E5%B8%B8%E7%94%A8%E5%8F%82%E6%95%B0/#comments"
+          ]
+        }
+      ]
+    }
+  ]
+}
+</script>
+
+
+
+  <link type="text/css"
+        rel="stylesheet"
+        href="/css/print.css"
+        media="print">
+
+  <link type="text/css"
+        rel="stylesheet"
+        href="/css/poole.css">
+
+  <link type="text/css"
+        rel="stylesheet"
+        href="/css/hyde.css">
+
+  
+
+
+  <link type="text/css" rel="stylesheet" href="/css/blog.css">
+
+  <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700&display=swap">
+
+  <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css"
+        integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk="
+        crossorigin="anonymous" />
+
+  <link rel="apple-touch-icon-precomposed"
+        sizes="144x144"
+        href="/apple-touch-icon-144-precomposed.png">
+
+  <link rel="shortcut icon" href="/favicon.png">
+
+  
+  </head>
+<body>
+  <aside class="sidebar">
+  <div class="container">
+    <div class="sidebar-about">
+      
+      <div class="author-image">
+        <a href="https://example.com">
+          <img src="https://www.gravatar.com/avatar/c02c426714361366ea7d583950aa8fb4?s=200&d=mp" class="img-circle img-headshot center" alt="Gravatar">
+        </a>
+      </div>
+      
+
+      <h1>SAMZONG</h1>
+
+      
+      <p class="lead">Samzong&#39;s Blog</p>
+      
+    </div>
+
+    <nav>
+      <ul class="sidebar-nav">
+        <li>
+          <a href="https://example.com">Home</a>
+        </li>
+        <li>
+          <a href="/posts/">Posts</a>
+        </li><li>
+          <a href="/about/">About</a>
+        </li>
+      </ul>
+    </nav>
+
+    <section class="social-icons">
+      
+      <a href="https://www.linkedin.com/in/samzong/" rel="me" title="Linkedin" target="_blank">
+        <i class="fab fa-linkedin" aria-hidden="true"></i>
+      </a>
+      
+      <a href="https://github.com/samzong" rel="me" title="GitHub" target="_blank">
+        <i class="fab fa-github" aria-hidden="true"></i>
+      </a>
+      
+      <a href="https://twitter.com/samzong_lu" rel="me" title="Twitter" target="_blank">
+        <i class="fab fa-twitter" aria-hidden="true"></i>
+      </a>
+      
+    </section>
+  </div>
+</aside>
+
+
+  <main class="content container">
+  <div class="post">
+  <h1 class="title">MySQL(3) mysqldump常用参数</h1>
+  
+
+  <div class="post-date">
+    <time datetime="2016-05-05T04:30:11Z">May 5, 2016</time> <span class="readtime">&middot; 2 min read</span>
+  </div>
+
+  <div>
+  <p>常用的mysqldump命令组合。</p>
+<h2 id="备份数据库">备份数据库</h2>
+<pre tabindex="0"><code>mysqldump db_name &gt; bak_name.sql
+mysqldump -A -u [dbuser] -p db_name &gt; bak_name.sql
+mysqldump -d -A --add-drop-table -uroot -p &gt;xxx.sql
+</code></pre><h2 id="备份所有库到一个单独的文件">备份所有库到一个单独的文件</h2>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-shell" data-lang="shell">mysql -e <span style="color:#e6db74">&#39;show databases&#39;</span> | sed -n <span style="color:#e6db74">&#39;2,$p&#39;</span> | xargs -I DB <span style="color:#e6db74">&#39;mysqldump DB &gt; DB.sql&#39;</span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="1-导出结构不导出数据">1. 导出结构不导出数据</h3>
+<pre tabindex="0"><code>mysqldump　--opt　-d　db_name　-u　root　-p　&gt;　xxx.sql
+</code></pre><h3 id="2-导出数据不导出结构">2. 导出数据不导出结构</h3>
+<pre tabindex="0"><code>mysqldump　-t　db_name　-uroot　-p　&gt;　xxx.sql
+</code></pre><h3 id="3-导出数据和表结构">3. 导出数据和表结构</h3>
+<pre tabindex="0"><code>mysqldump　db_name　-uroot　-p　&gt;　xxx.sql
+</code></pre><h3 id="4-导出特定表的结构">4. 导出特定表的结构</h3>
+<pre tabindex="0"><code>mysqldump　-uroot　-p　-B　db_name　--table　tb_name　&gt;　xxx.sql
+</code></pre><h2 id="导入数据">导入数据</h2>
+<p>因为mysqldump导出的是完整的SQL语句，所以用mysql客户程序很容易就能把数据导入了：</p>
+<pre tabindex="0"><code>mysql -u db_user -p db_name  &lt; xxx.sql
+mysql&gt; source /path/xxx.sql
+</code></pre><h2 id="mysqldump参数详解">mysqldump参数详解：</h2>
+<p><!-- raw HTML omitted -->–all-databases , -A <!-- raw HTML omitted -->
+导出全部数据库<!-- raw HTML omitted -->
+mysqldump -uroot -p –all-databases</p>
+<p><!-- raw HTML omitted -->–all-tablespaces , -Y<!-- raw HTML omitted -->
+导出全部表空间<!-- raw HTML omitted -->
+mysqldump -uroot -p –all-databases –all-tablespaces</p>
+<p><!-- raw HTML omitted -->–no-tablespaces , -y<!-- raw HTML omitted -->
+不导出任何表空间信息<!-- raw HTML omitted -->
+mysqldump -uroot -p –all-databases –no-tablespaces</p>
+<p><!-- raw HTML omitted -->–add-drop-database<!-- raw HTML omitted -->
+每个数据库创建之前添加drop数据库语句<!-- raw HTML omitted -->
+mysqldump -uroot -p –all-databases –add-drop-database</p>
+<p><!-- raw HTML omitted -->–add-drop-table<!-- raw HTML omitted -->
+每个数据表创建之前添加drop数据表语句。(默认为打开状态，使用–skip-add-drop-table取消选项)<!-- raw HTML omitted -->
+mysqldump -uroot -p –all-databases (默认添加drop语句)
+mysqldump -uroot -p –all-databases –skip-add-drop-table (取消drop语句)</p>
+<p><!-- raw HTML omitted -->–add-locks<!-- raw HTML omitted -->
+在每个表导出之前增加LOCK TABLES并且之后UNLOCK TABLE。(默认为打开状态，使用–skip-add-locks取消选项)<!-- raw HTML omitted -->
+mysqldump -uroot -p –all-databases(默认添加LOCK语句)
+mysqldump -uroot -p –all-databases –skip-add-locks (取消LOCK语句)</p>
+<p><!-- raw HTML omitted -->–comments<!-- raw HTML omitted -->
+附加注释信息。<!-- raw HTML omitted -->
+默认为打开，可以用–skip-comments取消mysqldump -uroot -p –all-databases (默认记录注释)mysqldump -uroot -p –all-databases &ldquo;code&rdquo;
+skip-comments (取消注释)</p>
+<p><!-- raw HTML omitted -->–compact<!-- raw HTML omitted -->
+导出更少的输出信息(用于调试),去掉注释和头尾等结构,可以使用选项：–skip-add-drop-table –skip-add-locks –skip-comments –skip-disable-keys<!-- raw HTML omitted -->
+mysqldump -uroot -p –all-databases –compact</p>
+<p><!-- raw HTML omitted -->–complete-insert, -c<!-- raw HTML omitted -->
+使用完整的insert语句(包含列名称)。这么做能提高插入效率，但是可能会受到max_allowed_packet参数的影响而导致插入失败。<!-- raw HTML omitted -->
+mysqldump -uroot -p –all-databases –complete-insert</p>
+<p><!-- raw HTML omitted -->–compress, -C<!-- raw HTML omitted -->
+在客户端和服务器之间启用压缩传递所有信息<!-- raw HTML omitted -->
+mysqldump -uroot -p –all-databases –compress</p>
+<p><!-- raw HTML omitted -->–databases, -B<!-- raw HTML omitted -->
+导出几个数据库。参数后面所有名字参量都被看作数据库名。<!-- raw HTML omitted -->
+mysqldump -uroot -p –databases test mysql</p>
+<p><!-- raw HTML omitted -->–debug<!-- raw HTML omitted -->
+输出debug信息，用于调试。<!-- raw HTML omitted -->
+默认值为：d:t:o,/tmp/mysqldump.trace<!-- raw HTML omitted -->
+mysqldump -uroot -p –all-databases –debug<!-- raw HTML omitted -->
+mysqldump -uroot -p –all-databases –debug=&ldquo;d:t:o,/tmp/debug.trace&rdquo;</p>
+<p><!-- raw HTML omitted -->–debug-info<!-- raw HTML omitted -->
+输出调试信息并退出<!-- raw HTML omitted -->
+mysqldump -uroot -p –all-databases –debug-info</p>
+<p><!-- raw HTML omitted -->–default-character-set<!-- raw HTML omitted -->
+设置默认字符集，默认值为utf8<!-- raw HTML omitted -->
+mysqldump -uroot -p –all-databases –default-character-set=latin1</p>
+<p><!-- raw HTML omitted -->–delayed-insert<!-- raw HTML omitted -->
+采用延时插入方式（INSERT DELAYED）导出数据<!-- raw HTML omitted -->
+mysqldump -uroot -p –all-databases –delayed-insert</p>
+<p><!-- raw HTML omitted -->–events, -E<!-- raw HTML omitted -->
+导出事件<!-- raw HTML omitted -->
+mysqldump -uroot -p –all-databases –events</p>
+<p><!-- raw HTML omitted -->–flush-logs<!-- raw HTML omitted -->
+开始导出之前刷新日志<!-- raw HTML omitted -->
+请注意：假如一次导出多个数据库(使用选项–databases或者–all-databases)，将会逐个数据库刷新日志。除使用–lock-all-tables或者–master-data外。在这种情况下，日志将会被刷新一次，相应的所以表同时被锁定。因此，如果打算同时导出和刷新日志应该使用–lock-all-tables 或者–master-data 和–flush-logs.<!-- raw HTML omitted -->
+mysqldump -uroot -p –all-databases –flush-logs</p>
+<p><!-- raw HTML omitted -->–flush-privileges<!-- raw HTML omitted -->
+在导出mysql数据库之后，发出一条FLUSH PRIVILEGES 语句。为了正确恢复，该选项应该用于导出mysql数据库和依赖mysql数据库数据的任何时候。<!-- raw HTML omitted -->
+mysqldump -uroot -p –all-databases –flush-privileges</p>
+<p><!-- raw HTML omitted -->–force<!-- raw HTML omitted -->
+在导出过程中忽略出现的SQL错误<!-- raw HTML omitted -->
+mysqldump -uroot -p –all-databases –force</p>
+<p><!-- raw HTML omitted -->–host, -h<!-- raw HTML omitted -->
+需要导出的主机信息<!-- raw HTML omitted -->
+mysqldump -uroot -p –host=localhost –all-databases</p>
+<p><!-- raw HTML omitted -->–ignore-table<!-- raw HTML omitted --></p>
+<p>不导出指定表。
+指定忽略多个表时，需要重复多次，每次一个表。每个表必须同时指定数据库和表名.
+例如：<!-- raw HTML omitted -->–ignore-table=database.table1 –ignore-table=database.table2 ……<!-- raw HTML omitted -->
+mysqldump -uroot -p –host=localhost –all-databases –ignore-table=mysql.user</p>
+<p><!-- raw HTML omitted -->–lock-all-tables, -x<!-- raw HTML omitted -->
+提交请求锁定所有数据库中的所有表，以保证数据的一致性。
+这是一个全局读锁，并且自动关闭–single-transaction 和–lock-tables 选项。<!-- raw HTML omitted -->
+mysqldump -uroot -p –host=localhost –all-databases –lock-all-tables</p>
+<p><!-- raw HTML omitted -->–lock-tables, -l<!-- raw HTML omitted -->
+开始导出前，锁定所有表。<!-- raw HTML omitted -->
+用READ LOCAL锁定表以允许MyISAM表并行插入。对于支持事务的表例如InnoDB和BDB，–single-transaction是一个更好的选择，因为它根本不需要锁定表.<!-- raw HTML omitted -->
+请注意当导出多个数据库时，–lock-tables分别为每个数据库锁定表。因此，该选项不能保证导出文件中的表在数据库之间的逻辑一致性。不同数据库表的导出状态可以完全不同。<!-- raw HTML omitted -->
+mysqldump -uroot -p –host=localhost –all-databases –lock-tables</p>
+<p><!-- raw HTML omitted -->–no-create-db, -n <!-- raw HTML omitted -->
+只导出数据，而不添加CREATE DATABASE 语句。<!-- raw HTML omitted -->
+mysqldump -uroot -p –host=localhost –all-databases –no-create-db</p>
+<p><!-- raw HTML omitted -->–no-create-info,-t<!-- raw HTML omitted -->
+只导出数据，而不添加CREATE TABLE 语句<!-- raw HTML omitted -->
+mysqldump -uroot -p –host=localhost –all-databases –no-create-info</p>
+<p><!-- raw HTML omitted --> –no-data, -d <!-- raw HTML omitted -->
+不导出任何数据，只导出数据库表结构<!-- raw HTML omitted -->
+mysqldump -uroot -p –host=localhost –all-databases –no-data</p>
+<p><!-- raw HTML omitted --> –password, -p <!-- raw HTML omitted -->
+连接数据库密码</p>
+<p><!-- raw HTML omitted --> –port, -P <!-- raw HTML omitted -->
+连接数据库端口号</p>
+<p><!-- raw HTML omitted --> –user, -u <!-- raw HTML omitted -->
+指定连接的用户名。</p>
+
+  </div>
+
+  
+<div>
+  <ul class="tags">
+  <li>
+    <a href="https://example.com/tags/mysql/" class="tag-link">MySQL</a>
+  </li>
+  </ul>
+</div>
+
+
+
+  <div class="share-buttons">
+  <a class="twitter-share-button"
+     href="#"
+     title="Share on Twitter"
+     data-url="https://example.com/posts/mysql-3-mysqldump%E5%B8%B8%E7%94%A8%E5%8F%82%E6%95%B0/"
+     data-text="MySQL(3) mysqldump常用参数"><i class="fab fa-twitter"></i></a>
+
+  <a class="linkedin-share-button"
+     href="#"
+     title="Share on LinkedIn"
+     data-url="https://example.com/posts/mysql-3-mysqldump%E5%B8%B8%E7%94%A8%E5%8F%82%E6%95%B0/"
+     data-text="MySQL(3) mysqldump常用参数"><i class="fab fa-linkedin-in"></i></a>
+
+  <a class="facebook-share-button"
+     href="#"
+     title="Share on Facebook"
+     data-url="https://example.com/posts/mysql-3-mysqldump%E5%B8%B8%E7%94%A8%E5%8F%82%E6%95%B0/"
+     data-text="MySQL(3) mysqldump常用参数"><i class="fab fa-facebook"></i></a>
+
+  <a class="telegram-share-button"
+     href="#"
+     title="Share on Telegram"
+     data-url="https://example.com/posts/mysql-3-mysqldump%E5%B8%B8%E7%94%A8%E5%8F%82%E6%95%B0/"
+     data-text="MySQL(3) mysqldump常用参数"><i class="fab fa-telegram"></i></a>
+
+  <a class="pinterest-share-button"
+     href="#"
+     title="Share on Pinterest"
+     data-url="https://example.com/posts/mysql-3-mysqldump%E5%B8%B8%E7%94%A8%E5%8F%82%E6%95%B0/"
+     data-text="MySQL(3) mysqldump常用参数"><i class="fab fa-pinterest"></i></a>
+</div>
+
+
+  
+</div>
+  </main>
+
+  <footer>
+  <div>
+    <p>
+      &copy; samzong.lu 2021
+
+      &middot; <a href="https://creativecommons.org/licenses/by-sa/4.0" target="_blank">CC BY-SA 4.0</a>
+
+      
+    </p>
+  </div>
+</footer>
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/js/all.min.js"
+          integrity="sha256-MAgcygDRahs+F/Nk5Vz387whB4kSK9NXlDN3w58LLq0="
+          crossorigin="anonymous"></script>
+
+
+  <script src="/js/jquery.min.js"></script>
+  <script src="/js/soho.js"></script>
+
+  <script src="/js/blog.js"></script>
+
+  
+</body>
+</html>

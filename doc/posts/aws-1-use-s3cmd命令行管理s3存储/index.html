@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh-CN" lang="zh-CN">
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="generator" content="Hugo 0.88.1" />
+
+  <title>AWS(1) Use s3cmd命令行管理S3存储 &middot; SAMZONG</title>
+
+  <meta name="description" content="" />
+
+  
+
+<meta itemprop="name" content="AWS(1) Use s3cmd命令行管理S3存储">
+<meta itemprop="description" content="S3 是AWS公有云服务提供的云存储服务，提供海量数据存储服务，同时基于AWS S3提供的一系列网络服务接口，也有大量已经开发完成的工具供我们使用，以利用起AWS庞大的存储资源，这篇文章的目录选取了其中一个用Linux命令行工具s3cmd来管理AWS S3云存储其中的数据。
+s3cmd 是非常优秀的S3命令行管理工具，用python编写，支持python 2.6 &amp; 2.7 ，但是尚不支持python3，但是目前绝大多数的Linux发行版默认都是python2.x 系列。"><meta itemprop="datePublished" content="2016-11-30T23:45:54+00:00" />
+<meta itemprop="dateModified" content="2016-11-30T23:45:54+00:00" />
+<meta itemprop="wordCount" content="462">
+<meta itemprop="keywords" content="" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="AWS(1) Use s3cmd命令行管理S3存储"/>
+<meta name="twitter:description" content="S3 是AWS公有云服务提供的云存储服务，提供海量数据存储服务，同时基于AWS S3提供的一系列网络服务接口，也有大量已经开发完成的工具供我们使用，以利用起AWS庞大的存储资源，这篇文章的目录选取了其中一个用Linux命令行工具s3cmd来管理AWS S3云存储其中的数据。
+s3cmd 是非常优秀的S3命令行管理工具，用python编写，支持python 2.6 &amp; 2.7 ，但是尚不支持python3，但是目前绝大多数的Linux发行版默认都是python2.x 系列。"/>
+
+
+<meta property="og:title" content="AWS(1) Use s3cmd命令行管理S3存储" />
+<meta property="og:description" content="S3 是AWS公有云服务提供的云存储服务，提供海量数据存储服务，同时基于AWS S3提供的一系列网络服务接口，也有大量已经开发完成的工具供我们使用，以利用起AWS庞大的存储资源，这篇文章的目录选取了其中一个用Linux命令行工具s3cmd来管理AWS S3云存储其中的数据。
+s3cmd 是非常优秀的S3命令行管理工具，用python编写，支持python 2.6 &amp; 2.7 ，但是尚不支持python3，但是目前绝大多数的Linux发行版默认都是python2.x 系列。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://example.com/posts/aws-1-use-s3cmd%E5%91%BD%E4%BB%A4%E8%A1%8C%E7%AE%A1%E7%90%86s3%E5%AD%98%E5%82%A8/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2016-11-30T23:45:54+00:00" />
+<meta property="article:modified_time" content="2016-11-30T23:45:54+00:00" />
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type":"Person",
+      "@id": "https://example.com#author",
+      "name": "samzong.lu",
+      "image": {
+        "@type":"ImageObject",
+        "url": "https://www.gravatar.com/avatar/c02c426714361366ea7d583950aa8fb4?s=400&d=mp"
+      },
+      "description": "Samzong's Blog"
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://example.com#website",
+      "url": "https://example.com",
+      "name": "SAMZONG",
+      "description": "Samzong's Blog",
+      "publisher": {
+        "@id": "https://example.com#author"
+      },
+      "inLanguage": "zh-CN"
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://example.com/posts/aws-1-use-s3cmd%E5%91%BD%E4%BB%A4%E8%A1%8C%E7%AE%A1%E7%90%86s3%E5%AD%98%E5%82%A8/#webpage",
+      "url": "https://example.com/posts/aws-1-use-s3cmd%E5%91%BD%E4%BB%A4%E8%A1%8C%E7%AE%A1%E7%90%86s3%E5%AD%98%E5%82%A8/",
+      "name": "AWS(1) Use s3cmd命令行管理S3存储",
+      "isPartOf": {
+        "@id": "https://example.com#website"
+      },
+      "about": {
+         "@id": "https://example.com#author"
+      },
+      "datePublished": "2016-11-30T23:45:54+00:00",
+      "dateModified": "2016-11-30T23:45:54+00:00",
+      "description": "S3 是AWS公有云服务提供的云存储服务，提供海量数据存储服务，同时基于AWS S3提供的一系列网络服务接口，也有大量已经开发完成的工具供我们使用，以利用起AWS庞大的存储资源，这篇文章的目录选取了其中一个用Linux命令行工具s3cmd来管理AWS S3云存储其中的数据。\ns3cmd 是非常优秀的S3命令行管理工具，用python编写，支持python 2.6 \u0026amp; 2.7 ，但是尚不支持python3，但是目前绝大多数的Linux发行版默认都是python2.x 系列。",
+      "inLanguage": "zh-CN",
+      "potentialAction": [
+        {
+          "@type": "ReadAction",
+          "target": [
+            "https://example.com/posts/aws-1-use-s3cmd%E5%91%BD%E4%BB%A4%E8%A1%8C%E7%AE%A1%E7%90%86s3%E5%AD%98%E5%82%A8/"
+          ]
+        }
+      ]
+    },
+    {
+      "@type": "Article",
+      "isPartOf": {
+        "@id": "https://example.com/posts/aws-1-use-s3cmd%E5%91%BD%E4%BB%A4%E8%A1%8C%E7%AE%A1%E7%90%86s3%E5%AD%98%E5%82%A8/#webpage"
+      },
+      "mainEntityOfPage": {
+        "@id": "https://example.com/posts/aws-1-use-s3cmd%E5%91%BD%E4%BB%A4%E8%A1%8C%E7%AE%A1%E7%90%86s3%E5%AD%98%E5%82%A8/#webpage"
+      },
+      "headline": "AWS(1) Use s3cmd命令行管理S3存储",
+      "datePublished": "2016-11-30T23:45:54+00:00",
+      "dateModified": "2016-11-30T23:45:54+00:00",
+      "publisher": {
+        "@id": "https://example.com#author"
+      },
+      "keywords": [
+      ],
+      "articleSection": [
+      ],
+      "inLanguage": "zh-CN",
+      "author": {
+        "@type": "Person",
+        "name":  null 
+      },
+      "potentialAction": [
+        {
+          "@type": "CommentAction",
+          "name": "Comment",
+          "target": [
+            "https://example.com/posts/aws-1-use-s3cmd%E5%91%BD%E4%BB%A4%E8%A1%8C%E7%AE%A1%E7%90%86s3%E5%AD%98%E5%82%A8/#comments"
+          ]
+        }
+      ]
+    }
+  ]
+}
+</script>
+
+
+
+  <link type="text/css"
+        rel="stylesheet"
+        href="/css/print.css"
+        media="print">
+
+  <link type="text/css"
+        rel="stylesheet"
+        href="/css/poole.css">
+
+  <link type="text/css"
+        rel="stylesheet"
+        href="/css/hyde.css">
+
+  
+
+
+  <link type="text/css" rel="stylesheet" href="/css/blog.css">
+
+  <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700&display=swap">
+
+  <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css"
+        integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk="
+        crossorigin="anonymous" />
+
+  <link rel="apple-touch-icon-precomposed"
+        sizes="144x144"
+        href="/apple-touch-icon-144-precomposed.png">
+
+  <link rel="shortcut icon" href="/favicon.png">
+
+  
+  </head>
+<body>
+  <aside class="sidebar">
+  <div class="container">
+    <div class="sidebar-about">
+      
+      <div class="author-image">
+        <a href="https://example.com">
+          <img src="https://www.gravatar.com/avatar/c02c426714361366ea7d583950aa8fb4?s=200&d=mp" class="img-circle img-headshot center" alt="Gravatar">
+        </a>
+      </div>
+      
+
+      <h1>SAMZONG</h1>
+
+      
+      <p class="lead">Samzong&#39;s Blog</p>
+      
+    </div>
+
+    <nav>
+      <ul class="sidebar-nav">
+        <li>
+          <a href="https://example.com">Home</a>
+        </li>
+        <li>
+          <a href="/posts/">Posts</a>
+        </li><li>
+          <a href="/about/">About</a>
+        </li>
+      </ul>
+    </nav>
+
+    <section class="social-icons">
+      
+      <a href="https://www.linkedin.com/in/samzong/" rel="me" title="Linkedin" target="_blank">
+        <i class="fab fa-linkedin" aria-hidden="true"></i>
+      </a>
+      
+      <a href="https://github.com/samzong" rel="me" title="GitHub" target="_blank">
+        <i class="fab fa-github" aria-hidden="true"></i>
+      </a>
+      
+      <a href="https://twitter.com/samzong_lu" rel="me" title="Twitter" target="_blank">
+        <i class="fab fa-twitter" aria-hidden="true"></i>
+      </a>
+      
+    </section>
+  </div>
+</aside>
+
+
+  <main class="content container">
+  <div class="post">
+  <h1 class="title">AWS(1) Use s3cmd命令行管理S3存储</h1>
+  
+
+  <div class="post-date">
+    <time datetime="2016-11-30T23:45:54Z">Nov 30, 2016</time> <span class="readtime">&middot; 3 min read</span>
+  </div>
+
+  <div>
+  <p>S3 是AWS公有云服务提供的云存储服务，提供海量数据存储服务，同时基于AWS S3提供的一系列网络服务接口，也有大量已经开发完成的工具供我们使用，以利用起AWS庞大的存储资源，这篇文章的目录选取了其中一个用Linux命令行工具<a href="http://s3tools.org">s3cmd</a>来管理AWS S3云存储其中的数据。</p>
+<p>s3cmd 是非常优秀的S3命令行管理工具，用python编写，支持python 2.6 &amp; 2.7 ，但是尚不支持python3，但是目前绝大多数的Linux发行版默认都是python2.x 系列。</p>
+<blockquote>
+<p>Demo CentOS 6.x</p>
+</blockquote>
+<h3 id="install-s3cmd"><strong>Install s3cmd</strong></h3>
+<h5 id="1-无论是denbian系还是rehat系列软件仓库内已经加入了s3cmd">1. 无论是Denbian系还是Rehat系列，软件仓库内已经加入了s3cmd：</h5>
+<pre tabindex="0"><code># 1.1 Ubuntu &amp; Debian
+$ sudo apt-get install -y s3cmd
+
+# 1.2 RHEL &amp; CentOS
+$ sudo yum install s3cmd
+</code></pre><h5 id="2-如果您的系统比较特殊软件仓库内找不到s3cmd还有s3cmd的github上去获取相关安装信息链接httpsgithubcoms3toolss3cmd">2. 如果您的系统比较特殊，软件仓库内找不到s3cmd，还有s3cmd的Github上去获取相关安装信息：<a href="https://github.com/s3tools/s3cmd">链接</a></h5>
+<h3 id="configure-s3cmd"><strong>Configure s3cmd</strong></h3>
+<h5 id="1-第一次运行s3cmd-需要首先预配置相关s3信息">1. 第一次运行s3cmd 需要首先预配置相关s3信息:</h5>
+<pre tabindex="0"><code>$ s3cmd --configure
+</code></pre><p>它会问你一系列问题：</p>
+<ul>
+<li>AWS S3 中IAM账户的Access Key以及Secret Key (建议单独创建IAM)</li>
+<li>对AWS S3双向传输的加密密码 （自行设定不要忘记）</li>
+<li>为加密数据设定GPG程序的路径（默认即可）</li>
+<li>是否使用https协议 （默认即可）</li>
+<li>如果不是https协议，需要设定名字和端口
+配置完成之后，配置信息以普通文本保存在~/.s3cfg</li>
+</ul>
+<h5 id="2-china-与global-的区别">2. China 与Global 的区别</h5>
+<p>笔者在第一次运行时，始终无法添加成功，报错信息如下：</p>
+<pre tabindex="0"><code> ERROR: Test failed: 403 (InvalidAccessKeyId): The AWS Accecc Key Id you provided does not exist in our records.
+</code></pre><p>起初以为是Access Key 不对，在经过多次测试之后，才发现问题，这是因为s3cmd 内置s3的Domain为Global的信息，而中国与Global是独立存在的所以查找不到我们的Access Key。所以，如果你使用的Global AWS那么上面一步应该已经配置好了你的s3cmd，如果你是AWS China的用户，那么你要做以下操作。</p>
+<ul>
+<li>在Retry configuration? [Y/n]选择“n”</li>
+<li>Save settings? [y/N] 选择“y”</li>
+<li>保存设置之后，编辑配置文件（~/.s3cfg ) 修改其中的如下字段，并将其中%(bucket)s用您实际的某一个存储桶名字代替掉</li>
+</ul>
+<pre tabindex="0"><code>bucket_location = %(location)
+host_base = s3.cn-north-1.amazonaws.com.cn
+host_bucket = %(bucket)s.s3.cn-north-1.amazonaws.com.cn
+website_endpoint = http://%(bucket)s.s3-website-%(location)s.amazonaws.com.cn/
+</code></pre><p>例如，你的存储桶的名字为s3chinatest: 地域为北京。</p>
+<pre tabindex="0"><code>bucket_location = cn-north-1
+host_base = s3.cn-north-1.amazonaws.com.cn
+host_bucket = s3chinatest.s3.cn-north-1.amazonaws.com.cn
+website_endpoint = http://s3chinatest.s3-website.amazonaws.com.cn/
+</code></pre><h5 id="3-保存配置文件然后用命令测试一下确认s3cmd可以正常工作">3. 保存配置文件，然后用命令测试一下，确认s3cmd可以正常工作。</h5>
+<pre tabindex="0"><code>$ s3cmd ls
+2016-11-18 22:30 s3://s3chinatest
+2016-10-29 00:14 s3://bucket2
+</code></pre><h3 id="s3cmd-的基本使用"><strong>s3cmd 的基本使用</strong></h3>
+<h5 id="1-查看当前账户下所有现有的桶bucket">1. 查看当前账户下所有现有的桶(bucket)：</h5>
+<pre tabindex="0"><code>$ s3cmd ls
+2016-11-18 22:30 s3://s3chinatest
+2016-10-29 00:14 s3://bucket2
+</code></pre><h5 id="2-创建新的bucket">2. 创建新的bucket：</h5>
+<pre tabindex="0"><code>$ s3cmd mb s3://s3chinatest2
+
+Bucket ’s3://s3chinatest2/’ created
+</code></pre><h5 id="3-上传文件到bucket">3. 上传文件到bucket:</h5>
+<pre tabindex="0"><code>$ s3cmd put file1.txt file2.txt file3.txt s3://s3chinatest2
+upload: 'file1.txt' -&gt; 's3://s3chinatest2/file1.txt'  [1 of 3]
+ 2432 of 2432   100% in    0s    43.27 kB/s  done
+upload: 'file2.txt' -&gt; 's3://s3chinatest2/file2.txt'  [2 of 3]
+ 2432 of 2432   100% in    0s    59.83 kB/s  done
+upload: 'file3.txt' -&gt; 's3://s3chinatest2/file3.txt'  [3 of 3]
+ 2432 of 2432   100% in    0s    58.93 kB/s  done
+
+ $ s3cmd ls s3://s3chinatest2
+ 2016-11-18 15:11      2432   s3://s3chinatest2/file1.txt
+2016-11-18 15:11      2432   s3://s3chinatest2/file2.txt
+2016-11-18 15:11      2432   s3://s3chinatest2/file3.txt
+</code></pre><p>上传的文件默认访问权限为私有(private)，只能用户自己可以访问，使用正确的访问和安全密码即可。<!-- raw HTML omitted -->
+如果要上传公开访问权限的文件，需要添加 &ndash;acl-public 参数.</p>
+<pre tabindex="0"><code>$ s3cmd put  --acl-public file4.txt s3://s3chinatest2
+upload: 'file4.txt' -&gt; 's3://s3chinatest2/file1.txt'  [1 of 1]
+ 2432 of 2432   100% in    0s    43.27 kB/s  done
+</code></pre><h5 id="4-下载bucket内的文件">4. 下载bucket内的文件:</h5>
+<pre tabindex="0"><code>$ s3cmd get s3://s3chinatest2/file1.txt
+download: 's3://s3chinatest2/file1.txt' -&gt; './file1.txt'  [1 of 1]
+ 2432 of 2432   100% in    0s    27.65 kB/s  done
+
+ # 支持 &quot; * &quot;匹配任意字符
+ $ s3cmd get s3://s3chinatest2/file*.txt
+download: 's3://s3chinatest2/file1.txt' -&gt; './file1.txt'  [1 of 3]
+ 2432 of 2432   100% in    0s    48.11 kB/s  done
+download: 's3://s3chinatest2/file2.txt' -&gt; './file2.txt'  [2 of 3]
+ 2432 of 2432   100% in    0s    84.76 kB/s  done
+download: 's3://s3chinatest2/file3.txt' -&gt; './file3.txt'  [3 of 3]
+ 2432 of 2432   100% in    0s    75.28 kB/s  done
+</code></pre><blockquote>
+<p>注意若当前目录有相同文件时，可以使用&ndash;skip-existing 参数跳过这些文件。</p>
+</blockquote>
+<h5 id="5-删除bucket内的文件">5. 删除bucket内的文件:</h5>
+<pre tabindex="0"><code># del 与 rm 都可以使用.
+$ s3cmd del s3://s3chinatest2/file1.txt
+delete: 's3://s3chinatest2/file1.txt'
+</code></pre><h5 id="6-获取当前bucket-信息-">6. 获取当前bucket 信息 ：</h5>
+<pre tabindex="0"><code># bucket的存储位置及访问权限设置
+s3cmd info s3://s3chinatest2
+s3://s3chinatest2/ (bucket):
+   Location:  cn-north-1
+   Payer:     BucketOwner
+   Expiration Rule: none
+   policy:    none
+   cors:      none
+   ACL:       2fe63da8137b85d9868d240869945287b285a58b5d7e07e21ac813b486dcabea: FULL_CONTROL
+</code></pre><h5 id="7-上传文件到bucket时加密">7. 上传文件到bucket时加密</h5>
+<p>当用s3cmd下载一个加密过的文件时，它会自动检测加密并在下载过程解密，因此下载和访问加密文件时，就像通常所做的一样：</p>
+<pre tabindex="0"><code>$ s3cmd -e put t_result.java s3://s3chinatest2
+upload: '/tmp/tmpfile-S9lUXERAEUdnNaz5zHba' -&gt; 's3://s3chinatest2/t_result.java'  [1 of 1]
+ 3355 of 3355   100% in    0s    39.25 kB/s  done
+</code></pre><h5 id="8-查看bucket使用情况">8. 查看bucket使用情况</h5>
+<pre tabindex="0"><code>$ s3cmd du s3://s3chinatest2
+8219     3 objects s3://s3chinatest2/
+</code></pre><h5 id="9-删除一个bucket">9. 删除一个bucket</h5>
+<pre tabindex="0"><code>$ s3cmd rb s3://s3chinatest2
+ERROR: S3 error: 409 (BucketNotEmpty): The bucket you tried to delete is not empty
+# 默认不能删除非空的bucket，所以要先清空存储桶内数据
+
+$ s3cmd rm s3://s3chinatest2/*
+delete: 's3://s3chinatest2/file2.txt'
+delete: 's3://s3chinatest2/file3.txt'
+delete: 's3://s3chinatest2/t_result.java'
+
+$ s3cmd rb s3://s3chinatest2
+Bucket 's3://s3chinatest2/' removed
+</code></pre><h3 id="other"><em>Other</em></h3>
+<ol>
+<li>关于s3cmd 还有非常多的功能，这里只是列举简单的一部分，有兴趣的同学，可以使用man s3cmd 查看详细的帮助文档.</li>
+<li>s3cmd 适用的场景主要利用脚本做cron任务，例如定时备份，然后推送到s3，降低成本，持久保存.</li>
+<li>Windows平台也支持s3cmd哦，有兴趣的同学可以去研究下。</li>
+</ol>
+
+  </div>
+
+  
+
+
+  <div class="share-buttons">
+  <a class="twitter-share-button"
+     href="#"
+     title="Share on Twitter"
+     data-url="https://example.com/posts/aws-1-use-s3cmd%E5%91%BD%E4%BB%A4%E8%A1%8C%E7%AE%A1%E7%90%86s3%E5%AD%98%E5%82%A8/"
+     data-text="AWS(1) Use s3cmd命令行管理S3存储"><i class="fab fa-twitter"></i></a>
+
+  <a class="linkedin-share-button"
+     href="#"
+     title="Share on LinkedIn"
+     data-url="https://example.com/posts/aws-1-use-s3cmd%E5%91%BD%E4%BB%A4%E8%A1%8C%E7%AE%A1%E7%90%86s3%E5%AD%98%E5%82%A8/"
+     data-text="AWS(1) Use s3cmd命令行管理S3存储"><i class="fab fa-linkedin-in"></i></a>
+
+  <a class="facebook-share-button"
+     href="#"
+     title="Share on Facebook"
+     data-url="https://example.com/posts/aws-1-use-s3cmd%E5%91%BD%E4%BB%A4%E8%A1%8C%E7%AE%A1%E7%90%86s3%E5%AD%98%E5%82%A8/"
+     data-text="AWS(1) Use s3cmd命令行管理S3存储"><i class="fab fa-facebook"></i></a>
+
+  <a class="telegram-share-button"
+     href="#"
+     title="Share on Telegram"
+     data-url="https://example.com/posts/aws-1-use-s3cmd%E5%91%BD%E4%BB%A4%E8%A1%8C%E7%AE%A1%E7%90%86s3%E5%AD%98%E5%82%A8/"
+     data-text="AWS(1) Use s3cmd命令行管理S3存储"><i class="fab fa-telegram"></i></a>
+
+  <a class="pinterest-share-button"
+     href="#"
+     title="Share on Pinterest"
+     data-url="https://example.com/posts/aws-1-use-s3cmd%E5%91%BD%E4%BB%A4%E8%A1%8C%E7%AE%A1%E7%90%86s3%E5%AD%98%E5%82%A8/"
+     data-text="AWS(1) Use s3cmd命令行管理S3存储"><i class="fab fa-pinterest"></i></a>
+</div>
+
+
+  
+</div>
+  </main>
+
+  <footer>
+  <div>
+    <p>
+      &copy; samzong.lu 2021
+
+      &middot; <a href="https://creativecommons.org/licenses/by-sa/4.0" target="_blank">CC BY-SA 4.0</a>
+
+      
+    </p>
+  </div>
+</footer>
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/js/all.min.js"
+          integrity="sha256-MAgcygDRahs+F/Nk5Vz387whB4kSK9NXlDN3w58LLq0="
+          crossorigin="anonymous"></script>
+
+
+  <script src="/js/jquery.min.js"></script>
+  <script src="/js/soho.js"></script>
+
+  <script src="/js/blog.js"></script>
+
+  
+</body>
+</html>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>KVM on SAMZONG</title>
+    <link>https://example.com/tags/kvm/</link>
+    <description>Recent content in KVM on SAMZONG</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Wed, 27 Jul 2016 17:34:01 +0000</lastBuildDate><atom:link href="https://example.com/tags/kvm/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>HowTo Install KVM Manage Server : webvirtmgr</title>
+      <link>https://example.com/posts/howto-install-kvm-manage-server-webvirtmgr/</link>
+      <pubDate>Wed, 27 Jul 2016 17:34:01 +0000</pubDate>
+      
+      <guid>https://example.com/posts/howto-install-kvm-manage-server-webvirtmgr/</guid>
+      <description>生产环境的KVM宿主机越来越多，需要对宿主机的状态进行调控。这里用webvirtmgr进行管理。图形化的WEB，让人能更方便的查看kvm 宿主机的情况和操作.
+GitHub Project.
+Install 安装支持的软件源 yum install -y epel-release 安装相关软件 yum -y install git python-pip libvirt-python libxml2-python python-websockify supervisor nginx 从git-hub中下载相关的webvirtmgr代码 cd /usr/local/src/ git clone git://github.</description>
+    </item>
+    
+  </channel>
+</rss>

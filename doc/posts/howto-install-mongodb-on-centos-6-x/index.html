@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh-CN" lang="zh-CN">
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="generator" content="Hugo 0.88.1" />
+
+  <title>HowTo Install MongoDB  on CentOS 6.x &middot; SAMZONG</title>
+
+  <meta name="description" content="" />
+
+  
+
+<meta itemprop="name" content="HowTo Install MongoDB  on CentOS 6.x">
+<meta itemprop="description" content="1. Overiew  在CentOS Linux 中安装软件的方式有很多种，我会在后续的文章中整理给大家，我比较喜欢的方式是尽量用Yum 安装，不用自己动手去解决软件包之间的依赖关系，“能Yum 就Yum ，不能Yum 想着法Yum 。” &ndash; 这是我遵循的真理；今天给大家整理的就是如何使用Yum 来安装Mongodb ，在本文中会给出在32位与64位系统的区别，以及Mongodb 的版本，本文适用于CentOS 6/7 的Linux发行版本，所以同样适用于红帽体系的OS，如 RedHat Enterprise Linux 6/7 、 Fedora 。"><meta itemprop="datePublished" content="2016-03-27T05:55:28+00:00" />
+<meta itemprop="dateModified" content="2016-03-27T05:55:28+00:00" />
+<meta itemprop="wordCount" content="484">
+<meta itemprop="keywords" content="MongoDB," />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="HowTo Install MongoDB  on CentOS 6.x"/>
+<meta name="twitter:description" content="1. Overiew  在CentOS Linux 中安装软件的方式有很多种，我会在后续的文章中整理给大家，我比较喜欢的方式是尽量用Yum 安装，不用自己动手去解决软件包之间的依赖关系，“能Yum 就Yum ，不能Yum 想着法Yum 。” &ndash; 这是我遵循的真理；今天给大家整理的就是如何使用Yum 来安装Mongodb ，在本文中会给出在32位与64位系统的区别，以及Mongodb 的版本，本文适用于CentOS 6/7 的Linux发行版本，所以同样适用于红帽体系的OS，如 RedHat Enterprise Linux 6/7 、 Fedora 。"/>
+
+
+<meta property="og:title" content="HowTo Install MongoDB  on CentOS 6.x" />
+<meta property="og:description" content="1. Overiew  在CentOS Linux 中安装软件的方式有很多种，我会在后续的文章中整理给大家，我比较喜欢的方式是尽量用Yum 安装，不用自己动手去解决软件包之间的依赖关系，“能Yum 就Yum ，不能Yum 想着法Yum 。” &ndash; 这是我遵循的真理；今天给大家整理的就是如何使用Yum 来安装Mongodb ，在本文中会给出在32位与64位系统的区别，以及Mongodb 的版本，本文适用于CentOS 6/7 的Linux发行版本，所以同样适用于红帽体系的OS，如 RedHat Enterprise Linux 6/7 、 Fedora 。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://example.com/posts/howto-install-mongodb-on-centos-6-x/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2016-03-27T05:55:28+00:00" />
+<meta property="article:modified_time" content="2016-03-27T05:55:28+00:00" />
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type":"Person",
+      "@id": "https://example.com#author",
+      "name": "samzong.lu",
+      "image": {
+        "@type":"ImageObject",
+        "url": "https://www.gravatar.com/avatar/c02c426714361366ea7d583950aa8fb4?s=400&d=mp"
+      },
+      "description": "Samzong's Blog"
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://example.com#website",
+      "url": "https://example.com",
+      "name": "SAMZONG",
+      "description": "Samzong's Blog",
+      "publisher": {
+        "@id": "https://example.com#author"
+      },
+      "inLanguage": "zh-CN"
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://example.com/posts/howto-install-mongodb-on-centos-6-x/#webpage",
+      "url": "https://example.com/posts/howto-install-mongodb-on-centos-6-x/",
+      "name": "HowTo Install MongoDB  on CentOS 6.x",
+      "isPartOf": {
+        "@id": "https://example.com#website"
+      },
+      "about": {
+         "@id": "https://example.com#author"
+      },
+      "datePublished": "2016-03-27T05:55:28+00:00",
+      "dateModified": "2016-03-27T05:55:28+00:00",
+      "description": "1. Overiew  在CentOS Linux 中安装软件的方式有很多种，我会在后续的文章中整理给大家，我比较喜欢的方式是尽量用Yum 安装，不用自己动手去解决软件包之间的依赖关系，“能Yum 就Yum ，不能Yum 想着法Yum 。” \u0026ndash; 这是我遵循的真理；今天给大家整理的就是如何使用Yum 来安装Mongodb ，在本文中会给出在32位与64位系统的区别，以及Mongodb 的版本，本文适用于CentOS 6/7 的Linux发行版本，所以同样适用于红帽体系的OS，如 RedHat Enterprise Linux 6/7 、 Fedora 。",
+      "inLanguage": "zh-CN",
+      "potentialAction": [
+        {
+          "@type": "ReadAction",
+          "target": [
+            "https://example.com/posts/howto-install-mongodb-on-centos-6-x/"
+          ]
+        }
+      ]
+    },
+    {
+      "@type": "Article",
+      "isPartOf": {
+        "@id": "https://example.com/posts/howto-install-mongodb-on-centos-6-x/#webpage"
+      },
+      "mainEntityOfPage": {
+        "@id": "https://example.com/posts/howto-install-mongodb-on-centos-6-x/#webpage"
+      },
+      "headline": "HowTo Install MongoDB  on CentOS 6.x",
+      "datePublished": "2016-03-27T05:55:28+00:00",
+      "dateModified": "2016-03-27T05:55:28+00:00",
+      "publisher": {
+        "@id": "https://example.com#author"
+      },
+      "keywords": [
+        "MongoDB"
+      ],
+      "articleSection": [
+        "MongoDB"
+      ],
+      "inLanguage": "zh-CN",
+      "author": {
+        "@type": "Person",
+        "name":  null 
+      },
+      "potentialAction": [
+        {
+          "@type": "CommentAction",
+          "name": "Comment",
+          "target": [
+            "https://example.com/posts/howto-install-mongodb-on-centos-6-x/#comments"
+          ]
+        }
+      ]
+    }
+  ]
+}
+</script>
+
+
+
+  <link type="text/css"
+        rel="stylesheet"
+        href="/css/print.css"
+        media="print">
+
+  <link type="text/css"
+        rel="stylesheet"
+        href="/css/poole.css">
+
+  <link type="text/css"
+        rel="stylesheet"
+        href="/css/hyde.css">
+
+  
+
+
+  <link type="text/css" rel="stylesheet" href="/css/blog.css">
+
+  <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700&display=swap">
+
+  <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css"
+        integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk="
+        crossorigin="anonymous" />
+
+  <link rel="apple-touch-icon-precomposed"
+        sizes="144x144"
+        href="/apple-touch-icon-144-precomposed.png">
+
+  <link rel="shortcut icon" href="/favicon.png">
+
+  
+  </head>
+<body>
+  <aside class="sidebar">
+  <div class="container">
+    <div class="sidebar-about">
+      
+      <div class="author-image">
+        <a href="https://example.com">
+          <img src="https://www.gravatar.com/avatar/c02c426714361366ea7d583950aa8fb4?s=200&d=mp" class="img-circle img-headshot center" alt="Gravatar">
+        </a>
+      </div>
+      
+
+      <h1>SAMZONG</h1>
+
+      
+      <p class="lead">Samzong&#39;s Blog</p>
+      
+    </div>
+
+    <nav>
+      <ul class="sidebar-nav">
+        <li>
+          <a href="https://example.com">Home</a>
+        </li>
+        <li>
+          <a href="/posts/">Posts</a>
+        </li><li>
+          <a href="/about/">About</a>
+        </li>
+      </ul>
+    </nav>
+
+    <section class="social-icons">
+      
+      <a href="https://www.linkedin.com/in/samzong/" rel="me" title="Linkedin" target="_blank">
+        <i class="fab fa-linkedin" aria-hidden="true"></i>
+      </a>
+      
+      <a href="https://github.com/samzong" rel="me" title="GitHub" target="_blank">
+        <i class="fab fa-github" aria-hidden="true"></i>
+      </a>
+      
+      <a href="https://twitter.com/samzong_lu" rel="me" title="Twitter" target="_blank">
+        <i class="fab fa-twitter" aria-hidden="true"></i>
+      </a>
+      
+    </section>
+  </div>
+</aside>
+
+
+  <main class="content container">
+  <div class="post">
+  <h1 class="title">HowTo Install MongoDB  on CentOS 6.x</h1>
+  
+
+  <div class="post-date">
+    <time datetime="2016-03-27T05:55:28Z">Mar 27, 2016</time> <span class="readtime">&middot; 3 min read</span>
+  </div>
+
+  <div>
+  <h2 id="1-overiew">1. Overiew</h2>
+<p>       在CentOS Linux 中安装软件的方式有很多种，我会在后续的文章中整理给大家，我比较喜欢的方式是尽量用Yum 安装，不用自己动手去解决软件包之间的依赖关系，“能Yum 就Yum ，不能Yum 想着法Yum 。”  &ndash; 这是我遵循的真理；今天给大家整理的就是如何使用Yum 来安装Mongodb ，在本文中会给出在32位与64位系统的区别，以及Mongodb 的版本，本文适用于CentOS 6/7 的Linux发行版本，所以同样适用于红帽体系的OS，如 RedHat Enterprise Linux 6/7 、 Fedora 。</p>
+<h2 id="2-packages">2. Packages</h2>
+<p>       业内常用的Mongodb 的Yum 仓库有Mongodb-org 与 Mongodb-10gen ,这里提供的Mongodb-org 的repository 仓库，支持以下软件包列表：</p>
+<ul>
+<li>
+<p>2.1 mongodb-org</p>
+<p>       这个是源数据包，主要是用来组织自动安装下面的4个软件包.</p>
+</li>
+<li>
+<p>2.2 mongodb-org-sever</p>
+<p>        这个Mongodb Server端，包含了相关的配置和初始化脚本。</p>
+</li>
+<li>
+<p>2.3 mongodb-org-mongos</p>
+<p>        这个是Mongodb的守护进程。</p>
+</li>
+<li>
+<p>2.4 mongodb-org-shell</p>
+<p>       这个是mongodb 的shell环境。</p>
+</li>
+<li>
+<p>2.5 mongodb-org-tools</p>
+<p>        这个包里包含了下列mongodb 的工具：mongoimport bsondump, mongodump, mongoexport, mongofiles, mongooplog, mongoperf, mongorestore, mongostat, and mongotop 。</p>
+</li>
+</ul>
+<h2 id="3-添加相对应版本的mongodb-repo-file">3. 添加相对应版本的Mongodb repo file.</h2>
+<h3 id="31-mongodb-26--os-x64">3.1 Mongodb 2.6 + OS x64</h3>
+<pre tabindex="0"><code>[root@vm02 ~]# vim /etc/yum.repos.d/mongodb-org-2.6.repo
+
+[mongodb-org-2.6]
+name=MongoDB 2.6 Repository
+baseurl=http://downloads-distro.mongodb.org/repo/redhat/os/x86_64/
+gpgcheck=0
+enabled=1
+
+</code></pre><h3 id="32-mongodb-26--os-i686">3.2 Mongodb 2.6 + OS i686</h3>
+<pre tabindex="0"><code>[root@vm02 ~]# vim /etc/yum.repos.d/mongodb-org-2.6.repo
+
+[mongodb-org-2.6]
+name=MongoDB 2.6 Repository
+baseurl=http://downloads-distro.mongodb.org/repo/redhat/os/i686/
+gpgcheck=0
+enabled=1
+
+</code></pre><h3 id="33-mongodb-32---os-x64">3.3 Mongodb 3.2  + OS x64</h3>
+<pre tabindex="0"><code>[root@vm02 ~]# vim /etc/yum.repos.d/mongodb-org-3.2.repo
+
+[mongodb-org-3.2]
+name=MongoDB Repository
+baseurl=https://repo.mongodb.org/yum/redhat/$releasever/mongodb-org/3.2/x86_64/
+gpgcheck=0
+enabled=1
+
+</code></pre><h3 id="34-mongodb-32---os-i686">3.4 Mongodb 3.2  + OS i686</h3>
+<pre tabindex="0"><code>[root@vm02 ~]# vim /etc/yum.repos.d/mongodb-org-3.2.repo
+
+[mongodb-org-3.2]
+name=MongoDB Repository
+baseurl=https://repo.mongodb.org/yum/redhat/$releasever/mongodb-org/3.2/i686/
+gpgcheck=0
+enabled=1
+
+</code></pre><h2 id="4-install-mongodb">4. Install MongoDB</h2>
+<p>       安装最新版本的 Mongodb ，安装都方式一样，请注意安装相对应的源保证正确安装Mongodb，请使用如下命令：</p>
+<pre tabindex="0"><code>[root@vm02 ~]# yum clean all
+[root@vm02 ~]# yum makecache
+[root@vm02 ~]# yum install mongodb-org
+
+</code></pre><h2 id="5-run-mongodb">5. Run MongoDB</h2>
+<h3 id="51-配置selinux">5.1 配置SELinux</h3>
+<p>       SELinux 默认为开启状态，会导致我们的Mongodb 无法使用，解决方式有两种：</p>
+<ol>
+<li><a href="http://blog.ultraera.org/centos6-x-base-settings/">关闭SELinux</a></li>
+<li>添加Mongodb 通过SELinux 设定，指令如下：</li>
+</ol>
+<pre tabindex="0"><code>semanage port -a -t mongod_port_t -p tcp 27017
+
+</code></pre><blockquote>
+<p>Tips: 在CentOS 7 ，SELinux 会限定你去修改Mongodb的data目录及lib目录。</p>
+</blockquote>
+<h3 id="52-start-mongodb">5.2 Start MongoDB</h3>
+<pre tabindex="0"><code>[root@vm02 ~]# sudo service mongod start
+Starting mongod:                                           [  OK  ]
+[root@vm02 ~]#
+
+</code></pre><h3 id="53-检查mongodb日志文件验证服务正常启动-varlogmongodbmongodblog">5.3 检查MongoDB日志文件验证服务正常启动， /var/log/mongodb/mongodb.log</h3>
+<pre tabindex="0"><code>[root@vm02 ~]# cat /var/log/mongodb/mongod.log  # 看到如下内容表示mongodb启动成功了。
+2016-03-24T04:09:28.582+0800 I NETWORK  [initandlisten] waiting for connections on port 27017
+
+</code></pre><h3 id="54-设置mongodb-开机自启动">5.4 设置MongoDB 开机自启动</h3>
+<pre tabindex="0"><code>[root@vm02 ~]# chkconfig mongod on
+
+</code></pre><h3 id="55-设置mongodb-允许其他服务器访问">5.5 设置MongoDB 允许其他服务器访问</h3>
+<p>       默认情况下，mongodb 只监听 127.0.0.1 ，但是实际生产环境中可能需要其他服务器访问，所以这里添加监听其他网络端口，修改mongodb的配置文件：/etc/mongodb.conf</p>
+<pre tabindex="0"><code>[root@vm02 ~]# vim /etc/mongodb.conf
+
+# line 29 增加一行：
+    bindIp: 172.16.102.129
+
+# 注意不要把1270.0.1 去除，这会导致本地无法使用MongoDB .
+
+</code></pre><h2 id="6-use-mongodb">6. Use MongoDB</h2>
+<h3 id="61-检查mongodb-状态">6.1 检查mongodb 状态</h3>
+<pre tabindex="0"><code>[root@vm02 ~]# service mongod status
+mongod (pid 6502) is running...
+[root@vm02 ~]#
+
+</code></pre><h3 id="62-mongodb-自带检测工具">6.2 mongodb 自带检测工具</h3>
+<pre tabindex="0"><code>[root@vm02 ~]# mongostat
+insert query update delete getmore command % dirty % used flushes  vsize   res qr|qw ar|aw netIn netOut conn                      time
+    *0    *0     *0     *0       0     1|0     0.0    0.0       0 388.0M 68.0M   0|0   0|0   79b    18k    1 2016-03-24T04:25:09+08:00
+    *0    *0     *0     *0       0     1|0     0.0    0.0       0 388.0M 68.0M   0|0   0|0   79b    18k    1 2016-03-24T04:25:10+08:00
+    *0    *0     *0     *0       0     1|0     0.0    0.0       0 388.0M 68.0M   0|0   0|0   79b    18k    1 2016-03-24T04:25:11+08:00
+
+</code></pre><h3 id="63-进入mongodb-命令行模式">6.3 进入mongodb 命令行模式</h3>
+<pre tabindex="0"><code>[root@vm02 ~]# mongo
+MongoDB shell version: 3.2.4
+connecting to: test
+Server has startup warnings:
+2016-03-24T04:09:28.577+0800 I CONTROL  [initandlisten]
+2016-03-24T04:09:28.577+0800 I CONTROL  [initandlisten] ** WARNING: /sys/kernel/mm/transparent_hugepage/enabled is 'always'.
+2016-03-24T04:09:28.577+0800 I CONTROL  [initandlisten] **        We suggest setting it to 'never'
+2016-03-24T04:09:28.577+0800 I CONTROL  [initandlisten]
+2016-03-24T04:09:28.577+0800 I CONTROL  [initandlisten] ** WARNING: /sys/kernel/mm/transparent_hugepage/defrag is 'always'.
+2016-03-24T04:09:28.577+0800 I CONTROL  [initandlisten] **        We suggest setting it to 'never'
+2016-03-24T04:09:28.577+0800 I CONTROL  [initandlisten]
+2016-03-24T04:09:28.577+0800 I CONTROL  [initandlisten] ** WARNING: soft rlimits too low. rlimits set to 1024 processes, 64000 files. Number of processes should be at least 32000 : 0.5 times number of files.
+2016-03-24T04:09:28.577+0800 I CONTROL  [initandlisten]
+&gt;
+
+</code></pre><h2 id="7-uninstall-mongodb">7. Uninstall MongoDB</h2>
+<h3 id="71-关闭mongodb">7.1 关闭mongodb</h3>
+<pre tabindex="0"><code>[root@vm02 ~]# service mongod stop
+
+</code></pre><h3 id="72-卸载mongodb-软件包">7.2 卸载mongodb 软件包</h3>
+<pre tabindex="0"><code>[root@vm02 ~]# yum erase $(rpm -qa | grep mongodb-org)
+
+</code></pre><h3 id="73-删除mongodb文件数据库文件和日志文件">7.3 删除mongodb文件：数据库文件和日志文件</h3>
+<pre tabindex="0"><code>[root@vm02 ~]# rm -rf /var/log/mongodb
+[root@vm02 ~]# rm -rf /var/lib/mongo
+
+</code></pre><h2 id="8-faq">8. FAQ</h2>
+<p>       Q : Mongodb 占用99%CPU并且查询速度很慢?</p>
+<p>       A : 数据库需要首先建立索引，类似图书的目录文件，否则当你在数据库内查找数据的时候，就类似于在整本字典一页页翻查一个字如此。</p>
+
+  </div>
+
+  
+<div>
+  <ul class="tags">
+  <li>
+    <a href="https://example.com/tags/mongodb/" class="tag-link">MongoDB</a>
+  </li>
+  </ul>
+</div>
+
+
+
+  <div class="share-buttons">
+  <a class="twitter-share-button"
+     href="#"
+     title="Share on Twitter"
+     data-url="https://example.com/posts/howto-install-mongodb-on-centos-6-x/"
+     data-text="HowTo Install MongoDB  on CentOS 6.x"><i class="fab fa-twitter"></i></a>
+
+  <a class="linkedin-share-button"
+     href="#"
+     title="Share on LinkedIn"
+     data-url="https://example.com/posts/howto-install-mongodb-on-centos-6-x/"
+     data-text="HowTo Install MongoDB  on CentOS 6.x"><i class="fab fa-linkedin-in"></i></a>
+
+  <a class="facebook-share-button"
+     href="#"
+     title="Share on Facebook"
+     data-url="https://example.com/posts/howto-install-mongodb-on-centos-6-x/"
+     data-text="HowTo Install MongoDB  on CentOS 6.x"><i class="fab fa-facebook"></i></a>
+
+  <a class="telegram-share-button"
+     href="#"
+     title="Share on Telegram"
+     data-url="https://example.com/posts/howto-install-mongodb-on-centos-6-x/"
+     data-text="HowTo Install MongoDB  on CentOS 6.x"><i class="fab fa-telegram"></i></a>
+
+  <a class="pinterest-share-button"
+     href="#"
+     title="Share on Pinterest"
+     data-url="https://example.com/posts/howto-install-mongodb-on-centos-6-x/"
+     data-text="HowTo Install MongoDB  on CentOS 6.x"><i class="fab fa-pinterest"></i></a>
+</div>
+
+
+  
+</div>
+  </main>
+
+  <footer>
+  <div>
+    <p>
+      &copy; samzong.lu 2021
+
+      &middot; <a href="https://creativecommons.org/licenses/by-sa/4.0" target="_blank">CC BY-SA 4.0</a>
+
+      
+    </p>
+  </div>
+</footer>
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/js/all.min.js"
+          integrity="sha256-MAgcygDRahs+F/Nk5Vz387whB4kSK9NXlDN3w58LLq0="
+          crossorigin="anonymous"></script>
+
+
+  <script src="/js/jquery.min.js"></script>
+  <script src="/js/soho.js"></script>
+
+  <script src="/js/blog.js"></script>
+
+  
+</body>
+</html>

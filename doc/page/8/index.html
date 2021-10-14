@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh-CN" lang="zh-CN">
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="generator" content="Hugo 0.88.1" />
+
+  <title>SAMZONG</title>
+
+  <meta name="description" content="Samzong&#39;s Blog" />
+
+  
+
+<meta itemprop="name" content="SAMZONG">
+<meta itemprop="description" content="Samzong&#39;s Blog">
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="SAMZONG"/>
+<meta name="twitter:description" content="Samzong&#39;s Blog"/>
+
+
+<meta property="og:title" content="SAMZONG" />
+<meta property="og:description" content="Samzong&#39;s Blog" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://example.com/" />
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type":"Person",
+      "@id": "https://example.com#author",
+      "name": "samzong.lu",
+      "image": {
+        "@type":"ImageObject",
+        "url": "https://www.gravatar.com/avatar/c02c426714361366ea7d583950aa8fb4?s=400&d=mp"
+      },
+      "description": "Samzong's Blog"
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://example.com#website",
+      "url": "https://example.com",
+      "name": "SAMZONG",
+      "description": "Samzong's Blog",
+      "publisher": {
+        "@id": "https://example.com#author"
+      },
+      "inLanguage": "zh-CN"
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://example.com/#webpage",
+      "url": "https://example.com/",
+      "name": "SAMZONG",
+      "isPartOf": {
+        "@id": "https://example.com#website"
+      },
+      "about": {
+         "@id": "https://example.com#author"
+      },
+      "dateModified": "2021-06-02T00:54:38+00:00",
+      "description": "Samzong's Blog",
+      "inLanguage": "zh-CN",
+      "potentialAction": [
+        {
+          "@type": "ReadAction",
+          "target": [
+            "https://example.com/"
+          ]
+        }
+      ]
+    }
+  ]
+}
+</script>
+
+
+
+  <link type="text/css"
+        rel="stylesheet"
+        href="/css/print.css"
+        media="print">
+
+  <link type="text/css"
+        rel="stylesheet"
+        href="/css/poole.css">
+
+  <link type="text/css"
+        rel="stylesheet"
+        href="/css/hyde.css">
+
+  
+
+
+  <link type="text/css" rel="stylesheet" href="/css/blog.css">
+
+  <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700&display=swap">
+
+  <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css"
+        integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk="
+        crossorigin="anonymous" />
+
+  <link rel="apple-touch-icon-precomposed"
+        sizes="144x144"
+        href="/apple-touch-icon-144-precomposed.png">
+
+  <link rel="shortcut icon" href="/favicon.png">
+
+  
+  <link href="https://example.com/index.xml" rel="alternate" type="application/rss+xml" title="SAMZONG" />
+  </head>
+<body>
+  <aside class="sidebar">
+  <div class="container">
+    <div class="sidebar-about">
+      
+      <div class="author-image">
+        <a href="https://example.com">
+          <img src="https://www.gravatar.com/avatar/c02c426714361366ea7d583950aa8fb4?s=200&d=mp" class="img-circle img-headshot center" alt="Gravatar">
+        </a>
+      </div>
+      
+
+      <h1>SAMZONG</h1>
+
+      
+      <p class="lead">Samzong&#39;s Blog</p>
+      
+    </div>
+
+    <nav>
+      <ul class="sidebar-nav">
+        <li>
+          <a href="https://example.com">Home</a>
+        </li>
+        <li>
+          <a href="/posts/">Posts</a>
+        </li><li>
+          <a href="/about/">About</a>
+        </li>
+      </ul>
+    </nav>
+
+    <section class="social-icons">
+      
+      <a href="https://www.linkedin.com/in/samzong/" rel="me" title="Linkedin" target="_blank">
+        <i class="fab fa-linkedin" aria-hidden="true"></i>
+      </a>
+      
+      <a href="https://github.com/samzong" rel="me" title="GitHub" target="_blank">
+        <i class="fab fa-github" aria-hidden="true"></i>
+      </a>
+      
+      <a href="https://twitter.com/samzong_lu" rel="me" title="Twitter" target="_blank">
+        <i class="fab fa-twitter" aria-hidden="true"></i>
+      </a>
+      
+    </section>
+  </div>
+</aside>
+
+
+  <main class="content container">
+  <div class="posts">
+      <article class="post">
+        <h1 class="post-title">
+          <a href="https://example.com/posts/centos-6-1-%E4%BD%BF%E7%94%A8createrepo%E6%90%AD%E5%BB%BA%E6%9C%AC%E5%9C%B0%E6%BA%90/">CentOS 6(1) 使用createrepo搭建本地源</a>
+        </h1>
+
+        <div class="post-date">
+          <time datetime="2016-03-29T03:37:31Z">Mar 29, 2016</time> &middot; 1 min read
+        </div>
+
+        <div>
+          Tips: 本地搭建本地yum源采用的rpm全部来自CentOS-6.7-bin-DVD1&amp;DVD2
+ 1. 测试环境  MacBook Pro 15-inch i7 16GB VMware Fushion 8 Pro CentOS-6.
+        </div>
+
+        <div class="read-more-link">
+          <a href="https://example.com/posts/centos-6-1-%E4%BD%BF%E7%94%A8createrepo%E6%90%AD%E5%BB%BA%E6%9C%AC%E5%9C%B0%E6%BA%90/">Read More</a>
+        </div>
+      </article>
+      <article class="post">
+        <h1 class="post-title">
+          <a href="https://example.com/posts/howto-install-mongodb-on-centos-6-x/">HowTo Install MongoDB  on CentOS 6.x</a>
+        </h1>
+
+        <div class="post-date">
+          <time datetime="2016-03-27T05:55:28Z">Mar 27, 2016</time> &middot; 3 min read
+        </div>
+
+        <div>
+          1. Overiew  在CentOS Linux 中安装软件的方式有很多种，我会在后续的文章中整理给大家，我比较喜欢的方式是尽量用Yum 安装，不用自己动手去解决软件包之间的依赖关系，“能Yum 就Yum ，不能Yum 想着法Yum 。” &ndash; 这是我遵循的真理；今天给大家整理的就是如何使用Yum 来安装Mongodb ，在本文中会给出在32位与64位系统的区别，以及Mongodb 的版本，本文适用于CentOS 6/7 的Linux发行版本，所以同样适用于红帽体系的OS，如 RedHat Enterprise Linux 6/7 、 Fedora 。
+        </div>
+
+        <div class="read-more-link">
+          <a href="https://example.com/posts/howto-install-mongodb-on-centos-6-x/">Read More</a>
+        </div>
+      </article>
+      <article class="post">
+        <h1 class="post-title">
+          <a href="https://example.com/posts/%E5%9C%A8centos%E4%B8%AD%E9%85%8D%E7%BD%AE-sftp-%E7%8E%AF%E5%A2%83/">在CentOS中配置 SFTP 环境</a>
+        </h1>
+
+        <div class="post-date">
+          <time datetime="2016-03-24T14:55:03Z">Mar 24, 2016</time> &middot; 2 min read
+        </div>
+
+        <div>
+          做运维工作的，应该经常会碰到这样的问题，需要新上一个web项目，需要上传文件到服务器上，解决方法有很多种，常见的如sftp和ftp，今天讲如何使用sftp让系统用户用户上传项目的权限，并且实现chroot和无法使用ssh登录到系统。
+ SFTP是指SSH文件传输协议（SSH File Transfer protocol）或安全文件传输协议（Secure File Transfer Protocol），它提供了可信数据流下的文件访问、文件传输以及文件管理功能。当我们为SFTP配置chroot环境后，只有被许可的用户可以访问，并被限制到他们的家目录中，换言之：被许可的用户将处于牢笼环境中，在此环境中它们甚至不能切换它们的目录。
+        </div>
+
+        <div class="read-more-link">
+          <a href="https://example.com/posts/%E5%9C%A8centos%E4%B8%AD%E9%85%8D%E7%BD%AE-sftp-%E7%8E%AF%E5%A2%83/">Read More</a>
+        </div>
+      </article>
+      <article class="post">
+        <h1 class="post-title">
+          <a href="https://example.com/posts/mysql-6-%E5%88%A9%E7%94%A8linux%E8%AE%A1%E5%88%92%E4%BB%BB%E5%8A%A1%E5%AE%9A%E6%97%B6%E5%90%8C%E6%AD%A5mysql/">MySQL(6) 利用Linux计划任务定时同步MySQL</a>
+        </h1>
+
+        <div class="post-date">
+          <time datetime="2016-03-24T08:03:32Z">Mar 24, 2016</time> &middot; 2 min read
+        </div>
+
+        <div>
+          说下实际项目场景，公司一个应用已部署主从数据库，业务也正式上线；现在客户公司领导希望可以看到每天的业务数据报表，本设定直接到从库拿数据，然后进行数据处理，生成报表，但是Java同事提出需求新增用户和权限表，这样一来，如果直接使用生产库的表会导致后台系统管理人员与领导的账户和权限混淆，经过讨论决定，按照生产库的表结构新增特殊用户表和权限表；这样操作实际是可以在从库上新增表单，且不影响主从库之间的数据同步，但是从安全性的考虑，新增表单设计需要给用户Insert权限，为了保证从库只有利用主库同步写入数据，则只能给其他用户select权限。
+ 最终决定，因为报表系统的使用率低，直接在报表系统的服务器安装本地mysql数据库，通过计划任务定时到从库上同步数据。 1. 测试环境  MacBook Pro 15‘ i7 16GB VMware Fushion 8 Pro MySQL Version 5.
+        </div>
+
+        <div class="read-more-link">
+          <a href="https://example.com/posts/mysql-6-%E5%88%A9%E7%94%A8linux%E8%AE%A1%E5%88%92%E4%BB%BB%E5%8A%A1%E5%AE%9A%E6%97%B6%E5%90%8C%E6%AD%A5mysql/">Read More</a>
+        </div>
+      </article>
+      <article class="post">
+        <h1 class="post-title">
+          <a href="https://example.com/posts/linux-%E7%AC%94%E8%AF%95%E8%AF%95%E9%A2%98/">Linux 笔试试题</a>
+        </h1>
+
+        <div class="post-date">
+          <time datetime="2016-03-23T12:05:16Z">Mar 23, 2016</time> &middot; 4 min read
+        </div>
+
+        <div>
+          一. 选择题 （1题1分） 1. 当登录Linux时，一个具有唯一进程ID号的shell将被调用，这个ID是什么( ) A. NID　B. PID　C.
+        </div>
+
+        <div class="read-more-link">
+          <a href="https://example.com/posts/linux-%E7%AC%94%E8%AF%95%E8%AF%95%E9%A2%98/">Read More</a>
+        </div>
+      </article>
+      <article class="post">
+        <h1 class="post-title">
+          <a href="https://example.com/posts/mysql-2-%E5%BC%80%E5%90%AF%E6%85%A2%E6%97%A5%E5%BF%97%E4%BC%98%E5%8C%96/">MySQL(2) 开启慢日志优化</a>
+        </h1>
+
+        <div class="post-date">
+          <time datetime="2016-03-22T15:16:26Z">Mar 22, 2016</time> &middot; 2 min read
+        </div>
+
+        <div>
+          工欲善其事，必先利其器 &ndash; mysql开启慢日志优化 慢查询日志 顾名思义就是记录查询比较慢得日志。
+测试环境  mysql-server 5.6 CentOS 6.
+        </div>
+
+        <div class="read-more-link">
+          <a href="https://example.com/posts/mysql-2-%E5%BC%80%E5%90%AF%E6%85%A2%E6%97%A5%E5%BF%97%E4%BC%98%E5%8C%96/">Read More</a>
+        </div>
+      </article>
+      <article class="post">
+        <h1 class="post-title">
+          <a href="https://example.com/posts/centos-6-2-%E5%88%9D%E5%A7%8B%E5%AE%89%E8%A3%85%E5%9F%BA%E6%9C%AC%E4%BC%98%E5%8C%96%E6%93%8D%E4%BD%9C/">CentOS 6(2) 初始安装基本优化操作</a>
+        </h1>
+
+        <div class="post-date">
+          <time datetime="2016-03-19T05:54:23Z">Mar 19, 2016</time> &middot; 5 min read
+        </div>
+
+        <div>
+          CentOS 6.x 初始安装基本优化操作  本文件是采用的模板是centos 6.x，相较于centos 5.x与centos 7.x系列有些区别，不能一概而论。
+1. 测试环境  MacBook Pro 15-inch i7 8GB VMware Fushion 8 Pro CentOS-6.
+        </div>
+
+        <div class="read-more-link">
+          <a href="https://example.com/posts/centos-6-2-%E5%88%9D%E5%A7%8B%E5%AE%89%E8%A3%85%E5%9F%BA%E6%9C%AC%E4%BC%98%E5%8C%96%E6%93%8D%E4%BD%9C/">Read More</a>
+        </div>
+      </article>
+      <article class="post">
+        <h1 class="post-title">
+          <a href="https://example.com/posts/%E7%90%86%E8%A7%A3-linux-%E7%9A%84%E7%A1%AC%E9%93%BE%E6%8E%A5%E4%B8%8E%E8%BD%AF%E9%93%BE%E6%8E%A5/">理解 Linux 的硬链接与软链接</a>
+        </h1>
+
+        <div class="post-date">
+          <time datetime="2016-03-18T14:52:13Z">Mar 18, 2016</time> &middot; 7 min read
+        </div>
+
+        <div>
+          硬链接与软链接是 Linux 文件系统中的一个重要概念，其涉及文件系统中的索引节点 (index node 又称 inode)，而索引节点对象是 Linux 虚拟文件系统 (VFS) 的四个基本概念之一。通过剖析硬链接与软链接的联系与区别，我们可更好的了解 Linux 中 VFS 这一通用文件模型。并让 Linux 普通用户和系统管理员正确使用硬链接与软链接，帮助文件系统开发者获取 inode 的相关知识。
+        </div>
+
+        <div class="read-more-link">
+          <a href="https://example.com/posts/%E7%90%86%E8%A7%A3-linux-%E7%9A%84%E7%A1%AC%E9%93%BE%E6%8E%A5%E4%B8%8E%E8%BD%AF%E9%93%BE%E6%8E%A5/">Read More</a>
+        </div>
+      </article>
+      <article class="post">
+        <h1 class="post-title">
+          <a href="https://example.com/posts/%E7%99%BE%E5%BA%A6%E7%BD%91%E7%9B%98python%E5%AE%A2%E6%88%B7%E7%AB%AF/">bypy-百度网盘Python客户端</a>
+        </h1>
+
+        <div class="post-date">
+          <time datetime="0001-01-01T00:00:00Z">Jan 1, 0001</time> &middot; 4 min read
+        </div>
+
+        <div>
+          最近在GitHub上发现一个有趣的项目，百度网盘Python客户端(bypy)，主要使用在Linux命令行下，这样很大的一个好处是可以利用到百度云盘2TB的存储空间(如果你是会员有6TB)；你可以在任何服务器上，利用自动化脚本实现一些数据文件、日志文件等等备份操作，同时也提供丰富的文件列表、上传、下载、对比、同步以及批量操作等。
+ 虽然百度网盘Python客户端提供很大的便利，但是我强烈不建议将一些重要数据放到百度云盘
+ 实验目的 数据库备份文件自动上传到百度网盘
+环境依赖  Python 2.7 or 3.
+        </div>
+
+        <div class="read-more-link">
+          <a href="https://example.com/posts/%E7%99%BE%E5%BA%A6%E7%BD%91%E7%9B%98python%E5%AE%A2%E6%88%B7%E7%AB%AF/">Read More</a>
+        </div>
+      </article>
+      <article class="post">
+        <h1 class="post-title">
+          <a href="https://example.com/posts/centos7_configure_bind_dns_server/">CentOS 7 Configure DNS Server</a>
+        </h1>
+
+        <div class="post-date">
+          <time datetime="0001-01-01T00:00:00Z">Jan 1, 0001</time> &middot; 2 min read
+        </div>
+
+        <div>
+          今天介绍下如何在CentOS 7下部署DNS Server，测试环境中服务端搭建在了CentOS 7，客户端分别在Windows和Linux实现测试。
+因为目的是让自建DNS服务器解析公司内部的自定义域名，所以当客户端需要访问外网域名时，DNS服务器会将解析请求转发给ISP的DNS服务器，并会将解析结果缓存，并且只对内网主机的解析请求进行转发，而不会对公网的主机解析请求进行转发。
+DNS服务介绍 DNS服务由BIND提供，启动后服务名为named，管理工具为rndc，debug工具为dig，主要配置文件在/etc/named.conf。
+安装 推荐选择bind-chroot来安装，提高服务的安全性：
+1  ➜ ~ yum install -y bind-chroot   安装完成之后，启动named-chroot服务，并设置为开机自启动：
+        </div>
+
+        <div class="read-more-link">
+          <a href="https://example.com/posts/centos7_configure_bind_dns_server/">Read More</a>
+        </div>
+      </article>
+  </div>
+
+  
+    <ul class="pagination pagination-default">
+      <li class="page-item">
+        <a href="/" aria-label="First" class="page-link" role="button"><span aria-hidden="true">&laquo;&laquo;</span></a>
+      </li>
+      <li class="page-item">
+        <a href="/page/7/" aria-label="Previous" class="page-link" role="button"><span aria-hidden="true">&laquo;</span></a>
+      </li>
+      <li class="page-item">
+        <a href="/page/6/" aria-label="Page 6" class="page-link" role="button">6</a>
+      </li>
+      <li class="page-item">
+        <a href="/page/7/" aria-label="Page 7" class="page-link" role="button">7</a>
+      </li>
+      <li class="page-item active">
+        <a href="#" aria-current="page" aria-label="Page 8" class="page-link" role="button">8</a>
+      </li>
+      <li class="page-item">
+        <a href="/page/9/" aria-label="Page 9" class="page-link" role="button">9</a>
+      </li>
+      <li class="page-item">
+        <a href="/page/10/" aria-label="Page 10" class="page-link" role="button">10</a>
+      </li>
+      <li class="page-item">
+        <a href="/page/9/" aria-label="Next" class="page-link" role="button"><span aria-hidden="true">&raquo;</span></a>
+      </li>
+      <li class="page-item">
+        <a href="/page/10/" aria-label="Last" class="page-link" role="button"><span aria-hidden="true">&raquo;&raquo;</span></a>
+      </li>
+    </ul>
+  </main>
+
+  <footer>
+  <div>
+    <p>
+      &copy; samzong.lu 2021
+
+      &middot; <a href="https://creativecommons.org/licenses/by-sa/4.0" target="_blank">CC BY-SA 4.0</a>
+
+      
+    </p>
+  </div>
+</footer>
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/js/all.min.js"
+          integrity="sha256-MAgcygDRahs+F/Nk5Vz387whB4kSK9NXlDN3w58LLq0="
+          crossorigin="anonymous"></script>
+
+
+  <script src="/js/jquery.min.js"></script>
+  <script src="/js/soho.js"></script>
+
+  <script src="/js/blog.js"></script>
+
+  
+</body>
+</html>

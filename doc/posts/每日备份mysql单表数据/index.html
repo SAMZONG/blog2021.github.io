@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh-CN" lang="zh-CN">
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="generator" content="Hugo 0.88.1" />
+
+  <title>每日备份MySQL单表数据 &middot; SAMZONG</title>
+
+  <meta name="description" content="" />
+
+  
+
+<meta itemprop="name" content="每日备份MySQL单表数据">
+<meta itemprop="description" content="最近愈近年底，客户业务涉及对账操作，所以同事提出需求需要单独备份某张表数据，并且每日备份；思考之后解决办法如下：
+ mysqldump导出单张表的表结构及数据 新增数据库，专做临时每日数据备份库 导入该表数据到新增数据库内 重命名导入的表名（预防计划任务下次导入时数据覆盖） 编写脚本，添加Linux计划任务  1. mysqldump导出但张表的表结构及数据 mysqldump -h dbServer -PdbServerPort -u db_user -p -d dbName tbName &gt; tbName."><meta itemprop="datePublished" content="2017-01-15T08:12:55+00:00" />
+<meta itemprop="dateModified" content="2017-01-15T08:12:55+00:00" />
+<meta itemprop="wordCount" content="175">
+<meta itemprop="keywords" content="MySQL," />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="每日备份MySQL单表数据"/>
+<meta name="twitter:description" content="最近愈近年底，客户业务涉及对账操作，所以同事提出需求需要单独备份某张表数据，并且每日备份；思考之后解决办法如下：
+ mysqldump导出单张表的表结构及数据 新增数据库，专做临时每日数据备份库 导入该表数据到新增数据库内 重命名导入的表名（预防计划任务下次导入时数据覆盖） 编写脚本，添加Linux计划任务  1. mysqldump导出但张表的表结构及数据 mysqldump -h dbServer -PdbServerPort -u db_user -p -d dbName tbName &gt; tbName."/>
+
+
+<meta property="og:title" content="每日备份MySQL单表数据" />
+<meta property="og:description" content="最近愈近年底，客户业务涉及对账操作，所以同事提出需求需要单独备份某张表数据，并且每日备份；思考之后解决办法如下：
+ mysqldump导出单张表的表结构及数据 新增数据库，专做临时每日数据备份库 导入该表数据到新增数据库内 重命名导入的表名（预防计划任务下次导入时数据覆盖） 编写脚本，添加Linux计划任务  1. mysqldump导出但张表的表结构及数据 mysqldump -h dbServer -PdbServerPort -u db_user -p -d dbName tbName &gt; tbName." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://example.com/posts/%E6%AF%8F%E6%97%A5%E5%A4%87%E4%BB%BDmysql%E5%8D%95%E8%A1%A8%E6%95%B0%E6%8D%AE/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2017-01-15T08:12:55+00:00" />
+<meta property="article:modified_time" content="2017-01-15T08:12:55+00:00" />
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type":"Person",
+      "@id": "https://example.com#author",
+      "name": "samzong.lu",
+      "image": {
+        "@type":"ImageObject",
+        "url": "https://www.gravatar.com/avatar/c02c426714361366ea7d583950aa8fb4?s=400&d=mp"
+      },
+      "description": "Samzong's Blog"
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://example.com#website",
+      "url": "https://example.com",
+      "name": "SAMZONG",
+      "description": "Samzong's Blog",
+      "publisher": {
+        "@id": "https://example.com#author"
+      },
+      "inLanguage": "zh-CN"
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://example.com/posts/%E6%AF%8F%E6%97%A5%E5%A4%87%E4%BB%BDmysql%E5%8D%95%E8%A1%A8%E6%95%B0%E6%8D%AE/#webpage",
+      "url": "https://example.com/posts/%E6%AF%8F%E6%97%A5%E5%A4%87%E4%BB%BDmysql%E5%8D%95%E8%A1%A8%E6%95%B0%E6%8D%AE/",
+      "name": "每日备份MySQL单表数据",
+      "isPartOf": {
+        "@id": "https://example.com#website"
+      },
+      "about": {
+         "@id": "https://example.com#author"
+      },
+      "datePublished": "2017-01-15T08:12:55+00:00",
+      "dateModified": "2017-01-15T08:12:55+00:00",
+      "description": "最近愈近年底，客户业务涉及对账操作，所以同事提出需求需要单独备份某张表数据，并且每日备份；思考之后解决办法如下：\n mysqldump导出单张表的表结构及数据 新增数据库，专做临时每日数据备份库 导入该表数据到新增数据库内 重命名导入的表名（预防计划任务下次导入时数据覆盖） 编写脚本，添加Linux计划任务  1. mysqldump导出但张表的表结构及数据 mysqldump -h dbServer -PdbServerPort -u db_user -p -d dbName tbName \u0026gt; tbName.",
+      "inLanguage": "zh-CN",
+      "potentialAction": [
+        {
+          "@type": "ReadAction",
+          "target": [
+            "https://example.com/posts/%E6%AF%8F%E6%97%A5%E5%A4%87%E4%BB%BDmysql%E5%8D%95%E8%A1%A8%E6%95%B0%E6%8D%AE/"
+          ]
+        }
+      ]
+    },
+    {
+      "@type": "Article",
+      "isPartOf": {
+        "@id": "https://example.com/posts/%E6%AF%8F%E6%97%A5%E5%A4%87%E4%BB%BDmysql%E5%8D%95%E8%A1%A8%E6%95%B0%E6%8D%AE/#webpage"
+      },
+      "mainEntityOfPage": {
+        "@id": "https://example.com/posts/%E6%AF%8F%E6%97%A5%E5%A4%87%E4%BB%BDmysql%E5%8D%95%E8%A1%A8%E6%95%B0%E6%8D%AE/#webpage"
+      },
+      "headline": "每日备份MySQL单表数据",
+      "datePublished": "2017-01-15T08:12:55+00:00",
+      "dateModified": "2017-01-15T08:12:55+00:00",
+      "publisher": {
+        "@id": "https://example.com#author"
+      },
+      "keywords": [
+        "MySQL"
+      ],
+      "articleSection": [
+        "MySQL"
+      ],
+      "inLanguage": "zh-CN",
+      "author": {
+        "@type": "Person",
+        "name":  null 
+      },
+      "potentialAction": [
+        {
+          "@type": "CommentAction",
+          "name": "Comment",
+          "target": [
+            "https://example.com/posts/%E6%AF%8F%E6%97%A5%E5%A4%87%E4%BB%BDmysql%E5%8D%95%E8%A1%A8%E6%95%B0%E6%8D%AE/#comments"
+          ]
+        }
+      ]
+    }
+  ]
+}
+</script>
+
+
+
+  <link type="text/css"
+        rel="stylesheet"
+        href="/css/print.css"
+        media="print">
+
+  <link type="text/css"
+        rel="stylesheet"
+        href="/css/poole.css">
+
+  <link type="text/css"
+        rel="stylesheet"
+        href="/css/hyde.css">
+
+  
+
+
+  <link type="text/css" rel="stylesheet" href="/css/blog.css">
+
+  <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700&display=swap">
+
+  <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css"
+        integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk="
+        crossorigin="anonymous" />
+
+  <link rel="apple-touch-icon-precomposed"
+        sizes="144x144"
+        href="/apple-touch-icon-144-precomposed.png">
+
+  <link rel="shortcut icon" href="/favicon.png">
+
+  
+  </head>
+<body>
+  <aside class="sidebar">
+  <div class="container">
+    <div class="sidebar-about">
+      
+      <div class="author-image">
+        <a href="https://example.com">
+          <img src="https://www.gravatar.com/avatar/c02c426714361366ea7d583950aa8fb4?s=200&d=mp" class="img-circle img-headshot center" alt="Gravatar">
+        </a>
+      </div>
+      
+
+      <h1>SAMZONG</h1>
+
+      
+      <p class="lead">Samzong&#39;s Blog</p>
+      
+    </div>
+
+    <nav>
+      <ul class="sidebar-nav">
+        <li>
+          <a href="https://example.com">Home</a>
+        </li>
+        <li>
+          <a href="/posts/">Posts</a>
+        </li><li>
+          <a href="/about/">About</a>
+        </li>
+      </ul>
+    </nav>
+
+    <section class="social-icons">
+      
+      <a href="https://www.linkedin.com/in/samzong/" rel="me" title="Linkedin" target="_blank">
+        <i class="fab fa-linkedin" aria-hidden="true"></i>
+      </a>
+      
+      <a href="https://github.com/samzong" rel="me" title="GitHub" target="_blank">
+        <i class="fab fa-github" aria-hidden="true"></i>
+      </a>
+      
+      <a href="https://twitter.com/samzong_lu" rel="me" title="Twitter" target="_blank">
+        <i class="fab fa-twitter" aria-hidden="true"></i>
+      </a>
+      
+    </section>
+  </div>
+</aside>
+
+
+  <main class="content container">
+  <div class="post">
+  <h1 class="title">每日备份MySQL单表数据</h1>
+  
+
+  <div class="post-date">
+    <time datetime="2017-01-15T08:12:55Z">Jan 15, 2017</time> <span class="readtime">&middot; 1 min read</span>
+  </div>
+
+  <div>
+  <p>最近愈近年底，客户业务涉及对账操作，所以同事提出需求需要单独备份某张表数据，并且每日备份；思考之后解决办法如下：</p>
+<ol>
+<li>mysqldump导出单张表的表结构及数据</li>
+<li>新增数据库，专做临时每日数据备份库</li>
+<li>导入该表数据到新增数据库内</li>
+<li>重命名导入的表名（预防计划任务下次导入时数据覆盖）</li>
+<li>编写脚本，添加Linux计划任务</li>
+</ol>
+<h4 id="1-mysqldump导出但张表的表结构及数据">1. mysqldump导出但张表的表结构及数据</h4>
+<pre tabindex="0"><code>mysqldump -h dbServer -PdbServerPort -u db_user -p -d dbName tbName &gt; tbName.sql
+</code></pre><h4 id="2-新增数据库专做临时每日数据备份库">2. 新增数据库，专做临时每日数据备份库</h4>
+<pre tabindex="0"><code># loginTo your DBserver
+mysql&gt; create database bakdbName character set utf8;
+</code></pre><h4 id="3-导入该表数据到新增数据库内">3. 导入该表数据到新增数据库内</h4>
+<pre tabindex="0"><code>mysql -h dbServer -P dbServerPort -u db_user -p bakdbName &lt; tbName.sql
+</code></pre><h4 id="4--重命名导入的表名">4 . 重命名导入的表名</h4>
+<pre tabindex="0"><code>mysql -u db_user -p -e &quot;rename table bakdbName.tbName to bakdbName.tbName_$DATE&quot;
+</code></pre><h4 id="5-编写脚本">5. 编写脚本</h4>
+<pre tabindex="0"><code>[root@testServer01 ~]# cat /usr/local/bin/bakTable.sh
+#!/bin/bash
+
+#Create by SAMZONG
+
+DATE=`date +%Y%m%d`
+TMPDIR=/tmp/baksql
+
+# modify your DB configure
+DBSERVER1=localhost
+DBSERVER1_PORT=3306
+DBSERVER1_USER=root
+DBSERVER1_PASSWORD=password
+MASTER_DBNAME=zabbix
+MASTER_TBNAME=users
+
+DBSERVER2=localhost
+DBSERVER2_PORT=3306
+DBSERVER2_USER=root
+DBSERVER2_PASSWORD=password
+BAKDBNAME=z3
+
+# creat tmp folder
+if [ ! -d $TMPDIR ]; then
+	mkdir $TMPDIR
+fi
+
+# dump tbName
+mysqldump -h $DBSERVER1 -P $DBSERVER1_PORT -u $DBSERVER1_USER -p&quot;$DBSERVER1_PASSWORD&quot; -d $MASTER_DBNAME  $MASTER_TBNAME &gt; $TMPDIR/$MASTER_TBNAME.sql
+
+
+# insert tbNAME to bakdbName
+if [ $? -eq 0  ]; then
+	mysql -h $DBSERVER2 -P $DBSERVER2_PORT -u $DBSERVER2_USER -p&quot;$DBSERVER2_PASSWORD&quot; $BAKDBNAME &lt; $TMPDIR/$MASTER_TBNAME.sql
+
+	if [ $? -eq 0 ]; then
+		# rename tbName
+		mysql -h $DBSERVER2 -P $DBSERVER2_PORT -u $DBSERVER2_USER -p&quot;$DBSERVER2_PASSWORD&quot; -e &quot;rename table &quot;$BAKDBNAME&quot;.&quot;$MASTER_TBNAME&quot; to &quot;$BAKDBNAME&quot;.&quot;$MASTER_TBNAME&quot;_&quot;$DATE&quot;;&quot;
+	fi
+
+fi
+</code></pre><h4 id="6-添加到linux计划任务">6. 添加到Linux计划任务</h4>
+<pre tabindex="0"><code>00 00 * * * /usr/local/bin/bakTable.sh
+</code></pre>
+  </div>
+
+  
+<div>
+  <ul class="tags">
+  <li>
+    <a href="https://example.com/tags/mysql/" class="tag-link">MySQL</a>
+  </li>
+  </ul>
+</div>
+
+
+
+  <div class="share-buttons">
+  <a class="twitter-share-button"
+     href="#"
+     title="Share on Twitter"
+     data-url="https://example.com/posts/%E6%AF%8F%E6%97%A5%E5%A4%87%E4%BB%BDmysql%E5%8D%95%E8%A1%A8%E6%95%B0%E6%8D%AE/"
+     data-text="每日备份MySQL单表数据"><i class="fab fa-twitter"></i></a>
+
+  <a class="linkedin-share-button"
+     href="#"
+     title="Share on LinkedIn"
+     data-url="https://example.com/posts/%E6%AF%8F%E6%97%A5%E5%A4%87%E4%BB%BDmysql%E5%8D%95%E8%A1%A8%E6%95%B0%E6%8D%AE/"
+     data-text="每日备份MySQL单表数据"><i class="fab fa-linkedin-in"></i></a>
+
+  <a class="facebook-share-button"
+     href="#"
+     title="Share on Facebook"
+     data-url="https://example.com/posts/%E6%AF%8F%E6%97%A5%E5%A4%87%E4%BB%BDmysql%E5%8D%95%E8%A1%A8%E6%95%B0%E6%8D%AE/"
+     data-text="每日备份MySQL单表数据"><i class="fab fa-facebook"></i></a>
+
+  <a class="telegram-share-button"
+     href="#"
+     title="Share on Telegram"
+     data-url="https://example.com/posts/%E6%AF%8F%E6%97%A5%E5%A4%87%E4%BB%BDmysql%E5%8D%95%E8%A1%A8%E6%95%B0%E6%8D%AE/"
+     data-text="每日备份MySQL单表数据"><i class="fab fa-telegram"></i></a>
+
+  <a class="pinterest-share-button"
+     href="#"
+     title="Share on Pinterest"
+     data-url="https://example.com/posts/%E6%AF%8F%E6%97%A5%E5%A4%87%E4%BB%BDmysql%E5%8D%95%E8%A1%A8%E6%95%B0%E6%8D%AE/"
+     data-text="每日备份MySQL单表数据"><i class="fab fa-pinterest"></i></a>
+</div>
+
+
+  
+</div>
+  </main>
+
+  <footer>
+  <div>
+    <p>
+      &copy; samzong.lu 2021
+
+      &middot; <a href="https://creativecommons.org/licenses/by-sa/4.0" target="_blank">CC BY-SA 4.0</a>
+
+      
+    </p>
+  </div>
+</footer>
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/js/all.min.js"
+          integrity="sha256-MAgcygDRahs+F/Nk5Vz387whB4kSK9NXlDN3w58LLq0="
+          crossorigin="anonymous"></script>
+
+
+  <script src="/js/jquery.min.js"></script>
+  <script src="/js/soho.js"></script>
+
+  <script src="/js/blog.js"></script>
+
+  
+</body>
+</html>

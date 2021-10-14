@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh-CN" lang="zh-CN">
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="generator" content="Hugo 0.88.1" />
+
+  <title>Denyhosts增加服务器SSH黑名单机制 &middot; SAMZONG</title>
+
+  <meta name="description" content="" />
+
+  
+
+<meta itemprop="name" content="Denyhosts增加服务器SSH黑名单机制">
+<meta itemprop="description" content="查看当前服务器失败登录的统计： cat /var/log/secure | awk &#39;/Failed/{print $(NF-3)}&#39; | sort | uniq -c | sort -n | awk &#39;{print $2&quot; = &quot;$1}&#39; Install denyhosts # 需要预先安装epel源 sudo yum install -y epel-release sudo yum install -y denyhosts 配置文件解析 默认配置文件/etc/denyhosts。"><meta itemprop="datePublished" content="2016-11-23T16:24:40+00:00" />
+<meta itemprop="dateModified" content="2016-11-23T16:24:40+00:00" />
+<meta itemprop="wordCount" content="188">
+<meta itemprop="keywords" content="DenyHosts," />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Denyhosts增加服务器SSH黑名单机制"/>
+<meta name="twitter:description" content="查看当前服务器失败登录的统计： cat /var/log/secure | awk &#39;/Failed/{print $(NF-3)}&#39; | sort | uniq -c | sort -n | awk &#39;{print $2&quot; = &quot;$1}&#39; Install denyhosts # 需要预先安装epel源 sudo yum install -y epel-release sudo yum install -y denyhosts 配置文件解析 默认配置文件/etc/denyhosts。"/>
+
+
+<meta property="og:title" content="Denyhosts增加服务器SSH黑名单机制" />
+<meta property="og:description" content="查看当前服务器失败登录的统计： cat /var/log/secure | awk &#39;/Failed/{print $(NF-3)}&#39; | sort | uniq -c | sort -n | awk &#39;{print $2&quot; = &quot;$1}&#39; Install denyhosts # 需要预先安装epel源 sudo yum install -y epel-release sudo yum install -y denyhosts 配置文件解析 默认配置文件/etc/denyhosts。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://example.com/posts/denyhosts%E5%A2%9E%E5%8A%A0%E6%9C%8D%E5%8A%A1%E5%99%A8ssh%E9%BB%91%E5%90%8D%E5%8D%95%E6%9C%BA%E5%88%B6/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2016-11-23T16:24:40+00:00" />
+<meta property="article:modified_time" content="2016-11-23T16:24:40+00:00" />
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type":"Person",
+      "@id": "https://example.com#author",
+      "name": "samzong.lu",
+      "image": {
+        "@type":"ImageObject",
+        "url": "https://www.gravatar.com/avatar/c02c426714361366ea7d583950aa8fb4?s=400&d=mp"
+      },
+      "description": "Samzong's Blog"
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://example.com#website",
+      "url": "https://example.com",
+      "name": "SAMZONG",
+      "description": "Samzong's Blog",
+      "publisher": {
+        "@id": "https://example.com#author"
+      },
+      "inLanguage": "zh-CN"
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://example.com/posts/denyhosts%E5%A2%9E%E5%8A%A0%E6%9C%8D%E5%8A%A1%E5%99%A8ssh%E9%BB%91%E5%90%8D%E5%8D%95%E6%9C%BA%E5%88%B6/#webpage",
+      "url": "https://example.com/posts/denyhosts%E5%A2%9E%E5%8A%A0%E6%9C%8D%E5%8A%A1%E5%99%A8ssh%E9%BB%91%E5%90%8D%E5%8D%95%E6%9C%BA%E5%88%B6/",
+      "name": "Denyhosts增加服务器SSH黑名单机制",
+      "isPartOf": {
+        "@id": "https://example.com#website"
+      },
+      "about": {
+         "@id": "https://example.com#author"
+      },
+      "datePublished": "2016-11-23T16:24:40+00:00",
+      "dateModified": "2016-11-23T16:24:40+00:00",
+      "description": "查看当前服务器失败登录的统计： cat /var/log/secure | awk '/Failed/{print $(NF-3)}' | sort | uniq -c | sort -n | awk '{print $2\u0026quot; = \u0026quot;$1}' Install denyhosts # 需要预先安装epel源 sudo yum install -y epel-release sudo yum install -y denyhosts 配置文件解析 默认配置文件/etc/denyhosts。",
+      "inLanguage": "zh-CN",
+      "potentialAction": [
+        {
+          "@type": "ReadAction",
+          "target": [
+            "https://example.com/posts/denyhosts%E5%A2%9E%E5%8A%A0%E6%9C%8D%E5%8A%A1%E5%99%A8ssh%E9%BB%91%E5%90%8D%E5%8D%95%E6%9C%BA%E5%88%B6/"
+          ]
+        }
+      ]
+    },
+    {
+      "@type": "Article",
+      "isPartOf": {
+        "@id": "https://example.com/posts/denyhosts%E5%A2%9E%E5%8A%A0%E6%9C%8D%E5%8A%A1%E5%99%A8ssh%E9%BB%91%E5%90%8D%E5%8D%95%E6%9C%BA%E5%88%B6/#webpage"
+      },
+      "mainEntityOfPage": {
+        "@id": "https://example.com/posts/denyhosts%E5%A2%9E%E5%8A%A0%E6%9C%8D%E5%8A%A1%E5%99%A8ssh%E9%BB%91%E5%90%8D%E5%8D%95%E6%9C%BA%E5%88%B6/#webpage"
+      },
+      "headline": "Denyhosts增加服务器SSH黑名单机制",
+      "datePublished": "2016-11-23T16:24:40+00:00",
+      "dateModified": "2016-11-23T16:24:40+00:00",
+      "publisher": {
+        "@id": "https://example.com#author"
+      },
+      "keywords": [
+        "DenyHosts"
+      ],
+      "articleSection": [
+        "CentOS"
+      ],
+      "inLanguage": "zh-CN",
+      "author": {
+        "@type": "Person",
+        "name":  null 
+      },
+      "potentialAction": [
+        {
+          "@type": "CommentAction",
+          "name": "Comment",
+          "target": [
+            "https://example.com/posts/denyhosts%E5%A2%9E%E5%8A%A0%E6%9C%8D%E5%8A%A1%E5%99%A8ssh%E9%BB%91%E5%90%8D%E5%8D%95%E6%9C%BA%E5%88%B6/#comments"
+          ]
+        }
+      ]
+    }
+  ]
+}
+</script>
+
+
+
+  <link type="text/css"
+        rel="stylesheet"
+        href="/css/print.css"
+        media="print">
+
+  <link type="text/css"
+        rel="stylesheet"
+        href="/css/poole.css">
+
+  <link type="text/css"
+        rel="stylesheet"
+        href="/css/hyde.css">
+
+  
+
+
+  <link type="text/css" rel="stylesheet" href="/css/blog.css">
+
+  <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700&display=swap">
+
+  <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css"
+        integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk="
+        crossorigin="anonymous" />
+
+  <link rel="apple-touch-icon-precomposed"
+        sizes="144x144"
+        href="/apple-touch-icon-144-precomposed.png">
+
+  <link rel="shortcut icon" href="/favicon.png">
+
+  
+  </head>
+<body>
+  <aside class="sidebar">
+  <div class="container">
+    <div class="sidebar-about">
+      
+      <div class="author-image">
+        <a href="https://example.com">
+          <img src="https://www.gravatar.com/avatar/c02c426714361366ea7d583950aa8fb4?s=200&d=mp" class="img-circle img-headshot center" alt="Gravatar">
+        </a>
+      </div>
+      
+
+      <h1>SAMZONG</h1>
+
+      
+      <p class="lead">Samzong&#39;s Blog</p>
+      
+    </div>
+
+    <nav>
+      <ul class="sidebar-nav">
+        <li>
+          <a href="https://example.com">Home</a>
+        </li>
+        <li>
+          <a href="/posts/">Posts</a>
+        </li><li>
+          <a href="/about/">About</a>
+        </li>
+      </ul>
+    </nav>
+
+    <section class="social-icons">
+      
+      <a href="https://www.linkedin.com/in/samzong/" rel="me" title="Linkedin" target="_blank">
+        <i class="fab fa-linkedin" aria-hidden="true"></i>
+      </a>
+      
+      <a href="https://github.com/samzong" rel="me" title="GitHub" target="_blank">
+        <i class="fab fa-github" aria-hidden="true"></i>
+      </a>
+      
+      <a href="https://twitter.com/samzong_lu" rel="me" title="Twitter" target="_blank">
+        <i class="fab fa-twitter" aria-hidden="true"></i>
+      </a>
+      
+    </section>
+  </div>
+</aside>
+
+
+  <main class="content container">
+  <div class="post">
+  <h1 class="title">Denyhosts增加服务器SSH黑名单机制</h1>
+  
+
+  <div class="post-date">
+    <time datetime="2016-11-23T16:24:40Z">Nov 23, 2016</time> <span class="readtime">&middot; 1 min read</span>
+  </div>
+
+  <div>
+  <h5 id="查看当前服务器失败登录的统计">查看当前服务器失败登录的统计：</h5>
+<pre tabindex="0"><code>cat /var/log/secure | awk '/Failed/{print $(NF-3)}' | sort | uniq -c | sort -n |  awk '{print $2&quot; = &quot;$1}'
+</code></pre><h5 id="install-denyhosts">Install denyhosts</h5>
+<pre tabindex="0"><code># 需要预先安装epel源
+sudo yum install -y epel-release
+sudo yum install -y denyhosts
+</code></pre><h5 id="配置文件解析">配置文件解析</h5>
+<p>默认配置文件/etc/denyhosts。</p>
+<pre tabindex="0"><code># 查看的sshd日志文件
+SECURE_LOG = /var/log/secure
+
+# 将阻止IP写入的配置文件
+HOSTS_DENY = /etc/hosts.deny
+
+# 过多久之后清除，其中w代表周，d代表天，h代表小时，s代表秒，m代表分钟。
+PURGE_DENY = 4h
+
+# 阻止的服务名称
+BLOCK_SERVICE  = sshd
+
+# 允许无效用户（在/etc/passwd未列出）登录失败次数,允许无效用户登录失败的次数.
+DENY_THRESHOLD_INVALID = 1
+
+# 允许普通用户登录失败的次数
+DENY_THRESHOLD_VALID = 5
+
+# 允许root登录失败的次数
+DENY_THRESHOLD_ROOT = 2
+DENY_THRESHOLD_RESTRICTED = 1
+
+# 设定 deny host 写入到该资料夹
+WORK_DIR = /var/lib/denyhosts
+
+# 将deny的host或ip纪录到Work_dir中
+SUSPICIOUS_LOGIN_REPORT_ALLOWED_HOSTS=YES
+
+# 是否做域名反解
+HOSTNAME_LOOKUP=YES
+
+# 将DenyHOts启动的pid纪录到LOCK_FILE中，已确保服务正确启动，防止同时启动多个服务。
+LOCK_FILE = /var/lock/subsys/denyhosts
+
+# 设置管理员邮件地址
+ADMIN_EMAIL = luchuanjia@msn.com
+SMTP_HOST = localhost
+SMTP_PORT = 25
+SMTP_FROM = DenyHosts &lt;nobody@localhost&gt;
+SMTP_SUBJECT = DenyHosts Report from $[HOSTNAME]
+
+# 有效用户登录失败计数归零的时间
+AGE_RESET_VALID=1d
+
+# root用户登录失败计数归零的时间
+AGE_RESET_ROOT=25d
+
+# 用户的失败登录计数重置为0的时间(/usr/share/denyhosts/data/restricted-usernames)
+AGE_RESET_RESTRICTED=25d
+
+# 无效用户登录失败计数归零的时间
+AGE_RESET_INVALID=10d
+
+# denyhosts的日志文件位置
+DAEMON_LOG = /var/log/denyhosts
+
+# denyhosts的轮询时间
+DAEMON_SLEEP = 30s
+
+# 该项与PURGE_DENY 设置一样，也是清除hosts.deny中 ssh用户的时间
+DAEMON_PURGE = 1h
+</code></pre><h5 id="faq">FAQ</h5>
+<ol>
+<li>如果想删除一个已经禁止的主机IP，并加入到允许主机例表，只在 /etc/hosts.deny 删除是没用的,还需要以下：</li>
+</ol>
+<pre tabindex="0"><code>/var/lib/denyhosts 目录，进入以下操作：
+# 停止denyhosts服务
+sudo service denyhosts stop
+
+# 进入denyhosts的目录
+cd /var/lib/denyhosts
+
+# 查看哪些文件添加了ssh限制,将IP_addr替换成你的IP
+sudo grep IP_addr /usr/share/denyhosts/data/*
+
+# 然后一个个删除文件中你想取消的主机IP所在的行:
+/usr/share/denyhosts/data/hosts
+/usr/share/denyhosts/data/hosts-restricted
+/usr/share/denyhosts/data/hosts-root
+/usr/share/denyhosts/data/hosts-valid
+/usr/share/denyhosts/data/users-hosts
+
+# 添加你想允许的主机IP地址到allowed-hosts:
+sudo echo IP_addr &gt;&gt;/usr/share/denyhosts/data/allowed-hostsps
+
+# 启动 DenyHosts服务：
+ service denyhosts start
+</code></pre><h5 id="tips">Tips</h5>
+<ul>
+<li>尽量是用key验证登录服务器</li>
+<li>尽量从固定IP点登录服务器，然后将该地址加入白名单</li>
+</ul>
+
+  </div>
+
+  
+<div>
+  <ul class="tags">
+  <li>
+    <a href="https://example.com/tags/denyhosts/" class="tag-link">DenyHosts</a>
+  </li>
+  </ul>
+</div>
+
+
+
+  <div class="share-buttons">
+  <a class="twitter-share-button"
+     href="#"
+     title="Share on Twitter"
+     data-url="https://example.com/posts/denyhosts%E5%A2%9E%E5%8A%A0%E6%9C%8D%E5%8A%A1%E5%99%A8ssh%E9%BB%91%E5%90%8D%E5%8D%95%E6%9C%BA%E5%88%B6/"
+     data-text="Denyhosts增加服务器SSH黑名单机制"><i class="fab fa-twitter"></i></a>
+
+  <a class="linkedin-share-button"
+     href="#"
+     title="Share on LinkedIn"
+     data-url="https://example.com/posts/denyhosts%E5%A2%9E%E5%8A%A0%E6%9C%8D%E5%8A%A1%E5%99%A8ssh%E9%BB%91%E5%90%8D%E5%8D%95%E6%9C%BA%E5%88%B6/"
+     data-text="Denyhosts增加服务器SSH黑名单机制"><i class="fab fa-linkedin-in"></i></a>
+
+  <a class="facebook-share-button"
+     href="#"
+     title="Share on Facebook"
+     data-url="https://example.com/posts/denyhosts%E5%A2%9E%E5%8A%A0%E6%9C%8D%E5%8A%A1%E5%99%A8ssh%E9%BB%91%E5%90%8D%E5%8D%95%E6%9C%BA%E5%88%B6/"
+     data-text="Denyhosts增加服务器SSH黑名单机制"><i class="fab fa-facebook"></i></a>
+
+  <a class="telegram-share-button"
+     href="#"
+     title="Share on Telegram"
+     data-url="https://example.com/posts/denyhosts%E5%A2%9E%E5%8A%A0%E6%9C%8D%E5%8A%A1%E5%99%A8ssh%E9%BB%91%E5%90%8D%E5%8D%95%E6%9C%BA%E5%88%B6/"
+     data-text="Denyhosts增加服务器SSH黑名单机制"><i class="fab fa-telegram"></i></a>
+
+  <a class="pinterest-share-button"
+     href="#"
+     title="Share on Pinterest"
+     data-url="https://example.com/posts/denyhosts%E5%A2%9E%E5%8A%A0%E6%9C%8D%E5%8A%A1%E5%99%A8ssh%E9%BB%91%E5%90%8D%E5%8D%95%E6%9C%BA%E5%88%B6/"
+     data-text="Denyhosts增加服务器SSH黑名单机制"><i class="fab fa-pinterest"></i></a>
+</div>
+
+
+  
+</div>
+  </main>
+
+  <footer>
+  <div>
+    <p>
+      &copy; samzong.lu 2021
+
+      &middot; <a href="https://creativecommons.org/licenses/by-sa/4.0" target="_blank">CC BY-SA 4.0</a>
+
+      
+    </p>
+  </div>
+</footer>
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/js/all.min.js"
+          integrity="sha256-MAgcygDRahs+F/Nk5Vz387whB4kSK9NXlDN3w58LLq0="
+          crossorigin="anonymous"></script>
+
+
+  <script src="/js/jquery.min.js"></script>
+  <script src="/js/soho.js"></script>
+
+  <script src="/js/blog.js"></script>
+
+  
+</body>
+</html>

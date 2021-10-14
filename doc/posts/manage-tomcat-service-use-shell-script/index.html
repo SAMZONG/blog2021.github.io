@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh-CN" lang="zh-CN">
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="generator" content="Hugo 0.88.1" />
+
+  <title>Manage Tomcat Service Use Shell Script &middot; SAMZONG</title>
+
+  <meta name="description" content="" />
+
+  
+
+<meta itemprop="name" content="Manage Tomcat Service Use Shell Script">
+<meta itemprop="description" content="Tomcat 项目管理交互式脚本.  Install pssh Use Key Login Server Hosts ~/."><meta itemprop="datePublished" content="2016-07-27T02:18:24+00:00" />
+<meta itemprop="dateModified" content="2016-07-27T02:18:24+00:00" />
+<meta itemprop="wordCount" content="873">
+<meta itemprop="keywords" content="Shell," />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Manage Tomcat Service Use Shell Script"/>
+<meta name="twitter:description" content="Tomcat 项目管理交互式脚本.  Install pssh Use Key Login Server Hosts ~/."/>
+
+
+<meta property="og:title" content="Manage Tomcat Service Use Shell Script" />
+<meta property="og:description" content="Tomcat 项目管理交互式脚本.  Install pssh Use Key Login Server Hosts ~/." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://example.com/posts/manage-tomcat-service-use-shell-script/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2016-07-27T02:18:24+00:00" />
+<meta property="article:modified_time" content="2016-07-27T02:18:24+00:00" />
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type":"Person",
+      "@id": "https://example.com#author",
+      "name": "samzong.lu",
+      "image": {
+        "@type":"ImageObject",
+        "url": "https://www.gravatar.com/avatar/c02c426714361366ea7d583950aa8fb4?s=400&d=mp"
+      },
+      "description": "Samzong's Blog"
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://example.com#website",
+      "url": "https://example.com",
+      "name": "SAMZONG",
+      "description": "Samzong's Blog",
+      "publisher": {
+        "@id": "https://example.com#author"
+      },
+      "inLanguage": "zh-CN"
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://example.com/posts/manage-tomcat-service-use-shell-script/#webpage",
+      "url": "https://example.com/posts/manage-tomcat-service-use-shell-script/",
+      "name": "Manage Tomcat Service Use Shell Script",
+      "isPartOf": {
+        "@id": "https://example.com#website"
+      },
+      "about": {
+         "@id": "https://example.com#author"
+      },
+      "datePublished": "2016-07-27T02:18:24+00:00",
+      "dateModified": "2016-07-27T02:18:24+00:00",
+      "description": "Tomcat 项目管理交互式脚本.  Install pssh Use Key Login Server Hosts ~/.",
+      "inLanguage": "zh-CN",
+      "potentialAction": [
+        {
+          "@type": "ReadAction",
+          "target": [
+            "https://example.com/posts/manage-tomcat-service-use-shell-script/"
+          ]
+        }
+      ]
+    },
+    {
+      "@type": "Article",
+      "isPartOf": {
+        "@id": "https://example.com/posts/manage-tomcat-service-use-shell-script/#webpage"
+      },
+      "mainEntityOfPage": {
+        "@id": "https://example.com/posts/manage-tomcat-service-use-shell-script/#webpage"
+      },
+      "headline": "Manage Tomcat Service Use Shell Script",
+      "datePublished": "2016-07-27T02:18:24+00:00",
+      "dateModified": "2016-07-27T02:18:24+00:00",
+      "publisher": {
+        "@id": "https://example.com#author"
+      },
+      "keywords": [
+        "Shell"
+      ],
+      "articleSection": [
+        "Shell"
+      ],
+      "inLanguage": "zh-CN",
+      "author": {
+        "@type": "Person",
+        "name":  null 
+      },
+      "potentialAction": [
+        {
+          "@type": "CommentAction",
+          "name": "Comment",
+          "target": [
+            "https://example.com/posts/manage-tomcat-service-use-shell-script/#comments"
+          ]
+        }
+      ]
+    }
+  ]
+}
+</script>
+
+
+
+  <link type="text/css"
+        rel="stylesheet"
+        href="/css/print.css"
+        media="print">
+
+  <link type="text/css"
+        rel="stylesheet"
+        href="/css/poole.css">
+
+  <link type="text/css"
+        rel="stylesheet"
+        href="/css/hyde.css">
+
+  
+
+
+  <link type="text/css" rel="stylesheet" href="/css/blog.css">
+
+  <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700&display=swap">
+
+  <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css"
+        integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk="
+        crossorigin="anonymous" />
+
+  <link rel="apple-touch-icon-precomposed"
+        sizes="144x144"
+        href="/apple-touch-icon-144-precomposed.png">
+
+  <link rel="shortcut icon" href="/favicon.png">
+
+  
+  </head>
+<body>
+  <aside class="sidebar">
+  <div class="container">
+    <div class="sidebar-about">
+      
+      <div class="author-image">
+        <a href="https://example.com">
+          <img src="https://www.gravatar.com/avatar/c02c426714361366ea7d583950aa8fb4?s=200&d=mp" class="img-circle img-headshot center" alt="Gravatar">
+        </a>
+      </div>
+      
+
+      <h1>SAMZONG</h1>
+
+      
+      <p class="lead">Samzong&#39;s Blog</p>
+      
+    </div>
+
+    <nav>
+      <ul class="sidebar-nav">
+        <li>
+          <a href="https://example.com">Home</a>
+        </li>
+        <li>
+          <a href="/posts/">Posts</a>
+        </li><li>
+          <a href="/about/">About</a>
+        </li>
+      </ul>
+    </nav>
+
+    <section class="social-icons">
+      
+      <a href="https://www.linkedin.com/in/samzong/" rel="me" title="Linkedin" target="_blank">
+        <i class="fab fa-linkedin" aria-hidden="true"></i>
+      </a>
+      
+      <a href="https://github.com/samzong" rel="me" title="GitHub" target="_blank">
+        <i class="fab fa-github" aria-hidden="true"></i>
+      </a>
+      
+      <a href="https://twitter.com/samzong_lu" rel="me" title="Twitter" target="_blank">
+        <i class="fab fa-twitter" aria-hidden="true"></i>
+      </a>
+      
+    </section>
+  </div>
+</aside>
+
+
+  <main class="content container">
+  <div class="post">
+  <h1 class="title">Manage Tomcat Service Use Shell Script</h1>
+  
+
+  <div class="post-date">
+    <time datetime="2016-07-27T02:18:24Z">Jul 27, 2016</time> <span class="readtime">&middot; 5 min read</span>
+  </div>
+
+  <div>
+  <h4 id="tomcat-项目管理交互式脚本">Tomcat 项目管理交互式脚本.</h4>
+<ul>
+<li>Install pssh</li>
+<li>Use Key Login Server Hosts</li>
+<li>~/.ssh/config 配置使用host名登录服务</li>
+<li>指定 Server Group Files 存放位置</li>
+</ul>
+<pre tabindex="0"><code>
+#!/bin/bash
+
+# Author Alex LU
+# Date 2016-07-20
+# Version 1.0
+
+# HostFile
+HostDIR=~/.ssh/host/
+
+# war包上传到该目录
+# /warfolder
+
+:'
+jobs_select (){
+    STRING=``cat $vmname | grep group
+    if [ -z &quot;$STRING&quot; ]
+    then
+        job_tomcat
+    else
+        job2_tomcat
+    fi
+}
+'
+
+function HOST()
+{
+    echo &quot;&quot;
+    echo &quot;############ Host List ###############&quot;
+    echo &quot;ckgroup:ck01,ck02,ck03,ck04&quot;
+    echo &quot;sjgroup:sj01,sj02,sj03,sj04&quot;
+    echo &quot;ddgroup:dd01,dd02,dd03,dd04&quot;
+    echo &quot;htgroup:ht01,ht02&quot;
+    echo &quot;othergroup:report,tg&quot;
+    echo &quot;######################################&quot;
+    echo &quot;&quot;
+    echo &quot; Tips: 如果要选择ck01，则输入ck01即可，如果输入ck组，输入ckgroup即可,如果要退出当前脚本输入exit&quot;
+    echo &quot; Tips: 退回上一步请输入back&quot;
+    read -p &quot;请输入你的选择:&quot; vmname
+
+    case &quot;$vmname&quot; in
+        ck01|ck02|ck03|ck04|sj01|sj02|sj03|sj04|dd01|dd02|dd03|dd04|report|tg|ht01|ht02)
+            job_tomcat $vmname
+            ;;
+        ckgroup|sjgroup|htgroup|ddgroup|othergroup)
+            job2_tomcat $vmname
+            ;;
+        exit)
+            exit 0;
+            ;;
+        back)
+            clear
+            echo &quot;&quot;
+            echo &quot;Tips: 欢迎使用Tomcat项目服务管理工具,您需要预先安装pssh工具，以及配置好ssh免密登录到服务器&quot;
+            main
+            ;;
+        *)
+            echo &quot;请输入的选择!&quot;
+            HOST
+            ;;
+    esac
+}
+
+function job_tomcat ()
+{
+    echo &quot;&quot;
+    echo &quot;############ 动作 ###############&quot;
+    echo &quot;  1. 查看当前tomcat7状态&quot;
+    echo &quot;  2. 关闭tomcat7&quot;
+    echo &quot;  3. 启动tomcat7&quot;
+    echo &quot;  4. 重启tomcat7&quot;
+    echo &quot;  5. 获取最近200行日志&quot;
+    echo &quot;  6. 重新选择主机&quot;
+    echo &quot;  7. 回到顶层目录&quot;
+    echo &quot;&quot;
+    echo &quot;#################################&quot;
+
+    read -p &quot;请输入你的选择:&quot; service_tomcat
+
+    case $service_tomcat in
+        1)
+        pssh -H $vmname -i &quot;ps aux | grep tomcat&quot;
+        job_tomcat
+        ;;
+        2)
+        pssh -H $vmname -i &quot;service tomcat7 stop&quot;
+        # tips： 下面grep的字符串要和你的tomcat项目名称契合
+        pssh -H $vmname -i &quot;ps aux | grep tomcat7 | awk '{print $2}' | xargs kill -9 &quot;
+        # tips: 下面用到的路径为绝对路径，请更改为自己tomcat的目录，也可以在前面增加自定义变量
+        pssh -H $vmname -i &quot;rm -rf /tomcat7/work/*&quot;
+        pssh -H $vmname -i &quot;rm -rf /tomcat7/logs/*&quot;
+        pssh -H $vmname -i &quot;rm -rf /tomcat7/temp/*&quot;
+        job_tomcat
+        ;;
+        3)
+        pssh -H $vmname -i &quot;service tomcat7 start&quot;
+        job_tomcat
+        ;;
+        4)
+        pssh -H $vmname -i &quot;service tomcat7 stop&quot;
+        # tips： 下面grep的字符串要和你的tomcat项目名称契合
+        pssh -H $vmname -i &quot;ps aux | grep tomcat7 | awk '{print $2}' | xargs kill -9 &quot;
+        # tips: 下面用到的路径为绝对路径，请更改为自己tomcat的目录，也可以在前面增加自定义变量
+        pssh -H $vmname -i &quot;rm -rf /tomcat7/work/*&quot;
+        pssh -H $vmname -i &quot;rm -rf /tomcat7/logs/*&quot;
+        pssh -H $vmname -i &quot;rm -rf /tomcat7/temp/*&quot;
+        sleep 1
+        pssh -H $vmname -i &quot;service tomcat7 start&quot;
+        job_tomcat
+        ;;
+        5)
+        pssh -H $vmname -i &quot;tail -n 200 /tomcat7/logs/catalina.out&quot;
+        job_tomcat
+        ;;
+        6)
+        echo &quot;&quot;
+        HOST
+        ;;
+        7)
+        clear
+        echo &quot;&quot;
+        echo &quot;Tips: 欢迎使用Tomcat项目服务管理工具,您需要预先安装pssh工具，以及配置好ssh免密登录到服务器&quot;
+        main
+        ;;
+        *)
+        echo &quot;请输入正确的选项！&quot;
+        job_tomcat
+        ;;
+    esac
+}
+
+function job2_tomcat ()
+{
+    echo &quot;&quot;
+    echo &quot;############ 动作 ###############&quot;
+    echo &quot;  1. 查看当前tomcat7状态&quot;
+    echo &quot;  2. 关闭tomcat7&quot;
+    echo &quot;  3. 启动tomcat7&quot;
+    echo &quot;  4. 重启tomcat7&quot;
+    echo &quot;  5. 获取最近200行日志&quot;
+    echo &quot;  6. 重新选择主机&quot;
+    echo &quot;  7. 回到顶层目录&quot;
+    echo &quot;&quot;
+    echo &quot;################################&quot;
+
+    read -p &quot;请输入你的选择:&quot; service_tomcat
+
+    case $service_tomcat in
+        1)
+        pssh -h $HostDIR/$vmname -i &quot;ps aux | grep tomcat&quot;
+        job2_tomcat
+        ;;
+        2)
+        pssh -h $HostDIR/$vmname -i &quot;service tomcat7 stop&quot;
+        # tips： 下面grep的字符串要和你的tomcat项目名称契合
+        pssh -h $HostDIR/$vmname -i &quot;ps aux | grep tomcat7 | awk '{print $2}' | xargs kill -9 &quot;
+        # tips: 下面用到的路径为绝对路径，请更改为自己tomcat的目录，也可以在前面增加自定义变量
+        pssh -h $HostDIR/$vmname -i &quot;rm -rf /tomcat7/work/*&quot;
+        pssh -h $HostDIR/$vmname -i &quot;rm -rf /tomcat7/logs/*&quot;
+        pssh -h $HostDIR/$vmname -i &quot;rm -rf /tomcat7/temp/*&quot;
+        job2_tomcat
+        ;;
+        3)
+        pssh -h $HostDIR/$vmname -i &quot;service tomcat7 start&quot;
+        job2_tomcat
+        ;;
+        4)
+        pssh -h $HostDIR/$vmname -i &quot;service tomcat7 stop&quot;
+        # tips： 下面grep的字符串要和你的tomcat项目名称契合
+        pssh -h $HostDIR/$vmname -i &quot;ps aux | grep tomcat7 | awk '{print $2}' | xargs kill -9 &quot;
+        # tips: 下面用到的路径为绝对路径，请更改为自己tomcat的目录，也可以在前面增加自定义变量
+        pssh -h $HostDIR/$vmname -i &quot;rm -rf /tomcat7/work/*&quot;
+        pssh -h $HostDIR/$vmname -i &quot;rm -rf /tomcat7/logs/*&quot;
+        pssh -h $HostDIR/$vmname -i &quot;rm -rf /tomcat7/temp/*&quot;
+        sleep 1
+        pssh -h $HostDIR/$vmname -i &quot;service tomcat7 start&quot;
+        job2_tomcat
+        ;;
+        5)
+        pssh -h $HostDIR/$vmname -i &quot;tail -n 200 /tomcat7/logs/catalina.out&quot;
+        job2_tomcat
+        ;;
+        6)
+        echo &quot;&quot;
+        HOST
+        ;;
+        7)
+        clear
+        echo &quot;&quot;
+        echo &quot;Tips: 欢迎使用Tomcat项目服务管理工具,您需要预先安装pssh工具，以及配置好ssh免密登录到服务器&quot;
+        main
+        ;;
+        *)
+        echo &quot;请输入正确的选项！&quot;
+        job_tomcat
+        ;;
+    esac
+}
+
+function HOST2()
+{
+    echo &quot;&quot;
+    echo &quot;############ Host List ###############&quot;
+    echo &quot;ckgroup:ck01,ck02,ck03,ck04&quot;
+    echo &quot;sjgroup:sj01,sj02,sj03,sj04&quot;
+    echo &quot;ddgroup:dd01,dd02,dd03,dd04&quot;
+    echo &quot;htgroup:ht01,ht02&quot;
+    echo &quot;othergroup:report,tg&quot;
+    echo &quot;######################################&quot;
+    echo &quot;&quot;
+# 确认是否所有项目包发布后立即启动
+    echo -e &quot;\033[7m 更新订单服务器的war包时，会自动启动tomcat程序，为了释放war包，修改order.no，请设置war包内order.no＝0 ,其它服务器tomcat不会自启动，请使用命令操作 \033[0m&quot;
+    echo &quot; Tips: 如果要选择ck01，则输入ck01即可，如果输入ck组，输入ckgroup即可,如果要退出当前脚本输入exit&quot;
+    echo &quot; Tips: 退回上一步请输入back&quot;
+    read -p &quot;请输入你的选择:&quot; vmname
+    case &quot;$vmname&quot; in
+        ck01|ck02|ck03|ck04|sj01|sj02|sj03|sj04|dd01|dd02|dd03|dd04|report|tg|ht01|ht02)
+            read -p &quot;请输入war包的名称,例如:dzcx_ck.war :&quot; warname
+            pscp_tomcat $vmname $warname
+            ;;
+        ckgroup|sjgroup|htgroup|othergroup)
+            read -p &quot;请输入war包的名称,例如:dzcx_ck.war :&quot; warname
+            pscp2_tomcat $vmname $warname
+            ;;
+        ddgroup)
+            read -p &quot;请输入war包的名称,例如:dzcx_ck.war :&quot; warname
+            pscp3_tomcat $vmname $warname
+            ;;
+        exit)
+            exit 0;
+            ;;
+        back)
+            clear
+            echo &quot;&quot;
+            echo &quot;Tips: 欢迎使用Tomcat项目服务管理工具,您需要预先安装pssh工具，以及配置好ssh免密登录到服务器&quot;
+            main
+            ;;
+        *)
+            echo &quot;请输入的选择!&quot;
+            HOST
+            ;;
+    esac
+}
+
+function pscp_tomcat ()
+{
+    # single host
+    pscp.pssh -H $vmname /warfolder/&quot;$warname&quot; /tomcat7/webapps/
+    HOST2
+}
+
+function pscp2_tomcat ()
+{
+    # group
+    pscp.pssh -h $HostDIR/$vmname /warfolder/&quot;$warname&quot; /tomcat7/webapps/
+    HOST2
+}
+
+function pscp3_tomcat ()
+{
+    # group dd 因为订单需要修改服务器编号
+    pscp.pssh -h $HostDIR/$vmname /warfolder/&quot;$warname&quot; /tomcat7/webapps/
+    pssh -h $vmname -i &quot;service tomcat7 start&quot;
+    sleep 10
+    pssh -H dd02 &quot;sed -i 's/order.no=0/order.no=1/g' /tomcat7/webapps/dzcx_socket/WEB-INF/classes/base.properties&quot;
+    pssh -H dd03 &quot;sed -i 's/order.no=0/order.no=2/g' /tomcat7/webapps/dzcx_socket/WEB-INF/classes/base.properties&quot;
+    pssh -H dd04 &quot;sed -i 's/order.no=0/order.no=3/g' /tomcat7/webapps/dzcx_socket/WEB-INF/classes/base.properties&quot;
+    HOST2
+}
+
+function main ()
+{
+echo &quot;&quot;
+echo &quot;######################################&quot;
+echo &quot;&quot;
+echo &quot;#  1. 更新war包&quot;
+echo &quot;#  2. 管理tomcat7&quot;
+echo &quot;#  3. 管理mysql&quot;
+echo &quot;#  4. 管理redis&quot;
+echo &quot;#  5. 同步服务器时间&quot;
+echo &quot;#  6. 清理当前屏幕&quot;
+echo &quot;#  7. 退出&quot;
+echo &quot;&quot;
+echo &quot;######################################&quot;
+
+read -p &quot;请输入你的选择:&quot; num
+
+case &quot;$num&quot; in
+    1)
+        HOST2
+        ;;
+    2)
+        HOST
+        ;;
+    3)
+        echo &quot;该功能暂未开放&quot;
+        ;;
+    4)
+        echo &quot;该功能暂未开放&quot;
+        ;;
+    5)
+        pssh -h $HostDIR/allhost -i &quot;service ntpd restart&quot;
+        ;;
+    6)
+        clear
+        echo &quot;&quot;
+        echo &quot;Tips: 欢迎使用Tomcat项目服务管理工具,您需要预先安装pssh工具，以及配置好ssh免密登录到服务器&quot;
+        main
+        ;;
+    7)
+        exit 0
+        ;;
+    *)
+        echo &quot;请输入正确的数值！&quot;
+        main
+    ;;
+esac
+
+}
+
+# --------------------------------- main -------------------------------------------------
+
+clear
+
+echo &quot;&quot;
+echo &quot;Tips: 欢迎使用Tomcat项目服务管理工具,您需要预先安装pssh工具，以及配置好ssh免密登录到服务器&quot;
+command -v pssh &gt; /dev/null 2&gt;&amp;1
+
+if [ $? -eq 0 ]
+then
+    main
+else
+    echo -e &quot;\033[07m&quot;
+    echo -e &quot;系统检测到您还没安装pssh，请预先安装pssh&quot;
+    echo &quot;yum install -y epel-release&quot;
+    echo &quot;yum install -y pssh&quot;
+    echo &quot;安装成功请重新运行此脚本&quot;
+    echo -e &quot;\033[0m&quot;
+
+fi
+
+
+</code></pre>
+  </div>
+
+  
+<div>
+  <ul class="tags">
+  <li>
+    <a href="https://example.com/tags/shell/" class="tag-link">Shell</a>
+  </li>
+  </ul>
+</div>
+
+
+
+  <div class="share-buttons">
+  <a class="twitter-share-button"
+     href="#"
+     title="Share on Twitter"
+     data-url="https://example.com/posts/manage-tomcat-service-use-shell-script/"
+     data-text="Manage Tomcat Service Use Shell Script"><i class="fab fa-twitter"></i></a>
+
+  <a class="linkedin-share-button"
+     href="#"
+     title="Share on LinkedIn"
+     data-url="https://example.com/posts/manage-tomcat-service-use-shell-script/"
+     data-text="Manage Tomcat Service Use Shell Script"><i class="fab fa-linkedin-in"></i></a>
+
+  <a class="facebook-share-button"
+     href="#"
+     title="Share on Facebook"
+     data-url="https://example.com/posts/manage-tomcat-service-use-shell-script/"
+     data-text="Manage Tomcat Service Use Shell Script"><i class="fab fa-facebook"></i></a>
+
+  <a class="telegram-share-button"
+     href="#"
+     title="Share on Telegram"
+     data-url="https://example.com/posts/manage-tomcat-service-use-shell-script/"
+     data-text="Manage Tomcat Service Use Shell Script"><i class="fab fa-telegram"></i></a>
+
+  <a class="pinterest-share-button"
+     href="#"
+     title="Share on Pinterest"
+     data-url="https://example.com/posts/manage-tomcat-service-use-shell-script/"
+     data-text="Manage Tomcat Service Use Shell Script"><i class="fab fa-pinterest"></i></a>
+</div>
+
+
+  
+</div>
+  </main>
+
+  <footer>
+  <div>
+    <p>
+      &copy; samzong.lu 2021
+
+      &middot; <a href="https://creativecommons.org/licenses/by-sa/4.0" target="_blank">CC BY-SA 4.0</a>
+
+      
+    </p>
+  </div>
+</footer>
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/js/all.min.js"
+          integrity="sha256-MAgcygDRahs+F/Nk5Vz387whB4kSK9NXlDN3w58LLq0="
+          crossorigin="anonymous"></script>
+
+
+  <script src="/js/jquery.min.js"></script>
+  <script src="/js/soho.js"></script>
+
+  <script src="/js/blog.js"></script>
+
+  
+</body>
+</html>

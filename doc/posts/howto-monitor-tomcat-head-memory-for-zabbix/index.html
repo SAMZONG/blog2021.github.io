@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh-CN" lang="zh-CN">
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="generator" content="Hugo 0.88.1" />
+
+  <title>HowTo Monitor Tomcat Head-Memory for Zabbix &middot; SAMZONG</title>
+
+  <meta name="description" content="" />
+
+  
+
+<meta itemprop="name" content="HowTo Monitor Tomcat Head-Memory for Zabbix">
+<meta itemprop="description" content="最近项目上由于BUG问题导致Tomcat程序在运行过程中经常内存泄漏,而本身监控系统之中没有更好的检测到Tomcat堆空间(Head Memory)的使用情况导致报警频发，这篇文章主要讲述，如何在Zabbix之中调用jmx监控服务器上Tomcat堆空间的使用情况并增加对应报警功能。
+ 测试环境: CentOS 6.8 Zabbix 2.4 Tomcat 7.0  实验前提默认是各位已经安装Zabbix Server服务器，并且至少有一台Zabbix agent服务器正常监控。关于如何搭建Zabbix监控集群，会有专门文章描述。"><meta itemprop="datePublished" content="2017-01-18T23:28:44+00:00" />
+<meta itemprop="dateModified" content="2017-01-18T23:28:44+00:00" />
+<meta itemprop="wordCount" content="390">
+<meta itemprop="keywords" content="Zabbix," />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="HowTo Monitor Tomcat Head-Memory for Zabbix"/>
+<meta name="twitter:description" content="最近项目上由于BUG问题导致Tomcat程序在运行过程中经常内存泄漏,而本身监控系统之中没有更好的检测到Tomcat堆空间(Head Memory)的使用情况导致报警频发，这篇文章主要讲述，如何在Zabbix之中调用jmx监控服务器上Tomcat堆空间的使用情况并增加对应报警功能。
+ 测试环境: CentOS 6.8 Zabbix 2.4 Tomcat 7.0  实验前提默认是各位已经安装Zabbix Server服务器，并且至少有一台Zabbix agent服务器正常监控。关于如何搭建Zabbix监控集群，会有专门文章描述。"/>
+
+
+<meta property="og:title" content="HowTo Monitor Tomcat Head-Memory for Zabbix" />
+<meta property="og:description" content="最近项目上由于BUG问题导致Tomcat程序在运行过程中经常内存泄漏,而本身监控系统之中没有更好的检测到Tomcat堆空间(Head Memory)的使用情况导致报警频发，这篇文章主要讲述，如何在Zabbix之中调用jmx监控服务器上Tomcat堆空间的使用情况并增加对应报警功能。
+ 测试环境: CentOS 6.8 Zabbix 2.4 Tomcat 7.0  实验前提默认是各位已经安装Zabbix Server服务器，并且至少有一台Zabbix agent服务器正常监控。关于如何搭建Zabbix监控集群，会有专门文章描述。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://example.com/posts/howto-monitor-tomcat-head-memory-for-zabbix/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2017-01-18T23:28:44+00:00" />
+<meta property="article:modified_time" content="2017-01-18T23:28:44+00:00" />
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type":"Person",
+      "@id": "https://example.com#author",
+      "name": "samzong.lu",
+      "image": {
+        "@type":"ImageObject",
+        "url": "https://www.gravatar.com/avatar/c02c426714361366ea7d583950aa8fb4?s=400&d=mp"
+      },
+      "description": "Samzong's Blog"
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://example.com#website",
+      "url": "https://example.com",
+      "name": "SAMZONG",
+      "description": "Samzong's Blog",
+      "publisher": {
+        "@id": "https://example.com#author"
+      },
+      "inLanguage": "zh-CN"
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://example.com/posts/howto-monitor-tomcat-head-memory-for-zabbix/#webpage",
+      "url": "https://example.com/posts/howto-monitor-tomcat-head-memory-for-zabbix/",
+      "name": "HowTo Monitor Tomcat Head-Memory for Zabbix",
+      "isPartOf": {
+        "@id": "https://example.com#website"
+      },
+      "about": {
+         "@id": "https://example.com#author"
+      },
+      "datePublished": "2017-01-18T23:28:44+00:00",
+      "dateModified": "2017-01-18T23:28:44+00:00",
+      "description": "最近项目上由于BUG问题导致Tomcat程序在运行过程中经常内存泄漏,而本身监控系统之中没有更好的检测到Tomcat堆空间(Head Memory)的使用情况导致报警频发，这篇文章主要讲述，如何在Zabbix之中调用jmx监控服务器上Tomcat堆空间的使用情况并增加对应报警功能。\n 测试环境: CentOS 6.8 Zabbix 2.4 Tomcat 7.0  实验前提默认是各位已经安装Zabbix Server服务器，并且至少有一台Zabbix agent服务器正常监控。关于如何搭建Zabbix监控集群，会有专门文章描述。",
+      "inLanguage": "zh-CN",
+      "potentialAction": [
+        {
+          "@type": "ReadAction",
+          "target": [
+            "https://example.com/posts/howto-monitor-tomcat-head-memory-for-zabbix/"
+          ]
+        }
+      ]
+    },
+    {
+      "@type": "Article",
+      "isPartOf": {
+        "@id": "https://example.com/posts/howto-monitor-tomcat-head-memory-for-zabbix/#webpage"
+      },
+      "mainEntityOfPage": {
+        "@id": "https://example.com/posts/howto-monitor-tomcat-head-memory-for-zabbix/#webpage"
+      },
+      "headline": "HowTo Monitor Tomcat Head-Memory for Zabbix",
+      "datePublished": "2017-01-18T23:28:44+00:00",
+      "dateModified": "2017-01-18T23:28:44+00:00",
+      "publisher": {
+        "@id": "https://example.com#author"
+      },
+      "keywords": [
+        "Zabbix"
+      ],
+      "articleSection": [
+        "Zabbix"
+      ],
+      "inLanguage": "zh-CN",
+      "author": {
+        "@type": "Person",
+        "name":  null 
+      },
+      "potentialAction": [
+        {
+          "@type": "CommentAction",
+          "name": "Comment",
+          "target": [
+            "https://example.com/posts/howto-monitor-tomcat-head-memory-for-zabbix/#comments"
+          ]
+        }
+      ]
+    }
+  ]
+}
+</script>
+
+
+
+  <link type="text/css"
+        rel="stylesheet"
+        href="/css/print.css"
+        media="print">
+
+  <link type="text/css"
+        rel="stylesheet"
+        href="/css/poole.css">
+
+  <link type="text/css"
+        rel="stylesheet"
+        href="/css/hyde.css">
+
+  
+
+
+  <link type="text/css" rel="stylesheet" href="/css/blog.css">
+
+  <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700&display=swap">
+
+  <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css"
+        integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk="
+        crossorigin="anonymous" />
+
+  <link rel="apple-touch-icon-precomposed"
+        sizes="144x144"
+        href="/apple-touch-icon-144-precomposed.png">
+
+  <link rel="shortcut icon" href="/favicon.png">
+
+  
+  </head>
+<body>
+  <aside class="sidebar">
+  <div class="container">
+    <div class="sidebar-about">
+      
+      <div class="author-image">
+        <a href="https://example.com">
+          <img src="https://www.gravatar.com/avatar/c02c426714361366ea7d583950aa8fb4?s=200&d=mp" class="img-circle img-headshot center" alt="Gravatar">
+        </a>
+      </div>
+      
+
+      <h1>SAMZONG</h1>
+
+      
+      <p class="lead">Samzong&#39;s Blog</p>
+      
+    </div>
+
+    <nav>
+      <ul class="sidebar-nav">
+        <li>
+          <a href="https://example.com">Home</a>
+        </li>
+        <li>
+          <a href="/posts/">Posts</a>
+        </li><li>
+          <a href="/about/">About</a>
+        </li>
+      </ul>
+    </nav>
+
+    <section class="social-icons">
+      
+      <a href="https://www.linkedin.com/in/samzong/" rel="me" title="Linkedin" target="_blank">
+        <i class="fab fa-linkedin" aria-hidden="true"></i>
+      </a>
+      
+      <a href="https://github.com/samzong" rel="me" title="GitHub" target="_blank">
+        <i class="fab fa-github" aria-hidden="true"></i>
+      </a>
+      
+      <a href="https://twitter.com/samzong_lu" rel="me" title="Twitter" target="_blank">
+        <i class="fab fa-twitter" aria-hidden="true"></i>
+      </a>
+      
+    </section>
+  </div>
+</aside>
+
+
+  <main class="content container">
+  <div class="post">
+  <h1 class="title">HowTo Monitor Tomcat Head-Memory for Zabbix</h1>
+  
+
+  <div class="post-date">
+    <time datetime="2017-01-18T23:28:44Z">Jan 18, 2017</time> <span class="readtime">&middot; 2 min read</span>
+  </div>
+
+  <div>
+  <p>最近项目上由于BUG问题导致Tomcat程序在运行过程中经常内存泄漏,而本身监控系统之中没有更好的检测到Tomcat堆空间(Head Memory)的使用情况导致报警频发，这篇文章主要讲述，如何在Zabbix之中调用jmx监控服务器上Tomcat堆空间的使用情况并增加对应报警功能。</p>
+<blockquote>
+<p>测试环境: <!-- raw HTML omitted -->
+CentOS 6.8 <!-- raw HTML omitted -->
+Zabbix 2.4 <!-- raw HTML omitted -->
+Tomcat 7.0 <!-- raw HTML omitted --></p>
+</blockquote>
+<p>实验前提默认是各位已经安装Zabbix Server服务器，并且至少有一台Zabbix agent服务器正常监控。关于如何搭建Zabbix监控集群，会有专门文章描述。</p>
+<h4 id="zabbix-java-gateway的工作机制">zabbix-java-gateway的工作机制</h4>
+<ul>
+<li>首先我们需要配置我们的Tomcat服务启用监控服务，这个是默认不启用的</li>
+<li>之后需要在Zabbix的管理页面添加对应Tomcat服务器的jmx监控接口</li>
+<li>最后zabbix端会自动获取zabbix-java-gateway的数据并根据相应模板进行展
+示</li>
+<li>工作流: [Zabbix-Server]&ndash;&gt;(port:10053 on zabbix server)&ndash;&gt; [zabbix-java-gateway] &ndash;(port:12345 on tomcatserver)&ndash;&gt; [JMX enabled]</li>
+</ul>
+<h4 id="1-install-zabbix-java-gateway-on-zabbix-server">1. Install zabbix-java-gateway on Zabbix Server</h4>
+<p>因为我的zabbix是使用zabbix 2.4官方源安装，所以只需要用yum在安装即可:</p>
+<pre tabindex="0"><code>[root@6 ~]# sudo  yum install -y zabbix-java-gateway
+</code></pre><p>如果你没有官方源可能先安装该源，注意我的服务器zabbix版本是2.4 如果你是不同的版本，请到[<a href="http://repo.zabbix.com/zabbix/">这里</a>]查找对应版本。</p>
+<pre tabindex="0"><code># 查看zabbix server版本
+[root@6 ~]# zabbix_server --version
+Zabbix server v2.4.8 (revision 59539) (20 April 2016)
+Compilation time: May  4 2016 01:32:12
+</code></pre><p>在使用yum安装zabbix-java-gateway源时,会自动关联安装openjdk，尽管这段程序没多大影响，如果你想保证系统JAVA环境不受到改变的话，可以在/etc/profile文件最后，增加如下内容:</p>
+<pre tabindex="0"><code># add follows to the end
+export JAVA_HOME=/usr/java/default
+export PATH=$PATH:$JAVA_HOME/bin
+export CLASSPATH=.:$JAVA_HOME/jre/lib:$JAVA_HOME/lib:$JAVA_HOME/lib/tools.jar
+</code></pre><h4 id="2-confiure-tomcat-host-with-enable-jmx">2. Confiure Tomcat host with enable jmx</h4>
+<p>首先在$tomcatdir/bin/catalina.sh文件开头处增加如下：</p>
+<pre tabindex="0"><code>#!/bin/sh
+
+CATALINA_OPTS=&quot;-Dcom.sun.management.jmxremote \
+-Dcom.sun.management.jmxremote.authenticate=false \
+-Dcom.sun.management.jmxremote.ssl=false \
+-Dcom.sun.management.jmxremote.port=12345&quot;
+</code></pre><p>然后,启动Tomcat，你会发现多了一个12345端口，这就是jmx的监听端口，请保证zabbix-java-gateway可以访问到这台服务器。</p>
+<pre tabindex="0"><code>[root@6 ~]# /tomcat7/bin/startup.sh
+Starting Tomcat7:
+Using CATALINA_BASE:   /tomcat7
+Using CATALINA_HOME:   /tomcat7
+Using CATALINA_TMPDIR: /tomcat7/temp
+Using JRE_HOME:        /usr
+Using CLASSPATH:       /tomcat7/bin/bootstrap.jar:/tomcat7/bin/tomcat-juli.jar
+Tomcat started.
+
+[root@6 ~]# netstat -ntlp | grep 12345
+tcp  0      0 :::12345   :::*     LISTEN      8793/java
+[root@6 ~]#
+</code></pre><!-- raw HTML omitted -->
+<p>这里疏忽了1个问题，如果您的zabbix server与agent端之间有防火墙规则，而按照我上面的所述只是增加了12345这个端口，那么很可能，您在/var/log/zabbix/zabbix_java_gateway.log 中会看到“No route to host”的报错，这是因为JMX不光开启了12345端口，还开启了另外两个随机端口，而在获取监控数据时会使用到其中一个，这就导致了无法通过固定的防火墙规则来开放该端口。其实有另外一个替代方式来使该监听端口固定下来——使用Tomcat提供的额外组件 catalina-jmx-remote.jar，这个组件是需要另外下载的：</p>
+<pre tabindex="0"><code># 查看当前Tomcat版本.
+[root@6 bin]# ./catalina.sh version
+Using CATALINA_BASE:   /tomcat7
+Using CATALINA_HOME:   /tomcat7
+Using CATALINA_TMPDIR: /tomcat7/temp
+Using JRE_HOME:        /usr
+Using CLASSPATH:       /tomcat7/bin/bootstrap.jar:/tomcat7/bin/tomcat-juli.jar
+Server version: Apache Tomcat/7.0.64
+Server built:   Aug 19 2015 17:18:06 UTC
+Server number:  7.0.64.0
+OS Name:        Linux
+OS Version:     2.6.32-642.11.1.el6.x86_64
+Architecture:   amd64
+JVM Version:    1.8.0_111-b15
+JVM Vendor:     Oracle Corporation
+
+# 下载 catalina-jmx-remote.jar # 请注意下载版本不要高于当前tomcat版本.
+wget http://mirror.bit.edu.cn/apache/tomcat/tomcat-7/v7.0.57/bin/extras/catalina-jmx-remote.jar -O lib/catalina-jmx-remote.jar
+</code></pre><p>增加如下内容，在conf/server.xml中：</p>
+<pre tabindex="0"><code>&lt;Listener className=&quot;org.apache.catalina.mbeans.JmxRemoteLifecycleListener&quot;
+          rmiRegistryPortPlatform=&quot;12345&quot; rmiServerPortPlatform=&quot;12346&quot; /&gt;
+</code></pre><p>因为我们已经在conf/server.xml定义了rmiRegistryPortPlatform，所以要将bin/catalina.sh中CATALINA_OPTS的com.sun.management.jmxremote.port去掉，否则会因为jmxremote.port配置有优先级更高而导致配置失效。</p>
+<pre tabindex="0"><code>CATALINA_OPTS=&quot;-Dcom.sun.management.jmxremote -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.ssl=false&quot;
+</code></pre><p>完成之后，重启tomcat这时会发现jmx默认端口已经固定为12345何12346，而server依然可以正常获取监控数据.</p>
+<!-- raw HTML omitted -->
+<h3 id="option-javagatewayport">Option: JavaGatewayPort</h3>
+<h1 id="port-that-zabbix-java-gateway-listens-on">Port that Zabbix Java gateway listens on.</h1>
+<h1 id="heading"></h1>
+<h1 id="mandatory-no">Mandatory: no</h1>
+<h1 id="range-1024-32767">Range: 1024-32767</h1>
+<h1 id="default">Default:</h1>
+<p>JavaGatewayPort=10053 # 设置服务端监听接口</p>
+<h3 id="option-startjavapollers">Option: StartJavaPollers</h3>
+<h1 id="number-of-pre-forked-instances-of-java-pollers">Number of pre-forked instances of Java pollers.</h1>
+<h1 id="heading-1"></h1>
+<h1 id="mandatory-no-1">Mandatory: no</h1>
+<h1 id="range-0-1000">Range: 0-1000</h1>
+<h1 id="default-1">Default:</h1>
+<p>StartJavaPollers=5 # 设置多线程启动</p>
+<pre tabindex="0"><code>然后修改zabbix\_java\_gateway.conf 配置如下:
+</code></pre><h3 id="option-zabbixlistenip">Option: zabbix.listenIP</h3>
+<h1 id="ip-address-to-listen-on">IP address to listen on.</h1>
+<h1 id="heading-2"></h1>
+<h1 id="mandatory-no-2">Mandatory: no</h1>
+<h1 id="default-2">Default:</h1>
+<p>LISTEN_IP=&ldquo;10.211.55.4&rdquo; # 配置监听IP</p>
+<h3 id="option-zabbixlistenport">Option: zabbix.listenPort</h3>
+<h1 id="port-to-listen-on">Port to listen on.</h1>
+<h1 id="heading-3"></h1>
+<h1 id="mandatory-no-3">Mandatory: no</h1>
+<h1 id="range-1024-32767-1">Range: 1024-32767</h1>
+<h1 id="default-3">Default:</h1>
+<p>LISTEN_PORT=10053 # 配置监听端口</p>
+<h3 id="option-zabbixpidfile">Option: zabbix.pidFile</h3>
+<h1 id="name-of-pid-file">Name of PID file.</h1>
+<h1 id="if-omitted-zabbix-java-gateway-is-started-as-a-console-application">If omitted, Zabbix Java Gateway is started as a console application.</h1>
+<h1 id="heading-4"></h1>
+<h1 id="mandatory-no-4">Mandatory: no</h1>
+<h1 id="default-4">Default:</h1>
+<h1 id="pid_file">PID_FILE=</h1>
+<p>PID_FILE=&quot;/var/run/zabbix/zabbix_java.pid&quot;</p>
+<h3 id="option-zabbixstartpollers">Option: zabbix.startPollers</h3>
+<h1 id="number-of-worker-threads-to-start">Number of worker threads to start.</h1>
+<h1 id="heading-5"></h1>
+<h1 id="mandatory-no-5">Mandatory: no</h1>
+<h1 id="range-1-1000">Range: 1-1000</h1>
+<h1 id="default-5">Default:</h1>
+<h1 id="不能大于zabbix_serverconf的值否则可能导致当连接java-gateway时没有多余的线程进行处理">不能大于zabbix_server.conf的值，否则可能导致当连接Java gateway时没有多余的线程进行处理</h1>
+<p>START_POLLERS=5</p>
+<pre tabindex="0"><code>
+最后启动启动zabbix-java-gateway，并重启zabbix-server
+</code></pre><p>[root@6 ~]# service zabbix-java-gateway start
+Starting zabbix java gateway:              [  OK  ]
+[root@6 ~]# service zabbix-server restart
+Stopping zabbix server:              [  OK  ]
+Starting zabbix server:              [  OK  ]</p>
+<pre tabindex="0"><code>
+我在尝试重启发现一问题，zabbix-java-gateway通过service命令管理stop不能删除pid文件导致服务无法启动，如果你也碰到，解决办法如下:
+</code></pre><p>[root@6 zabbix]# vim /etc/rc.d/init.d/zabbix-java-gateway</p>
+<h1 id="line-97-注释修改为如下">line 97, 注释修改为如下：</h1>
+<h1 id="kill-cat-pid_file--rm-pid_file">kill <code>cat $PID_FILE</code> &amp;&amp; rm $PID_FILE</h1>
+<pre><code>    rm -f $PID_FILE
+</code></pre>
+<pre tabindex="0"><code>
+
+#### 4. Adding jmx host on Zabbix Web consloe
+首先，上传Template Tomcat Head Memory模板，这个我做了一个简单的模板，只针对了堆内存空间的监控，并针对使用率超过60%以及80%，不同的警报。需要的同学可以直接从我这里下载，然后在Configuration-Templates导入到zabbix模板库内。&lt;br&gt;
+下载请点击:[Template App Tomcat Head Memory](https://samzong.oss-cn-shenzhen.aliyuncs.com/2016/12/zbx_template_app_tomcat_head_memory.xml)
+
+然后，增加服务器的jmx监控&lt;br&gt;
+![](https://samzong.oss-cn-shenzhen.aliyuncs.com/2016/12/zabbix-jmx-settings.png)
+&lt;br&gt;
+关联模板&lt;br&gt;
+![](https://samzong.oss-cn-shenzhen.aliyuncs.com/2016/12/zabbix-host-select-template.png)
+
+
+#### 5. View the Head Memory Monitoring.
+![](https://samzong.oss-cn-shenzhen.aliyuncs.com/2016/12/zabbix-view-monitor.png)
+
+
+
+
+
+
+</code></pre>
+  </div>
+
+  
+<div>
+  <ul class="tags">
+  <li>
+    <a href="https://example.com/tags/zabbix/" class="tag-link">Zabbix</a>
+  </li>
+  </ul>
+</div>
+
+
+
+  <div class="share-buttons">
+  <a class="twitter-share-button"
+     href="#"
+     title="Share on Twitter"
+     data-url="https://example.com/posts/howto-monitor-tomcat-head-memory-for-zabbix/"
+     data-text="HowTo Monitor Tomcat Head-Memory for Zabbix"><i class="fab fa-twitter"></i></a>
+
+  <a class="linkedin-share-button"
+     href="#"
+     title="Share on LinkedIn"
+     data-url="https://example.com/posts/howto-monitor-tomcat-head-memory-for-zabbix/"
+     data-text="HowTo Monitor Tomcat Head-Memory for Zabbix"><i class="fab fa-linkedin-in"></i></a>
+
+  <a class="facebook-share-button"
+     href="#"
+     title="Share on Facebook"
+     data-url="https://example.com/posts/howto-monitor-tomcat-head-memory-for-zabbix/"
+     data-text="HowTo Monitor Tomcat Head-Memory for Zabbix"><i class="fab fa-facebook"></i></a>
+
+  <a class="telegram-share-button"
+     href="#"
+     title="Share on Telegram"
+     data-url="https://example.com/posts/howto-monitor-tomcat-head-memory-for-zabbix/"
+     data-text="HowTo Monitor Tomcat Head-Memory for Zabbix"><i class="fab fa-telegram"></i></a>
+
+  <a class="pinterest-share-button"
+     href="#"
+     title="Share on Pinterest"
+     data-url="https://example.com/posts/howto-monitor-tomcat-head-memory-for-zabbix/"
+     data-text="HowTo Monitor Tomcat Head-Memory for Zabbix"><i class="fab fa-pinterest"></i></a>
+</div>
+
+
+  
+</div>
+  </main>
+
+  <footer>
+  <div>
+    <p>
+      &copy; samzong.lu 2021
+
+      &middot; <a href="https://creativecommons.org/licenses/by-sa/4.0" target="_blank">CC BY-SA 4.0</a>
+
+      
+    </p>
+  </div>
+</footer>
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/js/all.min.js"
+          integrity="sha256-MAgcygDRahs+F/Nk5Vz387whB4kSK9NXlDN3w58LLq0="
+          crossorigin="anonymous"></script>
+
+
+  <script src="/js/jquery.min.js"></script>
+  <script src="/js/soho.js"></script>
+
+  <script src="/js/blog.js"></script>
+
+  
+</body>
+</html>

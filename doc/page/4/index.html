@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh-CN" lang="zh-CN">
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="generator" content="Hugo 0.88.1" />
+
+  <title>SAMZONG</title>
+
+  <meta name="description" content="Samzong&#39;s Blog" />
+
+  
+
+<meta itemprop="name" content="SAMZONG">
+<meta itemprop="description" content="Samzong&#39;s Blog">
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="SAMZONG"/>
+<meta name="twitter:description" content="Samzong&#39;s Blog"/>
+
+
+<meta property="og:title" content="SAMZONG" />
+<meta property="og:description" content="Samzong&#39;s Blog" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://example.com/" />
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type":"Person",
+      "@id": "https://example.com#author",
+      "name": "samzong.lu",
+      "image": {
+        "@type":"ImageObject",
+        "url": "https://www.gravatar.com/avatar/c02c426714361366ea7d583950aa8fb4?s=400&d=mp"
+      },
+      "description": "Samzong's Blog"
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://example.com#website",
+      "url": "https://example.com",
+      "name": "SAMZONG",
+      "description": "Samzong's Blog",
+      "publisher": {
+        "@id": "https://example.com#author"
+      },
+      "inLanguage": "zh-CN"
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://example.com/#webpage",
+      "url": "https://example.com/",
+      "name": "SAMZONG",
+      "isPartOf": {
+        "@id": "https://example.com#website"
+      },
+      "about": {
+         "@id": "https://example.com#author"
+      },
+      "dateModified": "2021-06-02T00:54:38+00:00",
+      "description": "Samzong's Blog",
+      "inLanguage": "zh-CN",
+      "potentialAction": [
+        {
+          "@type": "ReadAction",
+          "target": [
+            "https://example.com/"
+          ]
+        }
+      ]
+    }
+  ]
+}
+</script>
+
+
+
+  <link type="text/css"
+        rel="stylesheet"
+        href="/css/print.css"
+        media="print">
+
+  <link type="text/css"
+        rel="stylesheet"
+        href="/css/poole.css">
+
+  <link type="text/css"
+        rel="stylesheet"
+        href="/css/hyde.css">
+
+  
+
+
+  <link type="text/css" rel="stylesheet" href="/css/blog.css">
+
+  <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700&display=swap">
+
+  <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css"
+        integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk="
+        crossorigin="anonymous" />
+
+  <link rel="apple-touch-icon-precomposed"
+        sizes="144x144"
+        href="/apple-touch-icon-144-precomposed.png">
+
+  <link rel="shortcut icon" href="/favicon.png">
+
+  
+  <link href="https://example.com/index.xml" rel="alternate" type="application/rss+xml" title="SAMZONG" />
+  </head>
+<body>
+  <aside class="sidebar">
+  <div class="container">
+    <div class="sidebar-about">
+      
+      <div class="author-image">
+        <a href="https://example.com">
+          <img src="https://www.gravatar.com/avatar/c02c426714361366ea7d583950aa8fb4?s=200&d=mp" class="img-circle img-headshot center" alt="Gravatar">
+        </a>
+      </div>
+      
+
+      <h1>SAMZONG</h1>
+
+      
+      <p class="lead">Samzong&#39;s Blog</p>
+      
+    </div>
+
+    <nav>
+      <ul class="sidebar-nav">
+        <li>
+          <a href="https://example.com">Home</a>
+        </li>
+        <li>
+          <a href="/posts/">Posts</a>
+        </li><li>
+          <a href="/about/">About</a>
+        </li>
+      </ul>
+    </nav>
+
+    <section class="social-icons">
+      
+      <a href="https://www.linkedin.com/in/samzong/" rel="me" title="Linkedin" target="_blank">
+        <i class="fab fa-linkedin" aria-hidden="true"></i>
+      </a>
+      
+      <a href="https://github.com/samzong" rel="me" title="GitHub" target="_blank">
+        <i class="fab fa-github" aria-hidden="true"></i>
+      </a>
+      
+      <a href="https://twitter.com/samzong_lu" rel="me" title="Twitter" target="_blank">
+        <i class="fab fa-twitter" aria-hidden="true"></i>
+      </a>
+      
+    </section>
+  </div>
+</aside>
+
+
+  <main class="content container">
+  <div class="posts">
+      <article class="post">
+        <h1 class="post-title">
+          <a href="https://example.com/posts/howto-use-pt-query-digest/">HowTo Use pt-query-digest</a>
+        </h1>
+
+        <div class="post-date">
+          <time datetime="2016-09-22T15:20:12Z">Sep 22, 2016</time> &middot; 3 min read
+        </div>
+
+        <div>
+          1. 简介 索引可以我们更快速的执行查询，但是肯定存在不合理的索引，如果想找到那些索引不是很合适的查询，并在它们成为问题前进行优化，则可以使用pt-query-digest的查询审查“review”功能，分析其EXPLAIN出来的执行计划。
+pt-query-digest是用于分析mysql慢查询的一个工具，它可以分析binlog、General log、slowlog，也可以通过SHOWPROCESSLIST或者通过tcpdump抓取的MySQL协议数据来进行分析。可以把分析结果输出到文件中，分析过程是先对查询语句的条件进行参数化，然后对参数化以后的查询进行分组统计，统计出各查询的执行时间、次数、占比等，可以借助分析结果找出问题进行优化。
+2. Install Percona Toolkit &amp; pt-query-digest percona-toolkit是一组高级命令行工具的集合，用来执行各种通过手工执行非常复杂和麻烦的mysql和系统任务。这些任务包括：
+        </div>
+
+        <div class="read-more-link">
+          <a href="https://example.com/posts/howto-use-pt-query-digest/">Read More</a>
+        </div>
+      </article>
+      <article class="post">
+        <h1 class="post-title">
+          <a href="https://example.com/posts/howto-install-a-tomcat-server-7/">HowTo Install a Tomcat Server 7</a>
+        </h1>
+
+        <div class="post-date">
+          <time datetime="2016-09-19T10:25:53Z">Sep 19, 2016</time> &middot; 3 min read
+        </div>
+
+        <div>
+          本文件是采用的模板是CentOS 6，同样适用于CentOS 系列其他发行版本。
+1. 测试环境  VMware Fushion 8 Pro # windows Use VirtualBox CentOS-6.
+        </div>
+
+        <div class="read-more-link">
+          <a href="https://example.com/posts/howto-install-a-tomcat-server-7/">Read More</a>
+        </div>
+      </article>
+      <article class="post">
+        <h1 class="post-title">
+          <a href="https://example.com/posts/script-install-lnmp/">Script Install LNMP</a>
+        </h1>
+
+        <div class="post-date">
+          <time datetime="2016-08-13T06:12:43Z">Aug 13, 2016</time> &middot; 2 min read
+        </div>
+
+        <div>
+          #!/bin/bash # if [[ $1 == &quot;uninstall&quot; ]];then echo &quot;starting backup data.
+        </div>
+
+        <div class="read-more-link">
+          <a href="https://example.com/posts/script-install-lnmp/">Read More</a>
+        </div>
+      </article>
+      <article class="post">
+        <h1 class="post-title">
+          <a href="https://example.com/posts/howto-setup-mariadb-galera-cluster-10-on-centos-6-x/">HowTo Setup MariaDB Galera Cluster 10 On CentOS 6.x</a>
+        </h1>
+
+        <div class="post-date">
+          <time datetime="2016-08-04T13:14:15Z">Aug 4, 2016</time> &middot; 2 min read
+        </div>
+
+        <div>
+          介绍  真正的多主架构，任何节点都可以进行读写 同步复制，各节点间无延迟且节点宕机不会导致数据丢失 紧密耦合，所有节点均保持相同状态 自动节点配置，无需手工备份当前数据库并拷贝至新节点  实验环境  Cluster node4 IP address 172.
+        </div>
+
+        <div class="read-more-link">
+          <a href="https://example.com/posts/howto-setup-mariadb-galera-cluster-10-on-centos-6-x/">Read More</a>
+        </div>
+      </article>
+      <article class="post">
+        <h1 class="post-title">
+          <a href="https://example.com/posts/howto-install-openfire-on-centos/">HowTo Install Openfire  on CentOS</a>
+        </h1>
+
+        <div class="post-date">
+          <time datetime="2016-08-02T16:04:48Z">Aug 2, 2016</time> &middot; 1 min read
+        </div>
+
+        <div>
+          Install Centos 6.x x86_64 略.
+安装依赖软件 yum -y install wget java glibc.
+        </div>
+
+        <div class="read-more-link">
+          <a href="https://example.com/posts/howto-install-openfire-on-centos/">Read More</a>
+        </div>
+      </article>
+      <article class="post">
+        <h1 class="post-title">
+          <a href="https://example.com/posts/howto-use-docker-create-a-tomcat-project/">HowTo Use Docker create a Tomcat Project</a>
+        </h1>
+
+        <div class="post-date">
+          <time datetime="2016-08-02T15:44:20Z">Aug 2, 2016</time> &middot; 4 min read
+        </div>
+
+        <div>
+          1. 安装CentOS 7.x 略。  2. 安装docker 详见： How to Install Docker on CentOS 6.
+        </div>
+
+        <div class="read-more-link">
+          <a href="https://example.com/posts/howto-use-docker-create-a-tomcat-project/">Read More</a>
+        </div>
+      </article>
+      <article class="post">
+        <h1 class="post-title">
+          <a href="https://example.com/posts/%E5%9C%A8%E7%BD%91%E9%A1%B5%E4%B8%AD%E6%8F%92%E5%85%A5%E6%AD%8C%E6%9B%B2/">在网页中插入歌曲</a>
+        </h1>
+
+        <div class="post-date">
+          <time datetime="2016-08-01T00:12:29Z">Aug 1, 2016</time> &middot; 1 min read
+        </div>
+
+        <div>
+          纠正下，在下面博文中的错误，关于单曲不能生成外链的问题，现已经纠正。
+我试过百度音乐、QQ音乐、虾米音乐和网易云音乐，目前只有网易云音乐有此功能，先在网易云音乐选择歌曲即可：
+分享单曲 分享专辑，歌单 
+        </div>
+
+        <div class="read-more-link">
+          <a href="https://example.com/posts/%E5%9C%A8%E7%BD%91%E9%A1%B5%E4%B8%AD%E6%8F%92%E5%85%A5%E6%AD%8C%E6%9B%B2/">Read More</a>
+        </div>
+      </article>
+      <article class="post">
+        <h1 class="post-title">
+          <a href="https://example.com/posts/howto-trun-off-ipv6-in-centos-6-x/">HowTo Trun Off IPv6 in CentOS 6.x</a>
+        </h1>
+
+        <div class="post-date">
+          <time datetime="2016-07-29T07:26:19Z">Jul 29, 2016</time> &middot; 1 min read
+        </div>
+
+        <div>
+          1. CentOS 6.x CentOS 6 上是默认打开了IPv6，但其实在我们实际使用中很难用到它，所以本篇的内容就是如何关闭IPv6。
+＃ 可以看到 inet6 ，说明还没关闭。
+        </div>
+
+        <div class="read-more-link">
+          <a href="https://example.com/posts/howto-trun-off-ipv6-in-centos-6-x/">Read More</a>
+        </div>
+      </article>
+      <article class="post">
+        <h1 class="post-title">
+          <a href="https://example.com/posts/howto-install-kvm-manage-server-webvirtmgr/">HowTo Install KVM Manage Server : webvirtmgr</a>
+        </h1>
+
+        <div class="post-date">
+          <time datetime="2016-07-27T17:34:01Z">Jul 27, 2016</time> &middot; 2 min read
+        </div>
+
+        <div>
+          生产环境的KVM宿主机越来越多，需要对宿主机的状态进行调控。这里用webvirtmgr进行管理。图形化的WEB，让人能更方便的查看kvm 宿主机的情况和操作.
+GitHub Project.
+Install 安装支持的软件源 yum install -y epel-release 安装相关软件 yum -y install git python-pip libvirt-python libxml2-python python-websockify supervisor nginx 从git-hub中下载相关的webvirtmgr代码 cd /usr/local/src/ git clone git://github.
+        </div>
+
+        <div class="read-more-link">
+          <a href="https://example.com/posts/howto-install-kvm-manage-server-webvirtmgr/">Read More</a>
+        </div>
+      </article>
+      <article class="post">
+        <h1 class="post-title">
+          <a href="https://example.com/posts/yum%E4%B8%AD-releasever%E5%92%8C-basearch%E7%9A%84%E5%8F%96%E5%80%BC/">Yum中$releasever和$basearch的取值</a>
+        </h1>
+
+        <div class="post-date">
+          <time datetime="2016-07-27T10:27:54Z">Jul 27, 2016</time> &middot; 3 min read
+        </div>
+
+        <div>
+          查看/etc/yum.repos.d/CentOS-Base.repo [base] name=CentOS-$releasever - Base mirrorlist=http://mirrorlist.centos.org/?release=$releasever&amp;arch=$basearch&amp;repo=os&amp;infra=$infra #baseurl=http://mirror.centos.org/centos/$releasever/os/$basearch/ gpgcheck=1 gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-6  $releasever的值,这个表示当前系统的发行版本  [root@ultraera /]# rpm -qi centos-release Name : centos-release Relocations: (not relocatable) Version : 6 Vendor: CentOS Release : 7.
+        </div>
+
+        <div class="read-more-link">
+          <a href="https://example.com/posts/yum%E4%B8%AD-releasever%E5%92%8C-basearch%E7%9A%84%E5%8F%96%E5%80%BC/">Read More</a>
+        </div>
+      </article>
+  </div>
+
+  
+    <ul class="pagination pagination-default">
+      <li class="page-item">
+        <a href="/" aria-label="First" class="page-link" role="button"><span aria-hidden="true">&laquo;&laquo;</span></a>
+      </li>
+      <li class="page-item">
+        <a href="/page/3/" aria-label="Previous" class="page-link" role="button"><span aria-hidden="true">&laquo;</span></a>
+      </li>
+      <li class="page-item">
+        <a href="/page/2/" aria-label="Page 2" class="page-link" role="button">2</a>
+      </li>
+      <li class="page-item">
+        <a href="/page/3/" aria-label="Page 3" class="page-link" role="button">3</a>
+      </li>
+      <li class="page-item active">
+        <a href="#" aria-current="page" aria-label="Page 4" class="page-link" role="button">4</a>
+      </li>
+      <li class="page-item">
+        <a href="/page/5/" aria-label="Page 5" class="page-link" role="button">5</a>
+      </li>
+      <li class="page-item">
+        <a href="/page/6/" aria-label="Page 6" class="page-link" role="button">6</a>
+      </li>
+      <li class="page-item">
+        <a href="/page/5/" aria-label="Next" class="page-link" role="button"><span aria-hidden="true">&raquo;</span></a>
+      </li>
+      <li class="page-item">
+        <a href="/page/10/" aria-label="Last" class="page-link" role="button"><span aria-hidden="true">&raquo;&raquo;</span></a>
+      </li>
+    </ul>
+  </main>
+
+  <footer>
+  <div>
+    <p>
+      &copy; samzong.lu 2021
+
+      &middot; <a href="https://creativecommons.org/licenses/by-sa/4.0" target="_blank">CC BY-SA 4.0</a>
+
+      
+    </p>
+  </div>
+</footer>
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/js/all.min.js"
+          integrity="sha256-MAgcygDRahs+F/Nk5Vz387whB4kSK9NXlDN3w58LLq0="
+          crossorigin="anonymous"></script>
+
+
+  <script src="/js/jquery.min.js"></script>
+  <script src="/js/soho.js"></script>
+
+  <script src="/js/blog.js"></script>
+
+  
+</body>
+</html>

@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh-CN" lang="zh-CN">
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="generator" content="Hugo 0.88.1" />
+
+  <title>在CentOS中配置 SFTP 环境 &middot; SAMZONG</title>
+
+  <meta name="description" content="" />
+
+  
+
+<meta itemprop="name" content="在CentOS中配置 SFTP 环境">
+<meta itemprop="description" content="做运维工作的，应该经常会碰到这样的问题，需要新上一个web项目，需要上传文件到服务器上，解决方法有很多种，常见的如sftp和ftp，今天讲如何使用sftp让系统用户用户上传项目的权限，并且实现chroot和无法使用ssh登录到系统。
+ SFTP是指SSH文件传输协议（SSH File Transfer protocol）或安全文件传输协议（Secure File Transfer Protocol），它提供了可信数据流下的文件访问、文件传输以及文件管理功能。当我们为SFTP配置chroot环境后，只有被许可的用户可以访问，并被限制到他们的家目录中，换言之：被许可的用户将处于牢笼环境中，在此环境中它们甚至不能切换它们的目录。"><meta itemprop="datePublished" content="2016-03-24T14:55:03+00:00" />
+<meta itemprop="dateModified" content="2016-03-24T14:55:03+00:00" />
+<meta itemprop="wordCount" content="314">
+<meta itemprop="keywords" content="SSH," />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="在CentOS中配置 SFTP 环境"/>
+<meta name="twitter:description" content="做运维工作的，应该经常会碰到这样的问题，需要新上一个web项目，需要上传文件到服务器上，解决方法有很多种，常见的如sftp和ftp，今天讲如何使用sftp让系统用户用户上传项目的权限，并且实现chroot和无法使用ssh登录到系统。
+ SFTP是指SSH文件传输协议（SSH File Transfer protocol）或安全文件传输协议（Secure File Transfer Protocol），它提供了可信数据流下的文件访问、文件传输以及文件管理功能。当我们为SFTP配置chroot环境后，只有被许可的用户可以访问，并被限制到他们的家目录中，换言之：被许可的用户将处于牢笼环境中，在此环境中它们甚至不能切换它们的目录。"/>
+
+
+<meta property="og:title" content="在CentOS中配置 SFTP 环境" />
+<meta property="og:description" content="做运维工作的，应该经常会碰到这样的问题，需要新上一个web项目，需要上传文件到服务器上，解决方法有很多种，常见的如sftp和ftp，今天讲如何使用sftp让系统用户用户上传项目的权限，并且实现chroot和无法使用ssh登录到系统。
+ SFTP是指SSH文件传输协议（SSH File Transfer protocol）或安全文件传输协议（Secure File Transfer Protocol），它提供了可信数据流下的文件访问、文件传输以及文件管理功能。当我们为SFTP配置chroot环境后，只有被许可的用户可以访问，并被限制到他们的家目录中，换言之：被许可的用户将处于牢笼环境中，在此环境中它们甚至不能切换它们的目录。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://example.com/posts/%E5%9C%A8centos%E4%B8%AD%E9%85%8D%E7%BD%AE-sftp-%E7%8E%AF%E5%A2%83/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2016-03-24T14:55:03+00:00" />
+<meta property="article:modified_time" content="2016-03-24T14:55:03+00:00" />
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type":"Person",
+      "@id": "https://example.com#author",
+      "name": "samzong.lu",
+      "image": {
+        "@type":"ImageObject",
+        "url": "https://www.gravatar.com/avatar/c02c426714361366ea7d583950aa8fb4?s=400&d=mp"
+      },
+      "description": "Samzong's Blog"
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://example.com#website",
+      "url": "https://example.com",
+      "name": "SAMZONG",
+      "description": "Samzong's Blog",
+      "publisher": {
+        "@id": "https://example.com#author"
+      },
+      "inLanguage": "zh-CN"
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://example.com/posts/%E5%9C%A8centos%E4%B8%AD%E9%85%8D%E7%BD%AE-sftp-%E7%8E%AF%E5%A2%83/#webpage",
+      "url": "https://example.com/posts/%E5%9C%A8centos%E4%B8%AD%E9%85%8D%E7%BD%AE-sftp-%E7%8E%AF%E5%A2%83/",
+      "name": "在CentOS中配置 SFTP 环境",
+      "isPartOf": {
+        "@id": "https://example.com#website"
+      },
+      "about": {
+         "@id": "https://example.com#author"
+      },
+      "datePublished": "2016-03-24T14:55:03+00:00",
+      "dateModified": "2016-03-24T14:55:03+00:00",
+      "description": "做运维工作的，应该经常会碰到这样的问题，需要新上一个web项目，需要上传文件到服务器上，解决方法有很多种，常见的如sftp和ftp，今天讲如何使用sftp让系统用户用户上传项目的权限，并且实现chroot和无法使用ssh登录到系统。\n SFTP是指SSH文件传输协议（SSH File Transfer protocol）或安全文件传输协议（Secure File Transfer Protocol），它提供了可信数据流下的文件访问、文件传输以及文件管理功能。当我们为SFTP配置chroot环境后，只有被许可的用户可以访问，并被限制到他们的家目录中，换言之：被许可的用户将处于牢笼环境中，在此环境中它们甚至不能切换它们的目录。",
+      "inLanguage": "zh-CN",
+      "potentialAction": [
+        {
+          "@type": "ReadAction",
+          "target": [
+            "https://example.com/posts/%E5%9C%A8centos%E4%B8%AD%E9%85%8D%E7%BD%AE-sftp-%E7%8E%AF%E5%A2%83/"
+          ]
+        }
+      ]
+    },
+    {
+      "@type": "Article",
+      "isPartOf": {
+        "@id": "https://example.com/posts/%E5%9C%A8centos%E4%B8%AD%E9%85%8D%E7%BD%AE-sftp-%E7%8E%AF%E5%A2%83/#webpage"
+      },
+      "mainEntityOfPage": {
+        "@id": "https://example.com/posts/%E5%9C%A8centos%E4%B8%AD%E9%85%8D%E7%BD%AE-sftp-%E7%8E%AF%E5%A2%83/#webpage"
+      },
+      "headline": "在CentOS中配置 SFTP 环境",
+      "datePublished": "2016-03-24T14:55:03+00:00",
+      "dateModified": "2016-03-24T14:55:03+00:00",
+      "publisher": {
+        "@id": "https://example.com#author"
+      },
+      "keywords": [
+        "SSH"
+      ],
+      "articleSection": [
+        "CentOS"
+      ],
+      "inLanguage": "zh-CN",
+      "author": {
+        "@type": "Person",
+        "name":  null 
+      },
+      "potentialAction": [
+        {
+          "@type": "CommentAction",
+          "name": "Comment",
+          "target": [
+            "https://example.com/posts/%E5%9C%A8centos%E4%B8%AD%E9%85%8D%E7%BD%AE-sftp-%E7%8E%AF%E5%A2%83/#comments"
+          ]
+        }
+      ]
+    }
+  ]
+}
+</script>
+
+
+
+  <link type="text/css"
+        rel="stylesheet"
+        href="/css/print.css"
+        media="print">
+
+  <link type="text/css"
+        rel="stylesheet"
+        href="/css/poole.css">
+
+  <link type="text/css"
+        rel="stylesheet"
+        href="/css/hyde.css">
+
+  
+
+
+  <link type="text/css" rel="stylesheet" href="/css/blog.css">
+
+  <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700&display=swap">
+
+  <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css"
+        integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk="
+        crossorigin="anonymous" />
+
+  <link rel="apple-touch-icon-precomposed"
+        sizes="144x144"
+        href="/apple-touch-icon-144-precomposed.png">
+
+  <link rel="shortcut icon" href="/favicon.png">
+
+  
+  </head>
+<body>
+  <aside class="sidebar">
+  <div class="container">
+    <div class="sidebar-about">
+      
+      <div class="author-image">
+        <a href="https://example.com">
+          <img src="https://www.gravatar.com/avatar/c02c426714361366ea7d583950aa8fb4?s=200&d=mp" class="img-circle img-headshot center" alt="Gravatar">
+        </a>
+      </div>
+      
+
+      <h1>SAMZONG</h1>
+
+      
+      <p class="lead">Samzong&#39;s Blog</p>
+      
+    </div>
+
+    <nav>
+      <ul class="sidebar-nav">
+        <li>
+          <a href="https://example.com">Home</a>
+        </li>
+        <li>
+          <a href="/posts/">Posts</a>
+        </li><li>
+          <a href="/about/">About</a>
+        </li>
+      </ul>
+    </nav>
+
+    <section class="social-icons">
+      
+      <a href="https://www.linkedin.com/in/samzong/" rel="me" title="Linkedin" target="_blank">
+        <i class="fab fa-linkedin" aria-hidden="true"></i>
+      </a>
+      
+      <a href="https://github.com/samzong" rel="me" title="GitHub" target="_blank">
+        <i class="fab fa-github" aria-hidden="true"></i>
+      </a>
+      
+      <a href="https://twitter.com/samzong_lu" rel="me" title="Twitter" target="_blank">
+        <i class="fab fa-twitter" aria-hidden="true"></i>
+      </a>
+      
+    </section>
+  </div>
+</aside>
+
+
+  <main class="content container">
+  <div class="post">
+  <h1 class="title">在CentOS中配置 SFTP 环境</h1>
+  
+
+  <div class="post-date">
+    <time datetime="2016-03-24T14:55:03Z">Mar 24, 2016</time> <span class="readtime">&middot; 2 min read</span>
+  </div>
+
+  <div>
+  <p>       做运维工作的，应该经常会碰到这样的问题，需要新上一个web项目，需要上传文件到服务器上，解决方法有很多种，常见的如sftp和ftp，今天讲如何使用sftp让系统用户用户上传项目的权限，并且实现chroot和无法使用ssh登录到系统。</p>
+<p>       SFTP是指SSH文件传输协议（SSH File Transfer protocol）或安全文件传输协议（Secure File Transfer Protocol），它提供了可信数据流下的文件访问、文件传输以及文件管理功能。当我们为SFTP配置chroot环境后，只有被许可的用户可以访问，并被限制到他们的家目录中，换言之：被许可的用户将处于牢笼环境中，在此环境中它们甚至不能切换它们的目录。</p>
+<h3 id="1-测试环境">1. 测试环境</h3>
+<ul>
+<li>MacBook Pro 15-inch i7 16GB</li>
+<li>VMware Fushion 8 Pro</li>
+<li>Transmit （ SFTP tools for Mac ）</li>
+</ul>
+<pre tabindex="0"><code>[root@test ~]# cat /etc/issue
+CentOS release 6.6 (Final)
+Kernel \r on an \m
+[root@test ~]# rpm -qa | grep openssh-server
+openssh-server-5.3p1-104.el6.i686
+</code></pre><h3 id="2-实验步骤">2. 实验步骤</h3>
+<h5 id="21-增加一个sftpusers用户组">2.1 增加一个sftpusers用户组</h5>
+<pre tabindex="0"><code>[root@test ~]# groupadd sftpusers
+</code></pre><h5 id="22-创建一个用户user01并分配给sftpusers用户组">2.2 创建一个用户user01，并分配给sftpusers用户组</h5>
+<pre tabindex="0"><code>[root@test ~]# useradd -g sftpusers user01
+</code></pre><h5 id="23-修改用户家目录及指定不能登录shell">2.3 修改用户家目录及指定不能登录shell</h5>
+<pre tabindex="0"><code>[root@test ~]# mkdir /sftp/
+[root@test ~]# usermod -s /sbin/nologin -d /sftp/user01 -m user01
+</code></pre><h5 id="24-给用户创建密码注意密码不明文显示">2.4 给用户创建密码（注意密码不明文显示）</h5>
+<pre tabindex="0"><code>[root@test ~]# passwd user01
+Changing password for user user01.
+New password:
+BAD PASSWORD: it is too simplistic/systematic
+BAD PASSWORD: is too simple
+Retype new password:
+passwd: all authentication tokens updated successfully.
+[root@test ~]#
+</code></pre><h4 id="25-修改ssh的配置文件如下设置">2.5 修改ssh的配置文件，如下设置</h4>
+<pre tabindex="0"><code>[root@test ~]# ll /etc/ssh/sshd_config
+-rw-------. 1 root root 3879 Oct 15  2014 /etc/ssh/sshd_config
+[root@test ~]# vim /etc/ssh/sshd_config
+
+# line 132
+#Subsystem      sftp    /usr/libexec/openssh/sftp-server    #注释
+Subsystem       sftp    internal-sftp        #修改为internal-sftp
+
+# add this lines at the end of file
+Match Group sftpusers        #指定一下参数仅适用的用户组sftpusers
+    X11Forwarding no
+    AllowTcpForwarding no
+    ChrootDirectory %h       #设置chroot将用户锁在家目录，%h=家目录
+    ForceCommand internal-sftp    #该参数强制执行内部sftp
+</code></pre><h5 id="26-重启ssh服务">2.6 重启ssh服务</h5>
+<pre tabindex="0"><code>[root@test ~]# /etc/init.d/sshd restart
+Stopping sshd:                                             [  OK  ]
+Starting sshd:                                             [  OK  ]
+</code></pre><h5 id="27-设置用户家目录权限注意权限不能大于0755">2.7 设置用户家目录权限,(注意权限不能大于0755)</h5>
+<pre tabindex="0"><code>[root@test ~]# chmod 0755 /sftp/user01/
+[root@test ~]# chown root /sftp/user01/
+[root@test ~]# chgrp -R sftpusers /sftp/user01/
+</code></pre><h5 id="28-关于上传根目录无法上传文件">2.8 关于上传,根目录无法上传文件。</h5>
+<p>       因为用户家目录属主是root，并且权限最大0755，所以没法写，我的解决方法是在在家目录建立一个文件夹，作为上传目录，并把属主给user01即可。</p>
+<pre tabindex="0"><code>[root@test ~]# mkdir /sftp/user01/upload
+[root@test ~]# chown user01:sftpusers /sftp/user01/upload/
+</code></pre><h3 id="3-测试验证">3. 测试验证</h3>
+<h5 id="31-linux-登录测试">3.1 Linux 登录测试</h5>
+<pre tabindex="0"><code>[root@test ~]# su - user01
+This account is currently not available.    #su - 切换失败
+
+[root@test ~]# cat /etc/passwd | tail -1
+user01❌500:500::/sftp/user01:/sbin/nologin
+
+[root@test ~]# ssh user01@localhost
+The authenticity of host 'localhost (::1)' can't be established.
+RSA key fingerprint is f3:fc:31:dc:7d:16:d5:ad:8c:bc:eb:69:8f:b2:0b:c9.
+Are you sure you want to continue connecting (yes/no)? yes
+Warning: Permanently added 'localhost' (RSA) to the list of known hosts.
+user01@localhost's password:
+This service allows sftp connections only.    #ssh登录也失败，ssh设置成功
+Connection to localhost closed.
+
+[root@test ~]# sftp user01@localhost
+Connecting to localhost...
+user01@localhost's password:
+sftp&gt; ls
+upload
+sftp&gt; pwd
+Remote working directory: /
+sftp&gt;
+
+</code></pre><h5 id="32-sftp-工具测试">3.2 SFTP 工具测试</h5>
+<p>       我这里使用的是Mac，但是传统的文件传输工具都差不多，Windows下有Winscp、Xftp等。</p>
+
+  </div>
+
+  
+<div>
+  <ul class="tags">
+  <li>
+    <a href="https://example.com/tags/ssh/" class="tag-link">SSH</a>
+  </li>
+  </ul>
+</div>
+
+
+
+  <div class="share-buttons">
+  <a class="twitter-share-button"
+     href="#"
+     title="Share on Twitter"
+     data-url="https://example.com/posts/%E5%9C%A8centos%E4%B8%AD%E9%85%8D%E7%BD%AE-sftp-%E7%8E%AF%E5%A2%83/"
+     data-text="在CentOS中配置 SFTP 环境"><i class="fab fa-twitter"></i></a>
+
+  <a class="linkedin-share-button"
+     href="#"
+     title="Share on LinkedIn"
+     data-url="https://example.com/posts/%E5%9C%A8centos%E4%B8%AD%E9%85%8D%E7%BD%AE-sftp-%E7%8E%AF%E5%A2%83/"
+     data-text="在CentOS中配置 SFTP 环境"><i class="fab fa-linkedin-in"></i></a>
+
+  <a class="facebook-share-button"
+     href="#"
+     title="Share on Facebook"
+     data-url="https://example.com/posts/%E5%9C%A8centos%E4%B8%AD%E9%85%8D%E7%BD%AE-sftp-%E7%8E%AF%E5%A2%83/"
+     data-text="在CentOS中配置 SFTP 环境"><i class="fab fa-facebook"></i></a>
+
+  <a class="telegram-share-button"
+     href="#"
+     title="Share on Telegram"
+     data-url="https://example.com/posts/%E5%9C%A8centos%E4%B8%AD%E9%85%8D%E7%BD%AE-sftp-%E7%8E%AF%E5%A2%83/"
+     data-text="在CentOS中配置 SFTP 环境"><i class="fab fa-telegram"></i></a>
+
+  <a class="pinterest-share-button"
+     href="#"
+     title="Share on Pinterest"
+     data-url="https://example.com/posts/%E5%9C%A8centos%E4%B8%AD%E9%85%8D%E7%BD%AE-sftp-%E7%8E%AF%E5%A2%83/"
+     data-text="在CentOS中配置 SFTP 环境"><i class="fab fa-pinterest"></i></a>
+</div>
+
+
+  
+</div>
+  </main>
+
+  <footer>
+  <div>
+    <p>
+      &copy; samzong.lu 2021
+
+      &middot; <a href="https://creativecommons.org/licenses/by-sa/4.0" target="_blank">CC BY-SA 4.0</a>
+
+      
+    </p>
+  </div>
+</footer>
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/js/all.min.js"
+          integrity="sha256-MAgcygDRahs+F/Nk5Vz387whB4kSK9NXlDN3w58LLq0="
+          crossorigin="anonymous"></script>
+
+
+  <script src="/js/jquery.min.js"></script>
+  <script src="/js/soho.js"></script>
+
+  <script src="/js/blog.js"></script>
+
+  
+</body>
+</html>

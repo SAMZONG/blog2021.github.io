@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh-CN" lang="zh-CN">
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="generator" content="Hugo 0.88.1" />
+
+  <title>HowTo Install Docker on CentOS 6.x &middot; SAMZONG</title>
+
+  <meta name="description" content="" />
+
+  
+
+<meta itemprop="name" content="HowTo Install Docker on CentOS 6.x">
+<meta itemprop="description" content="1. Add the EPEL Repository rpm -iUvh http://dl.fedoraproject.org/pub/epel/6/x86_64/epel-release-6-8.noarch.rpm 2. Update your system yum update -y 3."><meta itemprop="datePublished" content="2016-07-07T08:03:28+00:00" />
+<meta itemprop="dateModified" content="2016-07-07T08:03:28+00:00" />
+<meta itemprop="wordCount" content="183">
+<meta itemprop="keywords" content="Docker," />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="HowTo Install Docker on CentOS 6.x"/>
+<meta name="twitter:description" content="1. Add the EPEL Repository rpm -iUvh http://dl.fedoraproject.org/pub/epel/6/x86_64/epel-release-6-8.noarch.rpm 2. Update your system yum update -y 3."/>
+
+
+<meta property="og:title" content="HowTo Install Docker on CentOS 6.x" />
+<meta property="og:description" content="1. Add the EPEL Repository rpm -iUvh http://dl.fedoraproject.org/pub/epel/6/x86_64/epel-release-6-8.noarch.rpm 2. Update your system yum update -y 3." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://example.com/posts/howto-install-docker-on-centos-6-x/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2016-07-07T08:03:28+00:00" />
+<meta property="article:modified_time" content="2016-07-07T08:03:28+00:00" />
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type":"Person",
+      "@id": "https://example.com#author",
+      "name": "samzong.lu",
+      "image": {
+        "@type":"ImageObject",
+        "url": "https://www.gravatar.com/avatar/c02c426714361366ea7d583950aa8fb4?s=400&d=mp"
+      },
+      "description": "Samzong's Blog"
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://example.com#website",
+      "url": "https://example.com",
+      "name": "SAMZONG",
+      "description": "Samzong's Blog",
+      "publisher": {
+        "@id": "https://example.com#author"
+      },
+      "inLanguage": "zh-CN"
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://example.com/posts/howto-install-docker-on-centos-6-x/#webpage",
+      "url": "https://example.com/posts/howto-install-docker-on-centos-6-x/",
+      "name": "HowTo Install Docker on CentOS 6.x",
+      "isPartOf": {
+        "@id": "https://example.com#website"
+      },
+      "about": {
+         "@id": "https://example.com#author"
+      },
+      "datePublished": "2016-07-07T08:03:28+00:00",
+      "dateModified": "2016-07-07T08:03:28+00:00",
+      "description": "1. Add the EPEL Repository rpm -iUvh http://dl.fedoraproject.org/pub/epel/6/x86_64/epel-release-6-8.noarch.rpm 2. Update your system yum update -y 3.",
+      "inLanguage": "zh-CN",
+      "potentialAction": [
+        {
+          "@type": "ReadAction",
+          "target": [
+            "https://example.com/posts/howto-install-docker-on-centos-6-x/"
+          ]
+        }
+      ]
+    },
+    {
+      "@type": "Article",
+      "isPartOf": {
+        "@id": "https://example.com/posts/howto-install-docker-on-centos-6-x/#webpage"
+      },
+      "mainEntityOfPage": {
+        "@id": "https://example.com/posts/howto-install-docker-on-centos-6-x/#webpage"
+      },
+      "headline": "HowTo Install Docker on CentOS 6.x",
+      "datePublished": "2016-07-07T08:03:28+00:00",
+      "dateModified": "2016-07-07T08:03:28+00:00",
+      "publisher": {
+        "@id": "https://example.com#author"
+      },
+      "keywords": [
+        "Docker"
+      ],
+      "articleSection": [
+        "Docker"
+      ],
+      "inLanguage": "zh-CN",
+      "author": {
+        "@type": "Person",
+        "name":  null 
+      },
+      "potentialAction": [
+        {
+          "@type": "CommentAction",
+          "name": "Comment",
+          "target": [
+            "https://example.com/posts/howto-install-docker-on-centos-6-x/#comments"
+          ]
+        }
+      ]
+    }
+  ]
+}
+</script>
+
+
+
+  <link type="text/css"
+        rel="stylesheet"
+        href="/css/print.css"
+        media="print">
+
+  <link type="text/css"
+        rel="stylesheet"
+        href="/css/poole.css">
+
+  <link type="text/css"
+        rel="stylesheet"
+        href="/css/hyde.css">
+
+  
+
+
+  <link type="text/css" rel="stylesheet" href="/css/blog.css">
+
+  <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700&display=swap">
+
+  <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css"
+        integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk="
+        crossorigin="anonymous" />
+
+  <link rel="apple-touch-icon-precomposed"
+        sizes="144x144"
+        href="/apple-touch-icon-144-precomposed.png">
+
+  <link rel="shortcut icon" href="/favicon.png">
+
+  
+  </head>
+<body>
+  <aside class="sidebar">
+  <div class="container">
+    <div class="sidebar-about">
+      
+      <div class="author-image">
+        <a href="https://example.com">
+          <img src="https://www.gravatar.com/avatar/c02c426714361366ea7d583950aa8fb4?s=200&d=mp" class="img-circle img-headshot center" alt="Gravatar">
+        </a>
+      </div>
+      
+
+      <h1>SAMZONG</h1>
+
+      
+      <p class="lead">Samzong&#39;s Blog</p>
+      
+    </div>
+
+    <nav>
+      <ul class="sidebar-nav">
+        <li>
+          <a href="https://example.com">Home</a>
+        </li>
+        <li>
+          <a href="/posts/">Posts</a>
+        </li><li>
+          <a href="/about/">About</a>
+        </li>
+      </ul>
+    </nav>
+
+    <section class="social-icons">
+      
+      <a href="https://www.linkedin.com/in/samzong/" rel="me" title="Linkedin" target="_blank">
+        <i class="fab fa-linkedin" aria-hidden="true"></i>
+      </a>
+      
+      <a href="https://github.com/samzong" rel="me" title="GitHub" target="_blank">
+        <i class="fab fa-github" aria-hidden="true"></i>
+      </a>
+      
+      <a href="https://twitter.com/samzong_lu" rel="me" title="Twitter" target="_blank">
+        <i class="fab fa-twitter" aria-hidden="true"></i>
+      </a>
+      
+    </section>
+  </div>
+</aside>
+
+
+  <main class="content container">
+  <div class="post">
+  <h1 class="title">HowTo Install Docker on CentOS 6.x</h1>
+  
+
+  <div class="post-date">
+    <time datetime="2016-07-07T08:03:28Z">Jul 7, 2016</time> <span class="readtime">&middot; 1 min read</span>
+  </div>
+
+  <div>
+  <h3 id="1-add-the-epel-repository"><strong>1. Add the EPEL Repository</strong></h3>
+<pre tabindex="0"><code>rpm -iUvh http://dl.fedoraproject.org/pub/epel/6/x86_64/epel-release-6-8.noarch.rpm
+</code></pre><h3 id="2-update-your-system"><strong>2. Update your system</strong></h3>
+<pre tabindex="0"><code>yum update -y
+</code></pre><h3 id="3-install"><strong>3. Install</strong></h3>
+<pre tabindex="0"><code>yum install -y docker-io
+</code></pre><h3 id="4-configure"><strong>4. Configure</strong></h3>
+<pre tabindex="0"><code>service docker start
+chkconfig docker on
+
+docker info
+</code></pre><h3 id="5-download-a-docker-container"><strong>5. Download a Docker Container</strong></h3>
+<pre tabindex="0"><code>docker pull centos
+</code></pre><h3 id="6-run-a-docker-container"><strong>6. Run a Docker Container</strong></h3>
+<pre tabindex="0"><code>docker run -i -t centos /bin/bash
+</code></pre><h3 id="7-find-docker-container"><strong>7. Find Docker Container</strong></h3>
+<pre tabindex="0"><code>docker search ubuntu
+</code></pre><h3 id="faq"><strong>FAQ</strong></h3>
+<h4 id="1-faild-to-start-docker-on-centos-6x"><strong>1. Faild to start docker on CentOS 6.x</strong></h4>
+<p><!-- raw HTML omitted --><em><strong>/usr/bin/docker: relocation error: /usr/bin/docker: symbol dm_task_get_info_with_deferred_remove, version Base not defined in file libdevmapper.so.1.02 with link time reference</strong></em><!-- raw HTML omitted --></p>
+<pre tabindex="0"><code>the lib-device-mapper that you have isn't exporting a symbol (&quot;Base&quot;) that Docker needs.
+this by upgrading lib-device-mapper to version 1.02.90.
+
+# You may have to enable the public_ol6_latest repo in order to get this package.
+sudo yum-config-manager --enable public_ol6_latest
+sudo yum install device-mapper-event-libs
+</code></pre><h4 id="2-faild-to-use-docker"><strong>2. Faild to use docker</strong></h4>
+<p><!-- raw HTML omitted --><em><strong>Get http:///var/run/docker.sock/v1.19/info: dial unix /var/run/docker.sock: no such file or directory. Are you trying to connect to a TLS-enabled daemon without TLS?</strong></em><!-- raw HTML omitted --></p>
+<pre tabindex="0"><code># this is because docker no restart ok.
+
+pkill -9 docker &amp;&amp; service docker start
+</code></pre><h4 id="3-howto-save-docker-run--i--t-xxx-binbash"><strong>3. HowTo save &lsquo;docker run -i -t xxx /bin/bash&rsquo;</strong></h4>
+<pre tabindex="0"><code>docker ps -l
+docker commit ID newname
+docker images
+</code></pre>
+  </div>
+
+  
+<div>
+  <ul class="tags">
+  <li>
+    <a href="https://example.com/tags/docker/" class="tag-link">Docker</a>
+  </li>
+  </ul>
+</div>
+
+
+
+  <div class="share-buttons">
+  <a class="twitter-share-button"
+     href="#"
+     title="Share on Twitter"
+     data-url="https://example.com/posts/howto-install-docker-on-centos-6-x/"
+     data-text="HowTo Install Docker on CentOS 6.x"><i class="fab fa-twitter"></i></a>
+
+  <a class="linkedin-share-button"
+     href="#"
+     title="Share on LinkedIn"
+     data-url="https://example.com/posts/howto-install-docker-on-centos-6-x/"
+     data-text="HowTo Install Docker on CentOS 6.x"><i class="fab fa-linkedin-in"></i></a>
+
+  <a class="facebook-share-button"
+     href="#"
+     title="Share on Facebook"
+     data-url="https://example.com/posts/howto-install-docker-on-centos-6-x/"
+     data-text="HowTo Install Docker on CentOS 6.x"><i class="fab fa-facebook"></i></a>
+
+  <a class="telegram-share-button"
+     href="#"
+     title="Share on Telegram"
+     data-url="https://example.com/posts/howto-install-docker-on-centos-6-x/"
+     data-text="HowTo Install Docker on CentOS 6.x"><i class="fab fa-telegram"></i></a>
+
+  <a class="pinterest-share-button"
+     href="#"
+     title="Share on Pinterest"
+     data-url="https://example.com/posts/howto-install-docker-on-centos-6-x/"
+     data-text="HowTo Install Docker on CentOS 6.x"><i class="fab fa-pinterest"></i></a>
+</div>
+
+
+  
+</div>
+  </main>
+
+  <footer>
+  <div>
+    <p>
+      &copy; samzong.lu 2021
+
+      &middot; <a href="https://creativecommons.org/licenses/by-sa/4.0" target="_blank">CC BY-SA 4.0</a>
+
+      
+    </p>
+  </div>
+</footer>
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/js/all.min.js"
+          integrity="sha256-MAgcygDRahs+F/Nk5Vz387whB4kSK9NXlDN3w58LLq0="
+          crossorigin="anonymous"></script>
+
+
+  <script src="/js/jquery.min.js"></script>
+  <script src="/js/soho.js"></script>
+
+  <script src="/js/blog.js"></script>
+
+  
+</body>
+</html>

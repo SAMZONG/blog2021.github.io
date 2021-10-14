@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Categories on SAMZONG</title>
+    <link>https://example.com/categories/</link>
+    <description>Recent content in Categories on SAMZONG</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Wed, 02 Jun 2021 00:54:38 +0000</lastBuildDate><atom:link href="https://example.com/categories/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Hello</title>
+      <link>https://example.com/categories/hello/</link>
+      <pubDate>Wed, 02 Jun 2021 00:54:38 +0000</pubDate>
+      
+      <guid>https://example.com/categories/hello/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Mac</title>
+      <link>https://example.com/categories/mac/</link>
+      <pubDate>Tue, 24 Nov 2020 00:32:13 +0000</pubDate>
+      
+      <guid>https://example.com/categories/mac/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>MySQL</title>
+      <link>https://example.com/categories/mysql/</link>
+      <pubDate>Wed, 03 Jul 2019 13:17:04 +0000</pubDate>
+      
+      <guid>https://example.com/categories/mysql/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>CentOS</title>
+      <link>https://example.com/categories/centos/</link>
+      <pubDate>Tue, 18 Apr 2017 17:48:57 +0000</pubDate>
+      
+      <guid>https://example.com/categories/centos/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Git</title>
+      <link>https://example.com/categories/git/</link>
+      <pubDate>Thu, 13 Apr 2017 11:18:17 +0000</pubDate>
+      
+      <guid>https://example.com/categories/git/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Tomcat</title>
+      <link>https://example.com/categories/tomcat/</link>
+      <pubDate>Wed, 05 Apr 2017 15:21:03 +0000</pubDate>
+      
+      <guid>https://example.com/categories/tomcat/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>魔方</title>
+      <link>https://example.com/categories/%E9%AD%94%E6%96%B9/</link>
+      <pubDate>Sat, 04 Mar 2017 10:57:02 +0000</pubDate>
+      
+      <guid>https://example.com/categories/%E9%AD%94%E6%96%B9/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Ghost</title>
+      <link>https://example.com/categories/ghost/</link>
+      <pubDate>Mon, 20 Feb 2017 14:39:15 +0000</pubDate>
+      
+      <guid>https://example.com/categories/ghost/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Zabbix</title>
+      <link>https://example.com/categories/zabbix/</link>
+      <pubDate>Wed, 18 Jan 2017 23:28:44 +0000</pubDate>
+      
+      <guid>https://example.com/categories/zabbix/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Docker</title>
+      <link>https://example.com/categories/docker/</link>
+      <pubDate>Sat, 07 Jan 2017 15:32:23 +0000</pubDate>
+      
+      <guid>https://example.com/categories/docker/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>AliCloud</title>
+      <link>https://example.com/categories/alicloud/</link>
+      <pubDate>Tue, 20 Dec 2016 06:17:08 +0000</pubDate>
+      
+      <guid>https://example.com/categories/alicloud/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Python</title>
+      <link>https://example.com/categories/python/</link>
+      <pubDate>Thu, 08 Dec 2016 20:12:37 +0000</pubDate>
+      
+      <guid>https://example.com/categories/python/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Linux</title>
+      <link>https://example.com/categories/linux/</link>
+      <pubDate>Sat, 29 Oct 2016 06:23:59 +0000</pubDate>
+      
+      <guid>https://example.com/categories/linux/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>PostgreSQL</title>
+      <link>https://example.com/categories/postgresql/</link>
+      <pubDate>Thu, 20 Oct 2016 07:25:37 +0000</pubDate>
+      
+      <guid>https://example.com/categories/postgresql/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Shell</title>
+      <link>https://example.com/categories/shell/</link>
+      <pubDate>Sat, 13 Aug 2016 06:12:43 +0000</pubDate>
+      
+      <guid>https://example.com/categories/shell/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>KVM</title>
+      <link>https://example.com/categories/kvm/</link>
+      <pubDate>Wed, 27 Jul 2016 17:34:01 +0000</pubDate>
+      
+      <guid>https://example.com/categories/kvm/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Azure</title>
+      <link>https://example.com/categories/azure/</link>
+      <pubDate>Sun, 10 Jul 2016 11:21:47 +0000</pubDate>
+      
+      <guid>https://example.com/categories/azure/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Redis</title>
+      <link>https://example.com/categories/redis/</link>
+      <pubDate>Thu, 07 Jul 2016 03:49:02 +0000</pubDate>
+      
+      <guid>https://example.com/categories/redis/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>CloudStack</title>
+      <link>https://example.com/categories/cloudstack/</link>
+      <pubDate>Wed, 18 May 2016 02:38:59 +0000</pubDate>
+      
+      <guid>https://example.com/categories/cloudstack/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>OpenStack</title>
+      <link>https://example.com/categories/openstack/</link>
+      <pubDate>Sun, 15 May 2016 12:52:05 +0000</pubDate>
+      
+      <guid>https://example.com/categories/openstack/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>MongoDB</title>
+      <link>https://example.com/categories/mongodb/</link>
+      <pubDate>Sun, 27 Mar 2016 05:55:28 +0000</pubDate>
+      
+      <guid>https://example.com/categories/mongodb/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>iOS</title>
+      <link>https://example.com/categories/ios/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://example.com/categories/ios/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Jmeter</title>
+      <link>https://example.com/categories/jmeter/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://example.com/categories/jmeter/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Shadowsocks</title>
+      <link>https://example.com/categories/shadowsocks/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://example.com/categories/shadowsocks/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Windows</title>
+      <link>https://example.com/categories/windows/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://example.com/categories/windows/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

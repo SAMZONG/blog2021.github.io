@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Fabric on SAMZONG</title>
+    <link>https://example.com/tags/fabric/</link>
+    <description>Recent content in Fabric on SAMZONG</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Thu, 05 May 2016 05:54:08 +0000</lastBuildDate><atom:link href="https://example.com/tags/fabric/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>HowTo Install Fabric on CentOS 7.x</title>
+      <link>https://example.com/posts/howto-install-fabric-on-centos-7-x/</link>
+      <pubDate>Thu, 05 May 2016 05:54:08 +0000</pubDate>
+      
+      <guid>https://example.com/posts/howto-install-fabric-on-centos-7-x/</guid>
+      <description>Installed CentOS 7. yum update -y reboot yum install -y epel-release python -V # 2.</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>SSH on SAMZONG</title>
+    <link>https://example.com/tags/ssh/</link>
+    <description>Recent content in SSH on SAMZONG</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Sat, 29 Oct 2016 06:23:59 +0000</lastBuildDate><atom:link href="https://example.com/tags/ssh/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>SSH LINUX Security Settings</title>
+      <link>https://example.com/posts/ssh-linux-security-settings/</link>
+      <pubDate>Sat, 29 Oct 2016 06:23:59 +0000</pubDate>
+      
+      <guid>https://example.com/posts/ssh-linux-security-settings/</guid>
+      <description>SSH 配置安全控制限制登录 1. 只允许某个IP登录，拒绝其他所有IP 在 /etc/hosts.allow 增加:
+sshd: 1.2.3.4 在 /etc/hosts.</description>
+    </item>
+    
+    <item>
+      <title>HowTo Use Fuse-sshfs to Mount Remote Filesystems</title>
+      <link>https://example.com/posts/howto-use-fuse-sshfs-to-mount-remote-filesystems/</link>
+      <pubDate>Tue, 05 Jul 2016 01:58:03 +0000</pubDate>
+      
+      <guid>https://example.com/posts/howto-use-fuse-sshfs-to-mount-remote-filesystems/</guid>
+      <description>传统我们服务器之间文件共享的方式有采用NFS、Samba等等，但是在我看来配置都有一定的复杂性，当然复杂也有它们的优势，这里推荐一个依赖于SSH的文件共享工具，Fuse-sshfs。SSH 是一个强大且安全的工具，我们除了可以用它来远程管理主机外，还可以通过它建立 SSH tunnel 作 Proxy 用，远程传输文件等等。而这里我想要介绍另外一个功能，那就是结合 sshfs 这个工具可以把远程主机的文件系统映射到本地主机上，透过 SSH 把远程文件系统挂载到本机上，这样我们可以不必使用 scp 工具就可以做到直接复制及删除远程主机的文件了，就像操作本地磁盘一样方便。 sshfs 是基于 FUSE 构建的 SSH 文件系统客户端程序，通过它远程主机的配置无需作任何改变，就可以透过 SSH 协议来挂载远程文件系统了，非常方便及安全。 Install fuse-sshfs [cent@localhost ~]$ sudo yum install -y epel-relese [cent@localhost ~]$ sudo yum --enablerepo=epel install -y fuse-sshfs 挂载远程 ssh文件系统 [cent@localhost ~]$ mkdir .</description>
+    </item>
+    
+    <item>
+      <title>使用mosh代替ssh连接服务器</title>
+      <link>https://example.com/posts/%E4%BD%BF%E7%94%A8mosh%E4%BB%A3%E6%9B%BFssh%E8%BF%9E%E6%8E%A5%E6%9C%8D%E5%8A%A1%E5%99%A8/</link>
+      <pubDate>Thu, 16 Jun 2016 02:28:02 +0000</pubDate>
+      
+      <guid>https://example.com/posts/%E4%BD%BF%E7%94%A8mosh%E4%BB%A3%E6%9B%BFssh%E8%BF%9E%E6%8E%A5%E6%9C%8D%E5%8A%A1%E5%99%A8/</guid>
+      <description>身为一名服务器运维人员，每天打交道最多的就是服务器了，最常用的连接服务器的工具就是SSH，因为SSH是一个不可持续的连接，当网络出现波动时，SSH断开会导致当前正在运行的服务中断，对工作产生非常大的影响，无意间看到了Mosh这个东西，安装使用下，发现网络波动这种事情不会导致服务器连接断开了，特意查了下，原来Mosh使用的是UDP方式传输：虽然也支持使用SSH配置进行认证登录，但是数据传输本身是使用UDP方式的，Mosh支持在会话中断时，不会立即退出，而是启用一个计时器，当网络恢复后会自动连接，同时会延续之前的会话，不会重新开启一个。
+Mosh 主页 1. 安装配置 需要在服务端和客户端同时安装Mosh：
+＃ 以centos 6.x 为例： [user@host ~]$ sudo yum install -y epel-release [user@host ~]$ sudo yum install -y mosh 2.</description>
+    </item>
+    
+    <item>
+      <title>在CentOS中配置 SFTP 环境</title>
+      <link>https://example.com/posts/%E5%9C%A8centos%E4%B8%AD%E9%85%8D%E7%BD%AE-sftp-%E7%8E%AF%E5%A2%83/</link>
+      <pubDate>Thu, 24 Mar 2016 14:55:03 +0000</pubDate>
+      
+      <guid>https://example.com/posts/%E5%9C%A8centos%E4%B8%AD%E9%85%8D%E7%BD%AE-sftp-%E7%8E%AF%E5%A2%83/</guid>
+      <description>做运维工作的，应该经常会碰到这样的问题，需要新上一个web项目，需要上传文件到服务器上，解决方法有很多种，常见的如sftp和ftp，今天讲如何使用sftp让系统用户用户上传项目的权限，并且实现chroot和无法使用ssh登录到系统。
+ SFTP是指SSH文件传输协议（SSH File Transfer protocol）或安全文件传输协议（Secure File Transfer Protocol），它提供了可信数据流下的文件访问、文件传输以及文件管理功能。当我们为SFTP配置chroot环境后，只有被许可的用户可以访问，并被限制到他们的家目录中，换言之：被许可的用户将处于牢笼环境中，在此环境中它们甚至不能切换它们的目录。</description>
+    </item>
+    
+  </channel>
+</rss>

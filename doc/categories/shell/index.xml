@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Shell on SAMZONG</title>
+    <link>https://example.com/categories/shell/</link>
+    <description>Recent content in Shell on SAMZONG</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Sat, 13 Aug 2016 06:12:43 +0000</lastBuildDate><atom:link href="https://example.com/categories/shell/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Script Install LNMP</title>
+      <link>https://example.com/posts/script-install-lnmp/</link>
+      <pubDate>Sat, 13 Aug 2016 06:12:43 +0000</pubDate>
+      
+      <guid>https://example.com/posts/script-install-lnmp/</guid>
+      <description>#!/bin/bash # if [[ $1 == &amp;quot;uninstall&amp;quot; ]];then echo &amp;quot;starting backup data.</description>
+    </item>
+    
+    <item>
+      <title>Manage Tomcat Service Use Shell Script</title>
+      <link>https://example.com/posts/manage-tomcat-service-use-shell-script/</link>
+      <pubDate>Wed, 27 Jul 2016 02:18:24 +0000</pubDate>
+      
+      <guid>https://example.com/posts/manage-tomcat-service-use-shell-script/</guid>
+      <description>Tomcat 项目管理交互式脚本.  Install pssh Use Key Login Server Hosts ~/.</description>
+    </item>
+    
+  </channel>
+</rss>

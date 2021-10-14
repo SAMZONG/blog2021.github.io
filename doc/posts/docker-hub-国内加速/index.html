@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh-CN" lang="zh-CN">
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="generator" content="Hugo 0.88.1" />
+
+  <title>Docker Hub 国内加速 &middot; SAMZONG</title>
+
+  <meta name="description" content="" />
+
+  
+
+<meta itemprop="name" content="Docker Hub 国内加速">
+<meta itemprop="description" content="因为Docker Hub没有在国内部署站点或者增加了国内的CDN，这导致国内的开发者在使用docker pull 获取images的时候速度非常的慢，甚至于因为网络的原因会失败。
+但是Docker Hub有着非常丰富的镜像资源，所以我这一直是个问题困扰着我，一次偶然机会发现了DaoCloud提供了国内镜像加速服务，并且提供的Docker Hub Mirror详细的文档。
+1. 注册DaoCloud账号 首先，你需要到一DaoCloud账号，注册很方便，点击地址：signup 2."><meta itemprop="datePublished" content="2017-01-07T15:32:23+00:00" />
+<meta itemprop="dateModified" content="2017-01-07T15:32:23+00:00" />
+<meta itemprop="wordCount" content="17">
+<meta itemprop="keywords" content="Docker," />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Docker Hub 国内加速"/>
+<meta name="twitter:description" content="因为Docker Hub没有在国内部署站点或者增加了国内的CDN，这导致国内的开发者在使用docker pull 获取images的时候速度非常的慢，甚至于因为网络的原因会失败。
+但是Docker Hub有着非常丰富的镜像资源，所以我这一直是个问题困扰着我，一次偶然机会发现了DaoCloud提供了国内镜像加速服务，并且提供的Docker Hub Mirror详细的文档。
+1. 注册DaoCloud账号 首先，你需要到一DaoCloud账号，注册很方便，点击地址：signup 2."/>
+
+
+<meta property="og:title" content="Docker Hub 国内加速" />
+<meta property="og:description" content="因为Docker Hub没有在国内部署站点或者增加了国内的CDN，这导致国内的开发者在使用docker pull 获取images的时候速度非常的慢，甚至于因为网络的原因会失败。
+但是Docker Hub有着非常丰富的镜像资源，所以我这一直是个问题困扰着我，一次偶然机会发现了DaoCloud提供了国内镜像加速服务，并且提供的Docker Hub Mirror详细的文档。
+1. 注册DaoCloud账号 首先，你需要到一DaoCloud账号，注册很方便，点击地址：signup 2." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://example.com/posts/docker-hub-%E5%9B%BD%E5%86%85%E5%8A%A0%E9%80%9F/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2017-01-07T15:32:23+00:00" />
+<meta property="article:modified_time" content="2017-01-07T15:32:23+00:00" />
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type":"Person",
+      "@id": "https://example.com#author",
+      "name": "samzong.lu",
+      "image": {
+        "@type":"ImageObject",
+        "url": "https://www.gravatar.com/avatar/c02c426714361366ea7d583950aa8fb4?s=400&d=mp"
+      },
+      "description": "Samzong's Blog"
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://example.com#website",
+      "url": "https://example.com",
+      "name": "SAMZONG",
+      "description": "Samzong's Blog",
+      "publisher": {
+        "@id": "https://example.com#author"
+      },
+      "inLanguage": "zh-CN"
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://example.com/posts/docker-hub-%E5%9B%BD%E5%86%85%E5%8A%A0%E9%80%9F/#webpage",
+      "url": "https://example.com/posts/docker-hub-%E5%9B%BD%E5%86%85%E5%8A%A0%E9%80%9F/",
+      "name": "Docker Hub 国内加速",
+      "isPartOf": {
+        "@id": "https://example.com#website"
+      },
+      "about": {
+         "@id": "https://example.com#author"
+      },
+      "datePublished": "2017-01-07T15:32:23+00:00",
+      "dateModified": "2017-01-07T15:32:23+00:00",
+      "description": "因为Docker Hub没有在国内部署站点或者增加了国内的CDN，这导致国内的开发者在使用docker pull 获取images的时候速度非常的慢，甚至于因为网络的原因会失败。\n但是Docker Hub有着非常丰富的镜像资源，所以我这一直是个问题困扰着我，一次偶然机会发现了DaoCloud提供了国内镜像加速服务，并且提供的Docker Hub Mirror详细的文档。\n1. 注册DaoCloud账号 首先，你需要到一DaoCloud账号，注册很方便，点击地址：signup 2.",
+      "inLanguage": "zh-CN",
+      "potentialAction": [
+        {
+          "@type": "ReadAction",
+          "target": [
+            "https://example.com/posts/docker-hub-%E5%9B%BD%E5%86%85%E5%8A%A0%E9%80%9F/"
+          ]
+        }
+      ]
+    },
+    {
+      "@type": "Article",
+      "isPartOf": {
+        "@id": "https://example.com/posts/docker-hub-%E5%9B%BD%E5%86%85%E5%8A%A0%E9%80%9F/#webpage"
+      },
+      "mainEntityOfPage": {
+        "@id": "https://example.com/posts/docker-hub-%E5%9B%BD%E5%86%85%E5%8A%A0%E9%80%9F/#webpage"
+      },
+      "headline": "Docker Hub 国内加速",
+      "datePublished": "2017-01-07T15:32:23+00:00",
+      "dateModified": "2017-01-07T15:32:23+00:00",
+      "publisher": {
+        "@id": "https://example.com#author"
+      },
+      "keywords": [
+        "Docker"
+      ],
+      "articleSection": [
+        "Docker"
+      ],
+      "inLanguage": "zh-CN",
+      "author": {
+        "@type": "Person",
+        "name":  null 
+      },
+      "potentialAction": [
+        {
+          "@type": "CommentAction",
+          "name": "Comment",
+          "target": [
+            "https://example.com/posts/docker-hub-%E5%9B%BD%E5%86%85%E5%8A%A0%E9%80%9F/#comments"
+          ]
+        }
+      ]
+    }
+  ]
+}
+</script>
+
+
+
+  <link type="text/css"
+        rel="stylesheet"
+        href="/css/print.css"
+        media="print">
+
+  <link type="text/css"
+        rel="stylesheet"
+        href="/css/poole.css">
+
+  <link type="text/css"
+        rel="stylesheet"
+        href="/css/hyde.css">
+
+  
+
+
+  <link type="text/css" rel="stylesheet" href="/css/blog.css">
+
+  <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700&display=swap">
+
+  <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css"
+        integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk="
+        crossorigin="anonymous" />
+
+  <link rel="apple-touch-icon-precomposed"
+        sizes="144x144"
+        href="/apple-touch-icon-144-precomposed.png">
+
+  <link rel="shortcut icon" href="/favicon.png">
+
+  
+  </head>
+<body>
+  <aside class="sidebar">
+  <div class="container">
+    <div class="sidebar-about">
+      
+      <div class="author-image">
+        <a href="https://example.com">
+          <img src="https://www.gravatar.com/avatar/c02c426714361366ea7d583950aa8fb4?s=200&d=mp" class="img-circle img-headshot center" alt="Gravatar">
+        </a>
+      </div>
+      
+
+      <h1>SAMZONG</h1>
+
+      
+      <p class="lead">Samzong&#39;s Blog</p>
+      
+    </div>
+
+    <nav>
+      <ul class="sidebar-nav">
+        <li>
+          <a href="https://example.com">Home</a>
+        </li>
+        <li>
+          <a href="/posts/">Posts</a>
+        </li><li>
+          <a href="/about/">About</a>
+        </li>
+      </ul>
+    </nav>
+
+    <section class="social-icons">
+      
+      <a href="https://www.linkedin.com/in/samzong/" rel="me" title="Linkedin" target="_blank">
+        <i class="fab fa-linkedin" aria-hidden="true"></i>
+      </a>
+      
+      <a href="https://github.com/samzong" rel="me" title="GitHub" target="_blank">
+        <i class="fab fa-github" aria-hidden="true"></i>
+      </a>
+      
+      <a href="https://twitter.com/samzong_lu" rel="me" title="Twitter" target="_blank">
+        <i class="fab fa-twitter" aria-hidden="true"></i>
+      </a>
+      
+    </section>
+  </div>
+</aside>
+
+
+  <main class="content container">
+  <div class="post">
+  <h1 class="title">Docker Hub 国内加速</h1>
+  
+
+  <div class="post-date">
+    <time datetime="2017-01-07T15:32:23Z">Jan 7, 2017</time> <span class="readtime">&middot; 1 min read</span>
+  </div>
+
+  <div>
+  <p>因为Docker Hub没有在国内部署站点或者增加了国内的CDN，这导致国内的开发者在使用docker pull 获取images的时候速度非常的慢，甚至于因为网络的原因会失败。</p>
+<p>但是Docker Hub有着非常丰富的镜像资源，所以我这一直是个问题困扰着我，一次偶然机会发现了<a href="https://www.daocloud.io">DaoCloud</a>提供了国内镜像加速服务，并且提供的Docker Hub Mirror详细的文档。</p>
+<h4 id="1-注册daocloud账号">1. 注册DaoCloud账号</h4>
+<p>首先，你需要到一DaoCloud账号，注册很方便，点击地址：<a href="https://account.daocloud.io/signup">signup</a>
+<img src="https://samzong.oss-cn-shenzhen.aliyuncs.com/blog/o6wh3.jpg" alt=""></p>
+<h4 id="2-登录到你的daocloud账号内然后入下图操作">2. 登录到你的DaoCloud账号内，然后入下图操作</h4>
+<p><img src="https://samzong.oss-cn-shenzhen.aliyuncs.com/blog/n9mt7.jpg" alt=""></p>
+<h4 id="3-查看你的daocloud加速器地址">3. 查看你的DaoCloud加速器地址</h4>
+<p><a href="https://www.daocloud.io/mirror#accelerator-doc">链接</a></p>
+<p>选择你相对应平台的的加速器设置
+<img src="https://samzong.oss-cn-shenzhen.aliyuncs.com/blog/4wuea.jpg" alt=""></p>
+
+  </div>
+
+  
+<div>
+  <ul class="tags">
+  <li>
+    <a href="https://example.com/tags/docker/" class="tag-link">Docker</a>
+  </li>
+  </ul>
+</div>
+
+
+
+  <div class="share-buttons">
+  <a class="twitter-share-button"
+     href="#"
+     title="Share on Twitter"
+     data-url="https://example.com/posts/docker-hub-%E5%9B%BD%E5%86%85%E5%8A%A0%E9%80%9F/"
+     data-text="Docker Hub 国内加速"><i class="fab fa-twitter"></i></a>
+
+  <a class="linkedin-share-button"
+     href="#"
+     title="Share on LinkedIn"
+     data-url="https://example.com/posts/docker-hub-%E5%9B%BD%E5%86%85%E5%8A%A0%E9%80%9F/"
+     data-text="Docker Hub 国内加速"><i class="fab fa-linkedin-in"></i></a>
+
+  <a class="facebook-share-button"
+     href="#"
+     title="Share on Facebook"
+     data-url="https://example.com/posts/docker-hub-%E5%9B%BD%E5%86%85%E5%8A%A0%E9%80%9F/"
+     data-text="Docker Hub 国内加速"><i class="fab fa-facebook"></i></a>
+
+  <a class="telegram-share-button"
+     href="#"
+     title="Share on Telegram"
+     data-url="https://example.com/posts/docker-hub-%E5%9B%BD%E5%86%85%E5%8A%A0%E9%80%9F/"
+     data-text="Docker Hub 国内加速"><i class="fab fa-telegram"></i></a>
+
+  <a class="pinterest-share-button"
+     href="#"
+     title="Share on Pinterest"
+     data-url="https://example.com/posts/docker-hub-%E5%9B%BD%E5%86%85%E5%8A%A0%E9%80%9F/"
+     data-text="Docker Hub 国内加速"><i class="fab fa-pinterest"></i></a>
+</div>
+
+
+  
+</div>
+  </main>
+
+  <footer>
+  <div>
+    <p>
+      &copy; samzong.lu 2021
+
+      &middot; <a href="https://creativecommons.org/licenses/by-sa/4.0" target="_blank">CC BY-SA 4.0</a>
+
+      
+    </p>
+  </div>
+</footer>
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/js/all.min.js"
+          integrity="sha256-MAgcygDRahs+F/Nk5Vz387whB4kSK9NXlDN3w58LLq0="
+          crossorigin="anonymous"></script>
+
+
+  <script src="/js/jquery.min.js"></script>
+  <script src="/js/soho.js"></script>
+
+  <script src="/js/blog.js"></script>
+
+  
+</body>
+</html>

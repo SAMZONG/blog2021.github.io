@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh-CN" lang="zh-CN">
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="generator" content="Hugo 0.88.1" />
+
+  <title>Tomcat(3) 优化设定 &middot; SAMZONG</title>
+
+  <meta name="description" content="" />
+
+  
+
+<meta itemprop="name" content="Tomcat(3) 优化设定">
+<meta itemprop="description" content="设置JVM空间大小，Xms和Xmx一样大：JVM初始分配的内存由-Xms指定，默认是物理内存的1/64；JVM最大分配的内存由-Xmx指定，默认是物理内存的1/4。默认空余堆内存小于 40%时，JVM就会增大堆直到-Xmx的最大限制；空余堆内存大于70%时，JVM会减少堆直到-Xms的最小限制。因此服务器一般设置-Xms、 -Xmx相等以避免在每次GC 后调整堆的大小。
+  关闭dns查询
+  增加线程数量"><meta itemprop="datePublished" content="2016-06-16T02:28:35+00:00" />
+<meta itemprop="dateModified" content="2016-06-16T02:28:35+00:00" />
+<meta itemprop="wordCount" content="91">
+<meta itemprop="keywords" content="Tomcat," />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Tomcat(3) 优化设定"/>
+<meta name="twitter:description" content="设置JVM空间大小，Xms和Xmx一样大：JVM初始分配的内存由-Xms指定，默认是物理内存的1/64；JVM最大分配的内存由-Xmx指定，默认是物理内存的1/4。默认空余堆内存小于 40%时，JVM就会增大堆直到-Xmx的最大限制；空余堆内存大于70%时，JVM会减少堆直到-Xms的最小限制。因此服务器一般设置-Xms、 -Xmx相等以避免在每次GC 后调整堆的大小。
+  关闭dns查询
+  增加线程数量"/>
+
+
+<meta property="og:title" content="Tomcat(3) 优化设定" />
+<meta property="og:description" content="设置JVM空间大小，Xms和Xmx一样大：JVM初始分配的内存由-Xms指定，默认是物理内存的1/64；JVM最大分配的内存由-Xmx指定，默认是物理内存的1/4。默认空余堆内存小于 40%时，JVM就会增大堆直到-Xmx的最大限制；空余堆内存大于70%时，JVM会减少堆直到-Xms的最小限制。因此服务器一般设置-Xms、 -Xmx相等以避免在每次GC 后调整堆的大小。
+  关闭dns查询
+  增加线程数量" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://example.com/posts/tomcat-3-%E4%BC%98%E5%8C%96%E8%AE%BE%E5%AE%9A/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2016-06-16T02:28:35+00:00" />
+<meta property="article:modified_time" content="2016-06-16T02:28:35+00:00" />
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type":"Person",
+      "@id": "https://example.com#author",
+      "name": "samzong.lu",
+      "image": {
+        "@type":"ImageObject",
+        "url": "https://www.gravatar.com/avatar/c02c426714361366ea7d583950aa8fb4?s=400&d=mp"
+      },
+      "description": "Samzong's Blog"
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://example.com#website",
+      "url": "https://example.com",
+      "name": "SAMZONG",
+      "description": "Samzong's Blog",
+      "publisher": {
+        "@id": "https://example.com#author"
+      },
+      "inLanguage": "zh-CN"
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://example.com/posts/tomcat-3-%E4%BC%98%E5%8C%96%E8%AE%BE%E5%AE%9A/#webpage",
+      "url": "https://example.com/posts/tomcat-3-%E4%BC%98%E5%8C%96%E8%AE%BE%E5%AE%9A/",
+      "name": "Tomcat(3) 优化设定",
+      "isPartOf": {
+        "@id": "https://example.com#website"
+      },
+      "about": {
+         "@id": "https://example.com#author"
+      },
+      "datePublished": "2016-06-16T02:28:35+00:00",
+      "dateModified": "2016-06-16T02:28:35+00:00",
+      "description": "设置JVM空间大小，Xms和Xmx一样大：JVM初始分配的内存由-Xms指定，默认是物理内存的1/64；JVM最大分配的内存由-Xmx指定，默认是物理内存的1/4。默认空余堆内存小于 40%时，JVM就会增大堆直到-Xmx的最大限制；空余堆内存大于70%时，JVM会减少堆直到-Xms的最小限制。因此服务器一般设置-Xms、 -Xmx相等以避免在每次GC 后调整堆的大小。\n  关闭dns查询\n  增加线程数量",
+      "inLanguage": "zh-CN",
+      "potentialAction": [
+        {
+          "@type": "ReadAction",
+          "target": [
+            "https://example.com/posts/tomcat-3-%E4%BC%98%E5%8C%96%E8%AE%BE%E5%AE%9A/"
+          ]
+        }
+      ]
+    },
+    {
+      "@type": "Article",
+      "isPartOf": {
+        "@id": "https://example.com/posts/tomcat-3-%E4%BC%98%E5%8C%96%E8%AE%BE%E5%AE%9A/#webpage"
+      },
+      "mainEntityOfPage": {
+        "@id": "https://example.com/posts/tomcat-3-%E4%BC%98%E5%8C%96%E8%AE%BE%E5%AE%9A/#webpage"
+      },
+      "headline": "Tomcat(3) 优化设定",
+      "datePublished": "2016-06-16T02:28:35+00:00",
+      "dateModified": "2016-06-16T02:28:35+00:00",
+      "publisher": {
+        "@id": "https://example.com#author"
+      },
+      "keywords": [
+        "Tomcat"
+      ],
+      "articleSection": [
+        "Tomcat"
+      ],
+      "inLanguage": "zh-CN",
+      "author": {
+        "@type": "Person",
+        "name":  null 
+      },
+      "potentialAction": [
+        {
+          "@type": "CommentAction",
+          "name": "Comment",
+          "target": [
+            "https://example.com/posts/tomcat-3-%E4%BC%98%E5%8C%96%E8%AE%BE%E5%AE%9A/#comments"
+          ]
+        }
+      ]
+    }
+  ]
+}
+</script>
+
+
+
+  <link type="text/css"
+        rel="stylesheet"
+        href="/css/print.css"
+        media="print">
+
+  <link type="text/css"
+        rel="stylesheet"
+        href="/css/poole.css">
+
+  <link type="text/css"
+        rel="stylesheet"
+        href="/css/hyde.css">
+
+  
+
+
+  <link type="text/css" rel="stylesheet" href="/css/blog.css">
+
+  <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700&display=swap">
+
+  <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css"
+        integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk="
+        crossorigin="anonymous" />
+
+  <link rel="apple-touch-icon-precomposed"
+        sizes="144x144"
+        href="/apple-touch-icon-144-precomposed.png">
+
+  <link rel="shortcut icon" href="/favicon.png">
+
+  
+  </head>
+<body>
+  <aside class="sidebar">
+  <div class="container">
+    <div class="sidebar-about">
+      
+      <div class="author-image">
+        <a href="https://example.com">
+          <img src="https://www.gravatar.com/avatar/c02c426714361366ea7d583950aa8fb4?s=200&d=mp" class="img-circle img-headshot center" alt="Gravatar">
+        </a>
+      </div>
+      
+
+      <h1>SAMZONG</h1>
+
+      
+      <p class="lead">Samzong&#39;s Blog</p>
+      
+    </div>
+
+    <nav>
+      <ul class="sidebar-nav">
+        <li>
+          <a href="https://example.com">Home</a>
+        </li>
+        <li>
+          <a href="/posts/">Posts</a>
+        </li><li>
+          <a href="/about/">About</a>
+        </li>
+      </ul>
+    </nav>
+
+    <section class="social-icons">
+      
+      <a href="https://www.linkedin.com/in/samzong/" rel="me" title="Linkedin" target="_blank">
+        <i class="fab fa-linkedin" aria-hidden="true"></i>
+      </a>
+      
+      <a href="https://github.com/samzong" rel="me" title="GitHub" target="_blank">
+        <i class="fab fa-github" aria-hidden="true"></i>
+      </a>
+      
+      <a href="https://twitter.com/samzong_lu" rel="me" title="Twitter" target="_blank">
+        <i class="fab fa-twitter" aria-hidden="true"></i>
+      </a>
+      
+    </section>
+  </div>
+</aside>
+
+
+  <main class="content container">
+  <div class="post">
+  <h1 class="title">Tomcat(3) 优化设定</h1>
+  
+
+  <div class="post-date">
+    <time datetime="2016-06-16T02:28:35Z">Jun 16, 2016</time> <span class="readtime">&middot; 1 min read</span>
+  </div>
+
+  <div>
+  <ul>
+<li>
+<p>设置JVM空间大小，Xms和Xmx一样大：JVM初始分配的内存由-Xms指定，默认是物理内存的1/64；JVM最大分配的内存由-Xmx指定，默认是物理内存的1/4。默认空余堆内存小于 40%时，JVM就会增大堆直到-Xmx的最大限制；空余堆内存大于70%时，JVM会减少堆直到-Xms的最小限制。因此服务器一般设置-Xms、 -Xmx相等以避免在每次GC 后调整堆的大小。</p>
+</li>
+<li>
+<p>关闭dns查询</p>
+</li>
+<li>
+<p>增加线程数量</p>
+</li>
+<li>
+<p>maxThreads、acceptCount ： 增加并发，同时增加这两个的数量</p>
+</li>
+<li>
+<p>内存优化 ： /tomcatbin/catalina.sh</p>
+</li>
+<li>
+<p>JAVA_OPTS=&quot;-XX:PermSize=64M -XX:MaxPermSize=128m -Xms512m -Xmx1024m -Duser.timezone=Asia/Shanghai&quot;</p>
+</li>
+<li>
+<p>缓存优化</p>
+</li>
+<li>
+<p>并发优化，线程优化</p>
+</li>
+<li>
+<p>&lt;Connector port=&ldquo;80&rdquo; protocol=&ldquo;HTTP/1.1&rdquo; maxThreads=&ldquo;600&rdquo; minSpareThreads=&ldquo;100&rdquo; maxSpareThreads=&ldquo;500&rdquo; acceptCount=&ldquo;700&rdquo;</p>
+</li>
+<li>
+<p>connectionTimeout=&ldquo;20000&rdquo; redirectPort=&ldquo;8443&rdquo; /&gt;</p>
+</li>
+<li>
+<p>关闭DNS查询 :修改server.xml文件中的Connector元素，修改属性enableLookups参数值: enableLookups=&ldquo;false&rdquo;</p>
+</li>
+<li>
+<p>使用apr插件，提高tomcat响应时间 <!-- raw HTML omitted --></p>
+</li>
+</ul>
+<pre tabindex="0"><code>  (1)安装APR tomcat-native
+    apr-1.3.8.tar.gz   安装在/usr/local/apr
+    #tar zxvf apr-1.3.8.tar.gz
+    #cd apr-1.3.8
+    #./configure;make;make install
+
+    apr-util-1.3.9.tar.gz  安装在/usr/local/apr/lib
+    #tar zxvf apr-util-1.3.9.tar.gz
+    #cd apr-util-1.3.9
+    #./configure --with-apr=/usr/local/apr ----with-java-home=JDK;make;make install
+
+    #cd apache-tomcat-6.0.20/bin
+    #tar zxvf tomcat-native.tar.gz
+    #cd tomcat-native/jni/native
+    #./configure --with-apr=/usr/local/apr;make;make install
+
+  (2)设置 Tomcat 整合 APR
+    修改 tomcat 的启动 shell （startup.sh），在该文件中加入启动参数：
+      CATALINA_OPTS=&quot;$CATALINA_OPTS -Djava.library.path=/usr/local/apr/lib&quot; 。
+
+  (3)判断安装成功:
+    如果看到下面的启动日志，表示成功。
+      2007-4-26 15:34:32 org.apache.coyote.http11.Http11AprProtocol init
+</code></pre><ul>
+<li>开启manager 管理</li>
+<li>使用http://visualvm.Java.net/download.html 工具监控tomcat的性能</li>
+<li>JAVA_OPTS='-Dcom.sun.management.jmxremote.port=8999 -Dcom.sun.management.jmxremote.ssl=false -Dcom.sun.management.jmxremote.authenticate=false'</li>
+<li>设置自动更新autodeploy＝false</li>
+</ul>
+
+  </div>
+
+  
+<div>
+  <ul class="tags">
+  <li>
+    <a href="https://example.com/tags/tomcat/" class="tag-link">Tomcat</a>
+  </li>
+  </ul>
+</div>
+
+
+
+  <div class="share-buttons">
+  <a class="twitter-share-button"
+     href="#"
+     title="Share on Twitter"
+     data-url="https://example.com/posts/tomcat-3-%E4%BC%98%E5%8C%96%E8%AE%BE%E5%AE%9A/"
+     data-text="Tomcat(3) 优化设定"><i class="fab fa-twitter"></i></a>
+
+  <a class="linkedin-share-button"
+     href="#"
+     title="Share on LinkedIn"
+     data-url="https://example.com/posts/tomcat-3-%E4%BC%98%E5%8C%96%E8%AE%BE%E5%AE%9A/"
+     data-text="Tomcat(3) 优化设定"><i class="fab fa-linkedin-in"></i></a>
+
+  <a class="facebook-share-button"
+     href="#"
+     title="Share on Facebook"
+     data-url="https://example.com/posts/tomcat-3-%E4%BC%98%E5%8C%96%E8%AE%BE%E5%AE%9A/"
+     data-text="Tomcat(3) 优化设定"><i class="fab fa-facebook"></i></a>
+
+  <a class="telegram-share-button"
+     href="#"
+     title="Share on Telegram"
+     data-url="https://example.com/posts/tomcat-3-%E4%BC%98%E5%8C%96%E8%AE%BE%E5%AE%9A/"
+     data-text="Tomcat(3) 优化设定"><i class="fab fa-telegram"></i></a>
+
+  <a class="pinterest-share-button"
+     href="#"
+     title="Share on Pinterest"
+     data-url="https://example.com/posts/tomcat-3-%E4%BC%98%E5%8C%96%E8%AE%BE%E5%AE%9A/"
+     data-text="Tomcat(3) 优化设定"><i class="fab fa-pinterest"></i></a>
+</div>
+
+
+  
+</div>
+  </main>
+
+  <footer>
+  <div>
+    <p>
+      &copy; samzong.lu 2021
+
+      &middot; <a href="https://creativecommons.org/licenses/by-sa/4.0" target="_blank">CC BY-SA 4.0</a>
+
+      
+    </p>
+  </div>
+</footer>
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/js/all.min.js"
+          integrity="sha256-MAgcygDRahs+F/Nk5Vz387whB4kSK9NXlDN3w58LLq0="
+          crossorigin="anonymous"></script>
+
+
+  <script src="/js/jquery.min.js"></script>
+  <script src="/js/soho.js"></script>
+
+  <script src="/js/blog.js"></script>
+
+  
+</body>
+</html>

@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh-CN" lang="zh-CN">
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="generator" content="Hugo 0.88.1" />
+
+  <title>Jmeter(一)：使用BlazeMeter为Jmeter录制脚本 &middot; SAMZONG</title>
+
+  <meta name="description" content="" />
+
+  
+
+<meta itemprop="name" content="Jmeter(一)：使用BlazeMeter为Jmeter录制脚本">
+<meta itemprop="description" content="之前一直使用阿里云的PTS服务作为测试，但是今天发现阿里云的PTS服务正在升级无法使用，所以打算用Jmeter来做压力测试，并使用Chrome插件BlazeMeter来录制.jmx脚本。
+安装BlazeMeter插件 插件安装 , 需要能登录到Chrome应用商店，如果不能登录的话，可以在网上搜索下载crx包，手动加载到Chrome中即可。
+安装成功之后，在Chrome插件栏可以看到程序入口，BlazeMeter限制需要登录才能导出jmx脚本，所以首先需要注册账号。成功登陆后，完整界面如图所示：
+录制过程 填写测试脚本名称后，点击开始录制，执行一系列操作后，点停止录制，然后到处jmx文件到本地。
+导入脚本到Jmeter 在Jmeter中&quot;File-Open&quot;导入你jmx脚本，为了方便观察结果，我们需要增加一些察看报告。">
+
+<meta itemprop="wordCount" content="51">
+<meta itemprop="keywords" content="Jmeter," />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Jmeter(一)：使用BlazeMeter为Jmeter录制脚本"/>
+<meta name="twitter:description" content="之前一直使用阿里云的PTS服务作为测试，但是今天发现阿里云的PTS服务正在升级无法使用，所以打算用Jmeter来做压力测试，并使用Chrome插件BlazeMeter来录制.jmx脚本。
+安装BlazeMeter插件 插件安装 , 需要能登录到Chrome应用商店，如果不能登录的话，可以在网上搜索下载crx包，手动加载到Chrome中即可。
+安装成功之后，在Chrome插件栏可以看到程序入口，BlazeMeter限制需要登录才能导出jmx脚本，所以首先需要注册账号。成功登陆后，完整界面如图所示：
+录制过程 填写测试脚本名称后，点击开始录制，执行一系列操作后，点停止录制，然后到处jmx文件到本地。
+导入脚本到Jmeter 在Jmeter中&quot;File-Open&quot;导入你jmx脚本，为了方便观察结果，我们需要增加一些察看报告。"/>
+
+
+<meta property="og:title" content="Jmeter(一)：使用BlazeMeter为Jmeter录制脚本" />
+<meta property="og:description" content="之前一直使用阿里云的PTS服务作为测试，但是今天发现阿里云的PTS服务正在升级无法使用，所以打算用Jmeter来做压力测试，并使用Chrome插件BlazeMeter来录制.jmx脚本。
+安装BlazeMeter插件 插件安装 , 需要能登录到Chrome应用商店，如果不能登录的话，可以在网上搜索下载crx包，手动加载到Chrome中即可。
+安装成功之后，在Chrome插件栏可以看到程序入口，BlazeMeter限制需要登录才能导出jmx脚本，所以首先需要注册账号。成功登陆后，完整界面如图所示：
+录制过程 填写测试脚本名称后，点击开始录制，执行一系列操作后，点停止录制，然后到处jmx文件到本地。
+导入脚本到Jmeter 在Jmeter中&quot;File-Open&quot;导入你jmx脚本，为了方便观察结果，我们需要增加一些察看报告。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://example.com/posts/blazemeter_recoding_jmx/" /><meta property="article:section" content="posts" />
+
+
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type":"Person",
+      "@id": "https://example.com#author",
+      "name": "samzong.lu",
+      "image": {
+        "@type":"ImageObject",
+        "url": "https://www.gravatar.com/avatar/c02c426714361366ea7d583950aa8fb4?s=400&d=mp"
+      },
+      "description": "Samzong's Blog"
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://example.com#website",
+      "url": "https://example.com",
+      "name": "SAMZONG",
+      "description": "Samzong's Blog",
+      "publisher": {
+        "@id": "https://example.com#author"
+      },
+      "inLanguage": "zh-CN"
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://example.com/posts/blazemeter_recoding_jmx/#webpage",
+      "url": "https://example.com/posts/blazemeter_recoding_jmx/",
+      "name": "Jmeter(一)：使用BlazeMeter为Jmeter录制脚本",
+      "isPartOf": {
+        "@id": "https://example.com#website"
+      },
+      "about": {
+         "@id": "https://example.com#author"
+      },
+      "description": "之前一直使用阿里云的PTS服务作为测试，但是今天发现阿里云的PTS服务正在升级无法使用，所以打算用Jmeter来做压力测试，并使用Chrome插件BlazeMeter来录制.jmx脚本。\n安装BlazeMeter插件 插件安装 , 需要能登录到Chrome应用商店，如果不能登录的话，可以在网上搜索下载crx包，手动加载到Chrome中即可。\n安装成功之后，在Chrome插件栏可以看到程序入口，BlazeMeter限制需要登录才能导出jmx脚本，所以首先需要注册账号。成功登陆后，完整界面如图所示：\n录制过程 填写测试脚本名称后，点击开始录制，执行一系列操作后，点停止录制，然后到处jmx文件到本地。\n导入脚本到Jmeter 在Jmeter中\u0026quot;File-Open\u0026quot;导入你jmx脚本，为了方便观察结果，我们需要增加一些察看报告。",
+      "inLanguage": "zh-CN",
+      "potentialAction": [
+        {
+          "@type": "ReadAction",
+          "target": [
+            "https://example.com/posts/blazemeter_recoding_jmx/"
+          ]
+        }
+      ]
+    },
+    {
+      "@type": "Article",
+      "isPartOf": {
+        "@id": "https://example.com/posts/blazemeter_recoding_jmx/#webpage"
+      },
+      "mainEntityOfPage": {
+        "@id": "https://example.com/posts/blazemeter_recoding_jmx/#webpage"
+      },
+      "headline": "Jmeter(一)：使用BlazeMeter为Jmeter录制脚本",
+      "publisher": {
+        "@id": "https://example.com#author"
+      },
+      "keywords": [
+        "Jmeter"
+      ],
+      "articleSection": [
+        "Jmeter"
+      ],
+      "inLanguage": "zh-CN",
+      "author": {
+        "@type": "Person",
+        "name":  null 
+      },
+      "potentialAction": [
+        {
+          "@type": "CommentAction",
+          "name": "Comment",
+          "target": [
+            "https://example.com/posts/blazemeter_recoding_jmx/#comments"
+          ]
+        }
+      ]
+    }
+  ]
+}
+</script>
+
+
+
+  <link type="text/css"
+        rel="stylesheet"
+        href="/css/print.css"
+        media="print">
+
+  <link type="text/css"
+        rel="stylesheet"
+        href="/css/poole.css">
+
+  <link type="text/css"
+        rel="stylesheet"
+        href="/css/hyde.css">
+
+  
+
+
+  <link type="text/css" rel="stylesheet" href="/css/blog.css">
+
+  <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700&display=swap">
+
+  <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css"
+        integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk="
+        crossorigin="anonymous" />
+
+  <link rel="apple-touch-icon-precomposed"
+        sizes="144x144"
+        href="/apple-touch-icon-144-precomposed.png">
+
+  <link rel="shortcut icon" href="/favicon.png">
+
+  
+  </head>
+<body>
+  <aside class="sidebar">
+  <div class="container">
+    <div class="sidebar-about">
+      
+      <div class="author-image">
+        <a href="https://example.com">
+          <img src="https://www.gravatar.com/avatar/c02c426714361366ea7d583950aa8fb4?s=200&d=mp" class="img-circle img-headshot center" alt="Gravatar">
+        </a>
+      </div>
+      
+
+      <h1>SAMZONG</h1>
+
+      
+      <p class="lead">Samzong&#39;s Blog</p>
+      
+    </div>
+
+    <nav>
+      <ul class="sidebar-nav">
+        <li>
+          <a href="https://example.com">Home</a>
+        </li>
+        <li>
+          <a href="/posts/">Posts</a>
+        </li><li>
+          <a href="/about/">About</a>
+        </li>
+      </ul>
+    </nav>
+
+    <section class="social-icons">
+      
+      <a href="https://www.linkedin.com/in/samzong/" rel="me" title="Linkedin" target="_blank">
+        <i class="fab fa-linkedin" aria-hidden="true"></i>
+      </a>
+      
+      <a href="https://github.com/samzong" rel="me" title="GitHub" target="_blank">
+        <i class="fab fa-github" aria-hidden="true"></i>
+      </a>
+      
+      <a href="https://twitter.com/samzong_lu" rel="me" title="Twitter" target="_blank">
+        <i class="fab fa-twitter" aria-hidden="true"></i>
+      </a>
+      
+    </section>
+  </div>
+</aside>
+
+
+  <main class="content container">
+  <div class="post">
+  <h1 class="title">Jmeter(一)：使用BlazeMeter为Jmeter录制脚本</h1>
+  
+
+  <div class="post-date">
+    <time datetime="0001-01-01T00:00:00Z">Jan 1, 0001</time> <span class="readtime">&middot; 1 min read</span>
+  </div>
+
+  <div>
+  <p>之前一直使用阿里云的PTS服务作为测试，但是今天发现阿里云的PTS服务正在升级无法使用，所以打算用Jmeter来做压力测试，并使用Chrome插件BlazeMeter来录制.jmx脚本。</p>
+<h4 id="安装blazemeter插件">安装BlazeMeter插件</h4>
+<p><a href="https://chrome.google.com/webstore/search/blazemeter">插件安装</a> , 需要能登录到Chrome应用商店，如果不能登录的话，可以在网上搜索下载crx包，手动加载到Chrome中即可。</p>
+<p>安装成功之后，在Chrome插件栏可以看到程序入口，<img src="https://samzong.oss-cn-shenzhen.aliyuncs.com/blog/r0ps7.jpg" alt=""></p>
+<p>BlazeMeter限制需要登录才能导出jmx脚本，所以首先需要注册账号。成功登陆后，完整界面如图所示：</p>
+<p><img src="https://samzong.oss-cn-shenzhen.aliyuncs.com/blog/oamv4.png" alt=""></p>
+<h4 id="录制过程">录制过程</h4>
+<p>填写测试脚本名称后，点击开始录制，执行一系列操作后，点停止录制，然后到处jmx文件到本地。</p>
+<h4 id="导入脚本到jmeter">导入脚本到Jmeter</h4>
+<p>在Jmeter中&quot;File-Open&quot;导入你jmx脚本，为了方便观察结果，我们需要增加一些察看报告。</p>
+<p><img src="https://samzong.oss-cn-shenzhen.aliyuncs.com/blog/uxe75.jpg" alt=""></p>
+<h5 id="聚合报告aggregate-report">聚合报告(Aggregate Report)</h5>
+<p>我们可以在聚合报告中一些非常有用的信息，这有助于对性能测试的分析。</p>
+<p><img src="https://samzong.oss-cn-shenzhen.aliyuncs.com/blog/j93gs.png" alt=""></p>
+<ul>
+<li>Samples ： 一共完成了多少事务</li>
+<li>Averge ： 平均响应时间</li>
+<li>Median ： 统计意义上的响应时间的中值</li>
+<li>90% Line ：90%的事务响应时间都小于xx ms</li>
+<li>Min ：最小响应时间 ms</li>
+<li>Max :  最大响应时间 ms</li>
+<li>Eror %  : 出错率</li>
+<li>Throughput ： 吞吐量，事务/秒</li>
+<li>KB/sec ： 用流量来衡量的吞吐量</li>
+</ul>
+<blockquote>
+<p>吞吐量=完成的事务数/完成这些事务数所需要的时间；</p>
+<p>平均响应时间=所有响应时间的总和/完成的事务数；</p>
+<p>失败率=失败的个数/事务数。</p>
+</blockquote>
+<h5 id="查看结果树view-results-tree">查看结果树(View Results Tree)</h5>
+<p>通过查看结果树，可以看到每个事务的返回结果，其中红色是出错，绿色则为正常。建议在测试开始前将log/Display Only中Errors打上勾即可，不然会输出很多东西，不方便查看。</p>
+<p><img src="https://samzong.oss-cn-shenzhen.aliyuncs.com/blog/moo9h.png" alt=""></p>
+
+  </div>
+
+  
+<div>
+  <ul class="tags">
+  <li>
+    <a href="https://example.com/tags/jmeter/" class="tag-link">Jmeter</a>
+  </li>
+  </ul>
+</div>
+
+
+
+  <div class="share-buttons">
+  <a class="twitter-share-button"
+     href="#"
+     title="Share on Twitter"
+     data-url="https://example.com/posts/blazemeter_recoding_jmx/"
+     data-text="Jmeter(一)：使用BlazeMeter为Jmeter录制脚本"><i class="fab fa-twitter"></i></a>
+
+  <a class="linkedin-share-button"
+     href="#"
+     title="Share on LinkedIn"
+     data-url="https://example.com/posts/blazemeter_recoding_jmx/"
+     data-text="Jmeter(一)：使用BlazeMeter为Jmeter录制脚本"><i class="fab fa-linkedin-in"></i></a>
+
+  <a class="facebook-share-button"
+     href="#"
+     title="Share on Facebook"
+     data-url="https://example.com/posts/blazemeter_recoding_jmx/"
+     data-text="Jmeter(一)：使用BlazeMeter为Jmeter录制脚本"><i class="fab fa-facebook"></i></a>
+
+  <a class="telegram-share-button"
+     href="#"
+     title="Share on Telegram"
+     data-url="https://example.com/posts/blazemeter_recoding_jmx/"
+     data-text="Jmeter(一)：使用BlazeMeter为Jmeter录制脚本"><i class="fab fa-telegram"></i></a>
+
+  <a class="pinterest-share-button"
+     href="#"
+     title="Share on Pinterest"
+     data-url="https://example.com/posts/blazemeter_recoding_jmx/"
+     data-text="Jmeter(一)：使用BlazeMeter为Jmeter录制脚本"><i class="fab fa-pinterest"></i></a>
+</div>
+
+
+  
+</div>
+  </main>
+
+  <footer>
+  <div>
+    <p>
+      &copy; samzong.lu 2021
+
+      &middot; <a href="https://creativecommons.org/licenses/by-sa/4.0" target="_blank">CC BY-SA 4.0</a>
+
+      
+    </p>
+  </div>
+</footer>
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/js/all.min.js"
+          integrity="sha256-MAgcygDRahs+F/Nk5Vz387whB4kSK9NXlDN3w58LLq0="
+          crossorigin="anonymous"></script>
+
+
+  <script src="/js/jquery.min.js"></script>
+  <script src="/js/soho.js"></script>
+
+  <script src="/js/blog.js"></script>
+
+  
+</body>
+</html>

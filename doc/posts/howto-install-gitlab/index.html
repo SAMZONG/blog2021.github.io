@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh-CN" lang="zh-CN">
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="generator" content="Hugo 0.88.1" />
+
+  <title>HowTo Install GitLab &middot; SAMZONG</title>
+
+  <meta name="description" content="" />
+
+  
+
+<meta itemprop="name" content="HowTo Install GitLab">
+<meta itemprop="description" content="目前最为主流的在线Git版本控制系统可以说是非GitHub莫属，对于个人开发者和开源项目可以直接选择GitHub作为Git版本控制系统即可，但是，对于企业内部开发管理的Git版本控制系统，在对保密性有高要求时GitHub就不合适了，这时GitLab作为一个可以完全搭建在企业内部的Git版本控制系统，而且基本囊括了GitHub的所有功能。
+目前GitLab已经整合的功能  Repository access Administration Issues Forks Code review Wiki Merge Requests Web Editor  测试环境  2 core 4GB 50GB HDD CentOS 6."><meta itemprop="datePublished" content="2017-04-13T11:18:17+00:00" />
+<meta itemprop="dateModified" content="2017-04-13T11:18:17+00:00" />
+<meta itemprop="wordCount" content="475">
+<meta itemprop="keywords" content="Gitlab," />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="HowTo Install GitLab"/>
+<meta name="twitter:description" content="目前最为主流的在线Git版本控制系统可以说是非GitHub莫属，对于个人开发者和开源项目可以直接选择GitHub作为Git版本控制系统即可，但是，对于企业内部开发管理的Git版本控制系统，在对保密性有高要求时GitHub就不合适了，这时GitLab作为一个可以完全搭建在企业内部的Git版本控制系统，而且基本囊括了GitHub的所有功能。
+目前GitLab已经整合的功能  Repository access Administration Issues Forks Code review Wiki Merge Requests Web Editor  测试环境  2 core 4GB 50GB HDD CentOS 6."/>
+
+
+<meta property="og:title" content="HowTo Install GitLab" />
+<meta property="og:description" content="目前最为主流的在线Git版本控制系统可以说是非GitHub莫属，对于个人开发者和开源项目可以直接选择GitHub作为Git版本控制系统即可，但是，对于企业内部开发管理的Git版本控制系统，在对保密性有高要求时GitHub就不合适了，这时GitLab作为一个可以完全搭建在企业内部的Git版本控制系统，而且基本囊括了GitHub的所有功能。
+目前GitLab已经整合的功能  Repository access Administration Issues Forks Code review Wiki Merge Requests Web Editor  测试环境  2 core 4GB 50GB HDD CentOS 6." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://example.com/posts/howto-install-gitlab/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2017-04-13T11:18:17+00:00" />
+<meta property="article:modified_time" content="2017-04-13T11:18:17+00:00" />
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type":"Person",
+      "@id": "https://example.com#author",
+      "name": "samzong.lu",
+      "image": {
+        "@type":"ImageObject",
+        "url": "https://www.gravatar.com/avatar/c02c426714361366ea7d583950aa8fb4?s=400&d=mp"
+      },
+      "description": "Samzong's Blog"
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://example.com#website",
+      "url": "https://example.com",
+      "name": "SAMZONG",
+      "description": "Samzong's Blog",
+      "publisher": {
+        "@id": "https://example.com#author"
+      },
+      "inLanguage": "zh-CN"
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://example.com/posts/howto-install-gitlab/#webpage",
+      "url": "https://example.com/posts/howto-install-gitlab/",
+      "name": "HowTo Install GitLab",
+      "isPartOf": {
+        "@id": "https://example.com#website"
+      },
+      "about": {
+         "@id": "https://example.com#author"
+      },
+      "datePublished": "2017-04-13T11:18:17+00:00",
+      "dateModified": "2017-04-13T11:18:17+00:00",
+      "description": "目前最为主流的在线Git版本控制系统可以说是非GitHub莫属，对于个人开发者和开源项目可以直接选择GitHub作为Git版本控制系统即可，但是，对于企业内部开发管理的Git版本控制系统，在对保密性有高要求时GitHub就不合适了，这时GitLab作为一个可以完全搭建在企业内部的Git版本控制系统，而且基本囊括了GitHub的所有功能。\n目前GitLab已经整合的功能  Repository access Administration Issues Forks Code review Wiki Merge Requests Web Editor  测试环境  2 core 4GB 50GB HDD CentOS 6.",
+      "inLanguage": "zh-CN",
+      "potentialAction": [
+        {
+          "@type": "ReadAction",
+          "target": [
+            "https://example.com/posts/howto-install-gitlab/"
+          ]
+        }
+      ]
+    },
+    {
+      "@type": "Article",
+      "isPartOf": {
+        "@id": "https://example.com/posts/howto-install-gitlab/#webpage"
+      },
+      "mainEntityOfPage": {
+        "@id": "https://example.com/posts/howto-install-gitlab/#webpage"
+      },
+      "headline": "HowTo Install GitLab",
+      "datePublished": "2017-04-13T11:18:17+00:00",
+      "dateModified": "2017-04-13T11:18:17+00:00",
+      "publisher": {
+        "@id": "https://example.com#author"
+      },
+      "keywords": [
+        "Gitlab"
+      ],
+      "articleSection": [
+        "Git"
+      ],
+      "inLanguage": "zh-CN",
+      "author": {
+        "@type": "Person",
+        "name":  null 
+      },
+      "potentialAction": [
+        {
+          "@type": "CommentAction",
+          "name": "Comment",
+          "target": [
+            "https://example.com/posts/howto-install-gitlab/#comments"
+          ]
+        }
+      ]
+    }
+  ]
+}
+</script>
+
+
+
+  <link type="text/css"
+        rel="stylesheet"
+        href="/css/print.css"
+        media="print">
+
+  <link type="text/css"
+        rel="stylesheet"
+        href="/css/poole.css">
+
+  <link type="text/css"
+        rel="stylesheet"
+        href="/css/hyde.css">
+
+  
+
+
+  <link type="text/css" rel="stylesheet" href="/css/blog.css">
+
+  <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700&display=swap">
+
+  <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css"
+        integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk="
+        crossorigin="anonymous" />
+
+  <link rel="apple-touch-icon-precomposed"
+        sizes="144x144"
+        href="/apple-touch-icon-144-precomposed.png">
+
+  <link rel="shortcut icon" href="/favicon.png">
+
+  
+  </head>
+<body>
+  <aside class="sidebar">
+  <div class="container">
+    <div class="sidebar-about">
+      
+      <div class="author-image">
+        <a href="https://example.com">
+          <img src="https://www.gravatar.com/avatar/c02c426714361366ea7d583950aa8fb4?s=200&d=mp" class="img-circle img-headshot center" alt="Gravatar">
+        </a>
+      </div>
+      
+
+      <h1>SAMZONG</h1>
+
+      
+      <p class="lead">Samzong&#39;s Blog</p>
+      
+    </div>
+
+    <nav>
+      <ul class="sidebar-nav">
+        <li>
+          <a href="https://example.com">Home</a>
+        </li>
+        <li>
+          <a href="/posts/">Posts</a>
+        </li><li>
+          <a href="/about/">About</a>
+        </li>
+      </ul>
+    </nav>
+
+    <section class="social-icons">
+      
+      <a href="https://www.linkedin.com/in/samzong/" rel="me" title="Linkedin" target="_blank">
+        <i class="fab fa-linkedin" aria-hidden="true"></i>
+      </a>
+      
+      <a href="https://github.com/samzong" rel="me" title="GitHub" target="_blank">
+        <i class="fab fa-github" aria-hidden="true"></i>
+      </a>
+      
+      <a href="https://twitter.com/samzong_lu" rel="me" title="Twitter" target="_blank">
+        <i class="fab fa-twitter" aria-hidden="true"></i>
+      </a>
+      
+    </section>
+  </div>
+</aside>
+
+
+  <main class="content container">
+  <div class="post">
+  <h1 class="title">HowTo Install GitLab</h1>
+  
+
+  <div class="post-date">
+    <time datetime="2017-04-13T11:18:17Z">Apr 13, 2017</time> <span class="readtime">&middot; 3 min read</span>
+  </div>
+
+  <div>
+  <p>目前最为主流的在线Git版本控制系统可以说是非GitHub莫属，对于个人开发者和开源项目可以直接选择GitHub作为Git版本控制系统即可，但是，对于企业内部开发管理的Git版本控制系统，在对保密性有高要求时GitHub就不合适了，这时GitLab作为一个可以完全搭建在企业内部的Git版本控制系统，而且基本囊括了GitHub的所有功能。</p>
+<h4 id="目前gitlab已经整合的功能">目前GitLab已经整合的功能</h4>
+<ol>
+<li>Repository access</li>
+<li>Administration</li>
+<li>Issues</li>
+<li>Forks</li>
+<li>Code review</li>
+<li>Wiki</li>
+<li>Merge Requests</li>
+<li>Web Editor</li>
+</ol>
+<h4 id="测试环境">测试环境</h4>
+<ul>
+<li>2 core 4GB</li>
+<li>50GB HDD</li>
+<li>CentOS 6.8</li>
+<li>Gitlab</li>
+</ul>
+<h4 id="安装需求">安装需求</h4>
+<p>关于GitLab的安装需求，主要是针对用户量然后评估出服务器及相关资源的配置，<a href="https://docs.gitlab.com.cn/ce/install/requirements.html">查看</a></p>
+<h3 id="gitlab-安装"><strong>GitLab 安装</strong></h3>
+<h4 id="安装配置依赖项">安装配置依赖项</h4>
+<pre tabindex="0"><code>sudo yum install curl openssh-server openssh-clients postfix cronie
+sudo service postfix start
+sudo chkconfig postfix on
+sudo lokkit -s http -s ssh
+</code></pre><h4 id="添加gitlab仓库并安装到服务器上">添加GitLab仓库,并安装到服务器上</h4>
+<pre tabindex="0"><code>curl -sS http://packages.gitlab.cc/install/gitlab-ce/script.rpm.sh | sudo bash
+sudo yum install gitlab-ce
+</code></pre><h4 id="启动gitlab并初始化">启动GitLab并初始化</h4>
+<pre tabindex="0"><code>sudo gitlab-ctl reconfigure
+</code></pre><p>默认登录账号是：<strong>root</strong> ，你可以在首次打开时设置密码。</p>
+<h3 id="gitlab-初始化"><strong>GitLab 初始化</strong></h3>
+<h4 id="开机自启动">开机自启动</h4>
+<pre tabindex="0"><code> vi /etc/rc.local
+ /opt/gitlab/bin/gitlab-ctl start
+</code></pre><h4 id="gitlab-配置文件">GitLab 配置文件</h4>
+<pre tabindex="0"><code>/etc/gitlab/gitlab.rb
+</code></pre><h4 id="smtp-邮箱配置">SMTP 邮箱配置</h4>
+<p>如果想使用SMTP代替sendmail来发送邮件，应该在gitlab.rb中启用对应的配置，然后运行<code>gitlab-ctl reconfigure</code>使修改生效。</p>
+<h5 id="qq企业邮箱配置示例">QQ企业邮箱配置示例</h5>
+<pre tabindex="0"><code>gitlab_rails['smtp_enable'] = true
+gitlab_rails['smtp_address'] = &quot;smtp.exmail.qq.com&quot;
+gitlab_rails['smtp_port'] = 465
+gitlab_rails['smtp_user_name'] = &quot;xxxx@xx.com&quot;
+gitlab_rails['smtp_password'] = &quot;password&quot;
+gitlab_rails['smtp_authentication'] = &quot;login&quot;
+gitlab_rails['smtp_enable_starttls_auto'] = true
+gitlab_rails['smtp_tls'] = true
+gitlab_rails['gitlab_email_from'] = 'xxxx@xx.com'
+</code></pre><h5 id="gmail邮箱配置示例">Gmail邮箱配置示例</h5>
+<pre tabindex="0"><code>gitlab_rails['smtp_enable'] = true
+gitlab_rails['smtp_address'] = &quot;smtp.gmail.com&quot;
+gitlab_rails['smtp_port'] = 587
+gitlab_rails['smtp_user_name'] = &quot;my.email@gmail.com&quot;
+gitlab_rails['smtp_password'] = &quot;my-gmail-password&quot;
+gitlab_rails['smtp_domain'] = &quot;smtp.gmail.com&quot;
+gitlab_rails['smtp_authentication'] = &quot;login&quot;
+gitlab_rails['smtp_enable_starttls_auto'] = true
+gitlab_rails['smtp_tls'] = false
+gitlab_rails['smtp_openssl_verify_mode'] = 'peer'
+</code></pre><h5 id="outlook邮箱配置示例">Outlook邮箱配置示例</h5>
+<pre tabindex="0"><code>gitlab_rails['smtp_enable'] = true
+gitlab_rails['smtp_address'] = &quot;smtp-mail.outlook.com&quot;
+gitlab_rails['smtp_port'] = 587
+gitlab_rails['smtp_user_name'] = &quot;username@outlook.com&quot;
+gitlab_rails['smtp_password'] = &quot;password&quot;
+gitlab_rails['smtp_domain'] = &quot;smtp-mail.outlook.com&quot;
+gitlab_rails['smtp_authentication'] = &quot;login&quot;
+gitlab_rails['smtp_enable_starttls_auto'] = true
+gitlab_rails['smtp_openssl_verify_mode'] = 'peer'
+</code></pre><blockquote>
+<p>​⚠️ &lsquo;smtp_password&rsquo;字段不应包含任何 Ruby或者YAML语法中的分隔符 (如<code>'</code>),以避免处理配置文件的过程中发生不必要的意外。</p>
+</blockquote>
+<h4 id="gitlab-日常维护">GitLab 日常维护</h4>
+<h5 id="1-查看服务状态">1. 查看服务状态</h5>
+<p>使用 gitlab-ctl status 查看服务状态</p>
+<pre tabindex="0"><code>[root@6 ~]# sudo gitlab-ctl status
+run: gitaly: (pid 15055) 23089s; run: log: (pid 3142) 55379s
+run: gitlab-monitor: (pid 15060) 23088s; run: log: (pid 3325) 55357s
+run: gitlab-workhorse: (pid 15063) 23088s; run: log: (pid 3156) 55377s
+run: logrotate: (pid 17867) 1487s; run: log: (pid 3197) 55369s
+run: nginx: (pid 15077) 23087s; run: log: (pid 3169) 55375s
+run: node-exporter: (pid 15083) 23087s; run: log: (pid 3247) 55366s
+run: postgres-exporter: (pid 15088) 23086s; run: log: (pid 3311) 55358s
+run: postgresql: (pid 15093) 23086s; run: log: (pid 2988) 55412s
+run: prometheus: (pid 15101) 23085s; run: log: (pid 3230) 55368s
+run: redis: (pid 15109) 23085s; run: log: (pid 2931) 55419s
+run: redis-exporter: (pid 15113) 23085s; run: log: (pid 3290) 55364s
+run: sidekiq: (pid 17029) 22450s; run: log: (pid 3131) 55380s
+run: unicorn: (pid 17001) 22460s; run: log: (pid 3100) 55386s
+</code></pre><h5 id="2-启动关闭重启">2. 启动、关闭、重启</h5>
+<pre tabindex="0"><code># 启动Gitlab所有组件
+sudo gitlab-ctl start
+
+# 停止Gitlab所有组件
+sudo gitlab-ctl stop
+
+# 重启Gitlab所有组件
+sudo gitlab-ctl restart
+
+# 重启单个组件
+sudo gitlab-ctl restart sidekiq
+</code></pre><h5 id="3-控制台实时查看日志">3. 控制台实时查看日志</h5>
+<pre tabindex="0"><code># 查看所有的logs; 按 Ctrl-C 退出
+sudo gitlab-ctl tail
+
+# 拉取/var/log/gitlab下子目录的日志
+sudo gitlab-ctl tail gitlab-rails
+
+# 拉取某个指定的日志文件
+sudo gitlab-ctl tail nginx/gitlab_error.log
+</code></pre><h3 id="gitlab-安装后优化"><strong>GitLab 安装后优化</strong></h3>
+<h4 id="启用https">启用HTTPS</h4>
+<p>首先，你需要提供一个有可信任CA证书，默认情况下GitLab是没有启用HTTPS的，如果要启用HTTPS时，首先要修改<!-- raw HTML omitted -->/etc/gitlab/gitlab.rb<!-- raw HTML omitted -->中的<!-- raw HTML omitted -->external_url<!-- raw HTML omitted -->:</p>
+<pre tabindex="0"><code># 修改为https
+external_url &quot;https://git.ultraera.org&quot;
+
+# 设置默认将http重定向到https
+nginx['redirect_http_to_https'] = true
+</code></pre><p>如果你暂时没有https证书，那么你可以临时自己颁发一个证书，注意这个证书是不受信任的。</p>
+<pre tabindex="0"><code>mkdir -p /etc/nginx/ssl/
+cd /etc/nginx/ssl/
+sudo openssl req -newkey rsa:2048 -x509 -nodes -days 3560 -out gitlab.crt -keyout gitlab.key
+sudo chmod o-r gitlab.key
+sudo mv gitlab.key gitlab.crt /etc/ssl/
+</code></pre><p>另外，还需要在gitlab-shell中的config.yml中将self_signed_cert 修改为启用:</p>
+<pre tabindex="0"><code>self_signed_cert = true
+</code></pre><h4 id="设置延迟启动">设置延迟启动</h4>
+<p>为保证服务质量，我们可以设置让omnibus-gitlab的服务(Nginx, Redis, Unicorn等) 在指定的文件系统挂载成功后再启动，在<!-- raw HTML omitted -->/etc/gitlab/gitlab.rb<!-- raw HTML omitted --> 文件中添加如下内容：</p>
+<pre tabindex="0"><code># 等待/var/opt/gitlab 先被挂载
+high_availability['mountpoint'] = '/var/opt/gitlab'
+</code></pre><blockquote>
+<p>注意在修改配置之后，要使用重新reconfigure配置</p>
+</blockquote>
+<h4 id="backups-备份还原">Backups 备份还原</h4>
+<h5 id="备份">备份</h5>
+<p>Gitlab的配置也非常简单,使用一条命令即可创建完整的Gitlab备份:</p>
+<pre tabindex="0"><code>gitlab-rake gitlab:backup:create
+</code></pre><p>该命令会在<code>/var/opt/gitlab/backups</code>目录下创建一个名称类似为<code>1491989249_2017_04_12_gitlab_backup.tar</code>的压缩包, 这个压缩包就是Gitlab整个的完整部分，其中开头的<code>1491989249_2017_04_12</code>是备份创建的日期，这也是我们等下恢复是要用的字段。</p>
+<h5 id="修改默认备份路径">修改默认备份路径</h5>
+<p>如果你像我一样，是使用yum安装的，那么GitLab默认的备份目录应该在<code>/var/opt/gitlab/backups</code>，我建议将备份目录修改为其他位置，并添加定时自动备份脚本，可以通过修改<code>/etc/gitlab/gitlab.rb</code>来修改默认位置：</p>
+<pre tabindex="0"><code>gitlab_rails['backup_path'] = '/mnt/backups'
+</code></pre><h5 id="使用crontab-添加自动备份">使用crontab 添加自动备份</h5>
+<pre tabindex="0"><code># 每天凌晨00:00 自动备份
+00 00 * * * /opt/gitlab/bin/gitlab-rake gitlab:backup:create
+</code></pre><h5 id="备份恢复">备份恢复</h5>
+<pre tabindex="0"><code># 停止相关数据连接服务
+gitlab-ctl stop unicorn
+gitlab-ctl stop sidekiq
+
+# 从1491989249_2017_04_12编号备份中恢复
+gitlab-rake gitlab:backup:restore BACKUP=1491989249_2017_04_12
+
+# 启动Gitlab
+sudo gitlab-ctl start unicorn
+sudo gitlab-ctl start sidekiq
+</code></pre><h3 id="gitlab-迁移"><strong>GitLab 迁移</strong></h3>
+<p>只需将原服务器<code>/var/opt/gitlab/backups</code>目录下的备份文件拷贝到新服务器上的<code>/var/opt/gitlab/backups</code>上即可(如果你没修改过默认备份目录的话)， 但是需要注意的是新服务器上的Gitlab的版本必须与创建备份时的Gitlab版本号相同， 比如新服务器安装的是最新的9.0.5版本的Gitlab, 那么迁移之前，最好将老服务器的Gitlab 升级为9.0.5在进行备份。</p>
+<p>/Users/Alex/Documents/Hexo/source/_posts/</p>
+
+  </div>
+
+  
+<div>
+  <ul class="tags">
+  <li>
+    <a href="https://example.com/tags/gitlab/" class="tag-link">Gitlab</a>
+  </li>
+  </ul>
+</div>
+
+
+
+  <div class="share-buttons">
+  <a class="twitter-share-button"
+     href="#"
+     title="Share on Twitter"
+     data-url="https://example.com/posts/howto-install-gitlab/"
+     data-text="HowTo Install GitLab"><i class="fab fa-twitter"></i></a>
+
+  <a class="linkedin-share-button"
+     href="#"
+     title="Share on LinkedIn"
+     data-url="https://example.com/posts/howto-install-gitlab/"
+     data-text="HowTo Install GitLab"><i class="fab fa-linkedin-in"></i></a>
+
+  <a class="facebook-share-button"
+     href="#"
+     title="Share on Facebook"
+     data-url="https://example.com/posts/howto-install-gitlab/"
+     data-text="HowTo Install GitLab"><i class="fab fa-facebook"></i></a>
+
+  <a class="telegram-share-button"
+     href="#"
+     title="Share on Telegram"
+     data-url="https://example.com/posts/howto-install-gitlab/"
+     data-text="HowTo Install GitLab"><i class="fab fa-telegram"></i></a>
+
+  <a class="pinterest-share-button"
+     href="#"
+     title="Share on Pinterest"
+     data-url="https://example.com/posts/howto-install-gitlab/"
+     data-text="HowTo Install GitLab"><i class="fab fa-pinterest"></i></a>
+</div>
+
+
+  
+</div>
+  </main>
+
+  <footer>
+  <div>
+    <p>
+      &copy; samzong.lu 2021
+
+      &middot; <a href="https://creativecommons.org/licenses/by-sa/4.0" target="_blank">CC BY-SA 4.0</a>
+
+      
+    </p>
+  </div>
+</footer>
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/js/all.min.js"
+          integrity="sha256-MAgcygDRahs+F/Nk5Vz387whB4kSK9NXlDN3w58LLq0="
+          crossorigin="anonymous"></script>
+
+
+  <script src="/js/jquery.min.js"></script>
+  <script src="/js/soho.js"></script>
+
+  <script src="/js/blog.js"></script>
+
+  
+</body>
+</html>

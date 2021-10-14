@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh-CN" lang="zh-CN">
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="generator" content="Hugo 0.88.1" />
+
+  <title>HowTo Use Fuse-sshfs to Mount Remote Filesystems &middot; SAMZONG</title>
+
+  <meta name="description" content="" />
+
+  
+
+<meta itemprop="name" content="HowTo Use Fuse-sshfs to Mount Remote Filesystems">
+<meta itemprop="description" content="传统我们服务器之间文件共享的方式有采用NFS、Samba等等，但是在我看来配置都有一定的复杂性，当然复杂也有它们的优势，这里推荐一个依赖于SSH的文件共享工具，Fuse-sshfs。SSH 是一个强大且安全的工具，我们除了可以用它来远程管理主机外，还可以通过它建立 SSH tunnel 作 Proxy 用，远程传输文件等等。而这里我想要介绍另外一个功能，那就是结合 sshfs 这个工具可以把远程主机的文件系统映射到本地主机上，透过 SSH 把远程文件系统挂载到本机上，这样我们可以不必使用 scp 工具就可以做到直接复制及删除远程主机的文件了，就像操作本地磁盘一样方便。 sshfs 是基于 FUSE 构建的 SSH 文件系统客户端程序，通过它远程主机的配置无需作任何改变，就可以透过 SSH 协议来挂载远程文件系统了，非常方便及安全。 Install fuse-sshfs [cent@localhost ~]$ sudo yum install -y epel-relese [cent@localhost ~]$ sudo yum --enablerepo=epel install -y fuse-sshfs 挂载远程 ssh文件系统 [cent@localhost ~]$ mkdir ."><meta itemprop="datePublished" content="2016-07-05T01:58:03+00:00" />
+<meta itemprop="dateModified" content="2016-07-05T01:58:03+00:00" />
+<meta itemprop="wordCount" content="97">
+<meta itemprop="keywords" content="SSH," />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="HowTo Use Fuse-sshfs to Mount Remote Filesystems"/>
+<meta name="twitter:description" content="传统我们服务器之间文件共享的方式有采用NFS、Samba等等，但是在我看来配置都有一定的复杂性，当然复杂也有它们的优势，这里推荐一个依赖于SSH的文件共享工具，Fuse-sshfs。SSH 是一个强大且安全的工具，我们除了可以用它来远程管理主机外，还可以通过它建立 SSH tunnel 作 Proxy 用，远程传输文件等等。而这里我想要介绍另外一个功能，那就是结合 sshfs 这个工具可以把远程主机的文件系统映射到本地主机上，透过 SSH 把远程文件系统挂载到本机上，这样我们可以不必使用 scp 工具就可以做到直接复制及删除远程主机的文件了，就像操作本地磁盘一样方便。 sshfs 是基于 FUSE 构建的 SSH 文件系统客户端程序，通过它远程主机的配置无需作任何改变，就可以透过 SSH 协议来挂载远程文件系统了，非常方便及安全。 Install fuse-sshfs [cent@localhost ~]$ sudo yum install -y epel-relese [cent@localhost ~]$ sudo yum --enablerepo=epel install -y fuse-sshfs 挂载远程 ssh文件系统 [cent@localhost ~]$ mkdir ."/>
+
+
+<meta property="og:title" content="HowTo Use Fuse-sshfs to Mount Remote Filesystems" />
+<meta property="og:description" content="传统我们服务器之间文件共享的方式有采用NFS、Samba等等，但是在我看来配置都有一定的复杂性，当然复杂也有它们的优势，这里推荐一个依赖于SSH的文件共享工具，Fuse-sshfs。SSH 是一个强大且安全的工具，我们除了可以用它来远程管理主机外，还可以通过它建立 SSH tunnel 作 Proxy 用，远程传输文件等等。而这里我想要介绍另外一个功能，那就是结合 sshfs 这个工具可以把远程主机的文件系统映射到本地主机上，透过 SSH 把远程文件系统挂载到本机上，这样我们可以不必使用 scp 工具就可以做到直接复制及删除远程主机的文件了，就像操作本地磁盘一样方便。 sshfs 是基于 FUSE 构建的 SSH 文件系统客户端程序，通过它远程主机的配置无需作任何改变，就可以透过 SSH 协议来挂载远程文件系统了，非常方便及安全。 Install fuse-sshfs [cent@localhost ~]$ sudo yum install -y epel-relese [cent@localhost ~]$ sudo yum --enablerepo=epel install -y fuse-sshfs 挂载远程 ssh文件系统 [cent@localhost ~]$ mkdir ." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://example.com/posts/howto-use-fuse-sshfs-to-mount-remote-filesystems/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2016-07-05T01:58:03+00:00" />
+<meta property="article:modified_time" content="2016-07-05T01:58:03+00:00" />
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type":"Person",
+      "@id": "https://example.com#author",
+      "name": "samzong.lu",
+      "image": {
+        "@type":"ImageObject",
+        "url": "https://www.gravatar.com/avatar/c02c426714361366ea7d583950aa8fb4?s=400&d=mp"
+      },
+      "description": "Samzong's Blog"
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://example.com#website",
+      "url": "https://example.com",
+      "name": "SAMZONG",
+      "description": "Samzong's Blog",
+      "publisher": {
+        "@id": "https://example.com#author"
+      },
+      "inLanguage": "zh-CN"
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://example.com/posts/howto-use-fuse-sshfs-to-mount-remote-filesystems/#webpage",
+      "url": "https://example.com/posts/howto-use-fuse-sshfs-to-mount-remote-filesystems/",
+      "name": "HowTo Use Fuse-sshfs to Mount Remote Filesystems",
+      "isPartOf": {
+        "@id": "https://example.com#website"
+      },
+      "about": {
+         "@id": "https://example.com#author"
+      },
+      "datePublished": "2016-07-05T01:58:03+00:00",
+      "dateModified": "2016-07-05T01:58:03+00:00",
+      "description": "传统我们服务器之间文件共享的方式有采用NFS、Samba等等，但是在我看来配置都有一定的复杂性，当然复杂也有它们的优势，这里推荐一个依赖于SSH的文件共享工具，Fuse-sshfs。SSH 是一个强大且安全的工具，我们除了可以用它来远程管理主机外，还可以通过它建立 SSH tunnel 作 Proxy 用，远程传输文件等等。而这里我想要介绍另外一个功能，那就是结合 sshfs 这个工具可以把远程主机的文件系统映射到本地主机上，透过 SSH 把远程文件系统挂载到本机上，这样我们可以不必使用 scp 工具就可以做到直接复制及删除远程主机的文件了，就像操作本地磁盘一样方便。 sshfs 是基于 FUSE 构建的 SSH 文件系统客户端程序，通过它远程主机的配置无需作任何改变，就可以透过 SSH 协议来挂载远程文件系统了，非常方便及安全。 Install fuse-sshfs [cent@localhost ~]$ sudo yum install -y epel-relese [cent@localhost ~]$ sudo yum --enablerepo=epel install -y fuse-sshfs 挂载远程 ssh文件系统 [cent@localhost ~]$ mkdir .",
+      "inLanguage": "zh-CN",
+      "potentialAction": [
+        {
+          "@type": "ReadAction",
+          "target": [
+            "https://example.com/posts/howto-use-fuse-sshfs-to-mount-remote-filesystems/"
+          ]
+        }
+      ]
+    },
+    {
+      "@type": "Article",
+      "isPartOf": {
+        "@id": "https://example.com/posts/howto-use-fuse-sshfs-to-mount-remote-filesystems/#webpage"
+      },
+      "mainEntityOfPage": {
+        "@id": "https://example.com/posts/howto-use-fuse-sshfs-to-mount-remote-filesystems/#webpage"
+      },
+      "headline": "HowTo Use Fuse-sshfs to Mount Remote Filesystems",
+      "datePublished": "2016-07-05T01:58:03+00:00",
+      "dateModified": "2016-07-05T01:58:03+00:00",
+      "publisher": {
+        "@id": "https://example.com#author"
+      },
+      "keywords": [
+        "SSH"
+      ],
+      "articleSection": [
+        "CentOS"
+      ],
+      "inLanguage": "zh-CN",
+      "author": {
+        "@type": "Person",
+        "name":  null 
+      },
+      "potentialAction": [
+        {
+          "@type": "CommentAction",
+          "name": "Comment",
+          "target": [
+            "https://example.com/posts/howto-use-fuse-sshfs-to-mount-remote-filesystems/#comments"
+          ]
+        }
+      ]
+    }
+  ]
+}
+</script>
+
+
+
+  <link type="text/css"
+        rel="stylesheet"
+        href="/css/print.css"
+        media="print">
+
+  <link type="text/css"
+        rel="stylesheet"
+        href="/css/poole.css">
+
+  <link type="text/css"
+        rel="stylesheet"
+        href="/css/hyde.css">
+
+  
+
+
+  <link type="text/css" rel="stylesheet" href="/css/blog.css">
+
+  <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700&display=swap">
+
+  <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css"
+        integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk="
+        crossorigin="anonymous" />
+
+  <link rel="apple-touch-icon-precomposed"
+        sizes="144x144"
+        href="/apple-touch-icon-144-precomposed.png">
+
+  <link rel="shortcut icon" href="/favicon.png">
+
+  
+  </head>
+<body>
+  <aside class="sidebar">
+  <div class="container">
+    <div class="sidebar-about">
+      
+      <div class="author-image">
+        <a href="https://example.com">
+          <img src="https://www.gravatar.com/avatar/c02c426714361366ea7d583950aa8fb4?s=200&d=mp" class="img-circle img-headshot center" alt="Gravatar">
+        </a>
+      </div>
+      
+
+      <h1>SAMZONG</h1>
+
+      
+      <p class="lead">Samzong&#39;s Blog</p>
+      
+    </div>
+
+    <nav>
+      <ul class="sidebar-nav">
+        <li>
+          <a href="https://example.com">Home</a>
+        </li>
+        <li>
+          <a href="/posts/">Posts</a>
+        </li><li>
+          <a href="/about/">About</a>
+        </li>
+      </ul>
+    </nav>
+
+    <section class="social-icons">
+      
+      <a href="https://www.linkedin.com/in/samzong/" rel="me" title="Linkedin" target="_blank">
+        <i class="fab fa-linkedin" aria-hidden="true"></i>
+      </a>
+      
+      <a href="https://github.com/samzong" rel="me" title="GitHub" target="_blank">
+        <i class="fab fa-github" aria-hidden="true"></i>
+      </a>
+      
+      <a href="https://twitter.com/samzong_lu" rel="me" title="Twitter" target="_blank">
+        <i class="fab fa-twitter" aria-hidden="true"></i>
+      </a>
+      
+    </section>
+  </div>
+</aside>
+
+
+  <main class="content container">
+  <div class="post">
+  <h1 class="title">HowTo Use Fuse-sshfs to Mount Remote Filesystems</h1>
+  
+
+  <div class="post-date">
+    <time datetime="2016-07-05T01:58:03Z">Jul 5, 2016</time> <span class="readtime">&middot; 1 min read</span>
+  </div>
+
+  <div>
+  <p>传统我们服务器之间文件共享的方式有采用NFS、Samba等等，但是在我看来配置都有一定的复杂性，当然复杂也有它们的优势，这里推荐一个依赖于SSH的文件共享工具，Fuse-sshfs。<!-- raw HTML omitted -->
+SSH 是一个强大且安全的工具，我们除了可以用它来远程管理主机外，还可以通过它建立 SSH tunnel 作 Proxy 用，远程传输文件等等。而这里我想要介绍另外一个功能，那就是结合 sshfs 这个工具可以把远程主机的文件系统映射到本地主机上，透过 SSH 把远程文件系统挂载到本机上，这样我们可以不必使用 scp 工具就可以做到直接复制及删除远程主机的文件了，就像操作本地磁盘一样方便。
+<!-- raw HTML omitted -->sshfs 是基于 FUSE 构建的 SSH 文件系统客户端程序，通过它远程主机的配置无需作任何改变，就可以透过 SSH 协议来挂载远程文件系统了，非常方便及安全。
+<!-- raw HTML omitted --></p>
+<h3 id="install-fuse-sshfs">Install fuse-sshfs</h3>
+<pre tabindex="0"><code>[cent@localhost ~]$ sudo yum install -y epel-relese
+[cent@localhost ~]$ sudo yum --enablerepo=epel install -y fuse-sshfs
+</code></pre><h3 id="挂载远程-ssh文件系统">挂载远程 ssh文件系统</h3>
+<pre tabindex="0"><code>[cent@localhost ~]$ mkdir ./mnt
+[cent@localhost ~]$ sshfs root@192.168.16.230:/home/ ./mnt
+root@192.168.16.230's password:
+[cent@localhost ~]$ mount
+root@192.168.16.230:/home/ on /home/cent/mnt type fuse.sshfs (rw,nosuid,nodev,user=cent)
+</code></pre><h3 id="卸载远程-ssh文件系统">卸载远程 ssh文件系统</h3>
+<pre tabindex="0"><code>[cent@localhost ~]$ fusermount -u ./mnt
+</code></pre><h3 id="常用参数">常用参数</h3>
+<pre tabindex="0"><code>-C 压缩，或者-o compression=yes
+-o reconnect 自动重连
+-o transform_symlinks 表示转换绝对链接符号为相对链接符号
+-o follow_symlinks 沿用服务器上的链接符号
+-o cache=yes
+-o allow_other 这个参数最重要，必须写，否则任何文件都是Permission Deny
+</code></pre><h3 id="缺点"> 缺点</h3>
+<p>当然sshfs也不尽是优点，例如远程主机失去响应后本地挂载点卡死并影响本地系统使用，需要手工找出 sshfs进程并杀死，因网速问题造成操作响应缓慢等等，不过一般在稳定快速的网络中不太会遇上，对比其强大的功能，还是可以接受的，正所谓暇不掩瑜。</p>
+<ol>
+<li>所以sshfs适合内部网络比较稳定的地方</li>
+<li>配合ssh免密登录使用会更好哦</li>
+<li>可以看到的是sshfs默认挂载是rw的权限，但是通过sshfs &ndash;help 可以看到有非常详尽的参数配置可以选择，大家可以仔细研究下。</li>
+</ol>
+<h3 id="附1">附1.</h3>
+<p><a href="http://igikorn.com/sshfs-windows-8/">Link</a> 在windows下可以使用sshfs.</p>
+
+  </div>
+
+  
+<div>
+  <ul class="tags">
+  <li>
+    <a href="https://example.com/tags/ssh/" class="tag-link">SSH</a>
+  </li>
+  </ul>
+</div>
+
+
+
+  <div class="share-buttons">
+  <a class="twitter-share-button"
+     href="#"
+     title="Share on Twitter"
+     data-url="https://example.com/posts/howto-use-fuse-sshfs-to-mount-remote-filesystems/"
+     data-text="HowTo Use Fuse-sshfs to Mount Remote Filesystems"><i class="fab fa-twitter"></i></a>
+
+  <a class="linkedin-share-button"
+     href="#"
+     title="Share on LinkedIn"
+     data-url="https://example.com/posts/howto-use-fuse-sshfs-to-mount-remote-filesystems/"
+     data-text="HowTo Use Fuse-sshfs to Mount Remote Filesystems"><i class="fab fa-linkedin-in"></i></a>
+
+  <a class="facebook-share-button"
+     href="#"
+     title="Share on Facebook"
+     data-url="https://example.com/posts/howto-use-fuse-sshfs-to-mount-remote-filesystems/"
+     data-text="HowTo Use Fuse-sshfs to Mount Remote Filesystems"><i class="fab fa-facebook"></i></a>
+
+  <a class="telegram-share-button"
+     href="#"
+     title="Share on Telegram"
+     data-url="https://example.com/posts/howto-use-fuse-sshfs-to-mount-remote-filesystems/"
+     data-text="HowTo Use Fuse-sshfs to Mount Remote Filesystems"><i class="fab fa-telegram"></i></a>
+
+  <a class="pinterest-share-button"
+     href="#"
+     title="Share on Pinterest"
+     data-url="https://example.com/posts/howto-use-fuse-sshfs-to-mount-remote-filesystems/"
+     data-text="HowTo Use Fuse-sshfs to Mount Remote Filesystems"><i class="fab fa-pinterest"></i></a>
+</div>
+
+
+  
+</div>
+  </main>
+
+  <footer>
+  <div>
+    <p>
+      &copy; samzong.lu 2021
+
+      &middot; <a href="https://creativecommons.org/licenses/by-sa/4.0" target="_blank">CC BY-SA 4.0</a>
+
+      
+    </p>
+  </div>
+</footer>
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/js/all.min.js"
+          integrity="sha256-MAgcygDRahs+F/Nk5Vz387whB4kSK9NXlDN3w58LLq0="
+          crossorigin="anonymous"></script>
+
+
+  <script src="/js/jquery.min.js"></script>
+  <script src="/js/soho.js"></script>
+
+  <script src="/js/blog.js"></script>
+
+  
+</body>
+</html>

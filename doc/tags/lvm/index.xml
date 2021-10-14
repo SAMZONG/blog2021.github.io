@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>LVM on SAMZONG</title>
+    <link>https://example.com/tags/lvm/</link>
+    <description>Recent content in LVM on SAMZONG</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Tue, 18 Apr 2017 17:48:57 +0000</lastBuildDate><atom:link href="https://example.com/tags/lvm/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>CentOS增加新硬盘给根文件系统扩容</title>
+      <link>https://example.com/posts/centos%E5%A2%9E%E5%8A%A0%E6%96%B0%E7%A1%AC%E7%9B%98%E7%BB%99%E6%A0%B9%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F%E6%89%A9%E5%AE%B9/</link>
+      <pubDate>Tue, 18 Apr 2017 17:48:57 +0000</pubDate>
+      
+      <guid>https://example.com/posts/centos%E5%A2%9E%E5%8A%A0%E6%96%B0%E7%A1%AC%E7%9B%98%E7%BB%99%E6%A0%B9%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F%E6%89%A9%E5%AE%B9/</guid>
+      <description>由于刚开始做磁盘空间规划时，失误给根分区分配磁盘较小，导致后续实验环境无法进行，所以在经过研究后，决定尝试增加根分区的磁盘空间，注意这仅适用于创建在LVM上的文件系统。
+实验环境  Parallels Desktop 12 CentOS 6.9 根分区空间 6.5GB 已使用 5.</description>
+    </item>
+    
+  </channel>
+</rss>

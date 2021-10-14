@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Linux on SAMZONG</title>
+    <link>https://example.com/tags/linux/</link>
+    <description>Recent content in Linux on SAMZONG</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Tue, 29 Mar 2016 07:50:36 +0000</lastBuildDate><atom:link href="https://example.com/tags/linux/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Linux 中的三个特殊权限</title>
+      <link>https://example.com/posts/linux-%E4%B8%AD%E7%9A%84%E4%B8%89%E4%B8%AA%E7%89%B9%E6%AE%8A%E6%9D%83%E9%99%90/</link>
+      <pubDate>Tue, 29 Mar 2016 07:50:36 +0000</pubDate>
+      
+      <guid>https://example.com/posts/linux-%E4%B8%AD%E7%9A%84%E4%B8%89%E4%B8%AA%E7%89%B9%E6%AE%8A%E6%9D%83%E9%99%90/</guid>
+      <description>Linux中除了普通权限之外，还有三个特殊权限。 SUID:：以文件的所属用户执行，而非执行文件的用户，多用于可执行文件，设置suid后，在权限位中，所属用户的 最后一个权 限为变为s，添加SUID权限可用“+s”表示。 例如：passwd [adam@ultraera ~]$ which passwd /usr/bin/passwd [adam@ultraera ~]$ ls -l /usr/bin/passwd -rwsr-xr-x.</description>
+    </item>
+    
+    <item>
+      <title>Linux 笔试试题</title>
+      <link>https://example.com/posts/linux-%E7%AC%94%E8%AF%95%E8%AF%95%E9%A2%98/</link>
+      <pubDate>Wed, 23 Mar 2016 12:05:16 +0000</pubDate>
+      
+      <guid>https://example.com/posts/linux-%E7%AC%94%E8%AF%95%E8%AF%95%E9%A2%98/</guid>
+      <description>一. 选择题 （1题1分） 1. 当登录Linux时，一个具有唯一进程ID号的shell将被调用，这个ID是什么( ) A. NID　B. PID　C.</description>
+    </item>
+    
+    <item>
+      <title>理解 Linux 的硬链接与软链接</title>
+      <link>https://example.com/posts/%E7%90%86%E8%A7%A3-linux-%E7%9A%84%E7%A1%AC%E9%93%BE%E6%8E%A5%E4%B8%8E%E8%BD%AF%E9%93%BE%E6%8E%A5/</link>
+      <pubDate>Fri, 18 Mar 2016 14:52:13 +0000</pubDate>
+      
+      <guid>https://example.com/posts/%E7%90%86%E8%A7%A3-linux-%E7%9A%84%E7%A1%AC%E9%93%BE%E6%8E%A5%E4%B8%8E%E8%BD%AF%E9%93%BE%E6%8E%A5/</guid>
+      <description>硬链接与软链接是 Linux 文件系统中的一个重要概念，其涉及文件系统中的索引节点 (index node 又称 inode)，而索引节点对象是 Linux 虚拟文件系统 (VFS) 的四个基本概念之一。通过剖析硬链接与软链接的联系与区别，我们可更好的了解 Linux 中 VFS 这一通用文件模型。并让 Linux 普通用户和系统管理员正确使用硬链接与软链接，帮助文件系统开发者获取 inode 的相关知识。</description>
+    </item>
+    
+  </channel>
+</rss>

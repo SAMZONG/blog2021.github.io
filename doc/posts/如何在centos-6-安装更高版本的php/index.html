@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh-CN" lang="zh-CN">
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="generator" content="Hugo 0.88.1" />
+
+  <title>如何在CentOS 6 安装更高版本的PHP &middot; SAMZONG</title>
+
+  <meta name="description" content="" />
+
+  
+
+<meta itemprop="name" content="如何在CentOS 6 安装更高版本的PHP">
+<meta itemprop="description" content="实验环境：CentOS 6.4 解决办法是采用了remi源仓库已经适配的相应php版本
+ 经过测试，该升级办法同样适用目前CentOS 6.x 所有版本
+ 1. 安装Remi源 # 因为remi依赖epel源仓库，所有我们要先安装它。 [root@visionet8 ~]# yum install -y epel-release [root@visionet8 ~]# wget http://rpms."><meta itemprop="datePublished" content="2016-04-01T14:57:45+00:00" />
+<meta itemprop="dateModified" content="2016-04-01T14:57:45+00:00" />
+<meta itemprop="wordCount" content="618">
+<meta itemprop="keywords" content="CentOS," />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="如何在CentOS 6 安装更高版本的PHP"/>
+<meta name="twitter:description" content="实验环境：CentOS 6.4 解决办法是采用了remi源仓库已经适配的相应php版本
+ 经过测试，该升级办法同样适用目前CentOS 6.x 所有版本
+ 1. 安装Remi源 # 因为remi依赖epel源仓库，所有我们要先安装它。 [root@visionet8 ~]# yum install -y epel-release [root@visionet8 ~]# wget http://rpms."/>
+
+
+<meta property="og:title" content="如何在CentOS 6 安装更高版本的PHP" />
+<meta property="og:description" content="实验环境：CentOS 6.4 解决办法是采用了remi源仓库已经适配的相应php版本
+ 经过测试，该升级办法同样适用目前CentOS 6.x 所有版本
+ 1. 安装Remi源 # 因为remi依赖epel源仓库，所有我们要先安装它。 [root@visionet8 ~]# yum install -y epel-release [root@visionet8 ~]# wget http://rpms." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://example.com/posts/%E5%A6%82%E4%BD%95%E5%9C%A8centos-6-%E5%AE%89%E8%A3%85%E6%9B%B4%E9%AB%98%E7%89%88%E6%9C%AC%E7%9A%84php/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2016-04-01T14:57:45+00:00" />
+<meta property="article:modified_time" content="2016-04-01T14:57:45+00:00" />
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type":"Person",
+      "@id": "https://example.com#author",
+      "name": "samzong.lu",
+      "image": {
+        "@type":"ImageObject",
+        "url": "https://www.gravatar.com/avatar/c02c426714361366ea7d583950aa8fb4?s=400&d=mp"
+      },
+      "description": "Samzong's Blog"
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://example.com#website",
+      "url": "https://example.com",
+      "name": "SAMZONG",
+      "description": "Samzong's Blog",
+      "publisher": {
+        "@id": "https://example.com#author"
+      },
+      "inLanguage": "zh-CN"
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://example.com/posts/%E5%A6%82%E4%BD%95%E5%9C%A8centos-6-%E5%AE%89%E8%A3%85%E6%9B%B4%E9%AB%98%E7%89%88%E6%9C%AC%E7%9A%84php/#webpage",
+      "url": "https://example.com/posts/%E5%A6%82%E4%BD%95%E5%9C%A8centos-6-%E5%AE%89%E8%A3%85%E6%9B%B4%E9%AB%98%E7%89%88%E6%9C%AC%E7%9A%84php/",
+      "name": "如何在CentOS 6 安装更高版本的PHP",
+      "isPartOf": {
+        "@id": "https://example.com#website"
+      },
+      "about": {
+         "@id": "https://example.com#author"
+      },
+      "datePublished": "2016-04-01T14:57:45+00:00",
+      "dateModified": "2016-04-01T14:57:45+00:00",
+      "description": "实验环境：CentOS 6.4 解决办法是采用了remi源仓库已经适配的相应php版本\n 经过测试，该升级办法同样适用目前CentOS 6.x 所有版本\n 1. 安装Remi源 # 因为remi依赖epel源仓库，所有我们要先安装它。 [root@visionet8 ~]# yum install -y epel-release [root@visionet8 ~]# wget http://rpms.",
+      "inLanguage": "zh-CN",
+      "potentialAction": [
+        {
+          "@type": "ReadAction",
+          "target": [
+            "https://example.com/posts/%E5%A6%82%E4%BD%95%E5%9C%A8centos-6-%E5%AE%89%E8%A3%85%E6%9B%B4%E9%AB%98%E7%89%88%E6%9C%AC%E7%9A%84php/"
+          ]
+        }
+      ]
+    },
+    {
+      "@type": "Article",
+      "isPartOf": {
+        "@id": "https://example.com/posts/%E5%A6%82%E4%BD%95%E5%9C%A8centos-6-%E5%AE%89%E8%A3%85%E6%9B%B4%E9%AB%98%E7%89%88%E6%9C%AC%E7%9A%84php/#webpage"
+      },
+      "mainEntityOfPage": {
+        "@id": "https://example.com/posts/%E5%A6%82%E4%BD%95%E5%9C%A8centos-6-%E5%AE%89%E8%A3%85%E6%9B%B4%E9%AB%98%E7%89%88%E6%9C%AC%E7%9A%84php/#webpage"
+      },
+      "headline": "如何在CentOS 6 安装更高版本的PHP",
+      "datePublished": "2016-04-01T14:57:45+00:00",
+      "dateModified": "2016-04-01T14:57:45+00:00",
+      "publisher": {
+        "@id": "https://example.com#author"
+      },
+      "keywords": [
+        "CentOS"
+      ],
+      "articleSection": [
+        "CentOS"
+      ],
+      "inLanguage": "zh-CN",
+      "author": {
+        "@type": "Person",
+        "name":  null 
+      },
+      "potentialAction": [
+        {
+          "@type": "CommentAction",
+          "name": "Comment",
+          "target": [
+            "https://example.com/posts/%E5%A6%82%E4%BD%95%E5%9C%A8centos-6-%E5%AE%89%E8%A3%85%E6%9B%B4%E9%AB%98%E7%89%88%E6%9C%AC%E7%9A%84php/#comments"
+          ]
+        }
+      ]
+    }
+  ]
+}
+</script>
+
+
+
+  <link type="text/css"
+        rel="stylesheet"
+        href="/css/print.css"
+        media="print">
+
+  <link type="text/css"
+        rel="stylesheet"
+        href="/css/poole.css">
+
+  <link type="text/css"
+        rel="stylesheet"
+        href="/css/hyde.css">
+
+  
+
+
+  <link type="text/css" rel="stylesheet" href="/css/blog.css">
+
+  <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700&display=swap">
+
+  <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css"
+        integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk="
+        crossorigin="anonymous" />
+
+  <link rel="apple-touch-icon-precomposed"
+        sizes="144x144"
+        href="/apple-touch-icon-144-precomposed.png">
+
+  <link rel="shortcut icon" href="/favicon.png">
+
+  
+  </head>
+<body>
+  <aside class="sidebar">
+  <div class="container">
+    <div class="sidebar-about">
+      
+      <div class="author-image">
+        <a href="https://example.com">
+          <img src="https://www.gravatar.com/avatar/c02c426714361366ea7d583950aa8fb4?s=200&d=mp" class="img-circle img-headshot center" alt="Gravatar">
+        </a>
+      </div>
+      
+
+      <h1>SAMZONG</h1>
+
+      
+      <p class="lead">Samzong&#39;s Blog</p>
+      
+    </div>
+
+    <nav>
+      <ul class="sidebar-nav">
+        <li>
+          <a href="https://example.com">Home</a>
+        </li>
+        <li>
+          <a href="/posts/">Posts</a>
+        </li><li>
+          <a href="/about/">About</a>
+        </li>
+      </ul>
+    </nav>
+
+    <section class="social-icons">
+      
+      <a href="https://www.linkedin.com/in/samzong/" rel="me" title="Linkedin" target="_blank">
+        <i class="fab fa-linkedin" aria-hidden="true"></i>
+      </a>
+      
+      <a href="https://github.com/samzong" rel="me" title="GitHub" target="_blank">
+        <i class="fab fa-github" aria-hidden="true"></i>
+      </a>
+      
+      <a href="https://twitter.com/samzong_lu" rel="me" title="Twitter" target="_blank">
+        <i class="fab fa-twitter" aria-hidden="true"></i>
+      </a>
+      
+    </section>
+  </div>
+</aside>
+
+
+  <main class="content container">
+  <div class="post">
+  <h1 class="title">如何在CentOS 6 安装更高版本的PHP</h1>
+  
+
+  <div class="post-date">
+    <time datetime="2016-04-01T14:57:45Z">Apr 1, 2016</time> <span class="readtime">&middot; 3 min read</span>
+  </div>
+
+  <div>
+  <!-- raw HTML omitted -->
+<h2 id="实验环境centos-64">实验环境：CentOS 6.4</h2>
+<p>解决办法是采用了remi源仓库已经适配的相应php版本</p>
+<blockquote>
+<p>经过测试，该升级办法同样适用目前CentOS 6.x 所有版本</p>
+</blockquote>
+<h4 id="1-安装remi源">1. 安装Remi源</h4>
+<pre tabindex="0"><code># 因为remi依赖epel源仓库，所有我们要先安装它。
+[root@visionet8 ~]# yum install -y epel-release
+
+[root@visionet8 ~]# wget http://rpms.famillecollet.com/enterprise/remi-release-6.rpm
+[root@visionet8 ~]# rpm -Uvh remi-release-6.rpm
+</code></pre><h4 id="2-我们看下remi的的yum配置文件">2. 我们看下Remi的的yum配置文件</h4>
+<pre tabindex="0"><code># Repository: http://rpms.remirepo.net/
+# Blog:       http://blog.remirepo.net/
+# Forum:      http://forum.remirepo.net/
+
+[remi]
+name=Remi's RPM repository for Enterprise Linux 6 - $basearch
+baseurl=http://rpms.remirepo.net/enterprise/6/remi/$basearch/
+#mirrorlist=http://rpms.remirepo.net/enterprise/6/remi/mirror
+enabled=1
+gpgcheck=0
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-remi
+
+[remi-php55]
+name=Remi's PHP 5.5 RPM repository for Enterprise Linux 6 - $basearch
+#baseurl=http://rpms.remirepo.net/enterprise/6/php55/$basearch/
+mirrorlist=http://rpms.remirepo.net/enterprise/6/php55/mirror
+# NOTICE: common dependencies are in &quot;remi-safe&quot;
+enabled=0
+gpgcheck=1
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-remi
+
+[remi-php56]
+name=Remi's PHP 5.6 RPM repository for Enterprise Linux 6 - $basearch
+#baseurl=http://rpms.remirepo.net/enterprise/6/php56/$basearch/
+mirrorlist=http://rpms.remirepo.net/enterprise/6/php56/mirror
+# NOTICE: common dependencies are in &quot;remi-safe&quot;
+enabled=0
+gpgcheck=1
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-remi
+</code></pre><p>经过测试，启用remi源之后，默认情况下php版本为5.4,这时我们只需要升级php即可。</p>
+<pre tabindex="0"><code>[root@visionet8 html]# yum update -y php*
+Failed to set locale, defaulting to C
+Loaded plugins: fastestmirror, refresh-packagekit, security
+Loading mirror speeds from cached hostfile
+ * base: mirrors.163.com
+ * epel: mirrors.ustc.edu.cn
+ * extras: mirrors.aliyun.com
+ * remi-safe: mirrors.tuna.tsinghua.edu.cn
+ * updates: mirrors.cn99.com
+remi                                                                               | 2.9 kB     00:00
+remi/primary_db                                                                    | 1.6 MB     00:05
+Setting up Update Process
+Resolving Dependencies
+--&gt; Running transaction check
+---&gt; Package php.x86_64 0:5.3.3-48.el6_8 will be updated
+---&gt; Package php.x86_64 0:5.4.45-12.el6.remi will be an update
+---&gt; Package php-cli.x86_64 0:5.3.3-48.el6_8 will be updated
+---&gt; Package php-cli.x86_64 0:5.4.45-12.el6.remi will be an update
+---&gt; Package php-common.x86_64 0:5.3.3-48.el6_8 will be updated
+---&gt; Package php-common.x86_64 0:5.4.45-12.el6.remi will be an update
+---&gt; Package php-gd.x86_64 0:5.3.3-48.el6_8 will be updated
+---&gt; Package php-gd.x86_64 0:5.4.45-12.el6.remi will be an update
+--&gt; Processing Dependency: libt1.so.5()(64bit) for package: php-gd-5.4.45-12.el6.remi.x86_64
+---&gt; Package php-mcrypt.x86_64 0:5.3.3-4.el6 will be updated
+---&gt; Package php-mcrypt.x86_64 0:5.4.45-12.el6.remi will be an update
+---&gt; Package php-mysql.x86_64 0:5.3.3-48.el6_8 will be updated
+---&gt; Package php-mysql.x86_64 0:5.4.45-12.el6.remi will be an update
+---&gt; Package php-pdo.x86_64 0:5.3.3-48.el6_8 will be updated
+---&gt; Package php-pdo.x86_64 0:5.4.45-12.el6.remi will be an update
+--&gt; Running transaction check
+---&gt; Package t1lib.x86_64 0:5.1.2-6.el6_2.1 will be installed
+--&gt; Finished Dependency Resolution
+
+Dependencies Resolved
+
+==========================================================================================================
+ Package                  Arch                 Version                           Repository          Size
+==========================================================================================================
+Updating:
+ php                      x86_64               5.4.45-12.el6.remi                remi               2.8 M
+ php-cli                  x86_64               5.4.45-12.el6.remi                remi               4.1 M
+ php-common               x86_64               5.4.45-12.el6.remi                remi               968 k
+ php-gd                   x86_64               5.4.45-12.el6.remi                remi               152 k
+ php-mcrypt               x86_64               5.4.45-12.el6.remi                remi                60 k
+ php-mysql                x86_64               5.4.45-12.el6.remi                remi               145 k
+ php-pdo                  x86_64               5.4.45-12.el6.remi                remi               129 k
+Installing for dependencies:
+ t1lib                    x86_64               5.1.2-6.el6_2.1                   base               160 k
+
+Transaction Summary
+==========================================================================================================
+Install       1 Package(s)
+Upgrade       7 Package(s)
+
+Total download size: 8.5 M
+Downloading Packages:
+(1/8): php-5.4.45-12.el6.remi.x86_64.rpm                                           | 2.8 MB     00:07
+(2/8): php-cli-5.4.45-12.el6.remi.x86_64.rpm                                       | 4.1 MB     00:06
+(3/8): php-common-5.4.45-12.el6.remi.x86_64.rpm                                    | 968 kB     00:02
+(4/8): php-gd-5.4.45-12.el6.remi.x86_64.rpm                                        | 152 kB     00:01
+(5/8): php-mcrypt-5.4.45-12.el6.remi.x86_64.rpm                                    |  60 kB     00:00
+(6/8): php-mysql-5.4.45-12.el6.remi.x86_64.rpm                                     | 145 kB     00:00
+(7/8): php-pdo-5.4.45-12.el6.remi.x86_64.rpm                                       | 129 kB     00:01
+(8/8): t1lib-5.1.2-6.el6_2.1.x86_64.rpm                                            | 160 kB     00:00
+----------------------------------------------------------------------------------------------------------
+Total                                                                     338 kB/s | 8.5 MB     00:25
+Running rpm_check_debug
+Running Transaction Test
+Transaction Test Succeeded
+Running Transaction
+Warning: RPMDB altered outside of yum.
+  Updating   : php-common-5.4.45-12.el6.remi.x86_64                                                  1/15
+  Updating   : php-cli-5.4.45-12.el6.remi.x86_64                                                     2/15
+  Updating   : php-pdo-5.4.45-12.el6.remi.x86_64                                                     3/15
+  Installing : t1lib-5.1.2-6.el6_2.1.x86_64                                                          4/15
+  Updating   : php-gd-5.4.45-12.el6.remi.x86_64                                                      5/15
+  Updating   : php-mysql-5.4.45-12.el6.remi.x86_64                                                   6/15
+  Updating   : php-5.4.45-12.el6.remi.x86_64                                                         7/15
+  Updating   : php-mcrypt-5.4.45-12.el6.remi.x86_64                                                  8/15
+  Cleanup    : php-5.3.3-48.el6_8.x86_64                                                             9/15
+  Cleanup    : php-mysql-5.3.3-48.el6_8.x86_64                                                      10/15
+  Cleanup    : php-pdo-5.3.3-48.el6_8.x86_64                                                        11/15
+  Cleanup    : php-cli-5.3.3-48.el6_8.x86_64                                                        12/15
+  Cleanup    : php-gd-5.3.3-48.el6_8.x86_64                                                         13/15
+  Cleanup    : php-mcrypt-5.3.3-4.el6.x86_64                                                        14/15
+  Cleanup    : php-common-5.3.3-48.el6_8.x86_64                                                     15/15
+  Verifying  : php-mcrypt-5.4.45-12.el6.remi.x86_64                                                  1/15
+  Verifying  : t1lib-5.1.2-6.el6_2.1.x86_64                                                          2/15
+  Verifying  : php-common-5.4.45-12.el6.remi.x86_64                                                  3/15
+  Verifying  : php-gd-5.4.45-12.el6.remi.x86_64                                                      4/15
+  Verifying  : php-cli-5.4.45-12.el6.remi.x86_64                                                     5/15
+  Verifying  : php-pdo-5.4.45-12.el6.remi.x86_64                                                     6/15
+  Verifying  : php-mysql-5.4.45-12.el6.remi.x86_64                                                   7/15
+  Verifying  : php-5.4.45-12.el6.remi.x86_64                                                         8/15
+  Verifying  : php-5.3.3-48.el6_8.x86_64                                                             9/15
+  Verifying  : php-gd-5.3.3-48.el6_8.x86_64                                                         10/15
+  Verifying  : php-cli-5.3.3-48.el6_8.x86_64                                                        11/15
+  Verifying  : php-pdo-5.3.3-48.el6_8.x86_64                                                        12/15
+  Verifying  : php-common-5.3.3-48.el6_8.x86_64                                                     13/15
+  Verifying  : php-mysql-5.3.3-48.el6_8.x86_64                                                      14/15
+  Verifying  : php-mcrypt-5.3.3-4.el6.x86_64                                                        15/15
+
+Dependency Installed:
+  t1lib.x86_64 0:5.1.2-6.el6_2.1
+
+Updated:
+  php.x86_64 0:5.4.45-12.el6.remi                      php-cli.x86_64 0:5.4.45-12.el6.remi
+  php-common.x86_64 0:5.4.45-12.el6.remi               php-gd.x86_64 0:5.4.45-12.el6.remi
+  php-mcrypt.x86_64 0:5.4.45-12.el6.remi               php-mysql.x86_64 0:5.4.45-12.el6.remi
+  php-pdo.x86_64 0:5.4.45-12.el6.remi
+
+Complete!
+</code></pre><h4 id="3-测试">3. 测试：</h4>
+<pre tabindex="0"><code>[root@visionet8 html]# php -v
+PHP 5.4.45 (cli) (built: Sep 19 2016 15:31:07)
+Copyright (c) 1997-2014 The PHP Group
+Zend Engine v2.4.0, Copyright (c) 1998-2014 Zend Technologies
+</code></pre><h4 id="4-php-55-和php56">4. php 5.5 和php5.6</h4>
+<blockquote>
+<p>若要升级到5.5 或 5.6，根据remi源的配置文件，将php5.5的enable参数设置为1，并将默认enable修改为0,然后<!-- raw HTML omitted -->yum update php*<!-- raw HTML omitted -->即可。</p>
+</blockquote>
+<!-- raw HTML omitted -->
+<h4 id="5-php-7">5. php 7</h4>
+<blockquote>
+<p>安装完成之后发现, 在安装remi源之后，在<!-- raw HTML omitted -->/etc/yum.repos.d<!-- raw HTML omitted -->除了<!-- raw HTML omitted -->remi.repo<!-- raw HTML omitted -->之外，还有<!-- raw HTML omitted -->remi-php70.repo<!-- raw HTML omitted -->和<!-- raw HTML omitted -->remi-php71.repo<!-- raw HTML omitted -->，测试下，如果要升级到php7，可以打开相应源仓库的配置文件，之后升级即可。</p>
+</blockquote>
+<!-- raw HTML omitted -->
+<blockquote>
+<p><!-- raw HTML omitted -->以上功能在升级时，要考虑其他组件的版本兼容性，不要盲目升级。<!-- raw HTML omitted --></p>
+</blockquote>
+
+  </div>
+
+  
+<div>
+  <ul class="tags">
+  <li>
+    <a href="https://example.com/tags/centos/" class="tag-link">CentOS</a>
+  </li>
+  </ul>
+</div>
+
+
+
+  <div class="share-buttons">
+  <a class="twitter-share-button"
+     href="#"
+     title="Share on Twitter"
+     data-url="https://example.com/posts/%E5%A6%82%E4%BD%95%E5%9C%A8centos-6-%E5%AE%89%E8%A3%85%E6%9B%B4%E9%AB%98%E7%89%88%E6%9C%AC%E7%9A%84php/"
+     data-text="如何在CentOS 6 安装更高版本的PHP"><i class="fab fa-twitter"></i></a>
+
+  <a class="linkedin-share-button"
+     href="#"
+     title="Share on LinkedIn"
+     data-url="https://example.com/posts/%E5%A6%82%E4%BD%95%E5%9C%A8centos-6-%E5%AE%89%E8%A3%85%E6%9B%B4%E9%AB%98%E7%89%88%E6%9C%AC%E7%9A%84php/"
+     data-text="如何在CentOS 6 安装更高版本的PHP"><i class="fab fa-linkedin-in"></i></a>
+
+  <a class="facebook-share-button"
+     href="#"
+     title="Share on Facebook"
+     data-url="https://example.com/posts/%E5%A6%82%E4%BD%95%E5%9C%A8centos-6-%E5%AE%89%E8%A3%85%E6%9B%B4%E9%AB%98%E7%89%88%E6%9C%AC%E7%9A%84php/"
+     data-text="如何在CentOS 6 安装更高版本的PHP"><i class="fab fa-facebook"></i></a>
+
+  <a class="telegram-share-button"
+     href="#"
+     title="Share on Telegram"
+     data-url="https://example.com/posts/%E5%A6%82%E4%BD%95%E5%9C%A8centos-6-%E5%AE%89%E8%A3%85%E6%9B%B4%E9%AB%98%E7%89%88%E6%9C%AC%E7%9A%84php/"
+     data-text="如何在CentOS 6 安装更高版本的PHP"><i class="fab fa-telegram"></i></a>
+
+  <a class="pinterest-share-button"
+     href="#"
+     title="Share on Pinterest"
+     data-url="https://example.com/posts/%E5%A6%82%E4%BD%95%E5%9C%A8centos-6-%E5%AE%89%E8%A3%85%E6%9B%B4%E9%AB%98%E7%89%88%E6%9C%AC%E7%9A%84php/"
+     data-text="如何在CentOS 6 安装更高版本的PHP"><i class="fab fa-pinterest"></i></a>
+</div>
+
+
+  
+</div>
+  </main>
+
+  <footer>
+  <div>
+    <p>
+      &copy; samzong.lu 2021
+
+      &middot; <a href="https://creativecommons.org/licenses/by-sa/4.0" target="_blank">CC BY-SA 4.0</a>
+
+      
+    </p>
+  </div>
+</footer>
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/js/all.min.js"
+          integrity="sha256-MAgcygDRahs+F/Nk5Vz387whB4kSK9NXlDN3w58LLq0="
+          crossorigin="anonymous"></script>
+
+
+  <script src="/js/jquery.min.js"></script>
+  <script src="/js/soho.js"></script>
+
+  <script src="/js/blog.js"></script>
+
+  
+</body>
+</html>

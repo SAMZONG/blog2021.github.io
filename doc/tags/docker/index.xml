@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Docker on SAMZONG</title>
+    <link>https://example.com/tags/docker/</link>
+    <description>Recent content in Docker on SAMZONG</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Sat, 07 Jan 2017 15:32:23 +0000</lastBuildDate><atom:link href="https://example.com/tags/docker/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Docker Hub 国内加速</title>
+      <link>https://example.com/posts/docker-hub-%E5%9B%BD%E5%86%85%E5%8A%A0%E9%80%9F/</link>
+      <pubDate>Sat, 07 Jan 2017 15:32:23 +0000</pubDate>
+      
+      <guid>https://example.com/posts/docker-hub-%E5%9B%BD%E5%86%85%E5%8A%A0%E9%80%9F/</guid>
+      <description>因为Docker Hub没有在国内部署站点或者增加了国内的CDN，这导致国内的开发者在使用docker pull 获取images的时候速度非常的慢，甚至于因为网络的原因会失败。
+但是Docker Hub有着非常丰富的镜像资源，所以我这一直是个问题困扰着我，一次偶然机会发现了DaoCloud提供了国内镜像加速服务，并且提供的Docker Hub Mirror详细的文档。
+1. 注册DaoCloud账号 首先，你需要到一DaoCloud账号，注册很方便，点击地址：signup 2.</description>
+    </item>
+    
+    <item>
+      <title>HowTo Use Docker create a Tomcat Project</title>
+      <link>https://example.com/posts/howto-use-docker-create-a-tomcat-project/</link>
+      <pubDate>Tue, 02 Aug 2016 15:44:20 +0000</pubDate>
+      
+      <guid>https://example.com/posts/howto-use-docker-create-a-tomcat-project/</guid>
+      <description>1. 安装CentOS 7.x 略。  2. 安装docker 详见： How to Install Docker on CentOS 6.</description>
+    </item>
+    
+    <item>
+      <title>HowTo Install Docker on CentOS 6.x</title>
+      <link>https://example.com/posts/howto-install-docker-on-centos-6-x/</link>
+      <pubDate>Thu, 07 Jul 2016 08:03:28 +0000</pubDate>
+      
+      <guid>https://example.com/posts/howto-install-docker-on-centos-6-x/</guid>
+      <description>1. Add the EPEL Repository rpm -iUvh http://dl.fedoraproject.org/pub/epel/6/x86_64/epel-release-6-8.noarch.rpm 2. Update your system yum update -y 3.</description>
+    </item>
+    
+  </channel>
+</rss>

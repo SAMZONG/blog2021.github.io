@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Zabbix on SAMZONG</title>
+    <link>https://example.com/categories/zabbix/</link>
+    <description>Recent content in Zabbix on SAMZONG</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Wed, 18 Jan 2017 23:28:44 +0000</lastBuildDate><atom:link href="https://example.com/categories/zabbix/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>HowTo Monitor Tomcat Head-Memory for Zabbix</title>
+      <link>https://example.com/posts/howto-monitor-tomcat-head-memory-for-zabbix/</link>
+      <pubDate>Wed, 18 Jan 2017 23:28:44 +0000</pubDate>
+      
+      <guid>https://example.com/posts/howto-monitor-tomcat-head-memory-for-zabbix/</guid>
+      <description>最近项目上由于BUG问题导致Tomcat程序在运行过程中经常内存泄漏,而本身监控系统之中没有更好的检测到Tomcat堆空间(Head Memory)的使用情况导致报警频发，这篇文章主要讲述，如何在Zabbix之中调用jmx监控服务器上Tomcat堆空间的使用情况并增加对应报警功能。
+ 测试环境: CentOS 6.8 Zabbix 2.4 Tomcat 7.0  实验前提默认是各位已经安装Zabbix Server服务器，并且至少有一台Zabbix agent服务器正常监控。关于如何搭建Zabbix监控集群，会有专门文章描述。</description>
+    </item>
+    
+    <item>
+      <title>HowTo Monitoring MySQL server for Zabbix</title>
+      <link>https://example.com/posts/howto-monitoring-mysql-server-for-zabbix/</link>
+      <pubDate>Fri, 20 May 2016 07:24:58 +0000</pubDate>
+      
+      <guid>https://example.com/posts/howto-monitoring-mysql-server-for-zabbix/</guid>
+      <description>安装插件包 yum install http://www.percona.com/downloads/percona-release/redhat/0.1-3/percona-release-0.1-3.noarch.rpm -y yum install percona-zabbix-templates.noarch -y yum install php* -y 导入模板 把/var/lib/zabbix/percona/templates/zabbix_agent_template_percona_mysql_server_ht_2.</description>
+    </item>
+    
+    <item>
+      <title>HowTo Install Zabbix 2.4 on CentOS 6.x</title>
+      <link>https://example.com/posts/howto-install-zabbix-2-4-on-centos-6-x/</link>
+      <pubDate>Fri, 20 May 2016 06:12:40 +0000</pubDate>
+      
+      <guid>https://example.com/posts/howto-install-zabbix-2-4-on-centos-6-x/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh-CN" lang="zh-CN">
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="generator" content="Hugo 0.88.1" />
+
+  <title>理解 Linux 的硬链接与软链接 &middot; SAMZONG</title>
+
+  <meta name="description" content="" />
+
+  
+
+<meta itemprop="name" content="理解 Linux 的硬链接与软链接">
+<meta itemprop="description" content="硬链接与软链接是 Linux 文件系统中的一个重要概念，其涉及文件系统中的索引节点 (index node 又称 inode)，而索引节点对象是 Linux 虚拟文件系统 (VFS) 的四个基本概念之一。通过剖析硬链接与软链接的联系与区别，我们可更好的了解 Linux 中 VFS 这一通用文件模型。并让 Linux 普通用户和系统管理员正确使用硬链接与软链接，帮助文件系统开发者获取 inode 的相关知识。"><meta itemprop="datePublished" content="2016-03-18T14:52:13+00:00" />
+<meta itemprop="dateModified" content="2016-03-18T14:52:13+00:00" />
+<meta itemprop="wordCount" content="1375">
+<meta itemprop="keywords" content="Linux," />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="理解 Linux 的硬链接与软链接"/>
+<meta name="twitter:description" content="硬链接与软链接是 Linux 文件系统中的一个重要概念，其涉及文件系统中的索引节点 (index node 又称 inode)，而索引节点对象是 Linux 虚拟文件系统 (VFS) 的四个基本概念之一。通过剖析硬链接与软链接的联系与区别，我们可更好的了解 Linux 中 VFS 这一通用文件模型。并让 Linux 普通用户和系统管理员正确使用硬链接与软链接，帮助文件系统开发者获取 inode 的相关知识。"/>
+
+
+<meta property="og:title" content="理解 Linux 的硬链接与软链接" />
+<meta property="og:description" content="硬链接与软链接是 Linux 文件系统中的一个重要概念，其涉及文件系统中的索引节点 (index node 又称 inode)，而索引节点对象是 Linux 虚拟文件系统 (VFS) 的四个基本概念之一。通过剖析硬链接与软链接的联系与区别，我们可更好的了解 Linux 中 VFS 这一通用文件模型。并让 Linux 普通用户和系统管理员正确使用硬链接与软链接，帮助文件系统开发者获取 inode 的相关知识。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://example.com/posts/%E7%90%86%E8%A7%A3-linux-%E7%9A%84%E7%A1%AC%E9%93%BE%E6%8E%A5%E4%B8%8E%E8%BD%AF%E9%93%BE%E6%8E%A5/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2016-03-18T14:52:13+00:00" />
+<meta property="article:modified_time" content="2016-03-18T14:52:13+00:00" />
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type":"Person",
+      "@id": "https://example.com#author",
+      "name": "samzong.lu",
+      "image": {
+        "@type":"ImageObject",
+        "url": "https://www.gravatar.com/avatar/c02c426714361366ea7d583950aa8fb4?s=400&d=mp"
+      },
+      "description": "Samzong's Blog"
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://example.com#website",
+      "url": "https://example.com",
+      "name": "SAMZONG",
+      "description": "Samzong's Blog",
+      "publisher": {
+        "@id": "https://example.com#author"
+      },
+      "inLanguage": "zh-CN"
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://example.com/posts/%E7%90%86%E8%A7%A3-linux-%E7%9A%84%E7%A1%AC%E9%93%BE%E6%8E%A5%E4%B8%8E%E8%BD%AF%E9%93%BE%E6%8E%A5/#webpage",
+      "url": "https://example.com/posts/%E7%90%86%E8%A7%A3-linux-%E7%9A%84%E7%A1%AC%E9%93%BE%E6%8E%A5%E4%B8%8E%E8%BD%AF%E9%93%BE%E6%8E%A5/",
+      "name": "理解 Linux 的硬链接与软链接",
+      "isPartOf": {
+        "@id": "https://example.com#website"
+      },
+      "about": {
+         "@id": "https://example.com#author"
+      },
+      "datePublished": "2016-03-18T14:52:13+00:00",
+      "dateModified": "2016-03-18T14:52:13+00:00",
+      "description": "硬链接与软链接是 Linux 文件系统中的一个重要概念，其涉及文件系统中的索引节点 (index node 又称 inode)，而索引节点对象是 Linux 虚拟文件系统 (VFS) 的四个基本概念之一。通过剖析硬链接与软链接的联系与区别，我们可更好的了解 Linux 中 VFS 这一通用文件模型。并让 Linux 普通用户和系统管理员正确使用硬链接与软链接，帮助文件系统开发者获取 inode 的相关知识。",
+      "inLanguage": "zh-CN",
+      "potentialAction": [
+        {
+          "@type": "ReadAction",
+          "target": [
+            "https://example.com/posts/%E7%90%86%E8%A7%A3-linux-%E7%9A%84%E7%A1%AC%E9%93%BE%E6%8E%A5%E4%B8%8E%E8%BD%AF%E9%93%BE%E6%8E%A5/"
+          ]
+        }
+      ]
+    },
+    {
+      "@type": "Article",
+      "isPartOf": {
+        "@id": "https://example.com/posts/%E7%90%86%E8%A7%A3-linux-%E7%9A%84%E7%A1%AC%E9%93%BE%E6%8E%A5%E4%B8%8E%E8%BD%AF%E9%93%BE%E6%8E%A5/#webpage"
+      },
+      "mainEntityOfPage": {
+        "@id": "https://example.com/posts/%E7%90%86%E8%A7%A3-linux-%E7%9A%84%E7%A1%AC%E9%93%BE%E6%8E%A5%E4%B8%8E%E8%BD%AF%E9%93%BE%E6%8E%A5/#webpage"
+      },
+      "headline": "理解 Linux 的硬链接与软链接",
+      "datePublished": "2016-03-18T14:52:13+00:00",
+      "dateModified": "2016-03-18T14:52:13+00:00",
+      "publisher": {
+        "@id": "https://example.com#author"
+      },
+      "keywords": [
+        "Linux"
+      ],
+      "articleSection": [
+        "Linux"
+      ],
+      "inLanguage": "zh-CN",
+      "author": {
+        "@type": "Person",
+        "name":  null 
+      },
+      "potentialAction": [
+        {
+          "@type": "CommentAction",
+          "name": "Comment",
+          "target": [
+            "https://example.com/posts/%E7%90%86%E8%A7%A3-linux-%E7%9A%84%E7%A1%AC%E9%93%BE%E6%8E%A5%E4%B8%8E%E8%BD%AF%E9%93%BE%E6%8E%A5/#comments"
+          ]
+        }
+      ]
+    }
+  ]
+}
+</script>
+
+
+
+  <link type="text/css"
+        rel="stylesheet"
+        href="/css/print.css"
+        media="print">
+
+  <link type="text/css"
+        rel="stylesheet"
+        href="/css/poole.css">
+
+  <link type="text/css"
+        rel="stylesheet"
+        href="/css/hyde.css">
+
+  
+
+
+  <link type="text/css" rel="stylesheet" href="/css/blog.css">
+
+  <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700&display=swap">
+
+  <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css"
+        integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk="
+        crossorigin="anonymous" />
+
+  <link rel="apple-touch-icon-precomposed"
+        sizes="144x144"
+        href="/apple-touch-icon-144-precomposed.png">
+
+  <link rel="shortcut icon" href="/favicon.png">
+
+  
+  </head>
+<body>
+  <aside class="sidebar">
+  <div class="container">
+    <div class="sidebar-about">
+      
+      <div class="author-image">
+        <a href="https://example.com">
+          <img src="https://www.gravatar.com/avatar/c02c426714361366ea7d583950aa8fb4?s=200&d=mp" class="img-circle img-headshot center" alt="Gravatar">
+        </a>
+      </div>
+      
+
+      <h1>SAMZONG</h1>
+
+      
+      <p class="lead">Samzong&#39;s Blog</p>
+      
+    </div>
+
+    <nav>
+      <ul class="sidebar-nav">
+        <li>
+          <a href="https://example.com">Home</a>
+        </li>
+        <li>
+          <a href="/posts/">Posts</a>
+        </li><li>
+          <a href="/about/">About</a>
+        </li>
+      </ul>
+    </nav>
+
+    <section class="social-icons">
+      
+      <a href="https://www.linkedin.com/in/samzong/" rel="me" title="Linkedin" target="_blank">
+        <i class="fab fa-linkedin" aria-hidden="true"></i>
+      </a>
+      
+      <a href="https://github.com/samzong" rel="me" title="GitHub" target="_blank">
+        <i class="fab fa-github" aria-hidden="true"></i>
+      </a>
+      
+      <a href="https://twitter.com/samzong_lu" rel="me" title="Twitter" target="_blank">
+        <i class="fab fa-twitter" aria-hidden="true"></i>
+      </a>
+      
+    </section>
+  </div>
+</aside>
+
+
+  <main class="content container">
+  <div class="post">
+  <h1 class="title">理解 Linux 的硬链接与软链接</h1>
+  
+
+  <div class="post-date">
+    <time datetime="2016-03-18T14:52:13Z">Mar 18, 2016</time> <span class="readtime">&middot; 7 min read</span>
+  </div>
+
+  <div>
+  <!-- raw HTML omitted -->
+<p>       硬链接与软链接是 Linux 文件系统中的一个重要概念，其涉及文件系统中的索引节点 (index node 又称 inode)，而索引节点对象是 Linux 虚拟文件系统 (VFS) 的四个基本概念之一。通过剖析硬链接与软链接的联系与区别，我们可更好的了解 Linux 中 VFS 这一通用文件模型。并让 Linux 普通用户和系统管理员正确使用硬链接与软链接，帮助文件系统开发者获取 inode 的相关知识。</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<pre tabindex="0"><code> /              根目录
+├── bin     存放用户二进制文件
+├── boot    存放内核引导配置文件
+├── dev     存放设备文件
+├── etc     存放系统配置文件
+├── home    用户主目录
+├── lib     动态共享库
+├── lost+found 	文件系统恢复时的恢复文件
+├── media   可卸载存储介质挂载点
+├── mnt     文件系统临时挂载点
+├── opt     附加的应用程序包
+├── proc    系统内存的映射目录，提供内核与进程信息
+├── root    root 用户主目录
+├── sbin    存放系统二进制文件
+├── srv     存放服务相关数据
+├── sys     sys 虚拟文件系统挂载点
+├── tmp     存放临时文件
+├── usr     存放用户应用程序
+└── var     存放邮件、系统日志等变化文件
+
+</code></pre><p>       Linux 将设备当做文件进行处理，<!-- raw HTML omitted -->清单 2.<!-- raw HTML omitted -->展示了如何打开设备文件 /dev/input/event5 并读取文件内容。文件 event5 表示一种输入设备，其可能是鼠标或键盘等。查看文件 /proc/bus/input/devices 可知 event5 对应设备的类型。设备文件 /dev/input/event5 使用 read() 以字符流的方式被读取。结构体 input_event 被定义在内核头文件 linux/input.h 中。</p>
+<!-- raw HTML omitted -->
+<pre tabindex="0"><code> int fd;
+ struct input_event ie;
+ fd = open(&quot;/dev/input/event5&quot;, O_RDONLY);
+ read(fd, &amp;ie, sizeof(struct input_event));
+ printf(&quot;type = %d  code = %d  value = %d\n&quot;,
+			 ie.type, ie.code, ie.value);
+ close(fd);
+</code></pre><p><!-- raw HTML omitted --></p>
+<h3 id="硬链接与软链接的联系与区别">硬链接与软链接的联系与区别</h3>
+<p>       我们知道文件都有文件名与数据，这在 Linux 上被分成两个部分：用户数据 (user data) 与元数据 (metadata)。用户数据，即文件数据块 (data block)，数据块是记录文件真实内容的地方；而元数据则是文件的附加属性，如文件大小、创建时间、所有者等信息。在 Linux 中，元数据中的 inode 号（inode 是文件元数据的一部分但其并不包含文件名，inode 号即索引节点号）才是文件的唯一标识而非文件名。文件名仅是为了方便人们的记忆和使用，系统或程序通过 inode 号寻找正确的文件数据块。<!-- raw HTML omitted -->图 1.<!-- raw HTML omitted -->展示了程序通过文件名获取文件内容的过程。</p>
+<!-- raw HTML omitted -->
+<p>       在Linux 系统中查看 inode号可使用命令stat 或 ls -i（若是 AIX 系统，则使用命令 istat）。<!-- raw HTML omitted -->清单 3.<!-- raw HTML omitted -->中使用命令 mv 移动并重命名文件 glibc-2.16.0.tar.xz，其结果不影响文件的用户数据及 inode 号，文件移动前后 inode 号均为：2485677。</p>
+<!-- raw HTML omitted -->
+<p>       为解决文件的共享使用，Linux 系统引入了两种链接：硬链接 (hard link) 与软链接（又称符号链接，即 soft link 或 symbolic link）。链接为 Linux 系统解决了文件的共享使用，还带来了隐藏文件路径、增加权限安全及节省存储等好处。若一个 inode 号对应多个文件名，则称这些文件为硬链接。换言之，硬链接就是同一个文件使用了多个别名（见 <!-- raw HTML omitted -->图 2.<!-- raw HTML omitted -->hard link 就是 file 的一个别名，他们有共同的 inode）。硬链接可由命令 link 或 ln 创建。如下是对文件 oldfile 创建硬链接。</p>
+<pre tabindex="0"><code> link oldfile newfile
+ ln oldfile newfile
+</code></pre><p>       由于硬链接是有着相同 inode 号仅文件名不同的文件，因此硬链接存在以下几点特性：</p>
+<ul>
+<li>文件有相同的 inode 及 data block；</li>
+<li>只能对已存在的文件进行创建；</li>
+<li>不能交叉文件系统进行硬链接的创建；</li>
+<li>不能对目录进行创建，只可对文件创建；</li>
+<li>删除一个硬链接文件并不影响其他有相同 inode 号的文件。</li>
+</ul>
+<!-- raw HTML omitted -->
+<pre tabindex="0"><code># ls -li
+ total 0
+
+ // 只能对已存在的文件创建硬连接
+ # link old.file hard.link
+ link: cannot create link `hard.link' to `old.file': No such file or directory
+
+ # echo &quot;This is an original file&quot; &gt; old.file
+ # cat old.file
+ This is an original file
+ # stat old.file
+  File: `old.file'
+  Size: 25        	 Blocks: 8          IO Block: 4096   regular file
+ Device: 807h/2055d 	 Inode: 660650      Links: 2
+ Access: (0644/-rw-r--r--)  Uid: (    0/    root)   Gid: (    0/    root)
+ ...
+ // 文件有相同的 inode 号以及 data block
+ # link old.file hard.link | ls -li
+ total 8
+ 660650 -rw-r--r-- 2 root root 25 Sep  1 17:44 hard.link
+ 660650 -rw-r--r-- 2 root root 25 Sep  1 17:44 old.file
+
+ // 不能交叉文件系统
+ # ln /dev/input/event5 /root/bfile.txt
+ ln: failed to create hard link `/root/bfile.txt' =&gt; `/dev/input/event5':
+ Invalid cross-device link
+
+ // 不能对目录进行创建硬连接
+ # mkdir -p old.dir/test
+ # ln old.dir/ hardlink.dir
+ ln: `old.dir/': hard link not allowed for directory
+ # ls -iF
+ 660650 hard.link  657948 old.dir/  660650 old.file
+</code></pre><p>       文件 old.file 与 hard.link 有着相同的 inode 号：660650 及文件权限，inode 是随着文件的存在而存在，因此只有当文件存在时才可创建硬链接，即当 inode 存在且链接计数器（link count）不为 0 时。inode 号仅在各文件系统下是唯一的，当 Linux 挂载多个文件系统后将出现 inode 号重复的现象（如<!-- raw HTML omitted -->清单 5.<!-- raw HTML omitted -->所示，文件 t3.jpg、sync 及 123.txt 并无关联，却有着相同的 inode 号），因此硬链接创建时不可跨文件系统。设备文件目录 /dev 使用的文件系统是 devtmpfs，而 /root（与根目录 / 一致）使用的是磁盘文件系统 ext4。<!-- raw HTML omitted -->清单 5.<!-- raw HTML omitted -->展示了使用命令 df 查看当前系统中挂载的文件系统类型、各文件系统 inode 使用情况及文件系统挂载点。</p>
+<!-- raw HTML omitted -->
+<h1 id="find---inum-1114">find / -inum 1114</h1>
+<p>/media/DiskE/Pictures/t3.jpg
+/media/DiskF/123.txt
+/bin/sync</p>
+<pre tabindex="0"><code>&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;值得一提的是，Linux 系统存在 inode 号被用完但磁盘空间还有剩余的情况。我们创建一个 5M 大小的 ext4 类型的 mo.img 文件，并将其挂载至目录 /mnt。然后我们使用一个 shell 脚本将挂载在 /mnt 下 ext4 文件系统的 indoe 耗尽（见&lt;a href=&quot;#list6&quot;&gt;清单 6.&lt;/a&gt;）。
+
+&lt;h4 id='list6'&gt; 清单 6.  测试文件系统 inode 耗尽但仍有磁盘空间的情景 &lt;/h4&gt;
+
+</code></pre><h1 id="dd-ifdevzero-ofmoimg-bs5120k-count1">dd if=/dev/zero of=mo.img bs=5120k count=1</h1>
+<h1 id="ls--lh-moimg">ls -lh mo.img</h1>
+<p>-rw-r&ndash;r&ndash; 1 root root 5.0M Sep  1 17:54 mo.img</p>
+<h1 id="mkfs--t-ext4---f-moimg">mkfs -t ext4  -F ./mo.img</h1>
+<p>&hellip;
+OS type: Linux
+Block size=1024 (log=0)
+Fragment size=1024 (log=0)
+Stride=0 blocks, Stripe width=0 blocks
+1280 inodes, 5120 blocks
+256 blocks (5.00%) reserved for the super user
+&hellip;
+&hellip;
+Writing superblocks and filesystem accounting information: done</p>
+<h1 id="mount--o-loop-moimg-mnt">mount -o loop ./mo.img /mnt</h1>
+<h1 id="cat-mntinode_testsh">cat /mnt/inode_test.sh</h1>
+<p>#!/bin/bash</p>
+<p>for ((i = 1; ; i++))
+do
+if [ $? -eq 0 ]; then
+echo  &ldquo;This is file_$i&rdquo; &gt; file_$i
+else
+exit 0
+fi
+done</p>
+<h1 id="inode_testsh">./inode_test.sh</h1>
+<p>./inode_test.sh: line 6: file_1269: No space left on device</p>
+<h1 id="df--it-mnt-du--sh-mnt">df -iT /mnt/; du -sh /mnt/</h1>
+<p>Filesystem     Type Inodes IUsed IFree IUse% Mounted on
+/dev/loop0     ext4   1280  1280     0  100% /mnt
+1.3M 	 /mnt/</p>
+<pre tabindex="0"><code>
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;硬链接不能对目录创建是受限于文件系统的设计（见 &lt;a href=&quot;#list4&quot;&gt;清单 4.&lt;/a&gt;对目录创建硬链接将失败）。现 Linux 文件系统中的目录均隐藏了两个个特殊的目录：当前目录（.）与父目录（..）。查看这两个特殊目录的 inode 号可知其实这两目录就是两个硬链接（注意目录 /mnt/lost+found/ 的 inode 号）。若系统允许对目录创建硬链接，则会产生目录环。
+
+</code></pre><h1 id="ls--alif-mntlostfound">ls -aliF /mnt/lost+found</h1>
+<p>total 44
+11 drwx&mdash;&mdash; 2 root root 12288 Sep  1 17:54 ./
+2 drwxr-xr-x 3 root root 31744 Sep  1 17:57 ../</p>
+<h1 id="stat--mntlostfound">stat  /mnt/lost+found/</h1>
+<p>File: `/mnt/lost+found/'
+Size: 12288     	 Blocks: 24         IO Block: 1024   directory
+Device: 700h/1792d 	 Inode: 11          Links: 2
+Access: (0700/drwx&mdash;&mdash;)  Uid: (    0/    root)   Gid: (    0/    root)
+Access: 2012-09-01 17:57:17.000000000 +0800
+Modify: 2012-09-01 17:54:49.000000000 +0800
+Change: 2012-09-01 17:54:49.000000000 +0800
+Birth: -</p>
+<pre tabindex="0"><code>&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;软链接与硬链接不同，若文件用户数据块中存放的内容是另一文件的路径名的指向，则该文件就是软连接。软链接就是一个普通文件，只是数据块内容有点特殊。软链接有着自己的 inode 号以及用户数据块（见 &lt;a href=&quot;#p2&quot;&gt;图 2.&lt;/a&gt;）。因此软链接的创建与使用没有类似硬链接的诸多限制：
+
+* 软链接有自己的文件属性及权限等；
+* 可对不存在的文件或目录创建软链接；
+* 软链接可交叉文件系统；
+* 软链接可对文件或目录创建；
+* 创建软链接时，链接计数 i_nlink 不会增加；
+* 删除软链接并不影响被指向的文件，但若被指向的原文件被删除，则相关软连接被称为死链接（即 dangling link，若被指向路径文件被重新创建，死链接可恢复为正常的软链接）。
+
+&lt;h4 id=&quot;p2&quot;&gt;  图 2. 软链接的访问 &lt;/h4&gt;
+![](http://120.24.251.209/content/images/2016/03/image002.jpg)
+
+&lt;h4 id='list7'&gt; 清单 7. 软链接特性展示 &lt;/h4&gt;
+
+</code></pre><h1 id="ls--li">ls -li</h1>
+<p>total 0</p>
+<p>// 可对不存在的文件创建软链接</p>
+<h1 id="ln--s-oldfile-softlink">ln -s old.file soft.link</h1>
+<h1 id="ls--lif">ls -liF</h1>
+<p>total 0
+789467 lrwxrwxrwx 1 root root 8 Sep  1 18:00 soft.link -&gt; old.file</p>
+<p>// 由于被指向的文件不存在，此时的软链接 soft.link 就是死链接</p>
+<h1 id="cat-softlink">cat soft.link</h1>
+<p>cat: soft.link: No such file or directory</p>
+<p>// 创建被指向的文件 old.file，soft.link 恢复成正常的软链接</p>
+<h1 id="echo-this-is-an-original-file_a--oldfile">echo &ldquo;This is an original file_A&rdquo; &raquo; old.file</h1>
+<h1 id="cat-softlink-1">cat soft.link</h1>
+<p>This is an original file_A</p>
+<p>// 对不存在的目录创建软链接</p>
+<h1 id="ln--s-olddir-softlinkdir">ln -s old.dir soft.link.dir</h1>
+<h1 id="mkdir--p-olddirtest">mkdir -p old.dir/test</h1>
+<h1 id="tree---f---inodes">tree . -F &ndash;inodes</h1>
+<p>.
+├── [ 789497]  old.dir/
+│   └── [ 789498]  test/
+├── [ 789495]  old.file
+├── [ 789495]  soft.link -&gt; old.file
+└── [ 789497]  soft.link.dir -&gt; old.dir/</p>
+<pre tabindex="0"><code>&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;当然软链接的用户数据也可以是另一个软链接的路径，其解析过程是递归的。但需注意：软链接创建时原文件的路径指向使用绝对路径较好。使用相对路径创建的软链接被移动后该软链接文件将成为一个死链接（如下所示的软链接 a 使用了相对路径，因此不宜被移动），因为链接数据块中记录的亦是相对路径指向。
+
+</code></pre><p>$ ls -li
+total 2136
+656627 lrwxrwxrwx 1 harris harris       8 Sep  1 14:37 a -&gt; data.txt
+656662 lrwxrwxrwx 1 harris harris       1 Sep  1 14:37 b -&gt; a
+656228 -rw&mdash;&mdash;- 1 harris harris 2186738 Sep  1 14:37 data.txt 6</p>
+<pre tabindex="0"><code>
+
+### 链接相关的命令
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;在 Linux 中查看当前系统已挂着的文件系统类型，除上述使用的命令 df，还可使用命令 mount 或查看文件 /proc/mounts。
+
+</code></pre><h1 id="mount">mount</h1>
+<p>/dev/sda7 on / type ext4 (rw,errors=remount-ro)
+proc on /proc type proc (rw,noexec,nosuid,nodev)
+sysfs on /sys type sysfs (rw,noexec,nosuid,nodev)
+&hellip;
+&hellip;
+none on /run/shm type tmpfs (rw,nosuid,nodev)</p>
+<pre tabindex="0"><code>
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;命令 ls 或 stat 可帮助我们区分软链接与其他文件并查看文件 inode 号，但较好的方式还是使用 find 命令，其不仅可查找某文件的软链接，还可以用于查找相同 inode 的所有硬链接。（见 &lt;a href=&quot;#list8&quot;&gt;清单 8.&lt;/a&gt;）
+
+&lt;h4 id='list8'&gt; 清单 8. 使用命令 find 查找软链接与硬链接 &lt;/h4&gt;
+
+</code></pre><p>// 查找在路径 /home 下的文件 data.txt 的软链接</p>
+<h1 id="find-home--lname-datatxt">find /home -lname data.txt</h1>
+<p>/home/harris/debug/test2/a</p>
+<p>// 查看路径 /home 有相同 inode 的所有硬链接</p>
+<h1 id="find-home--samefile-homeharrisdebugtest3oldfile">find /home -samefile /home/harris/debug/test3/old.file</h1>
+<p>/home/harris/debug/test3/hard.link
+/home/harris/debug/test3/old.file</p>
+<h1 id="find-home--inum-660650">find /home -inum 660650</h1>
+<p>/home/harris/debug/test3/hard.link
+/home/harris/debug/test3/old.file</p>
+<p>// 列出路径 /home/harris/debug/ 下的所有软链接文件</p>
+<h1 id="find-homeharrisdebug--type-l--ls">find /home/harris/debug/ -type l -ls</h1>
+<p>656662 0 lrwxrwxrwx 1 harris harris 1 Sep 1 14:37 /home/harris/debug/test2/b -&gt; a
+656627 0 lrwxrwxrwx 1 harris harris 8 Sep 1 14:37 /home/harris/debug/test2/a -&gt;
+data.txt
+789467 0 lrwxrwxrwx 1 root root 8 Sep 1 18:00 /home/harris/debug/test/soft.link -&gt;
+old.file
+789496    0 lrwxrwxrwx   1 root     root            7 Sep  1 18:01
+/home/harris/debug/test/soft.link.dir -&gt; old.dir</p>
+<pre tabindex="0"><code>
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;系统根据磁盘的大小默认设定了 inode 的值（见&lt;a href=&quot;#list9&quot;&gt;清单 9.&lt;/a&gt;），如若必要，可在格式文件系统前对该值进行修改。如键入命令 mkfs -t ext4 -I 512/dev/sda4，将使磁盘设备 /dev/sda4 格式成 inode 大小是 512 字节的 ext4 文件系统。
+
+&lt;h4 id='list9'&gt; 清单 9. 查看系统的 inode 值 &lt;/h4&gt;
+
+</code></pre><p>// 查看磁盘分区 /dev/sda7 上的 inode 值</p>
+<h1 id="dumpe2fs--h-devsda7--grep-inode-size">dumpe2fs -h /dev/sda7 | grep &ldquo;Inode size&rdquo;</h1>
+<p>dumpe2fs 1.42 (29-Nov-2011)
+Inode size: 	          256</p>
+<h1 id="tune2fs--l-devsda7--grep-inode-size">tune2fs -l /dev/sda7 | grep &ldquo;Inode size&rdquo;</h1>
+<p>Inode size: 	          256</p>
+<pre tabindex="0"><code>
+### Linux VFS
+
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;Linux 有着极其丰富的文件系统，大体上可分如下几类：
+
+1. 网络文件系统，如 nfs、cifs 等；
+2. 磁盘文件系统，如 ext4、ext3 等；
+3. 特殊文件系统，如 proc、sysfs、ramfs、tmpfs 等。
+
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;实现以上这些文件系统并在 Linux 下共存的基础就是 Linux VFS（Virtual File System 又称 Virtual Filesystem Switch），即虚拟文件系统。VFS 作为一个通用的文件系统，抽象了文件系统的四个基本概念：文件、目录项 (dentry)、索引节点 (inode) 及挂载点，其在内核中为用户空间层的文件系统提供了相关的接口（见 &lt;a href=&quot;#p3&quot;&gt;图 3.&lt;/a&gt;所示 VFS 在 Linux 系统的架构）。VFS 实现了 open()、read() 等系统调并使得 cp 等用户空间程序可跨文件系统。VFS 真正实现了上述内容中：在 Linux 中除进程之外一切皆是文件。
+
+&lt;h4 id='p3'&gt; 图 3. VFS 在系统中的架构 &lt;/h4&gt;
+![](http://120.24.251.209/content/images/2016/03/image003.jpg)
+
+
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;Linux VFS 存在四个基本对象：超级块对象 (superblock object)、索引节点对象 (inode object)、目录项对象 (dentry object) 及文件对象 (file object)。超级块对象代表一个已安装的文件系统；索引节点对象代表一个文件；目录项对象代表一个目录项，如设备文件 event5 在路径 /dev/input/event5 中，其存在四个目录项对象：/ 、dev/ 、input/ 及 event5。文件对象代表由进程打开的文件。这四个对象与进程及磁盘文件间的关系如&lt;a href=&quot;#p4&quot;&gt;图 4.&lt;/a&gt; 所示，其中 d_inode 即为硬链接。为文件路径的快速解析，Linux VFS 设计了目录项缓存（Directory Entry Cache，即 dcache）。
+
+&lt;h4 id='p4'&gt; 图 4. VFS 的对象之间的处理 &lt;/h4&gt;
+![](http://120.24.251.209/content/images/2016/03/image004.jpg)
+
+
+### Linux 文件系统中的 inode
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;在 Linux 中，索引节点结构存在于系统内存及磁盘，其可区分成 VFS inode 与实际文件系统的 inode。VFS inode 作为实际文件系统中 inode 的抽象，定义了结构体 inode 与其相关的操作 inode_operations（见内核源码 include/linux/fs.h）。
+
+&lt;h4 id='list10'&gt; 清单 10. VFS 中的 inode 与 inode_operations 结构体 &lt;/h4&gt;
+
+</code></pre><p>struct inode {
+&hellip;
+const struct inode_operations   *i_op; // 索引节点操作
+unsigned long           i_ino;      // 索引节点号
+atomic_t                i_count;    // 引用计数器
+unsigned int            i_nlink;    // 硬链接数目
+&hellip;
+}</p>
+<p>struct inode_operations {
+&hellip;
+int (*create) (struct inode *,struct dentry *,int, struct nameidata *);
+int (*link) (struct dentry *,struct inode *,struct dentry *);
+int (*unlink) (struct inode *,struct dentry *);
+int (*symlink) (struct inode *,struct dentry *,const char *);
+int (*mkdir) (struct inode *,struct dentry *,int);
+int (*rmdir) (struct inode *,struct dentry *);
+&hellip;
+}</p>
+<pre tabindex="0"><code>
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;如&lt;a href=&quot;#list10&quot;&gt;清单 10.&lt;/a&gt; 所见，每个文件存在两个计数器：i_count 与 i_nlink，即引用计数与硬链接计数。结构体 inode 中的 i_count 用于跟踪文件被访问的数量，而 i_nlink 则是上述使用 ls -l 等命令查看到的文件硬链接数。或者说 i_count 跟踪文件在内存中的情况，而 i_nlink 则是磁盘计数器。当文件被删除时，则 i_nlink 先被设置成 0。文件的这两个计数器使得 Linux 系统升级或程序更新变的容易。系统或程序可在不关闭的情况下（即文件 i_count 不为 0），将新文件以同样的文件名进行替换，新文件有自己的 inode 及 data block，旧文件会在相关进程关闭后被完整的删除。
+
+&lt;h4 id='list11'&gt; 清单 11. 文件系统 ext4 中的 inode &lt;/h4&gt;
+
+</code></pre><p>struct ext4_inode {
+&hellip;
+__le32  i_atime;        // 文件内容最后一次访问时间
+__le32  i_ctime;        // inode 修改时间
+__le32  i_mtime;        // 文件内容最后一次修改时间
+__le16  i_links_count;  // 硬链接计数
+__le32  i_blocks_lo;    // Block 计数
+__le32  i_block[EXT4_N_BLOCKS];  // 指向具体的 block
+&hellip;
+};</p>
+<pre tabindex="0"><code>&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;a href=&quot;#list11&quot;&gt;清单 11.&lt;/a&gt; 展示的是文件系统 ext4 中对 inode 的定义（见内核源码 fs/ext4/ext4.h）。其中三个时间的定义可对应与命令 stat 中查看到三个时间。i_links_count 不仅用于文件的硬链接计数，也用于目录的子目录数跟踪（目录并不显示硬链接数，命令 ls -ld 查看到的是子目录数）。由于文件系统 ext3 对 i_links_count 有限制，其最大数为：32000（该限制在 ext4 中被取消）。尝试在 ext3 文件系统上验证目录子目录及普通文件硬链接最大数可见 &lt;a href=&quot;#list12&quot;&gt;清单 12.&lt;/a&gt;的错误信息。因此实际文件系统的 inode 之间及与 VFS inode 相较是有差异的。
+
+&lt;h4 id='list12'&gt; 清单 12. 文件系统 ext3 中 i_links_count 的限制 &lt;/h4&gt;
+
+</code></pre><h1 id="dirtestsh">./dirtest.sh</h1>
+<p>mkdir: cannot create directory `dir_31999': Too many links</p>
+<h1 id="linkcountsh">./linkcount.sh</h1>
+<p>ln: failed to create hard link to `old.file': Too many links</p>
+<pre tabindex="0"><code>
+### 结束语
+
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;本文最初描述了 Linux 系统中文件与目录被引入的原因及 Linux 处理文件的方式，然后我们通过区分硬链接与软链接的不同，了解 Linux 中的索引节点的相关知识，并以此引出了 inode 的结构体。索引节点结构体存在在于 Linux VFS 以及实际文件系统中，VFS 作为通用文件模型是 Linux 中“一切皆是文件”实现的基础。文章并未深入 Linux VFS，也没涉及实际文件系统的实现，文章只是从 inode 了解 Linux 的文件系统的相关内容。若想深入文件系统的内容，查看内核文档 Documentation/filesystems/ 是一个不错的方式。
+</code></pre>
+  </div>
+
+  
+<div>
+  <ul class="tags">
+  <li>
+    <a href="https://example.com/tags/linux/" class="tag-link">Linux</a>
+  </li>
+  </ul>
+</div>
+
+
+
+  <div class="share-buttons">
+  <a class="twitter-share-button"
+     href="#"
+     title="Share on Twitter"
+     data-url="https://example.com/posts/%E7%90%86%E8%A7%A3-linux-%E7%9A%84%E7%A1%AC%E9%93%BE%E6%8E%A5%E4%B8%8E%E8%BD%AF%E9%93%BE%E6%8E%A5/"
+     data-text="理解 Linux 的硬链接与软链接"><i class="fab fa-twitter"></i></a>
+
+  <a class="linkedin-share-button"
+     href="#"
+     title="Share on LinkedIn"
+     data-url="https://example.com/posts/%E7%90%86%E8%A7%A3-linux-%E7%9A%84%E7%A1%AC%E9%93%BE%E6%8E%A5%E4%B8%8E%E8%BD%AF%E9%93%BE%E6%8E%A5/"
+     data-text="理解 Linux 的硬链接与软链接"><i class="fab fa-linkedin-in"></i></a>
+
+  <a class="facebook-share-button"
+     href="#"
+     title="Share on Facebook"
+     data-url="https://example.com/posts/%E7%90%86%E8%A7%A3-linux-%E7%9A%84%E7%A1%AC%E9%93%BE%E6%8E%A5%E4%B8%8E%E8%BD%AF%E9%93%BE%E6%8E%A5/"
+     data-text="理解 Linux 的硬链接与软链接"><i class="fab fa-facebook"></i></a>
+
+  <a class="telegram-share-button"
+     href="#"
+     title="Share on Telegram"
+     data-url="https://example.com/posts/%E7%90%86%E8%A7%A3-linux-%E7%9A%84%E7%A1%AC%E9%93%BE%E6%8E%A5%E4%B8%8E%E8%BD%AF%E9%93%BE%E6%8E%A5/"
+     data-text="理解 Linux 的硬链接与软链接"><i class="fab fa-telegram"></i></a>
+
+  <a class="pinterest-share-button"
+     href="#"
+     title="Share on Pinterest"
+     data-url="https://example.com/posts/%E7%90%86%E8%A7%A3-linux-%E7%9A%84%E7%A1%AC%E9%93%BE%E6%8E%A5%E4%B8%8E%E8%BD%AF%E9%93%BE%E6%8E%A5/"
+     data-text="理解 Linux 的硬链接与软链接"><i class="fab fa-pinterest"></i></a>
+</div>
+
+
+  
+</div>
+  </main>
+
+  <footer>
+  <div>
+    <p>
+      &copy; samzong.lu 2021
+
+      &middot; <a href="https://creativecommons.org/licenses/by-sa/4.0" target="_blank">CC BY-SA 4.0</a>
+
+      
+    </p>
+  </div>
+</footer>
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/js/all.min.js"
+          integrity="sha256-MAgcygDRahs+F/Nk5Vz387whB4kSK9NXlDN3w58LLq0="
+          crossorigin="anonymous"></script>
+
+
+  <script src="/js/jquery.min.js"></script>
+  <script src="/js/soho.js"></script>
+
+  <script src="/js/blog.js"></script>
+
+  
+</body>
+</html>

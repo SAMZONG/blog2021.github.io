@@ -4,6 +4,12 @@ languageCode = "zh-CN"
 enableInlineShortcodes = true
 theme = 'soho'
 
+# dir
+contentdir = "content"
+layoutdir = "layouts"
+publishdir = "doc"
+builddrafts = true
+
 summarylength = 10
 enableEmoji = true
 

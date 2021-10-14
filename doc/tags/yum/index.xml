@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Yum on SAMZONG</title>
+    <link>https://example.com/tags/yum/</link>
+    <description>Recent content in Yum on SAMZONG</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Wed, 27 Jul 2016 10:27:54 +0000</lastBuildDate><atom:link href="https://example.com/tags/yum/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Yum中$releasever和$basearch的取值</title>
+      <link>https://example.com/posts/yum%E4%B8%AD-releasever%E5%92%8C-basearch%E7%9A%84%E5%8F%96%E5%80%BC/</link>
+      <pubDate>Wed, 27 Jul 2016 10:27:54 +0000</pubDate>
+      
+      <guid>https://example.com/posts/yum%E4%B8%AD-releasever%E5%92%8C-basearch%E7%9A%84%E5%8F%96%E5%80%BC/</guid>
+      <description>查看/etc/yum.repos.d/CentOS-Base.repo [base] name=CentOS-$releasever - Base mirrorlist=http://mirrorlist.centos.org/?release=$releasever&amp;amp;arch=$basearch&amp;amp;repo=os&amp;amp;infra=$infra #baseurl=http://mirror.centos.org/centos/$releasever/os/$basearch/ gpgcheck=1 gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-6  $releasever的值,这个表示当前系统的发行版本  [root@ultraera /]# rpm -qi centos-release Name : centos-release Relocations: (not relocatable) Version : 6 Vendor: CentOS Release : 7.</description>
+    </item>
+    
+    <item>
+      <title>HowTo Use Remi Install Redis</title>
+      <link>https://example.com/posts/howto-use-remi-install-redis/</link>
+      <pubDate>Thu, 07 Jul 2016 03:49:02 +0000</pubDate>
+      
+      <guid>https://example.com/posts/howto-use-remi-install-redis/</guid>
+      <description>Setup 1. Install Frist, To install remi Repo and epel Repo.</description>
+    </item>
+    
+    <item>
+      <title>CentOS 6(1) 使用createrepo搭建本地源</title>
+      <link>https://example.com/posts/centos-6-1-%E4%BD%BF%E7%94%A8createrepo%E6%90%AD%E5%BB%BA%E6%9C%AC%E5%9C%B0%E6%BA%90/</link>
+      <pubDate>Tue, 29 Mar 2016 03:37:31 +0000</pubDate>
+      
+      <guid>https://example.com/posts/centos-6-1-%E4%BD%BF%E7%94%A8createrepo%E6%90%AD%E5%BB%BA%E6%9C%AC%E5%9C%B0%E6%BA%90/</guid>
+      <description>Tips: 本地搭建本地yum源采用的rpm全部来自CentOS-6.7-bin-DVD1&amp;amp;DVD2
+ 1. 测试环境  MacBook Pro 15-inch i7 16GB VMware Fushion 8 Pro CentOS-6.</description>
+    </item>
+    
+  </channel>
+</rss>

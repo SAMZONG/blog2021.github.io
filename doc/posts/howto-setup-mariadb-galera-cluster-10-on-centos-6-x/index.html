@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh-CN" lang="zh-CN">
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="generator" content="Hugo 0.88.1" />
+
+  <title>HowTo Setup MariaDB Galera Cluster 10 On CentOS 6.x &middot; SAMZONG</title>
+
+  <meta name="description" content="" />
+
+  
+
+<meta itemprop="name" content="HowTo Setup MariaDB Galera Cluster 10 On CentOS 6.x">
+<meta itemprop="description" content="介绍  真正的多主架构，任何节点都可以进行读写 同步复制，各节点间无延迟且节点宕机不会导致数据丢失 紧密耦合，所有节点均保持相同状态 自动节点配置，无需手工备份当前数据库并拷贝至新节点  实验环境  Cluster node4 IP address 172."><meta itemprop="datePublished" content="2016-08-04T13:14:15+00:00" />
+<meta itemprop="dateModified" content="2016-08-04T13:14:15+00:00" />
+<meta itemprop="wordCount" content="347">
+<meta itemprop="keywords" content="MariaDB," />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="HowTo Setup MariaDB Galera Cluster 10 On CentOS 6.x"/>
+<meta name="twitter:description" content="介绍  真正的多主架构，任何节点都可以进行读写 同步复制，各节点间无延迟且节点宕机不会导致数据丢失 紧密耦合，所有节点均保持相同状态 自动节点配置，无需手工备份当前数据库并拷贝至新节点  实验环境  Cluster node4 IP address 172."/>
+
+
+<meta property="og:title" content="HowTo Setup MariaDB Galera Cluster 10 On CentOS 6.x" />
+<meta property="og:description" content="介绍  真正的多主架构，任何节点都可以进行读写 同步复制，各节点间无延迟且节点宕机不会导致数据丢失 紧密耦合，所有节点均保持相同状态 自动节点配置，无需手工备份当前数据库并拷贝至新节点  实验环境  Cluster node4 IP address 172." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://example.com/posts/howto-setup-mariadb-galera-cluster-10-on-centos-6-x/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2016-08-04T13:14:15+00:00" />
+<meta property="article:modified_time" content="2016-08-04T13:14:15+00:00" />
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type":"Person",
+      "@id": "https://example.com#author",
+      "name": "samzong.lu",
+      "image": {
+        "@type":"ImageObject",
+        "url": "https://www.gravatar.com/avatar/c02c426714361366ea7d583950aa8fb4?s=400&d=mp"
+      },
+      "description": "Samzong's Blog"
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://example.com#website",
+      "url": "https://example.com",
+      "name": "SAMZONG",
+      "description": "Samzong's Blog",
+      "publisher": {
+        "@id": "https://example.com#author"
+      },
+      "inLanguage": "zh-CN"
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://example.com/posts/howto-setup-mariadb-galera-cluster-10-on-centos-6-x/#webpage",
+      "url": "https://example.com/posts/howto-setup-mariadb-galera-cluster-10-on-centos-6-x/",
+      "name": "HowTo Setup MariaDB Galera Cluster 10 On CentOS 6.x",
+      "isPartOf": {
+        "@id": "https://example.com#website"
+      },
+      "about": {
+         "@id": "https://example.com#author"
+      },
+      "datePublished": "2016-08-04T13:14:15+00:00",
+      "dateModified": "2016-08-04T13:14:15+00:00",
+      "description": "介绍  真正的多主架构，任何节点都可以进行读写 同步复制，各节点间无延迟且节点宕机不会导致数据丢失 紧密耦合，所有节点均保持相同状态 自动节点配置，无需手工备份当前数据库并拷贝至新节点  实验环境  Cluster node4 IP address 172.",
+      "inLanguage": "zh-CN",
+      "potentialAction": [
+        {
+          "@type": "ReadAction",
+          "target": [
+            "https://example.com/posts/howto-setup-mariadb-galera-cluster-10-on-centos-6-x/"
+          ]
+        }
+      ]
+    },
+    {
+      "@type": "Article",
+      "isPartOf": {
+        "@id": "https://example.com/posts/howto-setup-mariadb-galera-cluster-10-on-centos-6-x/#webpage"
+      },
+      "mainEntityOfPage": {
+        "@id": "https://example.com/posts/howto-setup-mariadb-galera-cluster-10-on-centos-6-x/#webpage"
+      },
+      "headline": "HowTo Setup MariaDB Galera Cluster 10 On CentOS 6.x",
+      "datePublished": "2016-08-04T13:14:15+00:00",
+      "dateModified": "2016-08-04T13:14:15+00:00",
+      "publisher": {
+        "@id": "https://example.com#author"
+      },
+      "keywords": [
+        "MariaDB"
+      ],
+      "articleSection": [
+        "MySQL"
+      ],
+      "inLanguage": "zh-CN",
+      "author": {
+        "@type": "Person",
+        "name":  null 
+      },
+      "potentialAction": [
+        {
+          "@type": "CommentAction",
+          "name": "Comment",
+          "target": [
+            "https://example.com/posts/howto-setup-mariadb-galera-cluster-10-on-centos-6-x/#comments"
+          ]
+        }
+      ]
+    }
+  ]
+}
+</script>
+
+
+
+  <link type="text/css"
+        rel="stylesheet"
+        href="/css/print.css"
+        media="print">
+
+  <link type="text/css"
+        rel="stylesheet"
+        href="/css/poole.css">
+
+  <link type="text/css"
+        rel="stylesheet"
+        href="/css/hyde.css">
+
+  
+
+
+  <link type="text/css" rel="stylesheet" href="/css/blog.css">
+
+  <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700&display=swap">
+
+  <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css"
+        integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk="
+        crossorigin="anonymous" />
+
+  <link rel="apple-touch-icon-precomposed"
+        sizes="144x144"
+        href="/apple-touch-icon-144-precomposed.png">
+
+  <link rel="shortcut icon" href="/favicon.png">
+
+  
+  </head>
+<body>
+  <aside class="sidebar">
+  <div class="container">
+    <div class="sidebar-about">
+      
+      <div class="author-image">
+        <a href="https://example.com">
+          <img src="https://www.gravatar.com/avatar/c02c426714361366ea7d583950aa8fb4?s=200&d=mp" class="img-circle img-headshot center" alt="Gravatar">
+        </a>
+      </div>
+      
+
+      <h1>SAMZONG</h1>
+
+      
+      <p class="lead">Samzong&#39;s Blog</p>
+      
+    </div>
+
+    <nav>
+      <ul class="sidebar-nav">
+        <li>
+          <a href="https://example.com">Home</a>
+        </li>
+        <li>
+          <a href="/posts/">Posts</a>
+        </li><li>
+          <a href="/about/">About</a>
+        </li>
+      </ul>
+    </nav>
+
+    <section class="social-icons">
+      
+      <a href="https://www.linkedin.com/in/samzong/" rel="me" title="Linkedin" target="_blank">
+        <i class="fab fa-linkedin" aria-hidden="true"></i>
+      </a>
+      
+      <a href="https://github.com/samzong" rel="me" title="GitHub" target="_blank">
+        <i class="fab fa-github" aria-hidden="true"></i>
+      </a>
+      
+      <a href="https://twitter.com/samzong_lu" rel="me" title="Twitter" target="_blank">
+        <i class="fab fa-twitter" aria-hidden="true"></i>
+      </a>
+      
+    </section>
+  </div>
+</aside>
+
+
+  <main class="content container">
+  <div class="post">
+  <h1 class="title">HowTo Setup MariaDB Galera Cluster 10 On CentOS 6.x</h1>
+  
+
+  <div class="post-date">
+    <time datetime="2016-08-04T13:14:15Z">Aug 4, 2016</time> <span class="readtime">&middot; 2 min read</span>
+  </div>
+
+  <div>
+  <h4 id="介绍">介绍</h4>
+<!-- raw HTML omitted -->
+<ul>
+<li>真正的多主架构，任何节点都可以进行读写</li>
+<li>同步复制，各节点间无延迟且节点宕机不会导致数据丢失</li>
+<li>紧密耦合，所有节点均保持相同状态</li>
+<li>自动节点配置，无需手工备份当前数据库并拷贝至新节点</li>
+</ul>
+<h4 id="实验环境">实验环境</h4>
+<ul>
+<li>Cluster node4 IP address 172.16.102.168</li>
+<li>Cluster node5 IP address 172.16.102.165</li>
+<li>Cluster node6 IP address 172.16.102.164</li>
+<li>setenforce 0；sed -i &rsquo;s/SELINUX=enforcing/SELINUX=disabled/' /etc/selinux/config</li>
+<li>/etc/init.d/iptables stop;chkconfig iptables off</li>
+</ul>
+<blockquote>
+<p>使用vmware 测试需注意:克隆机器需要删除 <!-- raw HTML omitted -->/etc/udev/rules.d/70-persistent-net.rules<!-- raw HTML omitted --> 以及<!-- raw HTML omitted -->/etc/sysconfig/network-scripts/ifcfg-eth0<!-- raw HTML omitted -->中的网卡mac地址选项，不然网卡起不来</p>
+</blockquote>
+<h4 id="环境检测">环境检测</h4>
+<ul>
+<li>检查iptables状态：/etc/init.d/iptables status;chkconfig &ndash;list | grep iptables</li>
+<li>检查selinux状态：getenforce</li>
+<li>检查openssh-client包是否安装：系统中是否有ssh命令</li>
+<li>检查是否系统中含有mysql相关的包：rpm -qa | grep mysql，有的话都需要卸载掉</li>
+<li>检查网络是否通畅：ping <a href="http://www.baidu.com">www.baidu.com</a></li>
+</ul>
+<h4 id="安装">安装</h4>
+<h5 id="1-在所有节点编辑etchosts">1. 在所有节点编辑/etc/hosts</h5>
+<pre tabindex="0"><code>[root@node4 ~]# vi /etc/hosts
+
+127.0.0.1   localhost localhost.localdomain localhost4 localhost4.localdomain4
+::1         localhost localhost.localdomain localhost6 localhost6.localdomain6
+
+# add follows
+172.16.102.164 node6
+172.16.102.165 node5
+172.16.102.168 node4
+
+[root@node4 ~]#
+
+# 依次在node5和node6上编辑/etc/hosts
+</code></pre><h5 id="2-在所有node上安装-mariadb-galera">2. 在所有node上安装 MariaDB Galera</h5>
+<pre tabindex="0"><code>[root@node4 ~]# vi /etc/yum.repos.d/mariadb.repo
+ # MariaDB 10.0 CentOS repository list
+# http://mariadb.org/mariadb/repositories/
+[mariadb]
+name = MariaDB
+baseurl = http://yum.mariadb.org/10.0/centos6-amd64
+gpgkey=https://yum.mariadb.org/RPM-GPG-KEY-MariaDB
+gpgcheck=1
+enabled=0
+
+[root@node4 ~]# yum --enablerepo=mariadb -y install MariaDB-Galera-server
+
+# 依次在node5和node6上安装 MariaDB-Galera-server
+</code></pre><blockquote>
+<p><!-- raw HTML omitted -->注意安装完成之后，不要启动mysql<!-- raw HTML omitted --></p>
+</blockquote>
+<h5 id="3-在其中一个节点上编辑etcmycnfdservercnf配置文件">3. 在其中一个节点上编辑/etc/my.cnf.d/server.cnf配置文件</h5>
+<pre tabindex="0"><code>[root@node4 ~]# vi /etc/my.cnf.d/server.cnf
+# 19 行，取消下面的注释，并修改为需求
+[galera]
+wsrep_provider=/usr/lib64/galera/libgalera_smm.so
+# 指定节点地址，这里也可以使用ip,如果没做安装1，可以直接把cluster的ip写在这里。
+wsrep_cluster_address=&quot;gcomm://node4,node5,node6&quot;
+binlog_format=row
+default_storage_engine=InnoDB
+innodb_autoinc_lock_mode=2
+bind-address=0.0.0.0
+
+# add follows
+# cluster name
+wsrep_cluster_name=&quot;Visionet_MariaDB_Cluster&quot;
+# replication provider
+wsrep_sst_method=rsync
+# own IP address
+wsrep_node_address=&quot;172.16.102.168&quot;
+wsrep_node_name=&quot;node4&quot;
+
+# 启动数据库
+[root@node4 ~]# /etc/rc.d/init.d/mysql bootstrap
+Starting MySQL. SUCCESS!
+
+# 初始化你的数据库
+[root@node4 ~]# mysql_secure_installation
+</code></pre><h5 id="4-在其它节点上编辑etcmycnfdservercnf配置文件">4. 在其它节点上编辑/etc/my.cnf.d/server.cnf配置文件</h5>
+<h5 id="node5">node5</h5>
+<pre tabindex="0"><code>[root@node5 ~]# vi /etc/my.cnf.d/server.cnf
+# 19 行，取消下面的注释，并修改为需求
+[galera]
+wsrep_provider=/usr/lib64/galera/libgalera_smm.so
+# 指定节点地址，这里也可以使用ip,如果没做安装1，可以直接把cluster的ip写在这里。
+wsrep_cluster_address=&quot;gcomm://node4,node5,node6&quot;
+binlog_format=row
+default_storage_engine=InnoDB
+innodb_autoinc_lock_mode=2
+bind-address=0.0.0.0
+
+# add follows
+# cluster name
+wsrep_cluster_name=&quot;Visionet_MariaDB_Cluster&quot;
+# replication provider
+wsrep_sst_method=rsync
+
+# 以下内容注意，注意应设置为当前服务器信息
+wsrep_node_address=&quot;172.16.102.165&quot;
+wsrep_node_name=&quot;node5&quot;
+
+# 启动数据库
+[root@node5 ~]# /etc/rc.d/init.d/mysql start
+Starting MySQL...SST in progress, setting sleep higher. SUCCESS!
+</code></pre><h5 id="node6">node6</h5>
+<pre tabindex="0"><code>[root@node6 ~]# vi /etc/my.cnf.d/server.cnf
+# 19 行，取消下面的注释，并修改为需求
+[galera]
+wsrep_provider=/usr/lib64/galera/libgalera_smm.so
+# 指定节点地址，这里也可以使用ip,如果没做安装1，可以直接把cluster的ip写在这里。
+wsrep_cluster_address=&quot;gcomm://node4,node5,node6&quot;
+binlog_format=row
+default_storage_engine=InnoDB
+innodb_autoinc_lock_mode=2
+bind-address=0.0.0.0
+
+# add follows
+# cluster name
+wsrep_cluster_name=&quot;Visionet_MariaDB_Cluster&quot;
+# replication provider
+wsrep_sst_method=rsync
+
+# 以下内容注意，注意应设置为当前服务器信息
+wsrep_node_address=&quot;172.16.102.164&quot;
+wsrep_node_name=&quot;node6&quot;
+
+# 启动数据库
+[root@node6 ~]# /etc/rc.d/init.d/mysql start
+Starting MySQL...SST in progress, setting sleep higher. SUCCESS!
+</code></pre><blockquote>
+<p>注意：只需要初始化第一个节点服务器的数据库，其他数据的配置文件会自动同步，所以你给node4设置的root可以在node5和node6直接使用，当然这是安装正确的前提。</p>
+</blockquote>
+<h4 id="登陆各个节点数据库检查配置是否成功">登陆各个节点数据库检查配置是否成功</h4>
+<p>        server.cnf的配置如果没有问题，那么wsrep_local_state_comment的状态应该是Synced。</p>
+<pre tabindex="0"><code>[root@node4 ~]# mysql -u root -p
+Enter password:
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MariaDB connection id is 15
+Server version: 10.0.26-MariaDB-wsrep MariaDB Server, wsrep_25.13.raf7f02e
+
+Copyright (c) 2000, 2016, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+MariaDB [(none)]&gt; show status like 'wsrep_local_state_comment';
++---------------------------+--------+
+| Variable_name             | Value  |
++---------------------------+--------+
+| wsrep_local_state_comment | Synced |
++---------------------------+--------+
+1 row in set (0.01 sec)
+
+MariaDB [(none)]&gt;
+</code></pre><h4 id="结论">结论</h4>
+<p>        MariaDB Galera没有主节点和备份节点，配置成功之后，可以在任何一个node节点上操作会自动同步到其他节点，任何一个节点宕机不会影响其他节点的数据和稳定性，配置HAProxy设置VIP的方式来实现负载均衡，提高服务的高可用性，另外，当宕机节点上线之后，事务会自动同步不丢失。</p>
+
+  </div>
+
+  
+<div>
+  <ul class="tags">
+  <li>
+    <a href="https://example.com/tags/mariadb/" class="tag-link">MariaDB</a>
+  </li>
+  </ul>
+</div>
+
+
+
+  <div class="share-buttons">
+  <a class="twitter-share-button"
+     href="#"
+     title="Share on Twitter"
+     data-url="https://example.com/posts/howto-setup-mariadb-galera-cluster-10-on-centos-6-x/"
+     data-text="HowTo Setup MariaDB Galera Cluster 10 On CentOS 6.x"><i class="fab fa-twitter"></i></a>
+
+  <a class="linkedin-share-button"
+     href="#"
+     title="Share on LinkedIn"
+     data-url="https://example.com/posts/howto-setup-mariadb-galera-cluster-10-on-centos-6-x/"
+     data-text="HowTo Setup MariaDB Galera Cluster 10 On CentOS 6.x"><i class="fab fa-linkedin-in"></i></a>
+
+  <a class="facebook-share-button"
+     href="#"
+     title="Share on Facebook"
+     data-url="https://example.com/posts/howto-setup-mariadb-galera-cluster-10-on-centos-6-x/"
+     data-text="HowTo Setup MariaDB Galera Cluster 10 On CentOS 6.x"><i class="fab fa-facebook"></i></a>
+
+  <a class="telegram-share-button"
+     href="#"
+     title="Share on Telegram"
+     data-url="https://example.com/posts/howto-setup-mariadb-galera-cluster-10-on-centos-6-x/"
+     data-text="HowTo Setup MariaDB Galera Cluster 10 On CentOS 6.x"><i class="fab fa-telegram"></i></a>
+
+  <a class="pinterest-share-button"
+     href="#"
+     title="Share on Pinterest"
+     data-url="https://example.com/posts/howto-setup-mariadb-galera-cluster-10-on-centos-6-x/"
+     data-text="HowTo Setup MariaDB Galera Cluster 10 On CentOS 6.x"><i class="fab fa-pinterest"></i></a>
+</div>
+
+
+  
+</div>
+  </main>
+
+  <footer>
+  <div>
+    <p>
+      &copy; samzong.lu 2021
+
+      &middot; <a href="https://creativecommons.org/licenses/by-sa/4.0" target="_blank">CC BY-SA 4.0</a>
+
+      
+    </p>
+  </div>
+</footer>
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/js/all.min.js"
+          integrity="sha256-MAgcygDRahs+F/Nk5Vz387whB4kSK9NXlDN3w58LLq0="
+          crossorigin="anonymous"></script>
+
+
+  <script src="/js/jquery.min.js"></script>
+  <script src="/js/soho.js"></script>
+
+  <script src="/js/blog.js"></script>
+
+  
+</body>
+</html>

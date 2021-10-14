@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Piwik on SAMZONG</title>
+    <link>https://example.com/tags/piwik/</link>
+    <description>Recent content in Piwik on SAMZONG</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Wed, 27 Apr 2016 16:51:58 +0000</lastBuildDate><atom:link href="https://example.com/tags/piwik/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>HowTo Add Piwik Tracking to Ghost</title>
+      <link>https://example.com/posts/howto-add-piwik-tracking-to-ghost/</link>
+      <pubDate>Wed, 27 Apr 2016 16:51:58 +0000</pubDate>
+      
+      <guid>https://example.com/posts/howto-add-piwik-tracking-to-ghost/</guid>
+      <description>This is what about piwik on wiki. goto
+Step 1 - Getting your Piwik Tracking code The first step to having Piwik tracking your Ghost blog will be to add a new website in Piwik, if you are unfamiliar with this process you can checkout the Piwik documention on Managing Websites.</description>
+    </item>
+    
+    <item>
+      <title>HowTo Install piwik with nginx on centos 6.x</title>
+      <link>https://example.com/posts/howto-install-piwik-with-nginx-on-centos-6-x/</link>
+      <pubDate>Wed, 27 Apr 2016 16:00:44 +0000</pubDate>
+      
+      <guid>https://example.com/posts/howto-install-piwik-with-nginx-on-centos-6-x/</guid>
+      <description>This is my nginx config. server { listen blog.ultraera.org:80; server_name blog.</description>
+    </item>
+    
+  </channel>
+</rss>

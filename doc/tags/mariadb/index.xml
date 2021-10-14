@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>MariaDB on SAMZONG</title>
+    <link>https://example.com/tags/mariadb/</link>
+    <description>Recent content in MariaDB on SAMZONG</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Thu, 04 Aug 2016 13:14:15 +0000</lastBuildDate><atom:link href="https://example.com/tags/mariadb/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>HowTo Setup MariaDB Galera Cluster 10 On CentOS 6.x</title>
+      <link>https://example.com/posts/howto-setup-mariadb-galera-cluster-10-on-centos-6-x/</link>
+      <pubDate>Thu, 04 Aug 2016 13:14:15 +0000</pubDate>
+      
+      <guid>https://example.com/posts/howto-setup-mariadb-galera-cluster-10-on-centos-6-x/</guid>
+      <description>介绍  真正的多主架构，任何节点都可以进行读写 同步复制，各节点间无延迟且节点宕机不会导致数据丢失 紧密耦合，所有节点均保持相同状态 自动节点配置，无需手工备份当前数据库并拷贝至新节点  实验环境  Cluster node4 IP address 172.</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Git on SAMZONG</title>
+    <link>https://example.com/categories/git/</link>
+    <description>Recent content in Git on SAMZONG</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Thu, 13 Apr 2017 11:18:17 +0000</lastBuildDate><atom:link href="https://example.com/categories/git/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>HowTo Install GitLab</title>
+      <link>https://example.com/posts/howto-install-gitlab/</link>
+      <pubDate>Thu, 13 Apr 2017 11:18:17 +0000</pubDate>
+      
+      <guid>https://example.com/posts/howto-install-gitlab/</guid>
+      <description>目前最为主流的在线Git版本控制系统可以说是非GitHub莫属，对于个人开发者和开源项目可以直接选择GitHub作为Git版本控制系统即可，但是，对于企业内部开发管理的Git版本控制系统，在对保密性有高要求时GitHub就不合适了，这时GitLab作为一个可以完全搭建在企业内部的Git版本控制系统，而且基本囊括了GitHub的所有功能。
+目前GitLab已经整合的功能  Repository access Administration Issues Forks Code review Wiki Merge Requests Web Editor  测试环境  2 core 4GB 50GB HDD CentOS 6.</description>
+    </item>
+    
+    <item>
+      <title>使用SoureceTree管理你的git项目</title>
+      <link>https://example.com/posts/%E4%BD%BF%E7%94%A8sourecetree%E7%AE%A1%E7%90%86%E4%BD%A0%E7%9A%84git%E9%A1%B9%E7%9B%AE/</link>
+      <pubDate>Wed, 20 Apr 2016 21:31:49 +0000</pubDate>
+      
+      <guid>https://example.com/posts/%E4%BD%BF%E7%94%A8sourecetree%E7%AE%A1%E7%90%86%E4%BD%A0%E7%9A%84git%E9%A1%B9%E7%9B%AE/</guid>
+      <description>Update  update: Windows用户在初始化Souretree工具时，需要用到Atlassian ID，新建用户时需要加载google 验证码，这一步需要VPN的支持，请注意。 找到一个版本的SourceTree工具可以不需要以上验证也能使用，下载链接：SourceTreeSetup_1.6.14.exe 密码：c5l4  补充1 ：Git学习网站  猴子都能学会的git教程 常用 Git 命令清单 廖雪峰的git教程 Why Git is Better than X  补充2 ：利用Git协同开发  团队中的Git实践 Git 使用规范流程 Git分支管理模型 图解Git  1.</description>
+    </item>
+    
+    <item>
+      <title>Git 使用规范流程</title>
+      <link>https://example.com/posts/git-%E4%BD%BF%E7%94%A8%E8%A7%84%E8%8C%83%E6%B5%81%E7%A8%8B/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://example.com/posts/git-%E4%BD%BF%E7%94%A8%E8%A7%84%E8%8C%83%E6%B5%81%E7%A8%8B/</guid>
+      <description>团队开发中，遵循一个合理、清晰的Git使用流程，是非常重要的。否则，每个人都提交一堆杂乱无章的commit，项目很快就会变得难以协调和维护。下图是比较常规的Git使用规范流程，这能适合绝大多数团队开发的需求，推荐你们也这样使用。
+1. 分支管理   主分支Master：首先，代码库应该有一个、且仅有一个主分支。所有提供给用户使用的正式版本，都在这个主分支上发布。
+  开发分支Develop：主分支只用来分布重大版本，日常开发应该在另一条分支上完成。我们把开发用的分支，叫做Develop。
+  临时性分支</description>
+    </item>
+    
+    <item>
+      <title>HowTo-Skip-Atlassian-Auth-for-SourceTree</title>
+      <link>https://example.com/posts/howto-skip-atlassian-auth-for-sourcetree/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://example.com/posts/howto-skip-atlassian-auth-for-sourcetree/</guid>
+      <description>问题 因为国内的网络的原因，导致我们在首次打开SourceTree时需要验证Atlassian账号，但是Atlassian的注册页面使用requirejs是用了Google的CDN服务，所以无法正常通过验证，如果你有翻墙工具，那么这就没有问题，下面我要讲的方法是在不翻墙的情况下跳过初始化验证。
+ 目前我解决的是在Windows平台上的问题，关于Mac平台，我稍后会更新到文档中。
+ 解决思路 我的想法是通过增加account信息，让SourceTree跳过验证；经过测试2.0.19及以下版本都支持，但是SourceTree在最新版本2.0.20时可能修订验证方式，所以导致我的这个方式不适用，大家可以在我的百度云盘共享中下载2.0.19，功能上并没发生多少变化。
+链接: https://pan.baidu.com/s/1qYsHKWs 密码: wnc3</description>
+    </item>
+    
+    <item>
+      <title>HowTo-use-TortoiseGit-for-Windows</title>
+      <link>https://example.com/posts/howto-use-tortoisegit-for-windows/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://example.com/posts/howto-use-tortoisegit-for-windows/</guid>
+      <description>Git是目前最先进的版本控制系统，越来越多的业务场景都在使用Git，风靡全球的Github更是让Git版本控制系统名声大震，但是GitHub旨在建立一个开源的生态环境，所以不适合企业内部的管理系统，在之前的文章中，我也讲到了如何搭建GitLab，可以在企业内部自建一套功能完善的Git版本控制系统。
+GitLab是一个非常成熟的服务端应用，但是作为一名开发人员，我们在使用GitLab与其他人员协同版本时，需要有一个工作对我们的每次修改更新以及推送，这也是版本控制工具的真正精髓；在不同的平台有着很多丰富的应用软件，所以挑选一款适合自己的Git GUI工具很重要。
+目前在众多Git Client之中做的比较好的是SourceTree，并且同时支持Mac和Windows双平台，但是有一个问题，当我们在初次安装时需要验证Atlassian账号，但是Atlassian的注册页面用了requirejs，而且是用了Google的CDN服务，所以必须翻墙，这对很多中国用户的使用造成了不变；所以，今天我在这里推荐一个在Windows平台下同样可以作为Git图形化客户端工具的：TortoiseGit
+TortoiseGit 是 TortoiseSVN 的 Git 版本，TortoiseGit用于迁移 TortoiseSVN 到 TortoiseGit，解决了在Windows平台之上没有合适Git图形化客户端的问题，TortoiseGit不仅免费，而且同样支持丰富的语言包，但是需要独立下载语言包安装，默认只有英文，注意语言包与程序版本一定要匹配。</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>NextCloud on SAMZONG</title>
+    <link>https://example.com/tags/nextcloud/</link>
+    <description>Recent content in NextCloud on SAMZONG</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Mon, 27 Feb 2017 14:57:00 +0000</lastBuildDate><atom:link href="https://example.com/tags/nextcloud/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>HowTo Install NextCloud</title>
+      <link>https://example.com/posts/howto-install-nextcloud/</link>
+      <pubDate>Mon, 27 Feb 2017 14:57:00 +0000</pubDate>
+      
+      <guid>https://example.com/posts/howto-install-nextcloud/</guid>
+      <description>随着最近一个云盘厂家不再提供个人服务，或者开始各种收费限速，自己存放在第三方云盘厂商的数据被盗取，数据的安全性和数据的稳定性都得不到保证，而且随着智能终端的普及，我也有一些更加高质量的图片文件需要大量储存，所以我想到了自建存储服务的方式，在甄别了OwnCloud，Seafiles和NextCloud，最后选择了NextCloud作为自己今后数据存储节点，NextCloud源自OwnCloud，但是近些年来OwnCloud的发展进度几乎停滞，多数开发者也转战NextCloud，当然NextCloud也继承了搭建简单，依赖于PHP环境的特性。
+运行环境  阿里云ECS CentOS 6.x 免费SSL证书(腾讯云申请)  搭建LNMP环境 软件版本  PHP 5.</description>
+    </item>
+    
+  </channel>
+</rss>

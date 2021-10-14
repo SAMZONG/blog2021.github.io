@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Mac on SAMZONG</title>
+    <link>https://example.com/categories/mac/</link>
+    <description>Recent content in Mac on SAMZONG</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Tue, 24 Nov 2020 00:32:13 +0000</lastBuildDate><atom:link href="https://example.com/categories/mac/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Check You Favorites App is readyOnapplesilicon</title>
+      <link>https://example.com/posts/check-you-favorites-app-is-ready-apple-silicon/</link>
+      <pubDate>Tue, 24 Nov 2020 00:32:13 +0000</pubDate>
+      
+      <guid>https://example.com/posts/check-you-favorites-app-is-ready-apple-silicon/</guid>
+      <description>1. https://isapplesiliconready.com/ If you have any apps want and to here.</description>
+    </item>
+    
+    <item>
+      <title>MacTips：使用命令关闭和启动AirPort</title>
+      <link>https://example.com/posts/mactips%E4%BD%BF%E7%94%A8%E5%91%BD%E4%BB%A4%E5%85%B3%E9%97%AD%E5%92%8C%E5%90%AF%E5%8A%A8airport/</link>
+      <pubDate>Mon, 27 Feb 2017 23:40:29 +0000</pubDate>
+      
+      <guid>https://example.com/posts/mactips%E4%BD%BF%E7%94%A8%E5%91%BD%E4%BB%A4%E5%85%B3%E9%97%AD%E5%92%8C%E5%90%AF%E5%8A%A8airport/</guid>
+      <description>今天在给妹妹调试新的MacBookAir 13’时遇到一个问题，无法检测到她家的WiFi，一开始怀疑是不是无线路由器长时间未重启导致，所以重启了路由器，但是问题依然没有解决，于是我们将问题转向排查设备，因我们基本正好有iPad，iPhone，MacBook这些设备，发现唯独他的这个Macbook无法识别WiFi，后来在Google的帮助下，发现多个版本的Mac OS X都出现了类似的问题，可以通过重启AirPort解决问题，但是AirPort在System Preferences找不到选项，所以需要使用命令行来重启。
+查看网络接口 ifconfig en0: flags=8863&amp;lt;UP,BROADCAST,SMART,RUNNING,SIMPLEX,MULTICAST&amp;gt; mtu 1500 ether 60:f8:1d:ad:85:76 inet6 fe80::18a9:fa23:b02f:5d8a%en0 prefixlen 64 secured scopeid 0x4 inet 192.</description>
+    </item>
+    
+    <item>
+      <title>Mac(1) 调整Launchpad图标大小</title>
+      <link>https://example.com/posts/mac-1-%E8%B0%83%E6%95%B4launchpad%E5%9B%BE%E6%A0%87%E5%A4%A7%E5%B0%8F/</link>
+      <pubDate>Sat, 09 Apr 2016 05:46:04 +0000</pubDate>
+      
+      <guid>https://example.com/posts/mac-1-%E8%B0%83%E6%95%B4launchpad%E5%9B%BE%E6%A0%87%E5%A4%A7%E5%B0%8F/</guid>
+      <description>很多人觉得默认Launchpad的应用程序图标很大，空间比较拥挤，不过这个其实是可以通过调整Launchpad每一行和每一列图标的数量，来调整Launchpad图标大小。
+默认如下图： 代码块：
+# 调整每一行显示数量为8个。 ➜ defaults write com.apple.dock springboard-columns -int 10 ＃ 重启Launchpad ➜ defaults write com.</description>
+    </item>
+    
+    <item>
+      <title>Mac(2) 解决oh-my-zsh在终端下打开缓慢</title>
+      <link>https://example.com/posts/mac-2-%E8%A7%A3%E5%86%B3oh-my-zsh%E5%9C%A8%E7%BB%88%E7%AB%AF%E4%B8%8B%E6%89%93%E5%BC%80%E7%BC%93%E6%85%A2/</link>
+      <pubDate>Fri, 08 Apr 2016 16:12:30 +0000</pubDate>
+      
+      <guid>https://example.com/posts/mac-2-%E8%A7%A3%E5%86%B3oh-my-zsh%E5%9C%A8%E7%BB%88%E7%AB%AF%E4%B8%8B%E6%89%93%E5%BC%80%E7%BC%93%E6%85%A2/</guid>
+      <description>升级Mac OS X 10.11 之后，使用CleanMyMac 3清理9GB的垃圾文件，之后导致打开iTerm时加载主机名特别的慢，Mac的命令行工具我使用的是iTerm＋ohmyzsh，这个问题困扰了我快两个月，工作比较忙，所以一直用Zoc 代替，也没有认真的研究，最近有需求用到它，实在不行，研究一下，发现，是因为我清理系统的时候把终端日志的索引文件清理掉了，所以每次打开的时候都要先加载索引导致了首次开启非常慢，解决办法是，只要把终端缓存的日志文件删除即可：
+代码块：
+# 日志文件路径 # /private/var/log/asl/*.</description>
+    </item>
+    
+    <item>
+      <title>Mac 如何快速录制GiF小视频</title>
+      <link>https://example.com/posts/mac%E5%A6%82%E4%BD%95%E5%BF%AB%E9%80%9F%E5%BD%95%E5%88%B6gif%E5%B0%8F%E8%A7%86%E9%A2%91/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://example.com/posts/mac%E5%A6%82%E4%BD%95%E5%BF%AB%E9%80%9F%E5%BD%95%E5%88%B6gif%E5%B0%8F%E8%A7%86%E9%A2%91/</guid>
+      <description>在平时的沟通中经常有需要用到分享一个连续的操作等，在很多时候截图不能满足我的需求，录制视频文件的话呢，文件过大，不同平台限制过多是一个很麻烦的视频，所以录制GIF是一个非常好的解决办法，今天给大家推荐两款软件，关于录制GIF和GIF编辑。
+录制工具(1) Kap Kap是一款轻量级开源的GIF录制工具，这意味它是免费简单易用；你可以从官网下载。官网
+安装完成，启动Kap，它是以一个圆环的形式显示在状态栏上，所有的界面都在这里，你可以点击红框直接开始录制，点击后你的屏幕上会出现一个虚线框，你可以通过拖动四角调整大小。
+确定好录制范围之后，这时你发现Kap上红色录制按钮一个变成一个红色实心圆，再次单击即可开始录制。
+在你操作完成之后，再次单击，即可结束录制。
+录制工具(2) MacApp：QuickTime Player 以上管理Kap的使用GIF录制我是用过Mac自带的QuickTime Player录制，教程可以直接看 @JasonZone 的教程 链接</description>
+    </item>
+    
+    <item>
+      <title>MacTips 单独设置程序语言</title>
+      <link>https://example.com/posts/mactips-choose-apps-defaults-language/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://example.com/posts/mactips-choose-apps-defaults-language/</guid>
+      <description>Mac 上系统语言设置成英文查看起来是最舒适的，所以我很早就将系统语言改成英文，但是在自身英语水平有限，应对基本的单词没有问题，但是在查看例如Word、PowerPoint这类应用时，有大量的选项大脑转化速度较慢，影响工作效率，所以有时在做PPT时，不得已要将系统切换到中文，这对我来说是一件很麻烦的事情，但是今天在网上找到一个帖子原文，其实一个命令就可以搞定我的问题，修改某一软件的默认语言。
+Command defaults write &#39;{AppName}&#39; AppleLanguages &#39;(&amp;quot;Your choose language&amp;quot;)&#39; 这不会影响到我们其他软件的使用。</description>
+    </item>
+    
+  </channel>
+</rss>

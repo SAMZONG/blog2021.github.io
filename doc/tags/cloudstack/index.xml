@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>CloudStack on SAMZONG</title>
+    <link>https://example.com/tags/cloudstack/</link>
+    <description>Recent content in CloudStack on SAMZONG</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Wed, 18 May 2016 02:38:59 +0000</lastBuildDate><atom:link href="https://example.com/tags/cloudstack/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>HowTo Install CloudStack 4.8 on CentOS 6.x</title>
+      <link>https://example.com/posts/howto-install-cloudstack-4-8-on-centos-6-x/</link>
+      <pubDate>Wed, 18 May 2016 02:38:59 +0000</pubDate>
+      
+      <guid>https://example.com/posts/howto-install-cloudstack-4-8-on-centos-6-x/</guid>
+      <description>#!/bin/bash # Install CloudStack.sh # setting static ip in : /etc/sysconfig/network-scripts/ifcfg-eth0 # Check Service # Install # hostname --fqdn # service network restart # trun off selinux in : /etc/selinux/config #SELinux=disabed # trun off iptables.</description>
+    </item>
+    
+  </channel>
+</rss>

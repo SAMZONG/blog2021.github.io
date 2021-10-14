@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh-CN" lang="zh-CN">
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="generator" content="Hugo 0.88.1" />
+
+  <title>MySQL(7) 索引创建、删除和查看 &middot; SAMZONG</title>
+
+  <meta name="description" content="" />
+
+  
+
+<meta itemprop="name" content="MySQL(7) 索引创建、删除和查看">
+<meta itemprop="description" content="1. 索引的作用 在索引列上，数据库利用各种各样的快速定位技术，能够大大的提高查询效率，特别是当数据量非常大和查询设计到多个表时，索引的利用能够将效率提高成千上万倍，当然要合理的利用索引。
+2. 创建索引 ​	在执行CREATE TABLE时可以创建索引，也可以在之后单独使用CREATE INDEX或ALTER TABLE来为表增加索引。"><meta itemprop="datePublished" content="2017-02-09T18:29:50+00:00" />
+<meta itemprop="dateModified" content="2017-02-09T18:29:50+00:00" />
+<meta itemprop="wordCount" content="142">
+<meta itemprop="keywords" content="MySQL," />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="MySQL(7) 索引创建、删除和查看"/>
+<meta name="twitter:description" content="1. 索引的作用 在索引列上，数据库利用各种各样的快速定位技术，能够大大的提高查询效率，特别是当数据量非常大和查询设计到多个表时，索引的利用能够将效率提高成千上万倍，当然要合理的利用索引。
+2. 创建索引 ​	在执行CREATE TABLE时可以创建索引，也可以在之后单独使用CREATE INDEX或ALTER TABLE来为表增加索引。"/>
+
+
+<meta property="og:title" content="MySQL(7) 索引创建、删除和查看" />
+<meta property="og:description" content="1. 索引的作用 在索引列上，数据库利用各种各样的快速定位技术，能够大大的提高查询效率，特别是当数据量非常大和查询设计到多个表时，索引的利用能够将效率提高成千上万倍，当然要合理的利用索引。
+2. 创建索引 ​	在执行CREATE TABLE时可以创建索引，也可以在之后单独使用CREATE INDEX或ALTER TABLE来为表增加索引。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://example.com/posts/mysql-8-%E7%B4%A2%E5%BC%95%E5%88%9B%E5%BB%BA%E5%88%A0%E9%99%A4%E5%92%8C%E6%9F%A5%E7%9C%8B/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2017-02-09T18:29:50+00:00" />
+<meta property="article:modified_time" content="2017-02-09T18:29:50+00:00" />
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type":"Person",
+      "@id": "https://example.com#author",
+      "name": "samzong.lu",
+      "image": {
+        "@type":"ImageObject",
+        "url": "https://www.gravatar.com/avatar/c02c426714361366ea7d583950aa8fb4?s=400&d=mp"
+      },
+      "description": "Samzong's Blog"
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://example.com#website",
+      "url": "https://example.com",
+      "name": "SAMZONG",
+      "description": "Samzong's Blog",
+      "publisher": {
+        "@id": "https://example.com#author"
+      },
+      "inLanguage": "zh-CN"
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://example.com/posts/mysql-8-%E7%B4%A2%E5%BC%95%E5%88%9B%E5%BB%BA%E5%88%A0%E9%99%A4%E5%92%8C%E6%9F%A5%E7%9C%8B/#webpage",
+      "url": "https://example.com/posts/mysql-8-%E7%B4%A2%E5%BC%95%E5%88%9B%E5%BB%BA%E5%88%A0%E9%99%A4%E5%92%8C%E6%9F%A5%E7%9C%8B/",
+      "name": "MySQL(7) 索引创建、删除和查看",
+      "isPartOf": {
+        "@id": "https://example.com#website"
+      },
+      "about": {
+         "@id": "https://example.com#author"
+      },
+      "datePublished": "2017-02-09T18:29:50+00:00",
+      "dateModified": "2017-02-09T18:29:50+00:00",
+      "description": "1. 索引的作用 在索引列上，数据库利用各种各样的快速定位技术，能够大大的提高查询效率，特别是当数据量非常大和查询设计到多个表时，索引的利用能够将效率提高成千上万倍，当然要合理的利用索引。\n2. 创建索引 ​\t在执行CREATE TABLE时可以创建索引，也可以在之后单独使用CREATE INDEX或ALTER TABLE来为表增加索引。",
+      "inLanguage": "zh-CN",
+      "potentialAction": [
+        {
+          "@type": "ReadAction",
+          "target": [
+            "https://example.com/posts/mysql-8-%E7%B4%A2%E5%BC%95%E5%88%9B%E5%BB%BA%E5%88%A0%E9%99%A4%E5%92%8C%E6%9F%A5%E7%9C%8B/"
+          ]
+        }
+      ]
+    },
+    {
+      "@type": "Article",
+      "isPartOf": {
+        "@id": "https://example.com/posts/mysql-8-%E7%B4%A2%E5%BC%95%E5%88%9B%E5%BB%BA%E5%88%A0%E9%99%A4%E5%92%8C%E6%9F%A5%E7%9C%8B/#webpage"
+      },
+      "mainEntityOfPage": {
+        "@id": "https://example.com/posts/mysql-8-%E7%B4%A2%E5%BC%95%E5%88%9B%E5%BB%BA%E5%88%A0%E9%99%A4%E5%92%8C%E6%9F%A5%E7%9C%8B/#webpage"
+      },
+      "headline": "MySQL(7) 索引创建、删除和查看",
+      "datePublished": "2017-02-09T18:29:50+00:00",
+      "dateModified": "2017-02-09T18:29:50+00:00",
+      "publisher": {
+        "@id": "https://example.com#author"
+      },
+      "keywords": [
+        "MySQL"
+      ],
+      "articleSection": [
+        "MySQL"
+      ],
+      "inLanguage": "zh-CN",
+      "author": {
+        "@type": "Person",
+        "name":  null 
+      },
+      "potentialAction": [
+        {
+          "@type": "CommentAction",
+          "name": "Comment",
+          "target": [
+            "https://example.com/posts/mysql-8-%E7%B4%A2%E5%BC%95%E5%88%9B%E5%BB%BA%E5%88%A0%E9%99%A4%E5%92%8C%E6%9F%A5%E7%9C%8B/#comments"
+          ]
+        }
+      ]
+    }
+  ]
+}
+</script>
+
+
+
+  <link type="text/css"
+        rel="stylesheet"
+        href="/css/print.css"
+        media="print">
+
+  <link type="text/css"
+        rel="stylesheet"
+        href="/css/poole.css">
+
+  <link type="text/css"
+        rel="stylesheet"
+        href="/css/hyde.css">
+
+  
+
+
+  <link type="text/css" rel="stylesheet" href="/css/blog.css">
+
+  <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700&display=swap">
+
+  <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css"
+        integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk="
+        crossorigin="anonymous" />
+
+  <link rel="apple-touch-icon-precomposed"
+        sizes="144x144"
+        href="/apple-touch-icon-144-precomposed.png">
+
+  <link rel="shortcut icon" href="/favicon.png">
+
+  
+  </head>
+<body>
+  <aside class="sidebar">
+  <div class="container">
+    <div class="sidebar-about">
+      
+      <div class="author-image">
+        <a href="https://example.com">
+          <img src="https://www.gravatar.com/avatar/c02c426714361366ea7d583950aa8fb4?s=200&d=mp" class="img-circle img-headshot center" alt="Gravatar">
+        </a>
+      </div>
+      
+
+      <h1>SAMZONG</h1>
+
+      
+      <p class="lead">Samzong&#39;s Blog</p>
+      
+    </div>
+
+    <nav>
+      <ul class="sidebar-nav">
+        <li>
+          <a href="https://example.com">Home</a>
+        </li>
+        <li>
+          <a href="/posts/">Posts</a>
+        </li><li>
+          <a href="/about/">About</a>
+        </li>
+      </ul>
+    </nav>
+
+    <section class="social-icons">
+      
+      <a href="https://www.linkedin.com/in/samzong/" rel="me" title="Linkedin" target="_blank">
+        <i class="fab fa-linkedin" aria-hidden="true"></i>
+      </a>
+      
+      <a href="https://github.com/samzong" rel="me" title="GitHub" target="_blank">
+        <i class="fab fa-github" aria-hidden="true"></i>
+      </a>
+      
+      <a href="https://twitter.com/samzong_lu" rel="me" title="Twitter" target="_blank">
+        <i class="fab fa-twitter" aria-hidden="true"></i>
+      </a>
+      
+    </section>
+  </div>
+</aside>
+
+
+  <main class="content container">
+  <div class="post">
+  <h1 class="title">MySQL(7) 索引创建、删除和查看</h1>
+  
+
+  <div class="post-date">
+    <time datetime="2017-02-09T18:29:50Z">Feb 9, 2017</time> <span class="readtime">&middot; 1 min read</span>
+  </div>
+
+  <div>
+  <h4 id="1-索引的作用"><strong>1. 索引的作用</strong></h4>
+<p>在索引列上，数据库利用各种各样的快速定位技术，能够大大的提高查询效率，特别是当数据量非常大和查询设计到多个表时，索引的利用能够将效率提高成千上万倍，当然要合理的利用索引。</p>
+<h4 id="2-创建索引"><strong>2. 创建索引</strong></h4>
+<p>​	在执行CREATE TABLE时可以创建索引，也可以在之后单独使用CREATE INDEX或ALTER TABLE来为表增加索引。</p>
+<h6 id="21-alter-table">2.1 ALTER TABLE</h6>
+<p>​	ALTER TABLE用来创建普通索引、UNIQUE索引或PRIMARY KEY索引。</p>
+<pre tabindex="0"><code>ALTER TABLE tb_name ADD INDEX index_Name (column_list);
+ALTER TABLE tb_name ADD UNIQUE (column_list);
+ALTER TABLE tb_name ADD PRIMARY KEY (column_list);
+</code></pre><p>​	tb_name 是要增加索引的表名，column_list 是要增加索引的列，多列用逗号隔开，index_Name 是可选，缺省为第一个索引列赋名称，ALTER TABLE允许在单个语句中更改多个表，因此可以也可以同时创建多个索引。</p>
+<h6 id="22-create-index">2.2 CREATE INDEX</h6>
+<p>​	CREATE INDEX 可对表增加普通索引或者UNIQUE索引。</p>
+<pre tabindex="0"><code>CREATE INDEX index_Name ON tb_name(column_list);
+CREATE UNIQUE INDEX index_Name ON tb_name(column_list);
+</code></pre><p>​	tb_name、index_Name和column_list具有ALTER TABLE语句中相同的含义，索引名称不可自定义，也不能创建PRIMARY KEY。</p>
+<h4 id="3-索引类型"><strong>3. 索引类型</strong></h4>
+<p>​	在创建索引时，可以规定索引能否包含重复的值，如果不包含，则索引应该为PRIMARY KEY或UNIQUE索引，对于单列唯一索引，这能保证单列不包含重复的值，对于多列唯一索引，保证多值的组合不重复。</p>
+<p>​	PRIMAY KEY索引与UNIQUE索引非常类似，实际上PRIMAY KEY索引仅是一个具有名称PRIMAY的UNIQUE索引，这表示一个表只能包含一个PRIMAY KEY索引，因为一个表中不可能具有两个同名的索引。</p>
+<h4 id="4-删除索引"><strong>4. 删除索引</strong></h4>
+<p>​	可以使用ALTER TABLE或DROP INDEX语句来删除索引：</p>
+<pre tabindex="0"><code>DROP INDEX index_Name On tb_name;
+ALTER TABLE tb_Name DROP TABLE index_Name;
+ALTER TABLE tb_Name DROP PRIMAY KEY;
+</code></pre><p>​	第一条和第二条作用是一样的，删除tb_Name中index_Name索引；第三条仅适用于删除PRIMAY KEY时，因为一个只可能有一个PRIMAY KEY索引。</p>
+<p>​	另外，如果在表中删除了某列，则索引会受到影响，对于多列组合的索引，如果删除其中某列，则该列也会在索引中删除，如果删除所有列，则该索引也会被删除。</p>
+<h4 id="5-查看索引"><strong>5. 查看索引</strong></h4>
+<pre tabindex="0"><code>mysql&gt; show index from tb_name;
+mysql&gt; show keys from tb_name;
+</code></pre><ul>
+<li>Table : 表名</li>
+<li>Non_unique： 如果索引不能包含重复值为0，如果可以为1</li>
+<li>Key_name： 索引的名称</li>
+<li>Seq_in_index：索引中列的序号，从1开始</li>
+<li>Column_name： 列的名称</li>
+<li>Collation：列以什么方式存储在索引中，在MySQL中有值‘A’(升序)和NULL(无分类)</li>
+<li>Cardinality： 索引中唯一值的数量估计值，通过运行ANALYZE TABLE或者 myisamchk -a 可以更新，基数根据被存储的整数的统计数据来计数，所以，即使对于小型表，该值也没有必要是精确的，基数越大，当进行联合时，MySQL使用该索引的机会就越大。</li>
+<li>Sub_part： 如果列只是被部分编入，则为编入索引的字符数目，如果整列被编入索引，则为NULL</li>
+<li>Packed：关键字如何被压缩，没有压缩为NULL</li>
+<li>Null： 如果列含有NULL为YES，如果没有则为NO</li>
+<li>Index_type： 用过的索引方法，BTREE，FULLTEXT，HASH，RTREE</li>
+<li>Comment： 备注</li>
+</ul>
+
+  </div>
+
+  
+<div>
+  <ul class="tags">
+  <li>
+    <a href="https://example.com/tags/mysql/" class="tag-link">MySQL</a>
+  </li>
+  </ul>
+</div>
+
+
+
+  <div class="share-buttons">
+  <a class="twitter-share-button"
+     href="#"
+     title="Share on Twitter"
+     data-url="https://example.com/posts/mysql-8-%E7%B4%A2%E5%BC%95%E5%88%9B%E5%BB%BA%E5%88%A0%E9%99%A4%E5%92%8C%E6%9F%A5%E7%9C%8B/"
+     data-text="MySQL(7) 索引创建、删除和查看"><i class="fab fa-twitter"></i></a>
+
+  <a class="linkedin-share-button"
+     href="#"
+     title="Share on LinkedIn"
+     data-url="https://example.com/posts/mysql-8-%E7%B4%A2%E5%BC%95%E5%88%9B%E5%BB%BA%E5%88%A0%E9%99%A4%E5%92%8C%E6%9F%A5%E7%9C%8B/"
+     data-text="MySQL(7) 索引创建、删除和查看"><i class="fab fa-linkedin-in"></i></a>
+
+  <a class="facebook-share-button"
+     href="#"
+     title="Share on Facebook"
+     data-url="https://example.com/posts/mysql-8-%E7%B4%A2%E5%BC%95%E5%88%9B%E5%BB%BA%E5%88%A0%E9%99%A4%E5%92%8C%E6%9F%A5%E7%9C%8B/"
+     data-text="MySQL(7) 索引创建、删除和查看"><i class="fab fa-facebook"></i></a>
+
+  <a class="telegram-share-button"
+     href="#"
+     title="Share on Telegram"
+     data-url="https://example.com/posts/mysql-8-%E7%B4%A2%E5%BC%95%E5%88%9B%E5%BB%BA%E5%88%A0%E9%99%A4%E5%92%8C%E6%9F%A5%E7%9C%8B/"
+     data-text="MySQL(7) 索引创建、删除和查看"><i class="fab fa-telegram"></i></a>
+
+  <a class="pinterest-share-button"
+     href="#"
+     title="Share on Pinterest"
+     data-url="https://example.com/posts/mysql-8-%E7%B4%A2%E5%BC%95%E5%88%9B%E5%BB%BA%E5%88%A0%E9%99%A4%E5%92%8C%E6%9F%A5%E7%9C%8B/"
+     data-text="MySQL(7) 索引创建、删除和查看"><i class="fab fa-pinterest"></i></a>
+</div>
+
+
+  
+</div>
+  </main>
+
+  <footer>
+  <div>
+    <p>
+      &copy; samzong.lu 2021
+
+      &middot; <a href="https://creativecommons.org/licenses/by-sa/4.0" target="_blank">CC BY-SA 4.0</a>
+
+      
+    </p>
+  </div>
+</footer>
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/js/all.min.js"
+          integrity="sha256-MAgcygDRahs+F/Nk5Vz387whB4kSK9NXlDN3w58LLq0="
+          crossorigin="anonymous"></script>
+
+
+  <script src="/js/jquery.min.js"></script>
+  <script src="/js/soho.js"></script>
+
+  <script src="/js/blog.js"></script>
+
+  
+</body>
+</html>

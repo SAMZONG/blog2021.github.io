@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh-CN" lang="zh-CN">
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="generator" content="Hugo 0.88.1" />
+
+  <title>Script Install LNMP &middot; SAMZONG</title>
+
+  <meta name="description" content="" />
+
+  
+
+<meta itemprop="name" content="Script Install LNMP">
+<meta itemprop="description" content="#!/bin/bash # if [[ $1 == &quot;uninstall&quot; ]];then echo &quot;starting backup data."><meta itemprop="datePublished" content="2016-08-13T06:12:43+00:00" />
+<meta itemprop="dateModified" content="2016-08-13T06:12:43+00:00" />
+<meta itemprop="wordCount" content="369">
+<meta itemprop="keywords" content="Shell," />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Script Install LNMP"/>
+<meta name="twitter:description" content="#!/bin/bash # if [[ $1 == &quot;uninstall&quot; ]];then echo &quot;starting backup data."/>
+
+
+<meta property="og:title" content="Script Install LNMP" />
+<meta property="og:description" content="#!/bin/bash # if [[ $1 == &quot;uninstall&quot; ]];then echo &quot;starting backup data." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://example.com/posts/script-install-lnmp/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2016-08-13T06:12:43+00:00" />
+<meta property="article:modified_time" content="2016-08-13T06:12:43+00:00" />
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type":"Person",
+      "@id": "https://example.com#author",
+      "name": "samzong.lu",
+      "image": {
+        "@type":"ImageObject",
+        "url": "https://www.gravatar.com/avatar/c02c426714361366ea7d583950aa8fb4?s=400&d=mp"
+      },
+      "description": "Samzong's Blog"
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://example.com#website",
+      "url": "https://example.com",
+      "name": "SAMZONG",
+      "description": "Samzong's Blog",
+      "publisher": {
+        "@id": "https://example.com#author"
+      },
+      "inLanguage": "zh-CN"
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://example.com/posts/script-install-lnmp/#webpage",
+      "url": "https://example.com/posts/script-install-lnmp/",
+      "name": "Script Install LNMP",
+      "isPartOf": {
+        "@id": "https://example.com#website"
+      },
+      "about": {
+         "@id": "https://example.com#author"
+      },
+      "datePublished": "2016-08-13T06:12:43+00:00",
+      "dateModified": "2016-08-13T06:12:43+00:00",
+      "description": "#!/bin/bash # if [[ $1 == \u0026quot;uninstall\u0026quot; ]];then echo \u0026quot;starting backup data.",
+      "inLanguage": "zh-CN",
+      "potentialAction": [
+        {
+          "@type": "ReadAction",
+          "target": [
+            "https://example.com/posts/script-install-lnmp/"
+          ]
+        }
+      ]
+    },
+    {
+      "@type": "Article",
+      "isPartOf": {
+        "@id": "https://example.com/posts/script-install-lnmp/#webpage"
+      },
+      "mainEntityOfPage": {
+        "@id": "https://example.com/posts/script-install-lnmp/#webpage"
+      },
+      "headline": "Script Install LNMP",
+      "datePublished": "2016-08-13T06:12:43+00:00",
+      "dateModified": "2016-08-13T06:12:43+00:00",
+      "publisher": {
+        "@id": "https://example.com#author"
+      },
+      "keywords": [
+        "Shell"
+      ],
+      "articleSection": [
+        "Shell"
+      ],
+      "inLanguage": "zh-CN",
+      "author": {
+        "@type": "Person",
+        "name":  null 
+      },
+      "potentialAction": [
+        {
+          "@type": "CommentAction",
+          "name": "Comment",
+          "target": [
+            "https://example.com/posts/script-install-lnmp/#comments"
+          ]
+        }
+      ]
+    }
+  ]
+}
+</script>
+
+
+
+  <link type="text/css"
+        rel="stylesheet"
+        href="/css/print.css"
+        media="print">
+
+  <link type="text/css"
+        rel="stylesheet"
+        href="/css/poole.css">
+
+  <link type="text/css"
+        rel="stylesheet"
+        href="/css/hyde.css">
+
+  
+
+
+  <link type="text/css" rel="stylesheet" href="/css/blog.css">
+
+  <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700&display=swap">
+
+  <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css"
+        integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk="
+        crossorigin="anonymous" />
+
+  <link rel="apple-touch-icon-precomposed"
+        sizes="144x144"
+        href="/apple-touch-icon-144-precomposed.png">
+
+  <link rel="shortcut icon" href="/favicon.png">
+
+  
+  </head>
+<body>
+  <aside class="sidebar">
+  <div class="container">
+    <div class="sidebar-about">
+      
+      <div class="author-image">
+        <a href="https://example.com">
+          <img src="https://www.gravatar.com/avatar/c02c426714361366ea7d583950aa8fb4?s=200&d=mp" class="img-circle img-headshot center" alt="Gravatar">
+        </a>
+      </div>
+      
+
+      <h1>SAMZONG</h1>
+
+      
+      <p class="lead">Samzong&#39;s Blog</p>
+      
+    </div>
+
+    <nav>
+      <ul class="sidebar-nav">
+        <li>
+          <a href="https://example.com">Home</a>
+        </li>
+        <li>
+          <a href="/posts/">Posts</a>
+        </li><li>
+          <a href="/about/">About</a>
+        </li>
+      </ul>
+    </nav>
+
+    <section class="social-icons">
+      
+      <a href="https://www.linkedin.com/in/samzong/" rel="me" title="Linkedin" target="_blank">
+        <i class="fab fa-linkedin" aria-hidden="true"></i>
+      </a>
+      
+      <a href="https://github.com/samzong" rel="me" title="GitHub" target="_blank">
+        <i class="fab fa-github" aria-hidden="true"></i>
+      </a>
+      
+      <a href="https://twitter.com/samzong_lu" rel="me" title="Twitter" target="_blank">
+        <i class="fab fa-twitter" aria-hidden="true"></i>
+      </a>
+      
+    </section>
+  </div>
+</aside>
+
+
+  <main class="content container">
+  <div class="post">
+  <h1 class="title">Script Install LNMP</h1>
+  
+
+  <div class="post-date">
+    <time datetime="2016-08-13T06:12:43Z">Aug 13, 2016</time> <span class="readtime">&middot; 2 min read</span>
+  </div>
+
+  <div>
+  <pre tabindex="0"><code>#!/bin/bash
+
+#
+
+if [[ $1 == &quot;uninstall&quot; ]];then
+	echo &quot;starting backup data...&quot;
+	mkdir -p /www/backup
+	service mysqld stop
+	service nginxd stop
+	service httpd stop
+	service wdapache stop
+	service pureftpd stop
+	tar zcvf /www/backup/mysqldatdbk.tar.gz /www/wdlinux/mysql/var
+	tar zcvf /www/backup/ngconfbk.tar.gz /www/wdlinux/nginx/conf
+	tar zcvf /www/backup/apconfbk.tar.gz /www/wdlinux/apache/conf
+	rpm -e lanmp_wdcp --nodeps
+	rm -fr /www/wdlinux
+	echo
+	echo &quot;	lanmp,wdcp remove is OK&quot;
+	echo
+	exit 0
+fi
+
+echo &quot;Turn off selinux...&quot;
+setenforce 0
+sed -i 's/SELINUX=enforcing/SELINUX=disabled/g' /etc/selinux/config
+sed -i 's/^exclude=/#exclude=/g' /etc/yum.conf
+yum install -y gcc gcc-c++ make autoconf libtool-ltdl-devel gd-devel freetype-devel libxml2-devel libjpeg-devel libpng-devel openssl-devel curl-devel patch libmcrypt-devel libmhash-devel ncurses-devel sudo bzip2 iptables sendmail iptables unzip
+
+#echo &quot;Check the network...&quot;
+#ping -c 2 113.105.167.1
+#if [[ $? != 0 ]];then
+#	echo
+#	echo &quot;network err&quot;
+#	exit 1
+#fi
+ping -c 3 dl.wdlinux.cn
+if [[ $? == 2 ]];then
+	echo
+	echo &quot;dns error&quot;
+	exit 1
+fi
+
+if [[ ! -d /www/wdlinux ]];then
+	echo
+	echo &quot;rpm remove...&quot;
+	rpm -e php --nodeps
+	rpm -e httpd --nodeps
+	rpm -e mysql-server --nodeps
+	rpm -e mysql --nodeps
+fi
+
+echo &quot;yum update...&quot;
+yum install -y make autoconf sudo wget libtool-ltdl-devel gd-devel freetype-devel libxml2-devel libjpeg-devel libpng-devel openssl-devel curl-devel patch libmcrypt-devel libmhash-devel ncurses-devel iptables
+
+arch=i386
+Aurl=&quot;http://dl.wdlinux.cn:5180/rpms&quot;
+if [[ `uname -m` == &quot;x86_64&quot; ]];then
+	arch=&quot;x86_64&quot;
+fi
+
+function in_finsh {
+        echo
+        echo &quot;          configuration ,lamp or lnmp,wdcp install is finshed&quot;
+        echo &quot;          visit http://ip&quot;
+        echo &quot;          wdcp visit http://ip:8080&quot;
+        echo &quot;          more infomation please visit http://www.wdlinux.cn&quot;
+        echo
+}
+
+function in_check {
+        if [[ $1 == 1 ]];then
+                echo
+                echo &quot;============  $2 install error  =============&quot;
+                echo
+                exit 1
+        else
+                echo
+                echo &quot;============  $2 install OK  ==============&quot;
+                echo
+                echo
+        fi
+}
+
+grep -E 'wdOS 1|5\.' /etc/redhat-release &gt; /dev/null 2&gt;&amp;1
+v1=$?
+grep -E 'wdOS 2|6\.' /etc/redhat-release &gt; /dev/null 2&gt;&amp;1
+v2=$?
+if [ $v1 == 0 ];then
+	RF=&quot;lanmp_wdcp-2-5.$arch.rpm&quot;;
+elif [ $v2 == 0 ];then
+	RF=&quot;lanmp_wdcp-2-5.el6.$arch.rpm&quot;;
+	if [ $arch == &quot;x86_64&quot; ];then
+		wget -c http://dl.wdlinux.cn:5180/soft/rpmforge-release-0.5.2-2.el6.rf.x86_64.rpm
+		rpm -ivh rpmforge-release-0.5.2-2.el6.rf.x86_64.rpm
+	else
+		wget -c http://dl.wdlinux.cn:5180/soft/rpmforge-release-0.5.2-2.el6.rf.i686.rpm
+		rpm -ivh rpmforge-release-0.5.2-2.el6.rf.i686.rpm
+	fi
+	yum install -y mhash-devel libmcrypt-devel
+else
+	echo
+	echo &quot;The current system does not support&quot;
+	echo
+	exit
+fi
+wget -c http://dl.wdlinux.cn:5180/rpms/$RF
+rpm -ivh $RF --nodeps
+I_F=$?
+if [ $I_F == 0 ];then
+	echo
+fi
+in_check $I_F lanmp_wdcp
+
+rm -f wdcp_v*
+wget -c http://down.wdlinux.cn/down/wdcp_v2.5.tar.gz &gt; /dev/null 2&gt;&amp;1
+tar zxvf wdcp_v2.5.tar.gz -C / &gt; /dev/null 2&gt;&amp;1
+
+in_finsh
+
+</code></pre>
+  </div>
+
+  
+<div>
+  <ul class="tags">
+  <li>
+    <a href="https://example.com/tags/shell/" class="tag-link">Shell</a>
+  </li>
+  </ul>
+</div>
+
+
+
+  <div class="share-buttons">
+  <a class="twitter-share-button"
+     href="#"
+     title="Share on Twitter"
+     data-url="https://example.com/posts/script-install-lnmp/"
+     data-text="Script Install LNMP"><i class="fab fa-twitter"></i></a>
+
+  <a class="linkedin-share-button"
+     href="#"
+     title="Share on LinkedIn"
+     data-url="https://example.com/posts/script-install-lnmp/"
+     data-text="Script Install LNMP"><i class="fab fa-linkedin-in"></i></a>
+
+  <a class="facebook-share-button"
+     href="#"
+     title="Share on Facebook"
+     data-url="https://example.com/posts/script-install-lnmp/"
+     data-text="Script Install LNMP"><i class="fab fa-facebook"></i></a>
+
+  <a class="telegram-share-button"
+     href="#"
+     title="Share on Telegram"
+     data-url="https://example.com/posts/script-install-lnmp/"
+     data-text="Script Install LNMP"><i class="fab fa-telegram"></i></a>
+
+  <a class="pinterest-share-button"
+     href="#"
+     title="Share on Pinterest"
+     data-url="https://example.com/posts/script-install-lnmp/"
+     data-text="Script Install LNMP"><i class="fab fa-pinterest"></i></a>
+</div>
+
+
+  
+</div>
+  </main>
+
+  <footer>
+  <div>
+    <p>
+      &copy; samzong.lu 2021
+
+      &middot; <a href="https://creativecommons.org/licenses/by-sa/4.0" target="_blank">CC BY-SA 4.0</a>
+
+      
+    </p>
+  </div>
+</footer>
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/js/all.min.js"
+          integrity="sha256-MAgcygDRahs+F/Nk5Vz387whB4kSK9NXlDN3w58LLq0="
+          crossorigin="anonymous"></script>
+
+
+  <script src="/js/jquery.min.js"></script>
+  <script src="/js/soho.js"></script>
+
+  <script src="/js/blog.js"></script>
+
+  
+</body>
+</html>

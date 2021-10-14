@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>随笔 on SAMZONG</title>
+    <link>https://example.com/tags/%E9%9A%8F%E7%AC%94/</link>
+    <description>Recent content in 随笔 on SAMZONG</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Wed, 02 Jun 2021 00:54:38 +0000</lastBuildDate><atom:link href="https://example.com/tags/%E9%9A%8F%E7%AC%94/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>2021年 全新出发</title>
+      <link>https://example.com/posts/2021%E5%B9%B4-%E5%85%A8%E6%96%B0%E8%A7%A6%E5%8F%91/</link>
+      <pubDate>Wed, 02 Jun 2021 00:54:38 +0000</pubDate>
+      
+      <guid>https://example.com/posts/2021%E5%B9%B4-%E5%85%A8%E6%96%B0%E8%A7%A6%E5%8F%91/</guid>
+      <description>写在开始之前的话 已经停更了接近3年的博客，感觉像是走了另一个方向的路，有点迷失方向的感觉；这三年算是人生中变化很多的地方吧。
+不过也有不少地方其实没变化，比如：
+ 报名学车 到现在还是没有学成 转职安心做一名研发，可水平还是吊儿郎当  这三年，也是有了很大的变化，最大的变化可能是：成为了一名全职的产品经理，而竟然我有一半的时间还在纠结是不是要回去。
+ 思绪有点乱，后面再继续写吧</description>
+    </item>
+    
+  </channel>
+</rss>

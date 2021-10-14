@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh-CN" lang="zh-CN">
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="generator" content="Hugo 0.88.1" />
+
+  <title>HowTo Install Openfire  on CentOS &middot; SAMZONG</title>
+
+  <meta name="description" content="" />
+
+  
+
+<meta itemprop="name" content="HowTo Install Openfire  on CentOS">
+<meta itemprop="description" content="Install Centos 6.x x86_64 略.
+安装依赖软件 yum -y install wget java glibc."><meta itemprop="datePublished" content="2016-08-02T16:04:48+00:00" />
+<meta itemprop="dateModified" content="2016-08-02T16:04:48+00:00" />
+<meta itemprop="wordCount" content="120">
+<meta itemprop="keywords" content="Openfire," />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="HowTo Install Openfire  on CentOS"/>
+<meta name="twitter:description" content="Install Centos 6.x x86_64 略.
+安装依赖软件 yum -y install wget java glibc."/>
+
+
+<meta property="og:title" content="HowTo Install Openfire  on CentOS" />
+<meta property="og:description" content="Install Centos 6.x x86_64 略.
+安装依赖软件 yum -y install wget java glibc." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://example.com/posts/howto-install-openfire-on-centos/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2016-08-02T16:04:48+00:00" />
+<meta property="article:modified_time" content="2016-08-02T16:04:48+00:00" />
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type":"Person",
+      "@id": "https://example.com#author",
+      "name": "samzong.lu",
+      "image": {
+        "@type":"ImageObject",
+        "url": "https://www.gravatar.com/avatar/c02c426714361366ea7d583950aa8fb4?s=400&d=mp"
+      },
+      "description": "Samzong's Blog"
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://example.com#website",
+      "url": "https://example.com",
+      "name": "SAMZONG",
+      "description": "Samzong's Blog",
+      "publisher": {
+        "@id": "https://example.com#author"
+      },
+      "inLanguage": "zh-CN"
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://example.com/posts/howto-install-openfire-on-centos/#webpage",
+      "url": "https://example.com/posts/howto-install-openfire-on-centos/",
+      "name": "HowTo Install Openfire  on CentOS",
+      "isPartOf": {
+        "@id": "https://example.com#website"
+      },
+      "about": {
+         "@id": "https://example.com#author"
+      },
+      "datePublished": "2016-08-02T16:04:48+00:00",
+      "dateModified": "2016-08-02T16:04:48+00:00",
+      "description": "Install Centos 6.x x86_64 略.\n安装依赖软件 yum -y install wget java glibc.",
+      "inLanguage": "zh-CN",
+      "potentialAction": [
+        {
+          "@type": "ReadAction",
+          "target": [
+            "https://example.com/posts/howto-install-openfire-on-centos/"
+          ]
+        }
+      ]
+    },
+    {
+      "@type": "Article",
+      "isPartOf": {
+        "@id": "https://example.com/posts/howto-install-openfire-on-centos/#webpage"
+      },
+      "mainEntityOfPage": {
+        "@id": "https://example.com/posts/howto-install-openfire-on-centos/#webpage"
+      },
+      "headline": "HowTo Install Openfire  on CentOS",
+      "datePublished": "2016-08-02T16:04:48+00:00",
+      "dateModified": "2016-08-02T16:04:48+00:00",
+      "publisher": {
+        "@id": "https://example.com#author"
+      },
+      "keywords": [
+        "Openfire"
+      ],
+      "articleSection": [
+        "CentOS"
+      ],
+      "inLanguage": "zh-CN",
+      "author": {
+        "@type": "Person",
+        "name":  null 
+      },
+      "potentialAction": [
+        {
+          "@type": "CommentAction",
+          "name": "Comment",
+          "target": [
+            "https://example.com/posts/howto-install-openfire-on-centos/#comments"
+          ]
+        }
+      ]
+    }
+  ]
+}
+</script>
+
+
+
+  <link type="text/css"
+        rel="stylesheet"
+        href="/css/print.css"
+        media="print">
+
+  <link type="text/css"
+        rel="stylesheet"
+        href="/css/poole.css">
+
+  <link type="text/css"
+        rel="stylesheet"
+        href="/css/hyde.css">
+
+  
+
+
+  <link type="text/css" rel="stylesheet" href="/css/blog.css">
+
+  <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700&display=swap">
+
+  <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css"
+        integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk="
+        crossorigin="anonymous" />
+
+  <link rel="apple-touch-icon-precomposed"
+        sizes="144x144"
+        href="/apple-touch-icon-144-precomposed.png">
+
+  <link rel="shortcut icon" href="/favicon.png">
+
+  
+  </head>
+<body>
+  <aside class="sidebar">
+  <div class="container">
+    <div class="sidebar-about">
+      
+      <div class="author-image">
+        <a href="https://example.com">
+          <img src="https://www.gravatar.com/avatar/c02c426714361366ea7d583950aa8fb4?s=200&d=mp" class="img-circle img-headshot center" alt="Gravatar">
+        </a>
+      </div>
+      
+
+      <h1>SAMZONG</h1>
+
+      
+      <p class="lead">Samzong&#39;s Blog</p>
+      
+    </div>
+
+    <nav>
+      <ul class="sidebar-nav">
+        <li>
+          <a href="https://example.com">Home</a>
+        </li>
+        <li>
+          <a href="/posts/">Posts</a>
+        </li><li>
+          <a href="/about/">About</a>
+        </li>
+      </ul>
+    </nav>
+
+    <section class="social-icons">
+      
+      <a href="https://www.linkedin.com/in/samzong/" rel="me" title="Linkedin" target="_blank">
+        <i class="fab fa-linkedin" aria-hidden="true"></i>
+      </a>
+      
+      <a href="https://github.com/samzong" rel="me" title="GitHub" target="_blank">
+        <i class="fab fa-github" aria-hidden="true"></i>
+      </a>
+      
+      <a href="https://twitter.com/samzong_lu" rel="me" title="Twitter" target="_blank">
+        <i class="fab fa-twitter" aria-hidden="true"></i>
+      </a>
+      
+    </section>
+  </div>
+</aside>
+
+
+  <main class="content container">
+  <div class="post">
+  <h1 class="title">HowTo Install Openfire  on CentOS</h1>
+  
+
+  <div class="post-date">
+    <time datetime="2016-08-02T16:04:48Z">Aug 2, 2016</time> <span class="readtime">&middot; 1 min read</span>
+  </div>
+
+  <div>
+  <h4 id="install-centos-6x-x86_64">Install Centos 6.x x86_64</h4>
+<p><em>略.</em></p>
+<h4 id="安装依赖软件">安装依赖软件</h4>
+<pre tabindex="0"><code>yum -y install wget java glibc.i686
+</code></pre><h4 id="下载openfire-38-到本地">下载openfire 3.8 到本地</h4>
+<pre tabindex="0"><code>wget http://download.igniterealtime.org/openfire/openfire-3.8.1-1.i386.rpm
+</code></pre><h4 id="安装openfire-38">安装openfire 3.8</h4>
+<pre tabindex="0"><code>yum -y install ./openfire*rpm
+</code></pre><h4 id="设置服务开启自启动">设置服务开启自启动</h4>
+<pre tabindex="0"><code>chkconfig openfire on
+
+</code></pre><h4 id="yum-install-mysql-server">Yum Install mysql-server</h4>
+<p>详见： <a href="http://blog.ultraera.org/how-to-install-mysql-5-6-on-centos/">How to Install MySQL 5.5/6/7 on RHEL/CentOS 5/6/7</a></p>
+<h4 id="创建openfire数据库">创建openfire数据库</h4>
+<pre tabindex="0"><code>mysql -u root -p
+
+create database openfire character set utf8;
+grant all privileges on openfire.* to 'openfire'@'127.0.0.1' identified by 'openfire' with grant option;
+</code></pre><h4 id="启动openfire">启动openfire</h4>
+<pre tabindex="0"><code>http://Host:9090
+</code></pre><h4 id="之后的初始化步骤请根据实际操作注意设定数据库地址用户名和密码时不要出错">之后的初始化步骤，请根据实际操作，注意设定数据库地址用户名和密码时不要出错</h4>
+<h4 id="faq">FAQ</h4>
+<p>openfire安装完毕后无法登录控制台</p>
+<pre tabindex="0"><code>报错：Login failed:make sure your username and password are correct and that you’re an admin or moderator
+
+解决方案如下：
+1.使用Mysql查看工具进入数据库，进入表“ofuser”，将该表清空，然后执行该SQL
+INSERT INTO ofUser (username, plainPassword, name, email, creationDate, modificationDate)
+    VALUES ('admin', 'admin', 'Administrator', 'admin@example.com', '0', '0');
+
+2.关闭openfire服务，就是从其控制台stop然后再start，再用用户名：admin,密码：admin登录即可
+</code></pre><p>openfire 进程无法启动</p>
+<pre tabindex="0"><code>报错：nohup: failed to run command `/opt/openfire/jre/bin/java': No such file or directory
+
+解决方案如下：
+经检查是由于openfire未能正确识别jre环境变量导致，安装时自带的jre是32位，但操作系统却是64位操作平台。
+，故在/etc/init.d/openfire的启动脚本修改，
+JAVA_HOME=&quot;/usr/lib/jvm/jre-$VERSION.x86_64&quot;
+</code></pre>
+  </div>
+
+  
+<div>
+  <ul class="tags">
+  <li>
+    <a href="https://example.com/tags/openfire/" class="tag-link">Openfire</a>
+  </li>
+  </ul>
+</div>
+
+
+
+  <div class="share-buttons">
+  <a class="twitter-share-button"
+     href="#"
+     title="Share on Twitter"
+     data-url="https://example.com/posts/howto-install-openfire-on-centos/"
+     data-text="HowTo Install Openfire  on CentOS"><i class="fab fa-twitter"></i></a>
+
+  <a class="linkedin-share-button"
+     href="#"
+     title="Share on LinkedIn"
+     data-url="https://example.com/posts/howto-install-openfire-on-centos/"
+     data-text="HowTo Install Openfire  on CentOS"><i class="fab fa-linkedin-in"></i></a>
+
+  <a class="facebook-share-button"
+     href="#"
+     title="Share on Facebook"
+     data-url="https://example.com/posts/howto-install-openfire-on-centos/"
+     data-text="HowTo Install Openfire  on CentOS"><i class="fab fa-facebook"></i></a>
+
+  <a class="telegram-share-button"
+     href="#"
+     title="Share on Telegram"
+     data-url="https://example.com/posts/howto-install-openfire-on-centos/"
+     data-text="HowTo Install Openfire  on CentOS"><i class="fab fa-telegram"></i></a>
+
+  <a class="pinterest-share-button"
+     href="#"
+     title="Share on Pinterest"
+     data-url="https://example.com/posts/howto-install-openfire-on-centos/"
+     data-text="HowTo Install Openfire  on CentOS"><i class="fab fa-pinterest"></i></a>
+</div>
+
+
+  
+</div>
+  </main>
+
+  <footer>
+  <div>
+    <p>
+      &copy; samzong.lu 2021
+
+      &middot; <a href="https://creativecommons.org/licenses/by-sa/4.0" target="_blank">CC BY-SA 4.0</a>
+
+      
+    </p>
+  </div>
+</footer>
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/js/all.min.js"
+          integrity="sha256-MAgcygDRahs+F/Nk5Vz387whB4kSK9NXlDN3w58LLq0="
+          crossorigin="anonymous"></script>
+
+
+  <script src="/js/jquery.min.js"></script>
+  <script src="/js/soho.js"></script>
+
+  <script src="/js/blog.js"></script>
+
+  
+</body>
+</html>

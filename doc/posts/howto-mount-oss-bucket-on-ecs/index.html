@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh-CN" lang="zh-CN">
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="generator" content="Hugo 0.88.1" />
+
+  <title>HowTo Mount OSS Bucket On ECS &middot; SAMZONG</title>
+
+  <meta name="description" content="" />
+
+  
+
+<meta itemprop="name" content="HowTo Mount OSS Bucket On ECS">
+<meta itemprop="description" content="From 阿里云官方Github
+  Demo: CentOS 6.8 on ECS"><meta itemprop="datePublished" content="2016-12-20T06:17:08+00:00" />
+<meta itemprop="dateModified" content="2016-12-20T06:17:08+00:00" />
+<meta itemprop="wordCount" content="108">
+<meta itemprop="keywords" content="AliCloud," />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="HowTo Mount OSS Bucket On ECS"/>
+<meta name="twitter:description" content="From 阿里云官方Github
+  Demo: CentOS 6.8 on ECS"/>
+
+
+<meta property="og:title" content="HowTo Mount OSS Bucket On ECS" />
+<meta property="og:description" content="From 阿里云官方Github
+  Demo: CentOS 6.8 on ECS" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://example.com/posts/howto-mount-oss-bucket-on-ecs/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2016-12-20T06:17:08+00:00" />
+<meta property="article:modified_time" content="2016-12-20T06:17:08+00:00" />
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type":"Person",
+      "@id": "https://example.com#author",
+      "name": "samzong.lu",
+      "image": {
+        "@type":"ImageObject",
+        "url": "https://www.gravatar.com/avatar/c02c426714361366ea7d583950aa8fb4?s=400&d=mp"
+      },
+      "description": "Samzong's Blog"
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://example.com#website",
+      "url": "https://example.com",
+      "name": "SAMZONG",
+      "description": "Samzong's Blog",
+      "publisher": {
+        "@id": "https://example.com#author"
+      },
+      "inLanguage": "zh-CN"
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://example.com/posts/howto-mount-oss-bucket-on-ecs/#webpage",
+      "url": "https://example.com/posts/howto-mount-oss-bucket-on-ecs/",
+      "name": "HowTo Mount OSS Bucket On ECS",
+      "isPartOf": {
+        "@id": "https://example.com#website"
+      },
+      "about": {
+         "@id": "https://example.com#author"
+      },
+      "datePublished": "2016-12-20T06:17:08+00:00",
+      "dateModified": "2016-12-20T06:17:08+00:00",
+      "description": "From 阿里云官方Github\n  Demo: CentOS 6.8 on ECS",
+      "inLanguage": "zh-CN",
+      "potentialAction": [
+        {
+          "@type": "ReadAction",
+          "target": [
+            "https://example.com/posts/howto-mount-oss-bucket-on-ecs/"
+          ]
+        }
+      ]
+    },
+    {
+      "@type": "Article",
+      "isPartOf": {
+        "@id": "https://example.com/posts/howto-mount-oss-bucket-on-ecs/#webpage"
+      },
+      "mainEntityOfPage": {
+        "@id": "https://example.com/posts/howto-mount-oss-bucket-on-ecs/#webpage"
+      },
+      "headline": "HowTo Mount OSS Bucket On ECS",
+      "datePublished": "2016-12-20T06:17:08+00:00",
+      "dateModified": "2016-12-20T06:17:08+00:00",
+      "publisher": {
+        "@id": "https://example.com#author"
+      },
+      "keywords": [
+        "AliCloud"
+      ],
+      "articleSection": [
+        "AliCloud"
+      ],
+      "inLanguage": "zh-CN",
+      "author": {
+        "@type": "Person",
+        "name":  null 
+      },
+      "potentialAction": [
+        {
+          "@type": "CommentAction",
+          "name": "Comment",
+          "target": [
+            "https://example.com/posts/howto-mount-oss-bucket-on-ecs/#comments"
+          ]
+        }
+      ]
+    }
+  ]
+}
+</script>
+
+
+
+  <link type="text/css"
+        rel="stylesheet"
+        href="/css/print.css"
+        media="print">
+
+  <link type="text/css"
+        rel="stylesheet"
+        href="/css/poole.css">
+
+  <link type="text/css"
+        rel="stylesheet"
+        href="/css/hyde.css">
+
+  
+
+
+  <link type="text/css" rel="stylesheet" href="/css/blog.css">
+
+  <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700&display=swap">
+
+  <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css"
+        integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk="
+        crossorigin="anonymous" />
+
+  <link rel="apple-touch-icon-precomposed"
+        sizes="144x144"
+        href="/apple-touch-icon-144-precomposed.png">
+
+  <link rel="shortcut icon" href="/favicon.png">
+
+  
+  </head>
+<body>
+  <aside class="sidebar">
+  <div class="container">
+    <div class="sidebar-about">
+      
+      <div class="author-image">
+        <a href="https://example.com">
+          <img src="https://www.gravatar.com/avatar/c02c426714361366ea7d583950aa8fb4?s=200&d=mp" class="img-circle img-headshot center" alt="Gravatar">
+        </a>
+      </div>
+      
+
+      <h1>SAMZONG</h1>
+
+      
+      <p class="lead">Samzong&#39;s Blog</p>
+      
+    </div>
+
+    <nav>
+      <ul class="sidebar-nav">
+        <li>
+          <a href="https://example.com">Home</a>
+        </li>
+        <li>
+          <a href="/posts/">Posts</a>
+        </li><li>
+          <a href="/about/">About</a>
+        </li>
+      </ul>
+    </nav>
+
+    <section class="social-icons">
+      
+      <a href="https://www.linkedin.com/in/samzong/" rel="me" title="Linkedin" target="_blank">
+        <i class="fab fa-linkedin" aria-hidden="true"></i>
+      </a>
+      
+      <a href="https://github.com/samzong" rel="me" title="GitHub" target="_blank">
+        <i class="fab fa-github" aria-hidden="true"></i>
+      </a>
+      
+      <a href="https://twitter.com/samzong_lu" rel="me" title="Twitter" target="_blank">
+        <i class="fab fa-twitter" aria-hidden="true"></i>
+      </a>
+      
+    </section>
+  </div>
+</aside>
+
+
+  <main class="content container">
+  <div class="post">
+  <h1 class="title">HowTo Mount OSS Bucket On ECS</h1>
+  
+
+  <div class="post-date">
+    <time datetime="2016-12-20T06:17:08Z">Dec 20, 2016</time> <span class="readtime">&middot; 1 min read</span>
+  </div>
+
+  <div>
+  <blockquote>
+<p>From <a href="https://github.com/aliyun/ossfs">阿里云官方Github</a></p>
+</blockquote>
+<blockquote>
+<p>Demo: CentOS 6.8 on ECS</p>
+</blockquote>
+<p>ossfs 是通过磁盘挂载的形式，将oss存储挂载到linux、类unix等操作系统，而且不仅仅可以挂载阿里云内的ECS上，理论上所有网络能到达oss的都可以挂载，但还是要以实际问题为准。</p>
+<h5 id="1download--install">1.Download &amp; Install</h5>
+<p><a href="https://github.com/aliyun/ossfs/releases">官方版本发布页面</a>，请根据你的系统类型进行选择，我这演示的环境是CentOS 6.8；ossfs目前最新的版本是v1.79.9，您可以根据自己当时版本进行选择，建议选择最新版本。</p>
+<pre tabindex="0"><code># 请先将包上传到服务器上
+ sudo yum localinstall ossfs_1.79.9_centos6.5_x86_64.rpm
+</code></pre><blockquote>
+<p>注意使用localinstall，因为在安装过程，yum 可以很好的解决依赖关系，会节省我们很多时间</p>
+</blockquote>
+<h5 id="2-oss--bucket">2. OSS &amp; Bucket</h5>
+<p>需要获取以下信息，在后面我们都会用到的：<!-- raw HTML omitted --></p>
+<ol>
+<li>Bucket 名称
+<img src="https://samzong.oss-cn-shenzhen.aliyuncs.com/2016/11/QQ20161111-0.jpg" alt="">
+<!-- raw HTML omitted --></li>
+<li>Access Key ID</li>
+<li>Access Key Secret
+<img src="https://samzong.oss-cn-shenzhen.aliyuncs.com/2016/11/0256A9CB-A0FA-43BC-82AF-4DE17D4852B6.png" alt=""></li>
+</ol>
+<p><img src="https://samzong.oss-cn-shenzhen.aliyuncs.com/2016/11/QQ20161111-2.jpg" alt="">
+<!-- raw HTML omitted -->
+4. Location，这需要注意点，不要加上Bucket的名字，区域对应表如下，注意你的Bucket所在区域:</p>
+<!-- raw HTML omitted -->
+<h1 id="如果使用ossfs的机器是阿里云ecs可以使用内网域名来避免流量收费和-提高速度">如果使用ossfs的机器是阿里云ECS，可以使用内网域名来避免流量收费和 提高速度：</h1>
+<p>sudo ossfs my-bucket /tmp/ossfs -ourl=http://oss-location-internal.aliyuncs.com</p>
+<pre tabindex="0"><code>磁盘空间达到上百T：
+![](https://samzong.oss-cn-shenzhen.aliyuncs.com/2016/11/0B78E099-5488-4839-AE48-09A074E7415D.png)
+&lt;br&gt;
+
+ umount：
+</code></pre><h1 id="注意用户身份">注意用户身份</h1>
+<p>umount /tmp/ossfs # root user
+sudo fusermount -u /tmp/ossfs # non-root user</p>
+<pre tabindex="0"><code>&lt;br&gt;
+##### 4. Debug &amp; FAQ
+当遇到错误的时候，可以试着打开Debug日志信息，然后分析问题原因：
+</code></pre><h1 id="使用--o-dbgleveldebug--f--d参数打印日志信息">使用 -o dbglevel=debug -f -d参数打印日志信息</h1>
+<p>sudo ossfs my-bucket /tmp/ossfs -ourl=http://oss-location-internal.aliyuncs.com -o dbglevel=debug -f -d &gt; /mnt/ossfs.log 2&gt;&amp;1</p>
+<pre tabindex="0"><code>
+更多的问题，请移步查看[官方的FAQ文档](https://github.com/aliyun/ossfs/wiki/FAQ)。
+
+&lt;br&gt;
+##### 5. About
+ossfs提供的功能和性能和本地文件系统相比，具有一些局限性。具体包括：
+
+* 随机或者追加写文件会导致整个文件的重写。
+* 元数据操作，例如list directory，性能较差，因为需要远程访问oss服务器。
+* 文件/文件夹的rename操作不是原子的。
+* 多个客户端挂载同一个oss bucket时，依赖用户自行协调各个客户端的行为。例如避免多个客户端写同一个文件等等。
+* 不支持hard link。
+* 不适合用在高并发读/写的场景，这样会让系统的load升高
+
+&gt; 另外，ossfs的稳定性很大一部分依赖于网络环境，建议的使用场景更多是作为临时数据迁移或定期备份，虽然ossfs挂载到系统中会有着几百TB的空间，但是稳定性并不高。
+</code></pre>
+  </div>
+
+  
+<div>
+  <ul class="tags">
+  <li>
+    <a href="https://example.com/tags/alicloud/" class="tag-link">AliCloud</a>
+  </li>
+  </ul>
+</div>
+
+
+
+  <div class="share-buttons">
+  <a class="twitter-share-button"
+     href="#"
+     title="Share on Twitter"
+     data-url="https://example.com/posts/howto-mount-oss-bucket-on-ecs/"
+     data-text="HowTo Mount OSS Bucket On ECS"><i class="fab fa-twitter"></i></a>
+
+  <a class="linkedin-share-button"
+     href="#"
+     title="Share on LinkedIn"
+     data-url="https://example.com/posts/howto-mount-oss-bucket-on-ecs/"
+     data-text="HowTo Mount OSS Bucket On ECS"><i class="fab fa-linkedin-in"></i></a>
+
+  <a class="facebook-share-button"
+     href="#"
+     title="Share on Facebook"
+     data-url="https://example.com/posts/howto-mount-oss-bucket-on-ecs/"
+     data-text="HowTo Mount OSS Bucket On ECS"><i class="fab fa-facebook"></i></a>
+
+  <a class="telegram-share-button"
+     href="#"
+     title="Share on Telegram"
+     data-url="https://example.com/posts/howto-mount-oss-bucket-on-ecs/"
+     data-text="HowTo Mount OSS Bucket On ECS"><i class="fab fa-telegram"></i></a>
+
+  <a class="pinterest-share-button"
+     href="#"
+     title="Share on Pinterest"
+     data-url="https://example.com/posts/howto-mount-oss-bucket-on-ecs/"
+     data-text="HowTo Mount OSS Bucket On ECS"><i class="fab fa-pinterest"></i></a>
+</div>
+
+
+  
+</div>
+  </main>
+
+  <footer>
+  <div>
+    <p>
+      &copy; samzong.lu 2021
+
+      &middot; <a href="https://creativecommons.org/licenses/by-sa/4.0" target="_blank">CC BY-SA 4.0</a>
+
+      
+    </p>
+  </div>
+</footer>
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/js/all.min.js"
+          integrity="sha256-MAgcygDRahs+F/Nk5Vz387whB4kSK9NXlDN3w58LLq0="
+          crossorigin="anonymous"></script>
+
+
+  <script src="/js/jquery.min.js"></script>
+  <script src="/js/soho.js"></script>
+
+  <script src="/js/blog.js"></script>
+
+  
+</body>
+</html>

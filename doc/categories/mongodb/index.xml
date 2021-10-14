@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>MongoDB on SAMZONG</title>
+    <link>https://example.com/categories/mongodb/</link>
+    <description>Recent content in MongoDB on SAMZONG</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Sun, 27 Mar 2016 05:55:28 +0000</lastBuildDate><atom:link href="https://example.com/categories/mongodb/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>HowTo Install MongoDB  on CentOS 6.x</title>
+      <link>https://example.com/posts/howto-install-mongodb-on-centos-6-x/</link>
+      <pubDate>Sun, 27 Mar 2016 05:55:28 +0000</pubDate>
+      
+      <guid>https://example.com/posts/howto-install-mongodb-on-centos-6-x/</guid>
+      <description>1. Overiew  在CentOS Linux 中安装软件的方式有很多种，我会在后续的文章中整理给大家，我比较喜欢的方式是尽量用Yum 安装，不用自己动手去解决软件包之间的依赖关系，“能Yum 就Yum ，不能Yum 想着法Yum 。” &amp;ndash; 这是我遵循的真理；今天给大家整理的就是如何使用Yum 来安装Mongodb ，在本文中会给出在32位与64位系统的区别，以及Mongodb 的版本，本文适用于CentOS 6/7 的Linux发行版本，所以同样适用于红帽体系的OS，如 RedHat Enterprise Linux 6/7 、 Fedora 。</description>
+    </item>
+    
+  </channel>
+</rss>

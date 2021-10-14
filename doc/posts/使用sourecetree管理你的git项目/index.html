@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh-CN" lang="zh-CN">
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="generator" content="Hugo 0.88.1" />
+
+  <title>使用SoureceTree管理你的git项目 &middot; SAMZONG</title>
+
+  <meta name="description" content="" />
+
+  
+
+<meta itemprop="name" content="使用SoureceTree管理你的git项目">
+<meta itemprop="description" content="Update  update: Windows用户在初始化Souretree工具时，需要用到Atlassian ID，新建用户时需要加载google 验证码，这一步需要VPN的支持，请注意。 找到一个版本的SourceTree工具可以不需要以上验证也能使用，下载链接：SourceTreeSetup_1.6.14.exe 密码：c5l4  补充1 ：Git学习网站  猴子都能学会的git教程 常用 Git 命令清单 廖雪峰的git教程 Why Git is Better than X  补充2 ：利用Git协同开发  团队中的Git实践 Git 使用规范流程 Git分支管理模型 图解Git  1."><meta itemprop="datePublished" content="2016-04-20T21:31:49+00:00" />
+<meta itemprop="dateModified" content="2016-04-20T21:31:49+00:00" />
+<meta itemprop="wordCount" content="198">
+<meta itemprop="keywords" content="Git," />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="使用SoureceTree管理你的git项目"/>
+<meta name="twitter:description" content="Update  update: Windows用户在初始化Souretree工具时，需要用到Atlassian ID，新建用户时需要加载google 验证码，这一步需要VPN的支持，请注意。 找到一个版本的SourceTree工具可以不需要以上验证也能使用，下载链接：SourceTreeSetup_1.6.14.exe 密码：c5l4  补充1 ：Git学习网站  猴子都能学会的git教程 常用 Git 命令清单 廖雪峰的git教程 Why Git is Better than X  补充2 ：利用Git协同开发  团队中的Git实践 Git 使用规范流程 Git分支管理模型 图解Git  1."/>
+
+
+<meta property="og:title" content="使用SoureceTree管理你的git项目" />
+<meta property="og:description" content="Update  update: Windows用户在初始化Souretree工具时，需要用到Atlassian ID，新建用户时需要加载google 验证码，这一步需要VPN的支持，请注意。 找到一个版本的SourceTree工具可以不需要以上验证也能使用，下载链接：SourceTreeSetup_1.6.14.exe 密码：c5l4  补充1 ：Git学习网站  猴子都能学会的git教程 常用 Git 命令清单 廖雪峰的git教程 Why Git is Better than X  补充2 ：利用Git协同开发  团队中的Git实践 Git 使用规范流程 Git分支管理模型 图解Git  1." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://example.com/posts/%E4%BD%BF%E7%94%A8sourecetree%E7%AE%A1%E7%90%86%E4%BD%A0%E7%9A%84git%E9%A1%B9%E7%9B%AE/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2016-04-20T21:31:49+00:00" />
+<meta property="article:modified_time" content="2016-04-20T21:31:49+00:00" />
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type":"Person",
+      "@id": "https://example.com#author",
+      "name": "samzong.lu",
+      "image": {
+        "@type":"ImageObject",
+        "url": "https://www.gravatar.com/avatar/c02c426714361366ea7d583950aa8fb4?s=400&d=mp"
+      },
+      "description": "Samzong's Blog"
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://example.com#website",
+      "url": "https://example.com",
+      "name": "SAMZONG",
+      "description": "Samzong's Blog",
+      "publisher": {
+        "@id": "https://example.com#author"
+      },
+      "inLanguage": "zh-CN"
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://example.com/posts/%E4%BD%BF%E7%94%A8sourecetree%E7%AE%A1%E7%90%86%E4%BD%A0%E7%9A%84git%E9%A1%B9%E7%9B%AE/#webpage",
+      "url": "https://example.com/posts/%E4%BD%BF%E7%94%A8sourecetree%E7%AE%A1%E7%90%86%E4%BD%A0%E7%9A%84git%E9%A1%B9%E7%9B%AE/",
+      "name": "使用SoureceTree管理你的git项目",
+      "isPartOf": {
+        "@id": "https://example.com#website"
+      },
+      "about": {
+         "@id": "https://example.com#author"
+      },
+      "datePublished": "2016-04-20T21:31:49+00:00",
+      "dateModified": "2016-04-20T21:31:49+00:00",
+      "description": "Update  update: Windows用户在初始化Souretree工具时，需要用到Atlassian ID，新建用户时需要加载google 验证码，这一步需要VPN的支持，请注意。 找到一个版本的SourceTree工具可以不需要以上验证也能使用，下载链接：SourceTreeSetup_1.6.14.exe 密码：c5l4  补充1 ：Git学习网站  猴子都能学会的git教程 常用 Git 命令清单 廖雪峰的git教程 Why Git is Better than X  补充2 ：利用Git协同开发  团队中的Git实践 Git 使用规范流程 Git分支管理模型 图解Git  1.",
+      "inLanguage": "zh-CN",
+      "potentialAction": [
+        {
+          "@type": "ReadAction",
+          "target": [
+            "https://example.com/posts/%E4%BD%BF%E7%94%A8sourecetree%E7%AE%A1%E7%90%86%E4%BD%A0%E7%9A%84git%E9%A1%B9%E7%9B%AE/"
+          ]
+        }
+      ]
+    },
+    {
+      "@type": "Article",
+      "isPartOf": {
+        "@id": "https://example.com/posts/%E4%BD%BF%E7%94%A8sourecetree%E7%AE%A1%E7%90%86%E4%BD%A0%E7%9A%84git%E9%A1%B9%E7%9B%AE/#webpage"
+      },
+      "mainEntityOfPage": {
+        "@id": "https://example.com/posts/%E4%BD%BF%E7%94%A8sourecetree%E7%AE%A1%E7%90%86%E4%BD%A0%E7%9A%84git%E9%A1%B9%E7%9B%AE/#webpage"
+      },
+      "headline": "使用SoureceTree管理你的git项目",
+      "datePublished": "2016-04-20T21:31:49+00:00",
+      "dateModified": "2016-04-20T21:31:49+00:00",
+      "publisher": {
+        "@id": "https://example.com#author"
+      },
+      "keywords": [
+        "Git"
+      ],
+      "articleSection": [
+        "Git"
+      ],
+      "inLanguage": "zh-CN",
+      "author": {
+        "@type": "Person",
+        "name":  null 
+      },
+      "potentialAction": [
+        {
+          "@type": "CommentAction",
+          "name": "Comment",
+          "target": [
+            "https://example.com/posts/%E4%BD%BF%E7%94%A8sourecetree%E7%AE%A1%E7%90%86%E4%BD%A0%E7%9A%84git%E9%A1%B9%E7%9B%AE/#comments"
+          ]
+        }
+      ]
+    }
+  ]
+}
+</script>
+
+
+
+  <link type="text/css"
+        rel="stylesheet"
+        href="/css/print.css"
+        media="print">
+
+  <link type="text/css"
+        rel="stylesheet"
+        href="/css/poole.css">
+
+  <link type="text/css"
+        rel="stylesheet"
+        href="/css/hyde.css">
+
+  
+
+
+  <link type="text/css" rel="stylesheet" href="/css/blog.css">
+
+  <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700&display=swap">
+
+  <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css"
+        integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk="
+        crossorigin="anonymous" />
+
+  <link rel="apple-touch-icon-precomposed"
+        sizes="144x144"
+        href="/apple-touch-icon-144-precomposed.png">
+
+  <link rel="shortcut icon" href="/favicon.png">
+
+  
+  </head>
+<body>
+  <aside class="sidebar">
+  <div class="container">
+    <div class="sidebar-about">
+      
+      <div class="author-image">
+        <a href="https://example.com">
+          <img src="https://www.gravatar.com/avatar/c02c426714361366ea7d583950aa8fb4?s=200&d=mp" class="img-circle img-headshot center" alt="Gravatar">
+        </a>
+      </div>
+      
+
+      <h1>SAMZONG</h1>
+
+      
+      <p class="lead">Samzong&#39;s Blog</p>
+      
+    </div>
+
+    <nav>
+      <ul class="sidebar-nav">
+        <li>
+          <a href="https://example.com">Home</a>
+        </li>
+        <li>
+          <a href="/posts/">Posts</a>
+        </li><li>
+          <a href="/about/">About</a>
+        </li>
+      </ul>
+    </nav>
+
+    <section class="social-icons">
+      
+      <a href="https://www.linkedin.com/in/samzong/" rel="me" title="Linkedin" target="_blank">
+        <i class="fab fa-linkedin" aria-hidden="true"></i>
+      </a>
+      
+      <a href="https://github.com/samzong" rel="me" title="GitHub" target="_blank">
+        <i class="fab fa-github" aria-hidden="true"></i>
+      </a>
+      
+      <a href="https://twitter.com/samzong_lu" rel="me" title="Twitter" target="_blank">
+        <i class="fab fa-twitter" aria-hidden="true"></i>
+      </a>
+      
+    </section>
+  </div>
+</aside>
+
+
+  <main class="content container">
+  <div class="post">
+  <h1 class="title">使用SoureceTree管理你的git项目</h1>
+  
+
+  <div class="post-date">
+    <time datetime="2016-04-20T21:31:49Z">Apr 20, 2016</time> <span class="readtime">&middot; 1 min read</span>
+  </div>
+
+  <div>
+  <h6 id="update">Update</h6>
+<ul>
+<li><!-- raw HTML omitted -->update: Windows用户在初始化Souretree工具时，需要用到Atlassian ID，新建用户时需要加载google 验证码，这一步需要VPN的支持，请注意。<!-- raw HTML omitted --></li>
+<li>找到一个版本的SourceTree工具可以不需要以上验证也能使用，下载链接：<a href="http://pan.baidu.com/s/1eRDMgEY">SourceTreeSetup_1.6.14.exe</a> 密码：c5l4</li>
+</ul>
+<!-- raw HTML omitted -->
+<h5 id="补充1-git学习网站">补充1 ：Git学习网站</h5>
+<ol>
+<li><a href="http://backlogtool.com/git-guide/cn/">猴子都能学会的git教程</a></li>
+<li><a href="http://www.ruanyifeng.com/blog/2015/12/git-cheat-sheet.html">常用 Git 命令清单</a></li>
+<li><a href="http://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000">廖雪峰的git教程</a></li>
+<li><a href="http://zoomq.qiniudn.com/ZQScrapBook/ZqFLOSS/data/20081210180347/">Why Git is Better than X</a></li>
+</ol>
+<h5 id="补充2-利用git协同开发">补充2 ：利用Git协同开发</h5>
+<ol>
+<li><a href="https://ourai.ws/posts/working-with-git-in-team/">团队中的Git实践</a></li>
+<li><a href="http://www.ruanyifeng.com/blog/2015/08/git-use-process.html">Git 使用规范流程</a></li>
+<li><a href="http://nvie.com/files/Git-branching-model.pdf">Git分支管理模型</a></li>
+<li><a href="http://marklodato.github.io/visual-git-guide/index-zh-cn.html">图解Git</a></li>
+</ol>
+<!-- raw HTML omitted -->
+<h2 id="1-关于-sourcetree">1. 关于 SourceTree</h2>
+<h4 id="sourcetree-是一款免费且同时支持windows-和mac-的git项目管理软件本文旨在给大家介绍这款应用的基础使用并用它来管理你的项目">SourceTree 是一款免费且同时支持Windows 和Mac 的git项目管理软件，本文旨在给大家介绍这款应用的基础使用，并用它来管理你的项目。</h4>
+<blockquote>
+<p>官网： <a href="https://www.sourcetreeapp.com/">https://www.sourcetreeapp.com/</a></p>
+</blockquote>
+<h2 id="2-git帐号建立">2. git帐号建立</h2>
+<h3 id="1-新员工入职之后你的公司邮箱内会收到一封来自gitlab的邮件如下图">1. 新员工入职之后，你的公司邮箱内会收到一封来自Gitlab的邮件，如下图：</h3>
+<p><img src="http://samzong.oss-cn-shenzhen.aliyuncs.com/2016%2F04%2Fsourcetree02.jpg" alt="image"></p>
+<h3 id="2-点击邮件中的-click-here-to-set-your-password设置gitlab登陆密码">2. 点击邮件中的 “Click here to set your password”，设置gitlab登陆密码。</h3>
+<p><img src="http://samzong.oss-cn-shenzhen.aliyuncs.com/2016%2F04%2Fsouretree03.jpg" alt="image"></p>
+<h3 id="3-登陆gitlab帐号将会出现这个界面">3. 登陆gitlab帐号，将会出现这个界面：</h3>
+<p><img src="http://samzong.oss-cn-shenzhen.aliyuncs.com/2016%2F04%2Fsourcetree05.jpg" alt="image"></p>
+<h3 id="4-设定个人信息">4. 设定个人信息：</h3>
+<p><img src="http://samzong.oss-cn-shenzhen.aliyuncs.com/2016%2F04%2Fsouretree06.jpg" alt="image"></p>
+<h3 id="5-sshkey">5. sshKey</h3>
+<h4 id="51-在linux和mac上生成sshkey">5.1 在Linux和Mac上生成sshkey：</h4>
+<pre tabindex="0"><code>➜  ~ ssh-keygen -t rsa
+Generating public/private rsa key pair.
+Enter file in which to save the key (/Users/Alex/.ssh/id_rsa):
+Enter passphrase (empty for no passphrase):
+Enter same passphrase again:
+Your identification has been saved in /Users/Alex/.ssh/id_rsa.
+Your public key has been saved in /Users/Alex/.ssh/id_rsa.pub.
+The key fingerprint is:
+SHA256:98jE3jhBhFT5nQlZRj34a3WOk1t6XF+Dbf/hliXl4WQ Alex@Alex-Mac
+The key's randomart image is:
++---[RSA 2048]----+
+|       ..oo. +=. |
+|        ... oo ..|
+|          .. o.o.|
+|         o  . +E+|
+|        S =   **=|
+|         = * .=BB|
+|          * o oOO|
+|           .  +o*|
+|              .oo|
++----[SHA256]-----+
+➜  ~ cat ~/.ssh/id_rsa.pub
+ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCvuQAq65b+nLZPqqc3b3Mj9e7Pt8oWKasJFa2QH1VIEkDvxKLFGcHsT7Ur4zXwEi9YiW2tVRrBSjcMALxuBjVm2IxYV6Lk8SLuGadyYy5telWGJmHsQ3VIPRuKwpzTkLN643kjqc6JFSlnZG/XoP9SPtCOsp2ql4u0s7Auc2bZay4RaTDXbcpJVU9OA0xM8Zy4oTTNYdZ4tvGittVmn+wLrhN255J7clORF5126dmDYxV3E8ZboaDdQpdLGIWmDNcBJQvl0CLwpKUCi7EUDqDVtm4bNgwIX9fEIkTxGdaWjBW1iXBk8TGXWkgB+Qp8B1IwaJ4GHUwUhQrefWvw9XeJ Alex@Alex-Mac
+➜  ~
+</code></pre><h4 id="52-在windows上生成sshkey">5.2 在Windows上生成sshkey：</h4>
+<h4 id="因为windows没有自带openssl模块所以在windows环境中使用第三方工具puttygenexe生成sshkey-下载地址httptheearthlisgtathamputty067x86puttygenexe">因为windows没有自带openssl模块，所以在Windows环境中使用第三方工具puttygen.exe生成sshkey <a href="http://the.earth.li/~sgtatham/putty/0.67/x86/puttygen.exe">下载地址</a></h4>
+<h4 id="步骤如下">步骤如下：</h4>
+<p><img src="http://samzong.oss-cn-shenzhen.aliyuncs.com/2016%2F04%2Fsourcetree13.jpg" alt="image">
+<img src="http://samzong.oss-cn-shenzhen.aliyuncs.com/2016%2F04%2Fsourcetree14.jpg" alt="image">
+<img src="http://samzong.oss-cn-shenzhen.aliyuncs.com/2016%2F04%2Fsourcetree15.jpg" alt="image"></p>
+<h4 id="当sourcetree首次启动时会弹出加载sshkey的提示按提示操作找到之前保存的privateppk文件">当sourcetree首次启动时，会弹出加载sshkey的提示，按提示操作，找到之前保存的private.ppk文件</h4>
+<p><img src="http://samzong.oss-cn-shenzhen.aliyuncs.com/2016%2F04%2Fsourcetree12.jpg" alt="image"></p>
+<h4 id="53-上传sshkey">5.3 上传sshkey：</h4>
+<p><img src="http://samzong.oss-cn-shenzhen.aliyuncs.com/2016%2F04%2Fsourcetree07.jpg" alt="image"></p>
+<h3 id="6-回到-dashboard-点击项目名称进入详情">6. 回到 dashboard ，点击项目名称进入详情：</h3>
+<p><img src="http://samzong.oss-cn-shenzhen.aliyuncs.com/2016%2F04%2Fsourcetree08.jpg" alt="image"></p>
+<h3 id="7-使用souretree将项目从git服务器clone到本地">7. 使用souretree将项目从git服务器clone到本地</h3>
+<h4 id="71-安装souretree-软件-略">7.1 安装souretree 软件 ［略］</h4>
+<h4 id="72-clone项目到本地">7.2 clone项目到本地</h4>
+<p><img src="http://samzong.oss-cn-shenzhen.aliyuncs.com/2016%2F04%2Fsourcetree09.jpg" alt="image">
+<img src="http://samzong.oss-cn-shenzhen.aliyuncs.com/2016%2F04%2Fsourcetree10.jpg" alt="image"></p>
+<h3 id="8-进入项目工作台">8. 进入项目工作台：</h3>
+<p><img src="http://samzong.oss-cn-shenzhen.aliyuncs.com/2016%2F04%2Fsourcetree11.jpg" alt="image"></p>
+<h4 id="9-关于sourcetree工具的使用下面是一些git操作的释疑">9. 关于sourcetree工具的使用，下面是一些git操作的释疑。</h4>
+<ul>
+<li>检出仓库: 将在本地创建一个git仓库的克隆版本</li>
+<li>工作流: 本地仓库由 git 维护的三棵“树”组成。第一个是 工作目录，它持有实际文件；第二个是 缓存区（Index），它像个缓存区域，临时保存改动；最后是 HEAD，指向最近一次提交后的结果。</li>
+<li>提交：可以计划改动（把它们添加到缓存区),将改动提交到了 HEAD，但是还没到提交到远端仓库。</li>
+<li>拉取：从远端仓库拉取最新版本状态，特别是在其他人员有所改动之后。</li>
+<li>推送：改动现在已经在本地仓库的 HEAD 中了。这时可以使用它将这些改动提交到远端仓库。</li>
+<li>分支：分支是用来将特性开发分离出来的。在创建仓库的时候，master 是“默认的”。创建分支将可以从主线开发上分离开来，然后在不影响主线的同时继续工作，完成后再将它们合并到主分支上。</li>
+<li>合并： 将分支功能并入主分支。</li>
+</ul>
+
+  </div>
+
+  
+<div>
+  <ul class="tags">
+  <li>
+    <a href="https://example.com/tags/git/" class="tag-link">Git</a>
+  </li>
+  </ul>
+</div>
+
+
+
+  <div class="share-buttons">
+  <a class="twitter-share-button"
+     href="#"
+     title="Share on Twitter"
+     data-url="https://example.com/posts/%E4%BD%BF%E7%94%A8sourecetree%E7%AE%A1%E7%90%86%E4%BD%A0%E7%9A%84git%E9%A1%B9%E7%9B%AE/"
+     data-text="使用SoureceTree管理你的git项目"><i class="fab fa-twitter"></i></a>
+
+  <a class="linkedin-share-button"
+     href="#"
+     title="Share on LinkedIn"
+     data-url="https://example.com/posts/%E4%BD%BF%E7%94%A8sourecetree%E7%AE%A1%E7%90%86%E4%BD%A0%E7%9A%84git%E9%A1%B9%E7%9B%AE/"
+     data-text="使用SoureceTree管理你的git项目"><i class="fab fa-linkedin-in"></i></a>
+
+  <a class="facebook-share-button"
+     href="#"
+     title="Share on Facebook"
+     data-url="https://example.com/posts/%E4%BD%BF%E7%94%A8sourecetree%E7%AE%A1%E7%90%86%E4%BD%A0%E7%9A%84git%E9%A1%B9%E7%9B%AE/"
+     data-text="使用SoureceTree管理你的git项目"><i class="fab fa-facebook"></i></a>
+
+  <a class="telegram-share-button"
+     href="#"
+     title="Share on Telegram"
+     data-url="https://example.com/posts/%E4%BD%BF%E7%94%A8sourecetree%E7%AE%A1%E7%90%86%E4%BD%A0%E7%9A%84git%E9%A1%B9%E7%9B%AE/"
+     data-text="使用SoureceTree管理你的git项目"><i class="fab fa-telegram"></i></a>
+
+  <a class="pinterest-share-button"
+     href="#"
+     title="Share on Pinterest"
+     data-url="https://example.com/posts/%E4%BD%BF%E7%94%A8sourecetree%E7%AE%A1%E7%90%86%E4%BD%A0%E7%9A%84git%E9%A1%B9%E7%9B%AE/"
+     data-text="使用SoureceTree管理你的git项目"><i class="fab fa-pinterest"></i></a>
+</div>
+
+
+  
+</div>
+  </main>
+
+  <footer>
+  <div>
+    <p>
+      &copy; samzong.lu 2021
+
+      &middot; <a href="https://creativecommons.org/licenses/by-sa/4.0" target="_blank">CC BY-SA 4.0</a>
+
+      
+    </p>
+  </div>
+</footer>
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/js/all.min.js"
+          integrity="sha256-MAgcygDRahs+F/Nk5Vz387whB4kSK9NXlDN3w58LLq0="
+          crossorigin="anonymous"></script>
+
+
+  <script src="/js/jquery.min.js"></script>
+  <script src="/js/soho.js"></script>
+
+  <script src="/js/blog.js"></script>
+
+  
+</body>
+</html>

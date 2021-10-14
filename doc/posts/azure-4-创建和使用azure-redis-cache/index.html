@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh-CN" lang="zh-CN">
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="generator" content="Hugo 0.88.1" />
+
+  <title>Azure(4) 创建和使用Azure Redis Cache &middot; SAMZONG</title>
+
+  <meta name="description" content="" />
+
+  
+
+<meta itemprop="name" content="Azure(4) 创建和使用Azure Redis Cache">
+<meta itemprop="description" content="我们以管理员身份，运行PowerShell，执行以下命令。实现创建Standard类型，大小为13GB的Redis Cache
+#弹出界面输入用户名密码 Add-AzureAccount -Environment AzureChinaCloud #设置当前订阅名称 Select-AzureSubscription &#39;[SubscriptionName]&#39; –Current Switch-AzureMode -name AzureResourceManager #在中国东部数据中心，创建新的资源组 New-AzureResourceGroup -name [YourResourceGroupName] -Location &#39;China East&#39; #在中国东部数据中心，申请13GB的Redis Cache，类型为Standard，有SLA保证 New-AzureRedisCache -ResourceGroupName [YourResourceGroupName] -Name [RedisCacheName] -Location &#39;China East&#39; -sku &#39;Standard&#39; -Size &#39;13GB&#39; "><meta itemprop="datePublished" content="2016-05-12T06:12:02+00:00" />
+<meta itemprop="dateModified" content="2016-05-12T06:12:02+00:00" />
+<meta itemprop="wordCount" content="34">
+<meta itemprop="keywords" content="Azure," />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Azure(4) 创建和使用Azure Redis Cache"/>
+<meta name="twitter:description" content="我们以管理员身份，运行PowerShell，执行以下命令。实现创建Standard类型，大小为13GB的Redis Cache
+#弹出界面输入用户名密码 Add-AzureAccount -Environment AzureChinaCloud #设置当前订阅名称 Select-AzureSubscription &#39;[SubscriptionName]&#39; –Current Switch-AzureMode -name AzureResourceManager #在中国东部数据中心，创建新的资源组 New-AzureResourceGroup -name [YourResourceGroupName] -Location &#39;China East&#39; #在中国东部数据中心，申请13GB的Redis Cache，类型为Standard，有SLA保证 New-AzureRedisCache -ResourceGroupName [YourResourceGroupName] -Name [RedisCacheName] -Location &#39;China East&#39; -sku &#39;Standard&#39; -Size &#39;13GB&#39; "/>
+
+
+<meta property="og:title" content="Azure(4) 创建和使用Azure Redis Cache" />
+<meta property="og:description" content="我们以管理员身份，运行PowerShell，执行以下命令。实现创建Standard类型，大小为13GB的Redis Cache
+#弹出界面输入用户名密码 Add-AzureAccount -Environment AzureChinaCloud #设置当前订阅名称 Select-AzureSubscription &#39;[SubscriptionName]&#39; –Current Switch-AzureMode -name AzureResourceManager #在中国东部数据中心，创建新的资源组 New-AzureResourceGroup -name [YourResourceGroupName] -Location &#39;China East&#39; #在中国东部数据中心，申请13GB的Redis Cache，类型为Standard，有SLA保证 New-AzureRedisCache -ResourceGroupName [YourResourceGroupName] -Name [RedisCacheName] -Location &#39;China East&#39; -sku &#39;Standard&#39; -Size &#39;13GB&#39; " />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://example.com/posts/azure-4-%E5%88%9B%E5%BB%BA%E5%92%8C%E4%BD%BF%E7%94%A8azure-redis-cache/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2016-05-12T06:12:02+00:00" />
+<meta property="article:modified_time" content="2016-05-12T06:12:02+00:00" />
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type":"Person",
+      "@id": "https://example.com#author",
+      "name": "samzong.lu",
+      "image": {
+        "@type":"ImageObject",
+        "url": "https://www.gravatar.com/avatar/c02c426714361366ea7d583950aa8fb4?s=400&d=mp"
+      },
+      "description": "Samzong's Blog"
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://example.com#website",
+      "url": "https://example.com",
+      "name": "SAMZONG",
+      "description": "Samzong's Blog",
+      "publisher": {
+        "@id": "https://example.com#author"
+      },
+      "inLanguage": "zh-CN"
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://example.com/posts/azure-4-%E5%88%9B%E5%BB%BA%E5%92%8C%E4%BD%BF%E7%94%A8azure-redis-cache/#webpage",
+      "url": "https://example.com/posts/azure-4-%E5%88%9B%E5%BB%BA%E5%92%8C%E4%BD%BF%E7%94%A8azure-redis-cache/",
+      "name": "Azure(4) 创建和使用Azure Redis Cache",
+      "isPartOf": {
+        "@id": "https://example.com#website"
+      },
+      "about": {
+         "@id": "https://example.com#author"
+      },
+      "datePublished": "2016-05-12T06:12:02+00:00",
+      "dateModified": "2016-05-12T06:12:02+00:00",
+      "description": "我们以管理员身份，运行PowerShell，执行以下命令。实现创建Standard类型，大小为13GB的Redis Cache\n#弹出界面输入用户名密码 Add-AzureAccount -Environment AzureChinaCloud #设置当前订阅名称 Select-AzureSubscription '[SubscriptionName]' –Current Switch-AzureMode -name AzureResourceManager #在中国东部数据中心，创建新的资源组 New-AzureResourceGroup -name [YourResourceGroupName] -Location 'China East' #在中国东部数据中心，申请13GB的Redis Cache，类型为Standard，有SLA保证 New-AzureRedisCache -ResourceGroupName [YourResourceGroupName] -Name [RedisCacheName] -Location 'China East' -sku 'Standard' -Size '13GB' ",
+      "inLanguage": "zh-CN",
+      "potentialAction": [
+        {
+          "@type": "ReadAction",
+          "target": [
+            "https://example.com/posts/azure-4-%E5%88%9B%E5%BB%BA%E5%92%8C%E4%BD%BF%E7%94%A8azure-redis-cache/"
+          ]
+        }
+      ]
+    },
+    {
+      "@type": "Article",
+      "isPartOf": {
+        "@id": "https://example.com/posts/azure-4-%E5%88%9B%E5%BB%BA%E5%92%8C%E4%BD%BF%E7%94%A8azure-redis-cache/#webpage"
+      },
+      "mainEntityOfPage": {
+        "@id": "https://example.com/posts/azure-4-%E5%88%9B%E5%BB%BA%E5%92%8C%E4%BD%BF%E7%94%A8azure-redis-cache/#webpage"
+      },
+      "headline": "Azure(4) 创建和使用Azure Redis Cache",
+      "datePublished": "2016-05-12T06:12:02+00:00",
+      "dateModified": "2016-05-12T06:12:02+00:00",
+      "publisher": {
+        "@id": "https://example.com#author"
+      },
+      "keywords": [
+        "Azure"
+      ],
+      "articleSection": [
+        "Azure"
+      ],
+      "inLanguage": "zh-CN",
+      "author": {
+        "@type": "Person",
+        "name":  null 
+      },
+      "potentialAction": [
+        {
+          "@type": "CommentAction",
+          "name": "Comment",
+          "target": [
+            "https://example.com/posts/azure-4-%E5%88%9B%E5%BB%BA%E5%92%8C%E4%BD%BF%E7%94%A8azure-redis-cache/#comments"
+          ]
+        }
+      ]
+    }
+  ]
+}
+</script>
+
+
+
+  <link type="text/css"
+        rel="stylesheet"
+        href="/css/print.css"
+        media="print">
+
+  <link type="text/css"
+        rel="stylesheet"
+        href="/css/poole.css">
+
+  <link type="text/css"
+        rel="stylesheet"
+        href="/css/hyde.css">
+
+  
+
+
+  <link type="text/css" rel="stylesheet" href="/css/blog.css">
+
+  <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700&display=swap">
+
+  <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css"
+        integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk="
+        crossorigin="anonymous" />
+
+  <link rel="apple-touch-icon-precomposed"
+        sizes="144x144"
+        href="/apple-touch-icon-144-precomposed.png">
+
+  <link rel="shortcut icon" href="/favicon.png">
+
+  
+  </head>
+<body>
+  <aside class="sidebar">
+  <div class="container">
+    <div class="sidebar-about">
+      
+      <div class="author-image">
+        <a href="https://example.com">
+          <img src="https://www.gravatar.com/avatar/c02c426714361366ea7d583950aa8fb4?s=200&d=mp" class="img-circle img-headshot center" alt="Gravatar">
+        </a>
+      </div>
+      
+
+      <h1>SAMZONG</h1>
+
+      
+      <p class="lead">Samzong&#39;s Blog</p>
+      
+    </div>
+
+    <nav>
+      <ul class="sidebar-nav">
+        <li>
+          <a href="https://example.com">Home</a>
+        </li>
+        <li>
+          <a href="/posts/">Posts</a>
+        </li><li>
+          <a href="/about/">About</a>
+        </li>
+      </ul>
+    </nav>
+
+    <section class="social-icons">
+      
+      <a href="https://www.linkedin.com/in/samzong/" rel="me" title="Linkedin" target="_blank">
+        <i class="fab fa-linkedin" aria-hidden="true"></i>
+      </a>
+      
+      <a href="https://github.com/samzong" rel="me" title="GitHub" target="_blank">
+        <i class="fab fa-github" aria-hidden="true"></i>
+      </a>
+      
+      <a href="https://twitter.com/samzong_lu" rel="me" title="Twitter" target="_blank">
+        <i class="fab fa-twitter" aria-hidden="true"></i>
+      </a>
+      
+    </section>
+  </div>
+</aside>
+
+
+  <main class="content container">
+  <div class="post">
+  <h1 class="title">Azure(4) 创建和使用Azure Redis Cache</h1>
+  
+
+  <div class="post-date">
+    <time datetime="2016-05-12T06:12:02Z">May 12, 2016</time> <span class="readtime">&middot; 1 min read</span>
+  </div>
+
+  <div>
+  <p>我们以管理员身份，运行PowerShell，执行以下命令。实现创建Standard类型，大小为13GB的Redis Cache</p>
+<pre tabindex="0"><code>#弹出界面输入用户名密码
+Add-AzureAccount -Environment AzureChinaCloud
+
+#设置当前订阅名称
+Select-AzureSubscription '[SubscriptionName]' –Current
+
+Switch-AzureMode -name AzureResourceManager
+
+#在中国东部数据中心，创建新的资源组
+New-AzureResourceGroup -name [YourResourceGroupName] -Location 'China East'
+
+#在中国东部数据中心，申请13GB的Redis Cache，类型为Standard，有SLA保证
+New-AzureRedisCache -ResourceGroupName [YourResourceGroupName] -Name [RedisCacheName] -Location 'China East' -sku 'Standard' -Size '13GB'
+</code></pre>
+  </div>
+
+  
+<div>
+  <ul class="tags">
+  <li>
+    <a href="https://example.com/tags/azure/" class="tag-link">Azure</a>
+  </li>
+  </ul>
+</div>
+
+
+
+  <div class="share-buttons">
+  <a class="twitter-share-button"
+     href="#"
+     title="Share on Twitter"
+     data-url="https://example.com/posts/azure-4-%E5%88%9B%E5%BB%BA%E5%92%8C%E4%BD%BF%E7%94%A8azure-redis-cache/"
+     data-text="Azure(4) 创建和使用Azure Redis Cache"><i class="fab fa-twitter"></i></a>
+
+  <a class="linkedin-share-button"
+     href="#"
+     title="Share on LinkedIn"
+     data-url="https://example.com/posts/azure-4-%E5%88%9B%E5%BB%BA%E5%92%8C%E4%BD%BF%E7%94%A8azure-redis-cache/"
+     data-text="Azure(4) 创建和使用Azure Redis Cache"><i class="fab fa-linkedin-in"></i></a>
+
+  <a class="facebook-share-button"
+     href="#"
+     title="Share on Facebook"
+     data-url="https://example.com/posts/azure-4-%E5%88%9B%E5%BB%BA%E5%92%8C%E4%BD%BF%E7%94%A8azure-redis-cache/"
+     data-text="Azure(4) 创建和使用Azure Redis Cache"><i class="fab fa-facebook"></i></a>
+
+  <a class="telegram-share-button"
+     href="#"
+     title="Share on Telegram"
+     data-url="https://example.com/posts/azure-4-%E5%88%9B%E5%BB%BA%E5%92%8C%E4%BD%BF%E7%94%A8azure-redis-cache/"
+     data-text="Azure(4) 创建和使用Azure Redis Cache"><i class="fab fa-telegram"></i></a>
+
+  <a class="pinterest-share-button"
+     href="#"
+     title="Share on Pinterest"
+     data-url="https://example.com/posts/azure-4-%E5%88%9B%E5%BB%BA%E5%92%8C%E4%BD%BF%E7%94%A8azure-redis-cache/"
+     data-text="Azure(4) 创建和使用Azure Redis Cache"><i class="fab fa-pinterest"></i></a>
+</div>
+
+
+  
+</div>
+  </main>
+
+  <footer>
+  <div>
+    <p>
+      &copy; samzong.lu 2021
+
+      &middot; <a href="https://creativecommons.org/licenses/by-sa/4.0" target="_blank">CC BY-SA 4.0</a>
+
+      
+    </p>
+  </div>
+</footer>
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/js/all.min.js"
+          integrity="sha256-MAgcygDRahs+F/Nk5Vz387whB4kSK9NXlDN3w58LLq0="
+          crossorigin="anonymous"></script>
+
+
+  <script src="/js/jquery.min.js"></script>
+  <script src="/js/soho.js"></script>
+
+  <script src="/js/blog.js"></script>
+
+  
+</body>
+</html>

@@ -1,0 +1,953 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Posts on SAMZONG</title>
+    <link>https://example.com/posts/</link>
+    <description>Recent content in Posts on SAMZONG</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Wed, 02 Jun 2021 00:54:38 +0000</lastBuildDate><atom:link href="https://example.com/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>2021年 全新出发</title>
+      <link>https://example.com/posts/2021%E5%B9%B4-%E5%85%A8%E6%96%B0%E8%A7%A6%E5%8F%91/</link>
+      <pubDate>Wed, 02 Jun 2021 00:54:38 +0000</pubDate>
+      
+      <guid>https://example.com/posts/2021%E5%B9%B4-%E5%85%A8%E6%96%B0%E8%A7%A6%E5%8F%91/</guid>
+      <description>写在开始之前的话 已经停更了接近3年的博客，感觉像是走了另一个方向的路，有点迷失方向的感觉；这三年算是人生中变化很多的地方吧。
+不过也有不少地方其实没变化，比如：
+ 报名学车 到现在还是没有学成 转职安心做一名研发，可水平还是吊儿郎当  这三年，也是有了很大的变化，最大的变化可能是：成为了一名全职的产品经理，而竟然我有一半的时间还在纠结是不是要回去。
+ 思绪有点乱，后面再继续写吧</description>
+    </item>
+    
+    <item>
+      <title>Check You Favorites App is readyOnapplesilicon</title>
+      <link>https://example.com/posts/check-you-favorites-app-is-ready-apple-silicon/</link>
+      <pubDate>Tue, 24 Nov 2020 00:32:13 +0000</pubDate>
+      
+      <guid>https://example.com/posts/check-you-favorites-app-is-ready-apple-silicon/</guid>
+      <description>1. https://isapplesiliconready.com/ If you have any apps want and to here.</description>
+    </item>
+    
+    <item>
+      <title>MySQL 命令行辅助 mycli</title>
+      <link>https://example.com/posts/mysql-%E5%91%BD%E4%BB%A4%E8%A1%8C%E8%BE%85%E5%8A%A9-mycli/</link>
+      <pubDate>Wed, 03 Jul 2019 13:17:04 +0000</pubDate>
+      
+      <guid>https://example.com/posts/mysql-%E5%91%BD%E4%BB%A4%E8%A1%8C%E8%BE%85%E5%8A%A9-mycli/</guid>
+      <description>Install Mycli is tested on macOS and Linux. It runs on Python 2.</description>
+    </item>
+    
+    <item>
+      <title>CentOS增加新硬盘给根文件系统扩容</title>
+      <link>https://example.com/posts/centos%E5%A2%9E%E5%8A%A0%E6%96%B0%E7%A1%AC%E7%9B%98%E7%BB%99%E6%A0%B9%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F%E6%89%A9%E5%AE%B9/</link>
+      <pubDate>Tue, 18 Apr 2017 17:48:57 +0000</pubDate>
+      
+      <guid>https://example.com/posts/centos%E5%A2%9E%E5%8A%A0%E6%96%B0%E7%A1%AC%E7%9B%98%E7%BB%99%E6%A0%B9%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F%E6%89%A9%E5%AE%B9/</guid>
+      <description>由于刚开始做磁盘空间规划时，失误给根分区分配磁盘较小，导致后续实验环境无法进行，所以在经过研究后，决定尝试增加根分区的磁盘空间，注意这仅适用于创建在LVM上的文件系统。
+实验环境  Parallels Desktop 12 CentOS 6.9 根分区空间 6.5GB 已使用 5.</description>
+    </item>
+    
+    <item>
+      <title>HowTo Install GitLab</title>
+      <link>https://example.com/posts/howto-install-gitlab/</link>
+      <pubDate>Thu, 13 Apr 2017 11:18:17 +0000</pubDate>
+      
+      <guid>https://example.com/posts/howto-install-gitlab/</guid>
+      <description>目前最为主流的在线Git版本控制系统可以说是非GitHub莫属，对于个人开发者和开源项目可以直接选择GitHub作为Git版本控制系统即可，但是，对于企业内部开发管理的Git版本控制系统，在对保密性有高要求时GitHub就不合适了，这时GitLab作为一个可以完全搭建在企业内部的Git版本控制系统，而且基本囊括了GitHub的所有功能。
+目前GitLab已经整合的功能  Repository access Administration Issues Forks Code review Wiki Merge Requests Web Editor  测试环境  2 core 4GB 50GB HDD CentOS 6.</description>
+    </item>
+    
+    <item>
+      <title>HowTo set Tomcat 7 automatic startup with CentOS 7</title>
+      <link>https://example.com/posts/howto-set-tomcat-7-automatic-startup-with-centos-7/</link>
+      <pubDate>Wed, 05 Apr 2017 15:21:03 +0000</pubDate>
+      
+      <guid>https://example.com/posts/howto-set-tomcat-7-automatic-startup-with-centos-7/</guid>
+      <description>因CentOS7与6在系统上，变化较大，所以在之前的文章中讲到的使用Tomcat7开机自启动的方式在CentOS7是是无法使用的，所以这篇文章的目的是如何在CentOS7上将Tomcat7设置为开机自启动。
+安装JAVA环境  [root@7 ~]# curl -LO -H &amp;quot;Cookie: oraclelicense=accept-securebackup-cookie&amp;quot; \ &amp;quot;http://download.</description>
+    </item>
+    
+    <item>
+      <title>HowTo install Zoomdata</title>
+      <link>https://example.com/posts/howto-install-zoomdata/</link>
+      <pubDate>Mon, 06 Mar 2017 09:44:47 +0000</pubDate>
+      
+      <guid>https://example.com/posts/howto-install-zoomdata/</guid>
+      <description>Zoomdata是一个大数据可视化展示的工具，由ZoomData企业创建，是为数不多的同时支持移动端的数据分析公司，Zoomdata的可视化可将大数据流转化为触屏友好的，艺术感十足的三维形态，Zoomdata的定位是非ETL(传统的提取、转换和加载的数据处理过程)工具，Zoomdata支持多种数据源，包括社交媒体等，其中应用最主流是大数据平台的展示工具，并且Zoomdata对Cloudera Impala做了很好的支持，所以我们做了Zoomdata+Cloudera技术实施。[^1]
+系统要求 Zoomdata最新版是v2.4，支持常见主流的操作系统，并且有非常友好的安装帮助，但是Zoomdata不支持安装在32位的操作系统之上    biaoti biaoti baiiti     list file china   letian zhong hongkong    </description>
+    </item>
+    
+    <item>
+      <title>四阶魔方特殊情况之处理</title>
+      <link>https://example.com/posts/%E5%9B%9B%E9%98%B6%E9%AD%94%E6%96%B9%E7%89%B9%E6%AE%8A%E6%83%85%E5%86%B5%E4%B9%8B%E5%A4%84%E7%90%86/</link>
+      <pubDate>Sat, 04 Mar 2017 10:57:02 +0000</pubDate>
+      
+      <guid>https://example.com/posts/%E5%9B%9B%E9%98%B6%E9%AD%94%E6%96%B9%E7%89%B9%E6%AE%8A%E6%83%85%E5%86%B5%E4%B9%8B%E5%A4%84%E7%90%86/</guid>
+      <description>在还原高阶魔方(四阶及以上)时，采用的处理方法是，将魔方降级为三阶魔方，然后按照三阶魔方的技巧进行还原即可，但是在还原四阶魔方时会遇到2个不可能出现在三阶魔方的特殊情况，下面是针对这两个特殊情况的公式。
+ 注意，本文不是四阶魔方的还原教程。
+ 特殊情况：顶层黄色无法形成“十”或“L” 1.手势：黄色面朝上 2.右边两层旋转180&#39;（这时应该黄色面有右面两层为白色） 3.后面一层旋转180&#39; 4.上面一层旋转180&#39; 5.左边两层靠近你身体旋转90&#39; 6.</description>
+    </item>
+    
+    <item>
+      <title>MacTips：使用命令关闭和启动AirPort</title>
+      <link>https://example.com/posts/mactips%E4%BD%BF%E7%94%A8%E5%91%BD%E4%BB%A4%E5%85%B3%E9%97%AD%E5%92%8C%E5%90%AF%E5%8A%A8airport/</link>
+      <pubDate>Mon, 27 Feb 2017 23:40:29 +0000</pubDate>
+      
+      <guid>https://example.com/posts/mactips%E4%BD%BF%E7%94%A8%E5%91%BD%E4%BB%A4%E5%85%B3%E9%97%AD%E5%92%8C%E5%90%AF%E5%8A%A8airport/</guid>
+      <description>今天在给妹妹调试新的MacBookAir 13’时遇到一个问题，无法检测到她家的WiFi，一开始怀疑是不是无线路由器长时间未重启导致，所以重启了路由器，但是问题依然没有解决，于是我们将问题转向排查设备，因我们基本正好有iPad，iPhone，MacBook这些设备，发现唯独他的这个Macbook无法识别WiFi，后来在Google的帮助下，发现多个版本的Mac OS X都出现了类似的问题，可以通过重启AirPort解决问题，但是AirPort在System Preferences找不到选项，所以需要使用命令行来重启。
+查看网络接口 ifconfig en0: flags=8863&amp;lt;UP,BROADCAST,SMART,RUNNING,SIMPLEX,MULTICAST&amp;gt; mtu 1500 ether 60:f8:1d:ad:85:76 inet6 fe80::18a9:fa23:b02f:5d8a%en0 prefixlen 64 secured scopeid 0x4 inet 192.</description>
+    </item>
+    
+    <item>
+      <title>HowTo Install NextCloud</title>
+      <link>https://example.com/posts/howto-install-nextcloud/</link>
+      <pubDate>Mon, 27 Feb 2017 14:57:00 +0000</pubDate>
+      
+      <guid>https://example.com/posts/howto-install-nextcloud/</guid>
+      <description>随着最近一个云盘厂家不再提供个人服务，或者开始各种收费限速，自己存放在第三方云盘厂商的数据被盗取，数据的安全性和数据的稳定性都得不到保证，而且随着智能终端的普及，我也有一些更加高质量的图片文件需要大量储存，所以我想到了自建存储服务的方式，在甄别了OwnCloud，Seafiles和NextCloud，最后选择了NextCloud作为自己今后数据存储节点，NextCloud源自OwnCloud，但是近些年来OwnCloud的发展进度几乎停滞，多数开发者也转战NextCloud，当然NextCloud也继承了搭建简单，依赖于PHP环境的特性。
+运行环境  阿里云ECS CentOS 6.x 免费SSL证书(腾讯云申请)  搭建LNMP环境 软件版本  PHP 5.</description>
+    </item>
+    
+    <item>
+      <title>HowTo Install Redmine</title>
+      <link>https://example.com/posts/howto-install-redmine/</link>
+      <pubDate>Wed, 22 Feb 2017 12:30:36 +0000</pubDate>
+      
+      <guid>https://example.com/posts/howto-install-redmine/</guid>
+      <description>Runtime environment  CentOS 6.x Redmine 3.3.2 Ruby 2.2.6 rails 4.</description>
+    </item>
+    
+    <item>
+      <title>HowTo Upgrade Your Ghost Version</title>
+      <link>https://example.com/posts/howto-upgrade-your-ghost-version/</link>
+      <pubDate>Mon, 20 Feb 2017 14:39:15 +0000</pubDate>
+      
+      <guid>https://example.com/posts/howto-upgrade-your-ghost-version/</guid>
+      <description>curl -LOk https://ghost.org/zip/ghost-latest.zip 2. 创建临时目录，并解压ghost-latest.zip到此 mkdir /usr/ghost-tmp unzip ghost-latest.zip -d /usr/ghost-tmp 3.</description>
+    </item>
+    
+    <item>
+      <title>HowTo Automatic Updates CENTOS/RHEL Using YUM</title>
+      <link>https://example.com/posts/howto-automatic-updates-centos-rhel-using-yum/</link>
+      <pubDate>Sun, 19 Feb 2017 09:56:42 +0000</pubDate>
+      
+      <guid>https://example.com/posts/howto-automatic-updates-centos-rhel-using-yum/</guid>
+      <description>大家若工作遇到需要管理的Linux集群机器较多时，同时我们知道系统的安全更新补丁维护这些非常重要，无论你在安装时优化维护做的再好，随着时间的推移，如果不去更新的话，系统早晚都会不安全，所以定期更新我们的系统补丁是一个运维人员的基本工作内容
+Install yum-cron sudo yum install -y yum-cron 因为我的服务器系统多为CentOS 6，6的配置文件在/etc/sysconfig/yum-cron，你可以用以下命令查看配置文件位置：</description>
+    </item>
+    
+    <item>
+      <title>MySQL(7) 索引创建、删除和查看</title>
+      <link>https://example.com/posts/mysql-8-%E7%B4%A2%E5%BC%95%E5%88%9B%E5%BB%BA%E5%88%A0%E9%99%A4%E5%92%8C%E6%9F%A5%E7%9C%8B/</link>
+      <pubDate>Thu, 09 Feb 2017 18:29:50 +0000</pubDate>
+      
+      <guid>https://example.com/posts/mysql-8-%E7%B4%A2%E5%BC%95%E5%88%9B%E5%BB%BA%E5%88%A0%E9%99%A4%E5%92%8C%E6%9F%A5%E7%9C%8B/</guid>
+      <description>1. 索引的作用 在索引列上，数据库利用各种各样的快速定位技术，能够大大的提高查询效率，特别是当数据量非常大和查询设计到多个表时，索引的利用能够将效率提高成千上万倍，当然要合理的利用索引。
+2. 创建索引 ​	在执行CREATE TABLE时可以创建索引，也可以在之后单独使用CREATE INDEX或ALTER TABLE来为表增加索引。</description>
+    </item>
+    
+    <item>
+      <title>HowTo Monitor Tomcat Head-Memory for Zabbix</title>
+      <link>https://example.com/posts/howto-monitor-tomcat-head-memory-for-zabbix/</link>
+      <pubDate>Wed, 18 Jan 2017 23:28:44 +0000</pubDate>
+      
+      <guid>https://example.com/posts/howto-monitor-tomcat-head-memory-for-zabbix/</guid>
+      <description>最近项目上由于BUG问题导致Tomcat程序在运行过程中经常内存泄漏,而本身监控系统之中没有更好的检测到Tomcat堆空间(Head Memory)的使用情况导致报警频发，这篇文章主要讲述，如何在Zabbix之中调用jmx监控服务器上Tomcat堆空间的使用情况并增加对应报警功能。
+ 测试环境: CentOS 6.8 Zabbix 2.4 Tomcat 7.0  实验前提默认是各位已经安装Zabbix Server服务器，并且至少有一台Zabbix agent服务器正常监控。关于如何搭建Zabbix监控集群，会有专门文章描述。</description>
+    </item>
+    
+    <item>
+      <title>每日备份MySQL单表数据</title>
+      <link>https://example.com/posts/%E6%AF%8F%E6%97%A5%E5%A4%87%E4%BB%BDmysql%E5%8D%95%E8%A1%A8%E6%95%B0%E6%8D%AE/</link>
+      <pubDate>Sun, 15 Jan 2017 08:12:55 +0000</pubDate>
+      
+      <guid>https://example.com/posts/%E6%AF%8F%E6%97%A5%E5%A4%87%E4%BB%BDmysql%E5%8D%95%E8%A1%A8%E6%95%B0%E6%8D%AE/</guid>
+      <description>最近愈近年底，客户业务涉及对账操作，所以同事提出需求需要单独备份某张表数据，并且每日备份；思考之后解决办法如下：
+ mysqldump导出单张表的表结构及数据 新增数据库，专做临时每日数据备份库 导入该表数据到新增数据库内 重命名导入的表名（预防计划任务下次导入时数据覆盖） 编写脚本，添加Linux计划任务  1. mysqldump导出但张表的表结构及数据 mysqldump -h dbServer -PdbServerPort -u db_user -p -d dbName tbName &amp;gt; tbName.</description>
+    </item>
+    
+    <item>
+      <title>Docker Hub 国内加速</title>
+      <link>https://example.com/posts/docker-hub-%E5%9B%BD%E5%86%85%E5%8A%A0%E9%80%9F/</link>
+      <pubDate>Sat, 07 Jan 2017 15:32:23 +0000</pubDate>
+      
+      <guid>https://example.com/posts/docker-hub-%E5%9B%BD%E5%86%85%E5%8A%A0%E9%80%9F/</guid>
+      <description>因为Docker Hub没有在国内部署站点或者增加了国内的CDN，这导致国内的开发者在使用docker pull 获取images的时候速度非常的慢，甚至于因为网络的原因会失败。
+但是Docker Hub有着非常丰富的镜像资源，所以我这一直是个问题困扰着我，一次偶然机会发现了DaoCloud提供了国内镜像加速服务，并且提供的Docker Hub Mirror详细的文档。
+1. 注册DaoCloud账号 首先，你需要到一DaoCloud账号，注册很方便，点击地址：signup 2.</description>
+    </item>
+    
+    <item>
+      <title>HowTo Mount OSS Bucket On ECS</title>
+      <link>https://example.com/posts/howto-mount-oss-bucket-on-ecs/</link>
+      <pubDate>Tue, 20 Dec 2016 06:17:08 +0000</pubDate>
+      
+      <guid>https://example.com/posts/howto-mount-oss-bucket-on-ecs/</guid>
+      <description>From 阿里云官方Github
+  Demo: CentOS 6.8 on ECS</description>
+    </item>
+    
+    <item>
+      <title>HowTo Install Python3 on CentOS 6.x</title>
+      <link>https://example.com/posts/howto-install-python3-on-centos-6-x/</link>
+      <pubDate>Thu, 08 Dec 2016 20:12:37 +0000</pubDate>
+      
+      <guid>https://example.com/posts/howto-install-python3-on-centos-6-x/</guid>
+      <description>接触过Python2.x与Python3.x的应该知道，它们二者的区别也是蛮大的，而随着Python3.x的盛行，越来越多的应用运行与Python3.x的环境之上，但是我们的CentOS的系列，目前都默认安装时Python2.x（CentOS 7.x也是），所以不得不我们需要自己行动手安装Python 3.x的环境。
+Mirosoft平台与Mac平台，不在考虑范围，他们都有相应的软件包与图形化安装工具，可以很好的解决这个问题，所以今天我们的环境是在CentOS 6.x系列上进行。
+ Demo ：CentOS 6.8
+ Method 1.</description>
+    </item>
+    
+    <item>
+      <title>HowTo Reset MySQL Root Password</title>
+      <link>https://example.com/posts/howto-reset-mysql-root-password/</link>
+      <pubDate>Sun, 04 Dec 2016 09:57:23 +0000</pubDate>
+      
+      <guid>https://example.com/posts/howto-reset-mysql-root-password/</guid>
+      <description>1. 处理的状态 首先确认服务器出于安全的状态，也就是没有人能够任意地连接MySQL数据库。 因为在重新设置MySQL的root密码的期间，MySQL数据库完全出于没有密码保护的 状态下，其他的用户也可以任意地登录和修改MySQL的信息。可以采用将MySQL对 外的端口封闭，并且停止Apache以及所有的用户进程的方法实现服务器的准安全 状态。最安全的状态是到服务器的Console上面操作，并且拔掉网线。
+2. 重置密码  修改mysql配置文件，增加skip-grant-tables  [root@demo ~]# vim /etc/my.</description>
+    </item>
+    
+    <item>
+      <title>Tomcat(2) 利用JDK自身keytool实现HTTPS</title>
+      <link>https://example.com/posts/tomcat-2-%E5%88%A9%E7%94%A8jdk%E8%87%AA%E8%BA%ABkeytool%E5%AE%9E%E7%8E%B0https/</link>
+      <pubDate>Sat, 03 Dec 2016 18:41:13 +0000</pubDate>
+      
+      <guid>https://example.com/posts/tomcat-2-%E5%88%A9%E7%94%A8jdk%E8%87%AA%E8%BA%ABkeytool%E5%AE%9E%E7%8E%B0https/</guid>
+      <description>因为一个偶然机会，想把自己的webserver通过https加密访问，这里就采用JDK自带的keytool工具实现，tomcat官方也推荐这种方式，英文好的同学走这里：官方配置
+ demo: CentOS 6.6 &amp;amp; Tomcat 7 &amp;amp; JDK 1.</description>
+    </item>
+    
+    <item>
+      <title>AWS(1) Use s3cmd命令行管理S3存储</title>
+      <link>https://example.com/posts/aws-1-use-s3cmd%E5%91%BD%E4%BB%A4%E8%A1%8C%E7%AE%A1%E7%90%86s3%E5%AD%98%E5%82%A8/</link>
+      <pubDate>Wed, 30 Nov 2016 23:45:54 +0000</pubDate>
+      
+      <guid>https://example.com/posts/aws-1-use-s3cmd%E5%91%BD%E4%BB%A4%E8%A1%8C%E7%AE%A1%E7%90%86s3%E5%AD%98%E5%82%A8/</guid>
+      <description>S3 是AWS公有云服务提供的云存储服务，提供海量数据存储服务，同时基于AWS S3提供的一系列网络服务接口，也有大量已经开发完成的工具供我们使用，以利用起AWS庞大的存储资源，这篇文章的目录选取了其中一个用Linux命令行工具s3cmd来管理AWS S3云存储其中的数据。
+s3cmd 是非常优秀的S3命令行管理工具，用python编写，支持python 2.6 &amp;amp; 2.7 ，但是尚不支持python3，但是目前绝大多数的Linux发行版默认都是python2.x 系列。</description>
+    </item>
+    
+    <item>
+      <title>Tomcat(1) java.lang.OutOfMemoryError</title>
+      <link>https://example.com/posts/tomcat-1-java-lang-outofmemoryerror/</link>
+      <pubDate>Tue, 29 Nov 2016 02:19:38 +0000</pubDate>
+      
+      <guid>https://example.com/posts/tomcat-1-java-lang-outofmemoryerror/</guid>
+      <description>1. 什么是 PermGen space ? PermGen space的全称是Permanent Generation space，是指内存的永久保存区域，这块内存主要是被JVM存放Class和Meta信息的，Class在被Loader时就会被放到PermGen space中，它和存放类实例(Instance)的Heap区域不同，GC(Garbage Collection)不会在主程序运行期对PermGen space进行清理，所以如果你的应用中有很CLASS的话，就很可能出现PermGen space错误，这种错误常见在web服务器对JSP进行pre compile的时候。如果你的WEB APP下都用了大量的第三方jar，其大小超过了jvm默认的大小(4M)那么就会产生此错误信息了。</description>
+    </item>
+    
+    <item>
+      <title>HowTo Install LNMP on CentOS 6.x</title>
+      <link>https://example.com/posts/howto-install-lnmp-on-centos-6-x/</link>
+      <pubDate>Mon, 28 Nov 2016 10:33:09 +0000</pubDate>
+      
+      <guid>https://example.com/posts/howto-install-lnmp-on-centos-6-x/</guid>
+      <description>egrep -v &amp;ldquo;^ *#|^ *$&amp;rdquo; 去除所有以#号开头的文件
+ Demo system [Alex@Test01 ~]$ uname -a Linux Test01 2.</description>
+    </item>
+    
+    <item>
+      <title>Denyhosts增加服务器SSH黑名单机制</title>
+      <link>https://example.com/posts/denyhosts%E5%A2%9E%E5%8A%A0%E6%9C%8D%E5%8A%A1%E5%99%A8ssh%E9%BB%91%E5%90%8D%E5%8D%95%E6%9C%BA%E5%88%B6/</link>
+      <pubDate>Wed, 23 Nov 2016 16:24:40 +0000</pubDate>
+      
+      <guid>https://example.com/posts/denyhosts%E5%A2%9E%E5%8A%A0%E6%9C%8D%E5%8A%A1%E5%99%A8ssh%E9%BB%91%E5%90%8D%E5%8D%95%E6%9C%BA%E5%88%B6/</guid>
+      <description>查看当前服务器失败登录的统计： cat /var/log/secure | awk &#39;/Failed/{print $(NF-3)}&#39; | sort | uniq -c | sort -n | awk &#39;{print $2&amp;quot; = &amp;quot;$1}&#39; Install denyhosts # 需要预先安装epel源 sudo yum install -y epel-release sudo yum install -y denyhosts 配置文件解析 默认配置文件/etc/denyhosts。</description>
+    </item>
+    
+    <item>
+      <title>Ghost(2) 增加评论模块</title>
+      <link>https://example.com/posts/ghost-2-%E5%A2%9E%E5%8A%A0%E8%AF%84%E8%AE%BA%E6%A8%A1%E5%9D%97/</link>
+      <pubDate>Fri, 18 Nov 2016 12:09:13 +0000</pubDate>
+      
+      <guid>https://example.com/posts/ghost-2-%E5%A2%9E%E5%8A%A0%E8%AF%84%E8%AE%BA%E6%A8%A1%E5%9D%97/</guid>
+      <description> &amp;amp;lt;/footer&amp;amp;gt; &amp;amp;lt;/article&amp;amp;gt;  &amp;lt;/main&amp;gt; </description>
+    </item>
+    
+    <item>
+      <title>Python(1) 基础</title>
+      <link>https://example.com/posts/python-1-%E5%9F%BA%E7%A1%80/</link>
+      <pubDate>Fri, 11 Nov 2016 00:32:13 +0000</pubDate>
+      
+      <guid>https://example.com/posts/python-1-%E5%9F%BA%E7%A1%80/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>MySQL(5) 清空表命令之：truncate与delete区别</title>
+      <link>https://example.com/posts/mysql-5-%E6%B8%85%E7%A9%BA%E8%A1%A8%E5%91%BD%E4%BB%A4%E4%B9%8Btruncate%E4%B8%8Edelete%E5%8C%BA%E5%88%AB/</link>
+      <pubDate>Thu, 10 Nov 2016 02:53:13 +0000</pubDate>
+      
+      <guid>https://example.com/posts/mysql-5-%E6%B8%85%E7%A9%BA%E8%A1%A8%E5%91%BD%E4%BB%A4%E4%B9%8Btruncate%E4%B8%8Edelete%E5%8C%BA%E5%88%AB/</guid>
+      <description>在实际工作中，有时我们会想要去清空一张表的所有数据，常用的命令有delete和truncate这两个命令。
+1. delete  在很多情况，我们对于delete的应用更多，因为它支持更多的匹配模式，我们可以使用where条件语句，清理一些特定的数据，关于delete的操作，这里不做过多解释，有空就专门写写delete的使用和原理。delete 在清空表时，如果表内有自增ID的设定，那么在delete清空之后，再插入数据时，自增ID不会从1开始，默认会继续增加; 除非我们使用OPTIMIZE TABLE，重置表属性；
+mysql&amp;gt; delete from piwik_tmp; Query OK, 0 rows affected (0.</description>
+    </item>
+    
+    <item>
+      <title>SSH LINUX Security Settings</title>
+      <link>https://example.com/posts/ssh-linux-security-settings/</link>
+      <pubDate>Sat, 29 Oct 2016 06:23:59 +0000</pubDate>
+      
+      <guid>https://example.com/posts/ssh-linux-security-settings/</guid>
+      <description>SSH 配置安全控制限制登录 1. 只允许某个IP登录，拒绝其他所有IP 在 /etc/hosts.allow 增加:
+sshd: 1.2.3.4 在 /etc/hosts.</description>
+    </item>
+    
+    <item>
+      <title>HowTo Install PostgreSQL 9.5 on CentOS 6.x</title>
+      <link>https://example.com/posts/howto-install-postgresql-9-5-on-centos-6-x/</link>
+      <pubDate>Thu, 20 Oct 2016 07:25:37 +0000</pubDate>
+      
+      <guid>https://example.com/posts/howto-install-postgresql-9-5-on-centos-6-x/</guid>
+      <description>CentOS 6 1. Install PostgreSQL repository and the PostgreSQL server by running the following: sudo yum install https://download.</description>
+    </item>
+    
+    <item>
+      <title>HowTo Use pt-query-digest</title>
+      <link>https://example.com/posts/howto-use-pt-query-digest/</link>
+      <pubDate>Thu, 22 Sep 2016 15:20:12 +0000</pubDate>
+      
+      <guid>https://example.com/posts/howto-use-pt-query-digest/</guid>
+      <description>1. 简介 索引可以我们更快速的执行查询，但是肯定存在不合理的索引，如果想找到那些索引不是很合适的查询，并在它们成为问题前进行优化，则可以使用pt-query-digest的查询审查“review”功能，分析其EXPLAIN出来的执行计划。
+pt-query-digest是用于分析mysql慢查询的一个工具，它可以分析binlog、General log、slowlog，也可以通过SHOWPROCESSLIST或者通过tcpdump抓取的MySQL协议数据来进行分析。可以把分析结果输出到文件中，分析过程是先对查询语句的条件进行参数化，然后对参数化以后的查询进行分组统计，统计出各查询的执行时间、次数、占比等，可以借助分析结果找出问题进行优化。
+2. Install Percona Toolkit &amp;amp; pt-query-digest percona-toolkit是一组高级命令行工具的集合，用来执行各种通过手工执行非常复杂和麻烦的mysql和系统任务。这些任务包括：</description>
+    </item>
+    
+    <item>
+      <title>HowTo Install a Tomcat Server 7</title>
+      <link>https://example.com/posts/howto-install-a-tomcat-server-7/</link>
+      <pubDate>Mon, 19 Sep 2016 10:25:53 +0000</pubDate>
+      
+      <guid>https://example.com/posts/howto-install-a-tomcat-server-7/</guid>
+      <description>本文件是采用的模板是CentOS 6，同样适用于CentOS 系列其他发行版本。
+1. 测试环境  VMware Fushion 8 Pro # windows Use VirtualBox CentOS-6.</description>
+    </item>
+    
+    <item>
+      <title>Script Install LNMP</title>
+      <link>https://example.com/posts/script-install-lnmp/</link>
+      <pubDate>Sat, 13 Aug 2016 06:12:43 +0000</pubDate>
+      
+      <guid>https://example.com/posts/script-install-lnmp/</guid>
+      <description>#!/bin/bash # if [[ $1 == &amp;quot;uninstall&amp;quot; ]];then echo &amp;quot;starting backup data.</description>
+    </item>
+    
+    <item>
+      <title>HowTo Setup MariaDB Galera Cluster 10 On CentOS 6.x</title>
+      <link>https://example.com/posts/howto-setup-mariadb-galera-cluster-10-on-centos-6-x/</link>
+      <pubDate>Thu, 04 Aug 2016 13:14:15 +0000</pubDate>
+      
+      <guid>https://example.com/posts/howto-setup-mariadb-galera-cluster-10-on-centos-6-x/</guid>
+      <description>介绍  真正的多主架构，任何节点都可以进行读写 同步复制，各节点间无延迟且节点宕机不会导致数据丢失 紧密耦合，所有节点均保持相同状态 自动节点配置，无需手工备份当前数据库并拷贝至新节点  实验环境  Cluster node4 IP address 172.</description>
+    </item>
+    
+    <item>
+      <title>HowTo Install Openfire  on CentOS</title>
+      <link>https://example.com/posts/howto-install-openfire-on-centos/</link>
+      <pubDate>Tue, 02 Aug 2016 16:04:48 +0000</pubDate>
+      
+      <guid>https://example.com/posts/howto-install-openfire-on-centos/</guid>
+      <description>Install Centos 6.x x86_64 略.
+安装依赖软件 yum -y install wget java glibc.</description>
+    </item>
+    
+    <item>
+      <title>HowTo Use Docker create a Tomcat Project</title>
+      <link>https://example.com/posts/howto-use-docker-create-a-tomcat-project/</link>
+      <pubDate>Tue, 02 Aug 2016 15:44:20 +0000</pubDate>
+      
+      <guid>https://example.com/posts/howto-use-docker-create-a-tomcat-project/</guid>
+      <description>1. 安装CentOS 7.x 略。  2. 安装docker 详见： How to Install Docker on CentOS 6.</description>
+    </item>
+    
+    <item>
+      <title>在网页中插入歌曲</title>
+      <link>https://example.com/posts/%E5%9C%A8%E7%BD%91%E9%A1%B5%E4%B8%AD%E6%8F%92%E5%85%A5%E6%AD%8C%E6%9B%B2/</link>
+      <pubDate>Mon, 01 Aug 2016 00:12:29 +0000</pubDate>
+      
+      <guid>https://example.com/posts/%E5%9C%A8%E7%BD%91%E9%A1%B5%E4%B8%AD%E6%8F%92%E5%85%A5%E6%AD%8C%E6%9B%B2/</guid>
+      <description>纠正下，在下面博文中的错误，关于单曲不能生成外链的问题，现已经纠正。
+我试过百度音乐、QQ音乐、虾米音乐和网易云音乐，目前只有网易云音乐有此功能，先在网易云音乐选择歌曲即可：
+分享单曲 分享专辑，歌单 </description>
+    </item>
+    
+    <item>
+      <title>HowTo Trun Off IPv6 in CentOS 6.x</title>
+      <link>https://example.com/posts/howto-trun-off-ipv6-in-centos-6-x/</link>
+      <pubDate>Fri, 29 Jul 2016 07:26:19 +0000</pubDate>
+      
+      <guid>https://example.com/posts/howto-trun-off-ipv6-in-centos-6-x/</guid>
+      <description>1. CentOS 6.x CentOS 6 上是默认打开了IPv6，但其实在我们实际使用中很难用到它，所以本篇的内容就是如何关闭IPv6。
+＃ 可以看到 inet6 ，说明还没关闭。</description>
+    </item>
+    
+    <item>
+      <title>HowTo Install KVM Manage Server : webvirtmgr</title>
+      <link>https://example.com/posts/howto-install-kvm-manage-server-webvirtmgr/</link>
+      <pubDate>Wed, 27 Jul 2016 17:34:01 +0000</pubDate>
+      
+      <guid>https://example.com/posts/howto-install-kvm-manage-server-webvirtmgr/</guid>
+      <description>生产环境的KVM宿主机越来越多，需要对宿主机的状态进行调控。这里用webvirtmgr进行管理。图形化的WEB，让人能更方便的查看kvm 宿主机的情况和操作.
+GitHub Project.
+Install 安装支持的软件源 yum install -y epel-release 安装相关软件 yum -y install git python-pip libvirt-python libxml2-python python-websockify supervisor nginx 从git-hub中下载相关的webvirtmgr代码 cd /usr/local/src/ git clone git://github.</description>
+    </item>
+    
+    <item>
+      <title>Yum中$releasever和$basearch的取值</title>
+      <link>https://example.com/posts/yum%E4%B8%AD-releasever%E5%92%8C-basearch%E7%9A%84%E5%8F%96%E5%80%BC/</link>
+      <pubDate>Wed, 27 Jul 2016 10:27:54 +0000</pubDate>
+      
+      <guid>https://example.com/posts/yum%E4%B8%AD-releasever%E5%92%8C-basearch%E7%9A%84%E5%8F%96%E5%80%BC/</guid>
+      <description>查看/etc/yum.repos.d/CentOS-Base.repo [base] name=CentOS-$releasever - Base mirrorlist=http://mirrorlist.centos.org/?release=$releasever&amp;amp;arch=$basearch&amp;amp;repo=os&amp;amp;infra=$infra #baseurl=http://mirror.centos.org/centos/$releasever/os/$basearch/ gpgcheck=1 gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-6  $releasever的值,这个表示当前系统的发行版本  [root@ultraera /]# rpm -qi centos-release Name : centos-release Relocations: (not relocatable) Version : 6 Vendor: CentOS Release : 7.</description>
+    </item>
+    
+    <item>
+      <title>Manage Tomcat Service Use Shell Script</title>
+      <link>https://example.com/posts/manage-tomcat-service-use-shell-script/</link>
+      <pubDate>Wed, 27 Jul 2016 02:18:24 +0000</pubDate>
+      
+      <guid>https://example.com/posts/manage-tomcat-service-use-shell-script/</guid>
+      <description>Tomcat 项目管理交互式脚本.  Install pssh Use Key Login Server Hosts ~/.</description>
+    </item>
+    
+    <item>
+      <title>HowTo Play Pokemon GO in China</title>
+      <link>https://example.com/posts/howto-play-pokemon-go-in-china/</link>
+      <pubDate>Sun, 24 Jul 2016 21:42:01 +0000</pubDate>
+      
+      <guid>https://example.com/posts/howto-play-pokemon-go-in-china/</guid>
+      <description>Installtions  TuTuAPP VPN Google Account ID   2. 安装时注意按照提示添加信任，等待兔兔助手安装完成之后，打开软件，在Search栏输入“精灵宝可梦GO”，请下载美区版，有两个版本：懒人版与移动版；懒人版有移动按钮，可以不需要走动躺在床上玩耍，移动版是需要人走动才能玩耍，我下载的移动版，你根据自己的喜欢选择，选择完成后，按提示按钮安装即可。</description>
+    </item>
+    
+    <item>
+      <title>HowTo Reset Azure VM Linux Password</title>
+      <link>https://example.com/posts/howto-reset-azure-vm-linux-password/</link>
+      <pubDate>Sun, 10 Jul 2016 11:21:47 +0000</pubDate>
+      
+      <guid>https://example.com/posts/howto-reset-azure-vm-linux-password/</guid>
+      <description>Setup1: 这种方法仅适用于已存在的用户，也就是说$Username是之前创建过的用户，否则不适用
+ 1. 指定虚拟机 $vm = Get-AzureVM -ServiceName &#39;云服务名称&#39; -Name &#39;虚拟机名称&#39; $vm.</description>
+    </item>
+    
+    <item>
+      <title>HowTo Install Docker on CentOS 6.x</title>
+      <link>https://example.com/posts/howto-install-docker-on-centos-6-x/</link>
+      <pubDate>Thu, 07 Jul 2016 08:03:28 +0000</pubDate>
+      
+      <guid>https://example.com/posts/howto-install-docker-on-centos-6-x/</guid>
+      <description>1. Add the EPEL Repository rpm -iUvh http://dl.fedoraproject.org/pub/epel/6/x86_64/epel-release-6-8.noarch.rpm 2. Update your system yum update -y 3.</description>
+    </item>
+    
+    <item>
+      <title>HowTo Install MySQL 5.5/6/7 on RHEL/CentOS 5/6/7</title>
+      <link>https://example.com/posts/howto-install-mysql-5-5-6-7-on-rhel-centos-5-6-7/</link>
+      <pubDate>Thu, 07 Jul 2016 05:35:32 +0000</pubDate>
+      
+      <guid>https://example.com/posts/howto-install-mysql-5-5-6-7-on-rhel-centos-5-6-7/</guid>
+      <description>Install Mysql 5.5 on RHEL/CentOS 5/6/7  Setup 1. Use Repository.</description>
+    </item>
+    
+    <item>
+      <title>HowTo Use Remi Install Redis</title>
+      <link>https://example.com/posts/howto-use-remi-install-redis/</link>
+      <pubDate>Thu, 07 Jul 2016 03:49:02 +0000</pubDate>
+      
+      <guid>https://example.com/posts/howto-use-remi-install-redis/</guid>
+      <description>Setup 1. Install Frist, To install remi Repo and epel Repo.</description>
+    </item>
+    
+    <item>
+      <title>HowTo Use Fuse-sshfs to Mount Remote Filesystems</title>
+      <link>https://example.com/posts/howto-use-fuse-sshfs-to-mount-remote-filesystems/</link>
+      <pubDate>Tue, 05 Jul 2016 01:58:03 +0000</pubDate>
+      
+      <guid>https://example.com/posts/howto-use-fuse-sshfs-to-mount-remote-filesystems/</guid>
+      <description>传统我们服务器之间文件共享的方式有采用NFS、Samba等等，但是在我看来配置都有一定的复杂性，当然复杂也有它们的优势，这里推荐一个依赖于SSH的文件共享工具，Fuse-sshfs。SSH 是一个强大且安全的工具，我们除了可以用它来远程管理主机外，还可以通过它建立 SSH tunnel 作 Proxy 用，远程传输文件等等。而这里我想要介绍另外一个功能，那就是结合 sshfs 这个工具可以把远程主机的文件系统映射到本地主机上，透过 SSH 把远程文件系统挂载到本机上，这样我们可以不必使用 scp 工具就可以做到直接复制及删除远程主机的文件了，就像操作本地磁盘一样方便。 sshfs 是基于 FUSE 构建的 SSH 文件系统客户端程序，通过它远程主机的配置无需作任何改变，就可以透过 SSH 协议来挂载远程文件系统了，非常方便及安全。 Install fuse-sshfs [cent@localhost ~]$ sudo yum install -y epel-relese [cent@localhost ~]$ sudo yum --enablerepo=epel install -y fuse-sshfs 挂载远程 ssh文件系统 [cent@localhost ~]$ mkdir .</description>
+    </item>
+    
+    <item>
+      <title>MySQL(1) 常用优化</title>
+      <link>https://example.com/posts/mysql-1-%E5%B8%B8%E7%94%A8%E4%BC%98%E5%8C%96/</link>
+      <pubDate>Thu, 16 Jun 2016 02:29:00 +0000</pubDate>
+      
+      <guid>https://example.com/posts/mysql-1-%E5%B8%B8%E7%94%A8%E4%BC%98%E5%8C%96/</guid>
+      <description>环境：MySQL 5.5 &amp;amp; MySQL 5.6 &amp;amp; RHEL/CentOS 5/6/7
+ 1.</description>
+    </item>
+    
+    <item>
+      <title>Tomcat(3) 优化设定</title>
+      <link>https://example.com/posts/tomcat-3-%E4%BC%98%E5%8C%96%E8%AE%BE%E5%AE%9A/</link>
+      <pubDate>Thu, 16 Jun 2016 02:28:35 +0000</pubDate>
+      
+      <guid>https://example.com/posts/tomcat-3-%E4%BC%98%E5%8C%96%E8%AE%BE%E5%AE%9A/</guid>
+      <description>设置JVM空间大小，Xms和Xmx一样大：JVM初始分配的内存由-Xms指定，默认是物理内存的1/64；JVM最大分配的内存由-Xmx指定，默认是物理内存的1/4。默认空余堆内存小于 40%时，JVM就会增大堆直到-Xmx的最大限制；空余堆内存大于70%时，JVM会减少堆直到-Xms的最小限制。因此服务器一般设置-Xms、 -Xmx相等以避免在每次GC 后调整堆的大小。
+  关闭dns查询
+  增加线程数量</description>
+    </item>
+    
+    <item>
+      <title>使用mosh代替ssh连接服务器</title>
+      <link>https://example.com/posts/%E4%BD%BF%E7%94%A8mosh%E4%BB%A3%E6%9B%BFssh%E8%BF%9E%E6%8E%A5%E6%9C%8D%E5%8A%A1%E5%99%A8/</link>
+      <pubDate>Thu, 16 Jun 2016 02:28:02 +0000</pubDate>
+      
+      <guid>https://example.com/posts/%E4%BD%BF%E7%94%A8mosh%E4%BB%A3%E6%9B%BFssh%E8%BF%9E%E6%8E%A5%E6%9C%8D%E5%8A%A1%E5%99%A8/</guid>
+      <description>身为一名服务器运维人员，每天打交道最多的就是服务器了，最常用的连接服务器的工具就是SSH，因为SSH是一个不可持续的连接，当网络出现波动时，SSH断开会导致当前正在运行的服务中断，对工作产生非常大的影响，无意间看到了Mosh这个东西，安装使用下，发现网络波动这种事情不会导致服务器连接断开了，特意查了下，原来Mosh使用的是UDP方式传输：虽然也支持使用SSH配置进行认证登录，但是数据传输本身是使用UDP方式的，Mosh支持在会话中断时，不会立即退出，而是启用一个计时器，当网络恢复后会自动连接，同时会延续之前的会话，不会重新开启一个。
+Mosh 主页 1. 安装配置 需要在服务端和客户端同时安装Mosh：
+＃ 以centos 6.x 为例： [user@host ~]$ sudo yum install -y epel-release [user@host ~]$ sudo yum install -y mosh 2.</description>
+    </item>
+    
+    <item>
+      <title>Azure(2) HowTo Use Azure CLI on Mac</title>
+      <link>https://example.com/posts/azure-2-howto-use-azure-cli-on-mac/</link>
+      <pubDate>Tue, 24 May 2016 07:00:12 +0000</pubDate>
+      
+      <guid>https://example.com/posts/azure-2-howto-use-azure-cli-on-mac/</guid>
+      <description>## Install azure-cli on Mac and CentOS ### In Mac 1.</description>
+    </item>
+    
+    <item>
+      <title>Azure(3) HowTo Use Azure CLI on Mac</title>
+      <link>https://example.com/posts/azure-3-howto-use-azure-cli-on-mac/</link>
+      <pubDate>Tue, 24 May 2016 06:20:43 +0000</pubDate>
+      
+      <guid>https://example.com/posts/azure-3-howto-use-azure-cli-on-mac/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>HowTo Monitoring MySQL server for Zabbix</title>
+      <link>https://example.com/posts/howto-monitoring-mysql-server-for-zabbix/</link>
+      <pubDate>Fri, 20 May 2016 07:24:58 +0000</pubDate>
+      
+      <guid>https://example.com/posts/howto-monitoring-mysql-server-for-zabbix/</guid>
+      <description>安装插件包 yum install http://www.percona.com/downloads/percona-release/redhat/0.1-3/percona-release-0.1-3.noarch.rpm -y yum install percona-zabbix-templates.noarch -y yum install php* -y 导入模板 把/var/lib/zabbix/percona/templates/zabbix_agent_template_percona_mysql_server_ht_2.</description>
+    </item>
+    
+    <item>
+      <title>HowTo Install Zabbix 2.4 on CentOS 6.x</title>
+      <link>https://example.com/posts/howto-install-zabbix-2-4-on-centos-6-x/</link>
+      <pubDate>Fri, 20 May 2016 06:12:40 +0000</pubDate>
+      
+      <guid>https://example.com/posts/howto-install-zabbix-2-4-on-centos-6-x/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>HowTo Install CloudStack 4.8 on CentOS 6.x</title>
+      <link>https://example.com/posts/howto-install-cloudstack-4-8-on-centos-6-x/</link>
+      <pubDate>Wed, 18 May 2016 02:38:59 +0000</pubDate>
+      
+      <guid>https://example.com/posts/howto-install-cloudstack-4-8-on-centos-6-x/</guid>
+      <description>#!/bin/bash # Install CloudStack.sh # setting static ip in : /etc/sysconfig/network-scripts/ifcfg-eth0 # Check Service # Install # hostname --fqdn # service network restart # trun off selinux in : /etc/selinux/config #SELinux=disabed # trun off iptables.</description>
+    </item>
+    
+    <item>
+      <title>OpenStak 介绍</title>
+      <link>https://example.com/posts/openstak-%E4%BB%8B%E7%BB%8D/</link>
+      <pubDate>Sun, 15 May 2016 12:52:05 +0000</pubDate>
+      
+      <guid>https://example.com/posts/openstak-%E4%BB%8B%E7%BB%8D/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Azure(4) 创建和使用Azure Redis Cache</title>
+      <link>https://example.com/posts/azure-4-%E5%88%9B%E5%BB%BA%E5%92%8C%E4%BD%BF%E7%94%A8azure-redis-cache/</link>
+      <pubDate>Thu, 12 May 2016 06:12:02 +0000</pubDate>
+      
+      <guid>https://example.com/posts/azure-4-%E5%88%9B%E5%BB%BA%E5%92%8C%E4%BD%BF%E7%94%A8azure-redis-cache/</guid>
+      <description>我们以管理员身份，运行PowerShell，执行以下命令。实现创建Standard类型，大小为13GB的Redis Cache
+#弹出界面输入用户名密码 Add-AzureAccount -Environment AzureChinaCloud #设置当前订阅名称 Select-AzureSubscription &#39;[SubscriptionName]&#39; –Current Switch-AzureMode -name AzureResourceManager #在中国东部数据中心，创建新的资源组 New-AzureResourceGroup -name [YourResourceGroupName] -Location &#39;China East&#39; #在中国东部数据中心，申请13GB的Redis Cache，类型为Standard，有SLA保证 New-AzureRedisCache -ResourceGroupName [YourResourceGroupName] -Name [RedisCacheName] -Location &#39;China East&#39; -sku &#39;Standard&#39; -Size &#39;13GB&#39; </description>
+    </item>
+    
+    <item>
+      <title>HowTo Install Fabric on CentOS 7.x</title>
+      <link>https://example.com/posts/howto-install-fabric-on-centos-7-x/</link>
+      <pubDate>Thu, 05 May 2016 05:54:08 +0000</pubDate>
+      
+      <guid>https://example.com/posts/howto-install-fabric-on-centos-7-x/</guid>
+      <description>Installed CentOS 7. yum update -y reboot yum install -y epel-release python -V # 2.</description>
+    </item>
+    
+    <item>
+      <title>CentOS 7(2) 系统服务管理方式</title>
+      <link>https://example.com/posts/centos-7-2-%E7%B3%BB%E7%BB%9F%E6%9C%8D%E5%8A%A1%E7%AE%A1%E7%90%86%E6%96%B9%E5%BC%8F/</link>
+      <pubDate>Thu, 05 May 2016 05:43:55 +0000</pubDate>
+      
+      <guid>https://example.com/posts/centos-7-2-%E7%B3%BB%E7%BB%9F%E6%9C%8D%E5%8A%A1%E7%AE%A1%E7%90%86%E6%96%B9%E5%BC%8F/</guid>
+      <description>关闭防火墙：  systemctl stop firewalld.service # 关闭 systemctl disable firewalld.service # 开机不自启动 </description>
+    </item>
+    
+    <item>
+      <title>CentOS 7(1) 修改系统主机名</title>
+      <link>https://example.com/posts/centos-7-1-%E4%BF%AE%E6%94%B9%E7%B3%BB%E7%BB%9F%E4%B8%BB%E6%9C%BA%E5%90%8D/</link>
+      <pubDate>Thu, 05 May 2016 05:41:39 +0000</pubDate>
+      
+      <guid>https://example.com/posts/centos-7-1-%E4%BF%AE%E6%94%B9%E7%B3%BB%E7%BB%9F%E4%B8%BB%E6%9C%BA%E5%90%8D/</guid>
+      <description>CentOS 7 修改主机名 方法1: hostname 主机名 这种方式，只能修改临时的主机名，当重启机器后，主机名称又变回来了。
+方法2: hostnamectl set-hostname &amp;lt;主机名&amp;gt;  使用这种方式修改，可以永久性的修改主机名称！</description>
+    </item>
+    
+    <item>
+      <title>MySQL(3) mysqldump常用参数</title>
+      <link>https://example.com/posts/mysql-3-mysqldump%E5%B8%B8%E7%94%A8%E5%8F%82%E6%95%B0/</link>
+      <pubDate>Thu, 05 May 2016 04:30:11 +0000</pubDate>
+      
+      <guid>https://example.com/posts/mysql-3-mysqldump%E5%B8%B8%E7%94%A8%E5%8F%82%E6%95%B0/</guid>
+      <description>常用的mysqldump命令组合。
+备份数据库 mysqldump db_name &amp;gt; bak_name.sql mysqldump -A -u [dbuser] -p db_name &amp;gt; bak_name.</description>
+    </item>
+    
+    <item>
+      <title>HowTo Install Python 2.7.8 on CentOS 6.x</title>
+      <link>https://example.com/posts/howto-install-python-2-7-8-on-centos-6-x/</link>
+      <pubDate>Wed, 04 May 2016 11:04:19 +0000</pubDate>
+      
+      <guid>https://example.com/posts/howto-install-python-2-7-8-on-centos-6-x/</guid>
+      <description>CentOS 6.5 still come with Python 2.6 and I need 2.</description>
+    </item>
+    
+    <item>
+      <title>HowTo Add Piwik Tracking to Ghost</title>
+      <link>https://example.com/posts/howto-add-piwik-tracking-to-ghost/</link>
+      <pubDate>Wed, 27 Apr 2016 16:51:58 +0000</pubDate>
+      
+      <guid>https://example.com/posts/howto-add-piwik-tracking-to-ghost/</guid>
+      <description>This is what about piwik on wiki. goto
+Step 1 - Getting your Piwik Tracking code The first step to having Piwik tracking your Ghost blog will be to add a new website in Piwik, if you are unfamiliar with this process you can checkout the Piwik documention on Managing Websites.</description>
+    </item>
+    
+    <item>
+      <title>HowTo Install piwik with nginx on centos 6.x</title>
+      <link>https://example.com/posts/howto-install-piwik-with-nginx-on-centos-6-x/</link>
+      <pubDate>Wed, 27 Apr 2016 16:00:44 +0000</pubDate>
+      
+      <guid>https://example.com/posts/howto-install-piwik-with-nginx-on-centos-6-x/</guid>
+      <description>This is my nginx config. server { listen blog.ultraera.org:80; server_name blog.</description>
+    </item>
+    
+    <item>
+      <title>使用SoureceTree管理你的git项目</title>
+      <link>https://example.com/posts/%E4%BD%BF%E7%94%A8sourecetree%E7%AE%A1%E7%90%86%E4%BD%A0%E7%9A%84git%E9%A1%B9%E7%9B%AE/</link>
+      <pubDate>Wed, 20 Apr 2016 21:31:49 +0000</pubDate>
+      
+      <guid>https://example.com/posts/%E4%BD%BF%E7%94%A8sourecetree%E7%AE%A1%E7%90%86%E4%BD%A0%E7%9A%84git%E9%A1%B9%E7%9B%AE/</guid>
+      <description>Update  update: Windows用户在初始化Souretree工具时，需要用到Atlassian ID，新建用户时需要加载google 验证码，这一步需要VPN的支持，请注意。 找到一个版本的SourceTree工具可以不需要以上验证也能使用，下载链接：SourceTreeSetup_1.6.14.exe 密码：c5l4  补充1 ：Git学习网站  猴子都能学会的git教程 常用 Git 命令清单 廖雪峰的git教程 Why Git is Better than X  补充2 ：利用Git协同开发  团队中的Git实践 Git 使用规范流程 Git分支管理模型 图解Git  1.</description>
+    </item>
+    
+    <item>
+      <title>Mac(1) 调整Launchpad图标大小</title>
+      <link>https://example.com/posts/mac-1-%E8%B0%83%E6%95%B4launchpad%E5%9B%BE%E6%A0%87%E5%A4%A7%E5%B0%8F/</link>
+      <pubDate>Sat, 09 Apr 2016 05:46:04 +0000</pubDate>
+      
+      <guid>https://example.com/posts/mac-1-%E8%B0%83%E6%95%B4launchpad%E5%9B%BE%E6%A0%87%E5%A4%A7%E5%B0%8F/</guid>
+      <description>很多人觉得默认Launchpad的应用程序图标很大，空间比较拥挤，不过这个其实是可以通过调整Launchpad每一行和每一列图标的数量，来调整Launchpad图标大小。
+默认如下图： 代码块：
+# 调整每一行显示数量为8个。 ➜ defaults write com.apple.dock springboard-columns -int 10 ＃ 重启Launchpad ➜ defaults write com.</description>
+    </item>
+    
+    <item>
+      <title>Mac(2) 解决oh-my-zsh在终端下打开缓慢</title>
+      <link>https://example.com/posts/mac-2-%E8%A7%A3%E5%86%B3oh-my-zsh%E5%9C%A8%E7%BB%88%E7%AB%AF%E4%B8%8B%E6%89%93%E5%BC%80%E7%BC%93%E6%85%A2/</link>
+      <pubDate>Fri, 08 Apr 2016 16:12:30 +0000</pubDate>
+      
+      <guid>https://example.com/posts/mac-2-%E8%A7%A3%E5%86%B3oh-my-zsh%E5%9C%A8%E7%BB%88%E7%AB%AF%E4%B8%8B%E6%89%93%E5%BC%80%E7%BC%93%E6%85%A2/</guid>
+      <description>升级Mac OS X 10.11 之后，使用CleanMyMac 3清理9GB的垃圾文件，之后导致打开iTerm时加载主机名特别的慢，Mac的命令行工具我使用的是iTerm＋ohmyzsh，这个问题困扰了我快两个月，工作比较忙，所以一直用Zoc 代替，也没有认真的研究，最近有需求用到它，实在不行，研究一下，发现，是因为我清理系统的时候把终端日志的索引文件清理掉了，所以每次打开的时候都要先加载索引导致了首次开启非常慢，解决办法是，只要把终端缓存的日志文件删除即可：
+代码块：
+# 日志文件路径 # /private/var/log/asl/*.</description>
+    </item>
+    
+    <item>
+      <title>如何在CentOS 6 安装更高版本的PHP</title>
+      <link>https://example.com/posts/%E5%A6%82%E4%BD%95%E5%9C%A8centos-6-%E5%AE%89%E8%A3%85%E6%9B%B4%E9%AB%98%E7%89%88%E6%9C%AC%E7%9A%84php/</link>
+      <pubDate>Fri, 01 Apr 2016 14:57:45 +0000</pubDate>
+      
+      <guid>https://example.com/posts/%E5%A6%82%E4%BD%95%E5%9C%A8centos-6-%E5%AE%89%E8%A3%85%E6%9B%B4%E9%AB%98%E7%89%88%E6%9C%AC%E7%9A%84php/</guid>
+      <description>实验环境：CentOS 6.4 解决办法是采用了remi源仓库已经适配的相应php版本
+ 经过测试，该升级办法同样适用目前CentOS 6.x 所有版本
+ 1. 安装Remi源 # 因为remi依赖epel源仓库，所有我们要先安装它。 [root@visionet8 ~]# yum install -y epel-release [root@visionet8 ~]# wget http://rpms.</description>
+    </item>
+    
+    <item>
+      <title>MySQL(4) MySQL数据库基础</title>
+      <link>https://example.com/posts/mysql-4-mysql%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E7%A1%80/</link>
+      <pubDate>Tue, 29 Mar 2016 08:22:14 +0000</pubDate>
+      
+      <guid>https://example.com/posts/mysql-4-mysql%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E7%A1%80/</guid>
+      <description>1. 测试环境  MacBook Pro 15‘ i7 16GB VMware Fushion 8 Pro MySQL Version 5.</description>
+    </item>
+    
+    <item>
+      <title>Linux 中的三个特殊权限</title>
+      <link>https://example.com/posts/linux-%E4%B8%AD%E7%9A%84%E4%B8%89%E4%B8%AA%E7%89%B9%E6%AE%8A%E6%9D%83%E9%99%90/</link>
+      <pubDate>Tue, 29 Mar 2016 07:50:36 +0000</pubDate>
+      
+      <guid>https://example.com/posts/linux-%E4%B8%AD%E7%9A%84%E4%B8%89%E4%B8%AA%E7%89%B9%E6%AE%8A%E6%9D%83%E9%99%90/</guid>
+      <description>Linux中除了普通权限之外，还有三个特殊权限。 SUID:：以文件的所属用户执行，而非执行文件的用户，多用于可执行文件，设置suid后，在权限位中，所属用户的 最后一个权 限为变为s，添加SUID权限可用“+s”表示。 例如：passwd [adam@ultraera ~]$ which passwd /usr/bin/passwd [adam@ultraera ~]$ ls -l /usr/bin/passwd -rwsr-xr-x.</description>
+    </item>
+    
+    <item>
+      <title>CentOS 6(1) 使用createrepo搭建本地源</title>
+      <link>https://example.com/posts/centos-6-1-%E4%BD%BF%E7%94%A8createrepo%E6%90%AD%E5%BB%BA%E6%9C%AC%E5%9C%B0%E6%BA%90/</link>
+      <pubDate>Tue, 29 Mar 2016 03:37:31 +0000</pubDate>
+      
+      <guid>https://example.com/posts/centos-6-1-%E4%BD%BF%E7%94%A8createrepo%E6%90%AD%E5%BB%BA%E6%9C%AC%E5%9C%B0%E6%BA%90/</guid>
+      <description>Tips: 本地搭建本地yum源采用的rpm全部来自CentOS-6.7-bin-DVD1&amp;amp;DVD2
+ 1. 测试环境  MacBook Pro 15-inch i7 16GB VMware Fushion 8 Pro CentOS-6.</description>
+    </item>
+    
+    <item>
+      <title>HowTo Install MongoDB  on CentOS 6.x</title>
+      <link>https://example.com/posts/howto-install-mongodb-on-centos-6-x/</link>
+      <pubDate>Sun, 27 Mar 2016 05:55:28 +0000</pubDate>
+      
+      <guid>https://example.com/posts/howto-install-mongodb-on-centos-6-x/</guid>
+      <description>1. Overiew  在CentOS Linux 中安装软件的方式有很多种，我会在后续的文章中整理给大家，我比较喜欢的方式是尽量用Yum 安装，不用自己动手去解决软件包之间的依赖关系，“能Yum 就Yum ，不能Yum 想着法Yum 。” &amp;ndash; 这是我遵循的真理；今天给大家整理的就是如何使用Yum 来安装Mongodb ，在本文中会给出在32位与64位系统的区别，以及Mongodb 的版本，本文适用于CentOS 6/7 的Linux发行版本，所以同样适用于红帽体系的OS，如 RedHat Enterprise Linux 6/7 、 Fedora 。</description>
+    </item>
+    
+    <item>
+      <title>在CentOS中配置 SFTP 环境</title>
+      <link>https://example.com/posts/%E5%9C%A8centos%E4%B8%AD%E9%85%8D%E7%BD%AE-sftp-%E7%8E%AF%E5%A2%83/</link>
+      <pubDate>Thu, 24 Mar 2016 14:55:03 +0000</pubDate>
+      
+      <guid>https://example.com/posts/%E5%9C%A8centos%E4%B8%AD%E9%85%8D%E7%BD%AE-sftp-%E7%8E%AF%E5%A2%83/</guid>
+      <description>做运维工作的，应该经常会碰到这样的问题，需要新上一个web项目，需要上传文件到服务器上，解决方法有很多种，常见的如sftp和ftp，今天讲如何使用sftp让系统用户用户上传项目的权限，并且实现chroot和无法使用ssh登录到系统。
+ SFTP是指SSH文件传输协议（SSH File Transfer protocol）或安全文件传输协议（Secure File Transfer Protocol），它提供了可信数据流下的文件访问、文件传输以及文件管理功能。当我们为SFTP配置chroot环境后，只有被许可的用户可以访问，并被限制到他们的家目录中，换言之：被许可的用户将处于牢笼环境中，在此环境中它们甚至不能切换它们的目录。</description>
+    </item>
+    
+    <item>
+      <title>MySQL(6) 利用Linux计划任务定时同步MySQL</title>
+      <link>https://example.com/posts/mysql-6-%E5%88%A9%E7%94%A8linux%E8%AE%A1%E5%88%92%E4%BB%BB%E5%8A%A1%E5%AE%9A%E6%97%B6%E5%90%8C%E6%AD%A5mysql/</link>
+      <pubDate>Thu, 24 Mar 2016 08:03:32 +0000</pubDate>
+      
+      <guid>https://example.com/posts/mysql-6-%E5%88%A9%E7%94%A8linux%E8%AE%A1%E5%88%92%E4%BB%BB%E5%8A%A1%E5%AE%9A%E6%97%B6%E5%90%8C%E6%AD%A5mysql/</guid>
+      <description>说下实际项目场景，公司一个应用已部署主从数据库，业务也正式上线；现在客户公司领导希望可以看到每天的业务数据报表，本设定直接到从库拿数据，然后进行数据处理，生成报表，但是Java同事提出需求新增用户和权限表，这样一来，如果直接使用生产库的表会导致后台系统管理人员与领导的账户和权限混淆，经过讨论决定，按照生产库的表结构新增特殊用户表和权限表；这样操作实际是可以在从库上新增表单，且不影响主从库之间的数据同步，但是从安全性的考虑，新增表单设计需要给用户Insert权限，为了保证从库只有利用主库同步写入数据，则只能给其他用户select权限。
+ 最终决定，因为报表系统的使用率低，直接在报表系统的服务器安装本地mysql数据库，通过计划任务定时到从库上同步数据。 1. 测试环境  MacBook Pro 15‘ i7 16GB VMware Fushion 8 Pro MySQL Version 5.</description>
+    </item>
+    
+    <item>
+      <title>Linux 笔试试题</title>
+      <link>https://example.com/posts/linux-%E7%AC%94%E8%AF%95%E8%AF%95%E9%A2%98/</link>
+      <pubDate>Wed, 23 Mar 2016 12:05:16 +0000</pubDate>
+      
+      <guid>https://example.com/posts/linux-%E7%AC%94%E8%AF%95%E8%AF%95%E9%A2%98/</guid>
+      <description>一. 选择题 （1题1分） 1. 当登录Linux时，一个具有唯一进程ID号的shell将被调用，这个ID是什么( ) A. NID　B. PID　C.</description>
+    </item>
+    
+    <item>
+      <title>MySQL(2) 开启慢日志优化</title>
+      <link>https://example.com/posts/mysql-2-%E5%BC%80%E5%90%AF%E6%85%A2%E6%97%A5%E5%BF%97%E4%BC%98%E5%8C%96/</link>
+      <pubDate>Tue, 22 Mar 2016 15:16:26 +0000</pubDate>
+      
+      <guid>https://example.com/posts/mysql-2-%E5%BC%80%E5%90%AF%E6%85%A2%E6%97%A5%E5%BF%97%E4%BC%98%E5%8C%96/</guid>
+      <description>工欲善其事，必先利其器 &amp;ndash; mysql开启慢日志优化 慢查询日志 顾名思义就是记录查询比较慢得日志。
+测试环境  mysql-server 5.6 CentOS 6.</description>
+    </item>
+    
+    <item>
+      <title>CentOS 6(2) 初始安装基本优化操作</title>
+      <link>https://example.com/posts/centos-6-2-%E5%88%9D%E5%A7%8B%E5%AE%89%E8%A3%85%E5%9F%BA%E6%9C%AC%E4%BC%98%E5%8C%96%E6%93%8D%E4%BD%9C/</link>
+      <pubDate>Sat, 19 Mar 2016 05:54:23 +0000</pubDate>
+      
+      <guid>https://example.com/posts/centos-6-2-%E5%88%9D%E5%A7%8B%E5%AE%89%E8%A3%85%E5%9F%BA%E6%9C%AC%E4%BC%98%E5%8C%96%E6%93%8D%E4%BD%9C/</guid>
+      <description>CentOS 6.x 初始安装基本优化操作  本文件是采用的模板是centos 6.x，相较于centos 5.x与centos 7.x系列有些区别，不能一概而论。
+1. 测试环境  MacBook Pro 15-inch i7 8GB VMware Fushion 8 Pro CentOS-6.</description>
+    </item>
+    
+    <item>
+      <title>理解 Linux 的硬链接与软链接</title>
+      <link>https://example.com/posts/%E7%90%86%E8%A7%A3-linux-%E7%9A%84%E7%A1%AC%E9%93%BE%E6%8E%A5%E4%B8%8E%E8%BD%AF%E9%93%BE%E6%8E%A5/</link>
+      <pubDate>Fri, 18 Mar 2016 14:52:13 +0000</pubDate>
+      
+      <guid>https://example.com/posts/%E7%90%86%E8%A7%A3-linux-%E7%9A%84%E7%A1%AC%E9%93%BE%E6%8E%A5%E4%B8%8E%E8%BD%AF%E9%93%BE%E6%8E%A5/</guid>
+      <description>硬链接与软链接是 Linux 文件系统中的一个重要概念，其涉及文件系统中的索引节点 (index node 又称 inode)，而索引节点对象是 Linux 虚拟文件系统 (VFS) 的四个基本概念之一。通过剖析硬链接与软链接的联系与区别，我们可更好的了解 Linux 中 VFS 这一通用文件模型。并让 Linux 普通用户和系统管理员正确使用硬链接与软链接，帮助文件系统开发者获取 inode 的相关知识。</description>
+    </item>
+    
+    <item>
+      <title>bypy-百度网盘Python客户端</title>
+      <link>https://example.com/posts/%E7%99%BE%E5%BA%A6%E7%BD%91%E7%9B%98python%E5%AE%A2%E6%88%B7%E7%AB%AF/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://example.com/posts/%E7%99%BE%E5%BA%A6%E7%BD%91%E7%9B%98python%E5%AE%A2%E6%88%B7%E7%AB%AF/</guid>
+      <description>最近在GitHub上发现一个有趣的项目，百度网盘Python客户端(bypy)，主要使用在Linux命令行下，这样很大的一个好处是可以利用到百度云盘2TB的存储空间(如果你是会员有6TB)；你可以在任何服务器上，利用自动化脚本实现一些数据文件、日志文件等等备份操作，同时也提供丰富的文件列表、上传、下载、对比、同步以及批量操作等。
+ 虽然百度网盘Python客户端提供很大的便利，但是我强烈不建议将一些重要数据放到百度云盘
+ 实验目的 数据库备份文件自动上传到百度网盘
+环境依赖  Python 2.7 or 3.</description>
+    </item>
+    
+    <item>
+      <title>CentOS 7 Configure DNS Server</title>
+      <link>https://example.com/posts/centos7_configure_bind_dns_server/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://example.com/posts/centos7_configure_bind_dns_server/</guid>
+      <description>今天介绍下如何在CentOS 7下部署DNS Server，测试环境中服务端搭建在了CentOS 7，客户端分别在Windows和Linux实现测试。
+因为目的是让自建DNS服务器解析公司内部的自定义域名，所以当客户端需要访问外网域名时，DNS服务器会将解析请求转发给ISP的DNS服务器，并会将解析结果缓存，并且只对内网主机的解析请求进行转发，而不会对公网的主机解析请求进行转发。
+DNS服务介绍 DNS服务由BIND提供，启动后服务名为named，管理工具为rndc，debug工具为dig，主要配置文件在/etc/named.conf。
+安装 推荐选择bind-chroot来安装，提高服务的安全性：
+1  ➜ ~ yum install -y bind-chroot   安装完成之后，启动named-chroot服务，并设置为开机自启动：</description>
+    </item>
+    
+    <item>
+      <title>Git 使用规范流程</title>
+      <link>https://example.com/posts/git-%E4%BD%BF%E7%94%A8%E8%A7%84%E8%8C%83%E6%B5%81%E7%A8%8B/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://example.com/posts/git-%E4%BD%BF%E7%94%A8%E8%A7%84%E8%8C%83%E6%B5%81%E7%A8%8B/</guid>
+      <description>团队开发中，遵循一个合理、清晰的Git使用流程，是非常重要的。否则，每个人都提交一堆杂乱无章的commit，项目很快就会变得难以协调和维护。下图是比较常规的Git使用规范流程，这能适合绝大多数团队开发的需求，推荐你们也这样使用。
+1. 分支管理   主分支Master：首先，代码库应该有一个、且仅有一个主分支。所有提供给用户使用的正式版本，都在这个主分支上发布。
+  开发分支Develop：主分支只用来分布重大版本，日常开发应该在另一条分支上完成。我们把开发用的分支，叫做Develop。
+  临时性分支</description>
+    </item>
+    
+    <item>
+      <title>How to install MariaDB 10.1 on CentOS 7.x</title>
+      <link>https://example.com/posts/install_mariadb10_centos7/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://example.com/posts/install_mariadb10_centos7/</guid>
+      <description>CentOS 7.x 默认的MariaDB版本是5.5，但是在有些情况我们需要用到10版本，注意MariaDB与MySQL版本是不一样的，下面简单降下如何快速安装MariaDB10.1 到CentOS 7.x.
+创建MariaDB 10.1的Yum源 cat &amp;lt;&amp;lt;EOF | sudo tee -a /etc/yum.</description>
+    </item>
+    
+    <item>
+      <title>Howto Install Redmine on Ubuntu 16.04</title>
+      <link>https://example.com/posts/install_redmine3.4_rbuy2.4.1_passenger_nginx_mysql_ubuntu16.04/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://example.com/posts/install_redmine3.4_rbuy2.4.1_passenger_nginx_mysql_ubuntu16.04/</guid>
+      <description># base apt install mysql-server libmysqlclient-dev git-core subversion imagemagick libmagickwand-dev libcurl4-openssl-dev apt install build-essential mysql-server ruby ruby-dev libmysqlclient-dev imagemagick libmagickwand-dev # install mysql systemctl enable mysql.</description>
+    </item>
+    
+    <item>
+      <title>HowTo Use SSR Service on Mac</title>
+      <link>https://example.com/posts/howto-use-ssr-on-mac-env/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://example.com/posts/howto-use-ssr-on-mac-env/</guid>
+      <description>应邀制作一份关于Mac SSR的连接使用。
+准备  SSR 服务提供商，SSGlobal ，你可以到Telegram加入我们。SSGlobal Group MacOS 版本 10.</description>
+    </item>
+    
+    <item>
+      <title>HowTo-Automatic-EasyBackup-MysqlDB</title>
+      <link>https://example.com/posts/howto-automatic-easybackup-mysqldb/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://example.com/posts/howto-automatic-easybackup-mysqldb/</guid>
+      <description>mysql是一个免费、开源中一款非常优秀关系型数据库，在现在的互联网中使用的非常广泛，无论是大型IT项目还是个人开发者的小项目，mysql都能很好的协助人们处理数据库相关的工作，同时数据库对于我们来说是非常重要，所以经常备份数据库是一个基本的操作，这会为你或者你的团队，减少非常多不必要的麻烦。
+mysqldump是一个简单而且非常流行的mysql全量备份方式，配合crontab添加自动备份任务，很好的完成了我们针对数据库备份的需求，下面我会通过一个例子来说明如何完成这项操作。
+ mysqldump是mysql自带的备份工具，所以只要你安装mysql应用包，就无需单独安装mysqldump
+ 测试环境 我搭建了一个Ghost博客环境，数据库采用是的Mysql，接下来我想在每天00:00执行数据库备份操作，并在备份完成之后，告诉我是否备份成功。
+所以我们的步骤应该：
+ 测试备份命令是否可以正常执行 安装测试命令行邮件工具mailx 安装计划任务工具Crontab 编写备份脚本 添加计划任务  测试备份命令 首先你要获得你要备份的数据库对应的select权限，仅需要select权限即可，mysql在管理方面，应该坚持只赋予必须权限的原则。</description>
+    </item>
+    
+    <item>
+      <title>HowTo-Skip-Atlassian-Auth-for-SourceTree</title>
+      <link>https://example.com/posts/howto-skip-atlassian-auth-for-sourcetree/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://example.com/posts/howto-skip-atlassian-auth-for-sourcetree/</guid>
+      <description>问题 因为国内的网络的原因，导致我们在首次打开SourceTree时需要验证Atlassian账号，但是Atlassian的注册页面使用requirejs是用了Google的CDN服务，所以无法正常通过验证，如果你有翻墙工具，那么这就没有问题，下面我要讲的方法是在不翻墙的情况下跳过初始化验证。
+ 目前我解决的是在Windows平台上的问题，关于Mac平台，我稍后会更新到文档中。
+ 解决思路 我的想法是通过增加account信息，让SourceTree跳过验证；经过测试2.0.19及以下版本都支持，但是SourceTree在最新版本2.0.20时可能修订验证方式，所以导致我的这个方式不适用，大家可以在我的百度云盘共享中下载2.0.19，功能上并没发生多少变化。
+链接: https://pan.baidu.com/s/1qYsHKWs 密码: wnc3</description>
+    </item>
+    
+    <item>
+      <title>HowTo-use-TortoiseGit-for-Windows</title>
+      <link>https://example.com/posts/howto-use-tortoisegit-for-windows/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://example.com/posts/howto-use-tortoisegit-for-windows/</guid>
+      <description>Git是目前最先进的版本控制系统，越来越多的业务场景都在使用Git，风靡全球的Github更是让Git版本控制系统名声大震，但是GitHub旨在建立一个开源的生态环境，所以不适合企业内部的管理系统，在之前的文章中，我也讲到了如何搭建GitLab，可以在企业内部自建一套功能完善的Git版本控制系统。
+GitLab是一个非常成熟的服务端应用，但是作为一名开发人员，我们在使用GitLab与其他人员协同版本时，需要有一个工作对我们的每次修改更新以及推送，这也是版本控制工具的真正精髓；在不同的平台有着很多丰富的应用软件，所以挑选一款适合自己的Git GUI工具很重要。
+目前在众多Git Client之中做的比较好的是SourceTree，并且同时支持Mac和Windows双平台，但是有一个问题，当我们在初次安装时需要验证Atlassian账号，但是Atlassian的注册页面用了requirejs，而且是用了Google的CDN服务，所以必须翻墙，这对很多中国用户的使用造成了不变；所以，今天我在这里推荐一个在Windows平台下同样可以作为Git图形化客户端工具的：TortoiseGit
+TortoiseGit 是 TortoiseSVN 的 Git 版本，TortoiseGit用于迁移 TortoiseSVN 到 TortoiseGit，解决了在Windows平台之上没有合适Git图形化客户端的问题，TortoiseGit不仅免费，而且同样支持丰富的语言包，但是需要独立下载语言包安装，默认只有英文，注意语言包与程序版本一定要匹配。</description>
+    </item>
+    
+    <item>
+      <title>iPhone/iPad 不越狱安装旧版程序</title>
+      <link>https://example.com/posts/iphoneipad%E4%B8%8D%E8%B6%8A%E7%8B%B1%E5%AE%89%E8%A3%85%E6%97%A7%E7%89%88%E7%A8%8B%E5%BA%8F/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://example.com/posts/iphoneipad%E4%B8%8D%E8%B6%8A%E7%8B%B1%E5%AE%89%E8%A3%85%E6%97%A7%E7%89%88%E7%A8%8B%E5%BA%8F/</guid>
+      <description>前言 软件版本迭代是会带来新的功能和 BUG 修复，为给用户带来更好的使用体验，我也是乐于尝鲜的性格，所以在软件推出发布新版本时都会及时更新，但用户体验其实是一个玄学的话题，有时并不能给你带来更好的体验，在 iOS 上，由于苹果商店严格的管理机制导致我们在升级后，想要回退到之前版本变得十分困难。
+虾米音乐升级到 6.0 版本之后，改变很大，作为一位老虾米非常不适应，所以就瞄准了 6.0 之前的最后一个版本：5.</description>
+    </item>
+    
+    <item>
+      <title>Jmeter(一)：使用BlazeMeter为Jmeter录制脚本</title>
+      <link>https://example.com/posts/blazemeter_recoding_jmx/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://example.com/posts/blazemeter_recoding_jmx/</guid>
+      <description>之前一直使用阿里云的PTS服务作为测试，但是今天发现阿里云的PTS服务正在升级无法使用，所以打算用Jmeter来做压力测试，并使用Chrome插件BlazeMeter来录制.jmx脚本。
+安装BlazeMeter插件 插件安装 , 需要能登录到Chrome应用商店，如果不能登录的话，可以在网上搜索下载crx包，手动加载到Chrome中即可。
+安装成功之后，在Chrome插件栏可以看到程序入口，BlazeMeter限制需要登录才能导出jmx脚本，所以首先需要注册账号。成功登陆后，完整界面如图所示：
+录制过程 填写测试脚本名称后，点击开始录制，执行一系列操作后，点停止录制，然后到处jmx文件到本地。
+导入脚本到Jmeter 在Jmeter中&amp;quot;File-Open&amp;quot;导入你jmx脚本，为了方便观察结果，我们需要增加一些察看报告。</description>
+    </item>
+    
+    <item>
+      <title>Mac 如何快速录制GiF小视频</title>
+      <link>https://example.com/posts/mac%E5%A6%82%E4%BD%95%E5%BF%AB%E9%80%9F%E5%BD%95%E5%88%B6gif%E5%B0%8F%E8%A7%86%E9%A2%91/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://example.com/posts/mac%E5%A6%82%E4%BD%95%E5%BF%AB%E9%80%9F%E5%BD%95%E5%88%B6gif%E5%B0%8F%E8%A7%86%E9%A2%91/</guid>
+      <description>在平时的沟通中经常有需要用到分享一个连续的操作等，在很多时候截图不能满足我的需求，录制视频文件的话呢，文件过大，不同平台限制过多是一个很麻烦的视频，所以录制GIF是一个非常好的解决办法，今天给大家推荐两款软件，关于录制GIF和GIF编辑。
+录制工具(1) Kap Kap是一款轻量级开源的GIF录制工具，这意味它是免费简单易用；你可以从官网下载。官网
+安装完成，启动Kap，它是以一个圆环的形式显示在状态栏上，所有的界面都在这里，你可以点击红框直接开始录制，点击后你的屏幕上会出现一个虚线框，你可以通过拖动四角调整大小。
+确定好录制范围之后，这时你发现Kap上红色录制按钮一个变成一个红色实心圆，再次单击即可开始录制。
+在你操作完成之后，再次单击，即可结束录制。
+录制工具(2) MacApp：QuickTime Player 以上管理Kap的使用GIF录制我是用过Mac自带的QuickTime Player录制，教程可以直接看 @JasonZone 的教程 链接</description>
+    </item>
+    
+    <item>
+      <title>MacTips 单独设置程序语言</title>
+      <link>https://example.com/posts/mactips-choose-apps-defaults-language/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://example.com/posts/mactips-choose-apps-defaults-language/</guid>
+      <description>Mac 上系统语言设置成英文查看起来是最舒适的，所以我很早就将系统语言改成英文，但是在自身英语水平有限，应对基本的单词没有问题，但是在查看例如Word、PowerPoint这类应用时，有大量的选项大脑转化速度较慢，影响工作效率，所以有时在做PPT时，不得已要将系统切换到中文，这对我来说是一件很麻烦的事情，但是今天在网上找到一个帖子原文，其实一个命令就可以搞定我的问题，修改某一软件的默认语言。
+Command defaults write &#39;{AppName}&#39; AppleLanguages &#39;(&amp;quot;Your choose language&amp;quot;)&#39; 这不会影响到我们其他软件的使用。</description>
+    </item>
+    
+    <item>
+      <title>Wannacry蠕虫病毒事件及修复方案</title>
+      <link>https://example.com/posts/wannacry%E8%A0%95%E8%99%AB%E7%97%85%E6%AF%92%E4%BA%8B%E4%BB%B6%E5%8F%8A%E4%BF%AE%E5%A4%8D%E6%96%B9%E6%A1%88/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://example.com/posts/wannacry%E8%A0%95%E8%99%AB%E7%97%85%E6%AF%92%E4%BA%8B%E4%BB%B6%E5%8F%8A%E4%BF%AE%E5%A4%8D%E6%96%B9%E6%A1%88/</guid>
+      <description>事件背景 5月12日晚， WannaCry 蠕虫病毒在全球大肆爆发。据BBC、CNN等媒体报道，恶意攻击者利用 NSA（美国国家安全局）泄露的 Windows 0day 利用工具对99个国家实施了超过75000次攻击，主要影响SMB和RDP服务，主要影响了137、138、139、445端口。
+目前已知已知的Windows版本包括但不限于一下都受影响：
+ Windows NT Windows 2000 Windows XP Windows 2003 Windows Vista Windows 7 Windows 8 Windows 10 Windows 2008 Windows 2008 R2 Windows Server 2012 SP0  勒索者源头来自暗网，攻击具备兼容性、多语言支持，多个行业受到影响，国内高校网络系统沦为感染重灾区。据有关机构统计，目前国内每天有数万台机器遭到该蠕虫病毒袭击，国内的ATM机、火车站、自助终端、邮政、医院、政府办事终端、视频监控都可能遭受攻击。据报道，今日全国多地的中石油加油站无法进行网络支付，只能进行现金支付。中石油有关负责人表示，怀疑受到病毒攻击，具体情况还在核查。而截至目前，一些公安系统已经遭到入侵。</description>
+    </item>
+    
+    <item>
+      <title>使用国内pypi源加速pip安装</title>
+      <link>https://example.com/posts/%E4%BD%BF%E7%94%A8%E5%9B%BD%E5%86%85pypi%E6%BA%90%E5%8A%A0%E9%80%9Fpip%E5%AE%89%E8%A3%85/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://example.com/posts/%E4%BD%BF%E7%94%A8%E5%9B%BD%E5%86%85pypi%E6%BA%90%E5%8A%A0%E9%80%9Fpip%E5%AE%89%E8%A3%85/</guid>
+      <description>在解决将AWS Cloudwatch的监控信息展示在Zabbix上时，需要安装AWS的一个python 工具包boto3，但是在安装过程中，碰到了如上图的错误信息；问题是由于国内网络问题导致连接python库超时，所以将库改为国内
+国内pypi源站点  http://pypi.douban.com/simple 豆瓣 http://pypi.hustunique.com/simple 华中理工大学 http://pypi.sdutlinux.org/simple 山东理工大学 http://pypi.</description>
+    </item>
+    
+    <item>
+      <title>在Linux终端使用SSR服务实现科学上网</title>
+      <link>https://example.com/posts/%E5%9C%A8linux%E7%BB%88%E7%AB%AF%E4%BD%BF%E7%94%A8ssr%E6%9C%8D%E5%8A%A1%E5%AE%9E%E7%8E%B0%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://example.com/posts/%E5%9C%A8linux%E7%BB%88%E7%AB%AF%E4%BD%BF%E7%94%A8ssr%E6%9C%8D%E5%8A%A1%E5%AE%9E%E7%8E%B0%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/</guid>
+      <description>昨天在群内看到有朋友在询问如何在Linux终端内使用SSR来实现科学上网，所以抽空研究了下在Linux中如何使用，本文参考了Otokaze 和 Django 两位的博客，文章链接在博文最后；SSR服务提供商依然采用了ssGlobal，在Google的过程中，找了不少解决方案，这里仅做一种简单整理，实验操作系统有CentOS 7.4 &amp;amp; Ubuntu 16.04.3。
+ssr 代理服务 下载 1 2 3 4 5 6  # 需要本地git 环境 yum install -y git git clone https://github.</description>
+    </item>
+    
+  </channel>
+</rss>

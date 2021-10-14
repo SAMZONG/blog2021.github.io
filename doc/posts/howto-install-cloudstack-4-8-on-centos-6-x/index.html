@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh-CN" lang="zh-CN">
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="generator" content="Hugo 0.88.1" />
+
+  <title>HowTo Install CloudStack 4.8 on CentOS 6.x &middot; SAMZONG</title>
+
+  <meta name="description" content="" />
+
+  
+
+<meta itemprop="name" content="HowTo Install CloudStack 4.8 on CentOS 6.x">
+<meta itemprop="description" content="#!/bin/bash # Install CloudStack.sh # setting static ip in : /etc/sysconfig/network-scripts/ifcfg-eth0 # Check Service # Install # hostname --fqdn # service network restart # trun off selinux in : /etc/selinux/config #SELinux=disabed # trun off iptables."><meta itemprop="datePublished" content="2016-05-18T02:38:59+00:00" />
+<meta itemprop="dateModified" content="2016-05-18T02:38:59+00:00" />
+<meta itemprop="wordCount" content="375">
+<meta itemprop="keywords" content="CloudStack," />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="HowTo Install CloudStack 4.8 on CentOS 6.x"/>
+<meta name="twitter:description" content="#!/bin/bash # Install CloudStack.sh # setting static ip in : /etc/sysconfig/network-scripts/ifcfg-eth0 # Check Service # Install # hostname --fqdn # service network restart # trun off selinux in : /etc/selinux/config #SELinux=disabed # trun off iptables."/>
+
+
+<meta property="og:title" content="HowTo Install CloudStack 4.8 on CentOS 6.x" />
+<meta property="og:description" content="#!/bin/bash # Install CloudStack.sh # setting static ip in : /etc/sysconfig/network-scripts/ifcfg-eth0 # Check Service # Install # hostname --fqdn # service network restart # trun off selinux in : /etc/selinux/config #SELinux=disabed # trun off iptables." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://example.com/posts/howto-install-cloudstack-4-8-on-centos-6-x/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2016-05-18T02:38:59+00:00" />
+<meta property="article:modified_time" content="2016-05-18T02:38:59+00:00" />
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type":"Person",
+      "@id": "https://example.com#author",
+      "name": "samzong.lu",
+      "image": {
+        "@type":"ImageObject",
+        "url": "https://www.gravatar.com/avatar/c02c426714361366ea7d583950aa8fb4?s=400&d=mp"
+      },
+      "description": "Samzong's Blog"
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://example.com#website",
+      "url": "https://example.com",
+      "name": "SAMZONG",
+      "description": "Samzong's Blog",
+      "publisher": {
+        "@id": "https://example.com#author"
+      },
+      "inLanguage": "zh-CN"
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://example.com/posts/howto-install-cloudstack-4-8-on-centos-6-x/#webpage",
+      "url": "https://example.com/posts/howto-install-cloudstack-4-8-on-centos-6-x/",
+      "name": "HowTo Install CloudStack 4.8 on CentOS 6.x",
+      "isPartOf": {
+        "@id": "https://example.com#website"
+      },
+      "about": {
+         "@id": "https://example.com#author"
+      },
+      "datePublished": "2016-05-18T02:38:59+00:00",
+      "dateModified": "2016-05-18T02:38:59+00:00",
+      "description": "#!/bin/bash # Install CloudStack.sh # setting static ip in : /etc/sysconfig/network-scripts/ifcfg-eth0 # Check Service # Install # hostname --fqdn # service network restart # trun off selinux in : /etc/selinux/config #SELinux=disabed # trun off iptables.",
+      "inLanguage": "zh-CN",
+      "potentialAction": [
+        {
+          "@type": "ReadAction",
+          "target": [
+            "https://example.com/posts/howto-install-cloudstack-4-8-on-centos-6-x/"
+          ]
+        }
+      ]
+    },
+    {
+      "@type": "Article",
+      "isPartOf": {
+        "@id": "https://example.com/posts/howto-install-cloudstack-4-8-on-centos-6-x/#webpage"
+      },
+      "mainEntityOfPage": {
+        "@id": "https://example.com/posts/howto-install-cloudstack-4-8-on-centos-6-x/#webpage"
+      },
+      "headline": "HowTo Install CloudStack 4.8 on CentOS 6.x",
+      "datePublished": "2016-05-18T02:38:59+00:00",
+      "dateModified": "2016-05-18T02:38:59+00:00",
+      "publisher": {
+        "@id": "https://example.com#author"
+      },
+      "keywords": [
+        "CloudStack"
+      ],
+      "articleSection": [
+        "CloudStack"
+      ],
+      "inLanguage": "zh-CN",
+      "author": {
+        "@type": "Person",
+        "name":  null 
+      },
+      "potentialAction": [
+        {
+          "@type": "CommentAction",
+          "name": "Comment",
+          "target": [
+            "https://example.com/posts/howto-install-cloudstack-4-8-on-centos-6-x/#comments"
+          ]
+        }
+      ]
+    }
+  ]
+}
+</script>
+
+
+
+  <link type="text/css"
+        rel="stylesheet"
+        href="/css/print.css"
+        media="print">
+
+  <link type="text/css"
+        rel="stylesheet"
+        href="/css/poole.css">
+
+  <link type="text/css"
+        rel="stylesheet"
+        href="/css/hyde.css">
+
+  
+
+
+  <link type="text/css" rel="stylesheet" href="/css/blog.css">
+
+  <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700&display=swap">
+
+  <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css"
+        integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk="
+        crossorigin="anonymous" />
+
+  <link rel="apple-touch-icon-precomposed"
+        sizes="144x144"
+        href="/apple-touch-icon-144-precomposed.png">
+
+  <link rel="shortcut icon" href="/favicon.png">
+
+  
+  </head>
+<body>
+  <aside class="sidebar">
+  <div class="container">
+    <div class="sidebar-about">
+      
+      <div class="author-image">
+        <a href="https://example.com">
+          <img src="https://www.gravatar.com/avatar/c02c426714361366ea7d583950aa8fb4?s=200&d=mp" class="img-circle img-headshot center" alt="Gravatar">
+        </a>
+      </div>
+      
+
+      <h1>SAMZONG</h1>
+
+      
+      <p class="lead">Samzong&#39;s Blog</p>
+      
+    </div>
+
+    <nav>
+      <ul class="sidebar-nav">
+        <li>
+          <a href="https://example.com">Home</a>
+        </li>
+        <li>
+          <a href="/posts/">Posts</a>
+        </li><li>
+          <a href="/about/">About</a>
+        </li>
+      </ul>
+    </nav>
+
+    <section class="social-icons">
+      
+      <a href="https://www.linkedin.com/in/samzong/" rel="me" title="Linkedin" target="_blank">
+        <i class="fab fa-linkedin" aria-hidden="true"></i>
+      </a>
+      
+      <a href="https://github.com/samzong" rel="me" title="GitHub" target="_blank">
+        <i class="fab fa-github" aria-hidden="true"></i>
+      </a>
+      
+      <a href="https://twitter.com/samzong_lu" rel="me" title="Twitter" target="_blank">
+        <i class="fab fa-twitter" aria-hidden="true"></i>
+      </a>
+      
+    </section>
+  </div>
+</aside>
+
+
+  <main class="content container">
+  <div class="post">
+  <h1 class="title">HowTo Install CloudStack 4.8 on CentOS 6.x</h1>
+  
+
+  <div class="post-date">
+    <time datetime="2016-05-18T02:38:59Z">May 18, 2016</time> <span class="readtime">&middot; 2 min read</span>
+  </div>
+
+  <div>
+  <pre tabindex="0"><code>
+#!/bin/bash
+
+# Install  CloudStack.sh
+
+# setting static ip in : /etc/sysconfig/network-scripts/ifcfg-eth0
+
+# Check Service
+
+# Install
+
+# hostname --fqdn
+
+# service network restart
+
+# trun off selinux in : /etc/selinux/config
+#SELinux=disabed
+
+# trun off iptables.
+service iptables stop
+service ip6tables stop
+
+chkconfig iptables off
+chkconfig ip6tables off
+
+#NTP
+yum install -y ntp
+chkconfig ntpd on
+service ntpd start
+
+# adding cloudstack repos
+[cloudstack]
+name=cloudstack
+baseurl=http://cloudstack.apt-get.eu/centos/6/4.5/
+enabled=1
+gpgcheck=0
+
+#NFS
+yum install -y nfs-utils
+
+# /etc/exports
+/secondary *(rw,async,no_root_squash,no_subtree_check)
+/primary *(rw,async,no_root_squash,no_subtree_check)
+# add top to /etc/sysconfig/nfs
+LOCKD_TCPPORT=32803
+LOCKD_UDPPORT=32769
+MOUNTD_PORT=892
+RQUOTAD_PORT=875
+STATD_PORT=662
+STATD_OUTGOING_PORT=2020
+# add iptable rules to /etc/sysconfig/iptables
+-A INPUT -s 172.16.10.0/24 -m state --state NEW -p udp --dport 111 -j ACCEPT
+-A INPUT -s 172.16.10.0/24 -m state --state NEW -p tcp --dport 111 -j ACCEPT
+-A INPUT -s 172.16.10.0/24 -m state --state NEW -p tcp --dport 2049 -j ACCEPT
+-A INPUT -s 172.16.10.0/24 -m state --state NEW -p tcp --dport 32803 -j ACCEPT
+-A INPUT -s 172.16.10.0/24 -m state --state NEW -p udp --dport 32769 -j ACCEPT
+-A INPUT -s 172.16.10.0/24 -m state --state NEW -p tcp --dport 892 -j ACCEPT
+-A INPUT -s 172.16.10.0/24 -m state --state NEW -p udp --dport 892 -j ACCEPT
+-A INPUT -s 172.16.10.0/24 -m state --state NEW -p tcp --dport 875 -j ACCEPT
+-A INPUT -s 172.16.10.0/24 -m state --state NEW -p udp --dport 875 -j ACCEPT
+-A INPUT -s 172.16.10.0/24 -m state --state NEW -p tcp --dport 662 -j ACCEPT
+-A INPUT -s 172.16.10.0/24 -m state --state NEW -p udp --dport 662 -j ACCEPT
+# service iptables restart
+service rpcbind start
+service nfs start
+chkconfig rpcbind on
+chkconfig nfs on
+
+# MySQL server
+yum install -y mysql-server
+# adding configure file in /etc/my.cnf : [mysqld]
+innodb_rollback_on_timeout=1
+innodb_lock_wait_timeout=600
+max_connections=350
+log-bin=mysql-bin
+binlog-format = 'ROW'
+
+service mysqld start
+chkconfig mysqld on
+mysql_secure_installation 	# remeber the root pass.
+
+# Cloudstack-management
+yum -y install cloudstack-management
+cloudstack-setup-databases cloud:[password]@localhost --deploy-as=root:[password]
+cloudstack-setup-management
+
+#System Template Setup
+/usr/share/cloudstack-common/scripts/storage/secondary/cloud-install-sys-tmplt -m /secondary -u http://cloudstack.apt-get.eu/systemvm/4.6/systemvm64template-4.6.0-kvm.qcow2.bz2 -h kvm -F
+
+
+# Install kvm
+yum -y install cloudstack-agent
+
+# qemu configuration : /etc/libvirt/qemu.conf
+vnc_listen=0.0.0.0
+# Libvirt Configuration : /etc/libvirt/libvirtd.conf
+listen_tls = 0
+listen_tcp = 1
+tcp_port = &quot;16059&quot;
+auth_tcp = &quot;none&quot;
+mdns_adv = 0
+#  /etc/sysconfig/libvirtd
+LIBVIRTD_ARGS=&quot;--listen&quot;
+
+service libvirtd restart
+
+lsmod | grep kvm:
+kvm_intel              55496  0
+kvm                   337772  1 kvm_intel
+
+
+##### UI Setting ####
+http://[ip]:8080/client
+
+
+
+</code></pre>
+  </div>
+
+  
+<div>
+  <ul class="tags">
+  <li>
+    <a href="https://example.com/tags/cloudstack/" class="tag-link">CloudStack</a>
+  </li>
+  </ul>
+</div>
+
+
+
+  <div class="share-buttons">
+  <a class="twitter-share-button"
+     href="#"
+     title="Share on Twitter"
+     data-url="https://example.com/posts/howto-install-cloudstack-4-8-on-centos-6-x/"
+     data-text="HowTo Install CloudStack 4.8 on CentOS 6.x"><i class="fab fa-twitter"></i></a>
+
+  <a class="linkedin-share-button"
+     href="#"
+     title="Share on LinkedIn"
+     data-url="https://example.com/posts/howto-install-cloudstack-4-8-on-centos-6-x/"
+     data-text="HowTo Install CloudStack 4.8 on CentOS 6.x"><i class="fab fa-linkedin-in"></i></a>
+
+  <a class="facebook-share-button"
+     href="#"
+     title="Share on Facebook"
+     data-url="https://example.com/posts/howto-install-cloudstack-4-8-on-centos-6-x/"
+     data-text="HowTo Install CloudStack 4.8 on CentOS 6.x"><i class="fab fa-facebook"></i></a>
+
+  <a class="telegram-share-button"
+     href="#"
+     title="Share on Telegram"
+     data-url="https://example.com/posts/howto-install-cloudstack-4-8-on-centos-6-x/"
+     data-text="HowTo Install CloudStack 4.8 on CentOS 6.x"><i class="fab fa-telegram"></i></a>
+
+  <a class="pinterest-share-button"
+     href="#"
+     title="Share on Pinterest"
+     data-url="https://example.com/posts/howto-install-cloudstack-4-8-on-centos-6-x/"
+     data-text="HowTo Install CloudStack 4.8 on CentOS 6.x"><i class="fab fa-pinterest"></i></a>
+</div>
+
+
+  
+</div>
+  </main>
+
+  <footer>
+  <div>
+    <p>
+      &copy; samzong.lu 2021
+
+      &middot; <a href="https://creativecommons.org/licenses/by-sa/4.0" target="_blank">CC BY-SA 4.0</a>
+
+      
+    </p>
+  </div>
+</footer>
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/js/all.min.js"
+          integrity="sha256-MAgcygDRahs+F/Nk5Vz387whB4kSK9NXlDN3w58LLq0="
+          crossorigin="anonymous"></script>
+
+
+  <script src="/js/jquery.min.js"></script>
+  <script src="/js/soho.js"></script>
+
+  <script src="/js/blog.js"></script>
+
+  
+</body>
+</html>

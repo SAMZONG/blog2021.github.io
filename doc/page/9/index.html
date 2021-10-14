@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh-CN" lang="zh-CN">
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="generator" content="Hugo 0.88.1" />
+
+  <title>SAMZONG</title>
+
+  <meta name="description" content="Samzong&#39;s Blog" />
+
+  
+
+<meta itemprop="name" content="SAMZONG">
+<meta itemprop="description" content="Samzong&#39;s Blog">
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="SAMZONG"/>
+<meta name="twitter:description" content="Samzong&#39;s Blog"/>
+
+
+<meta property="og:title" content="SAMZONG" />
+<meta property="og:description" content="Samzong&#39;s Blog" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://example.com/" />
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type":"Person",
+      "@id": "https://example.com#author",
+      "name": "samzong.lu",
+      "image": {
+        "@type":"ImageObject",
+        "url": "https://www.gravatar.com/avatar/c02c426714361366ea7d583950aa8fb4?s=400&d=mp"
+      },
+      "description": "Samzong's Blog"
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://example.com#website",
+      "url": "https://example.com",
+      "name": "SAMZONG",
+      "description": "Samzong's Blog",
+      "publisher": {
+        "@id": "https://example.com#author"
+      },
+      "inLanguage": "zh-CN"
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://example.com/#webpage",
+      "url": "https://example.com/",
+      "name": "SAMZONG",
+      "isPartOf": {
+        "@id": "https://example.com#website"
+      },
+      "about": {
+         "@id": "https://example.com#author"
+      },
+      "dateModified": "2021-06-02T00:54:38+00:00",
+      "description": "Samzong's Blog",
+      "inLanguage": "zh-CN",
+      "potentialAction": [
+        {
+          "@type": "ReadAction",
+          "target": [
+            "https://example.com/"
+          ]
+        }
+      ]
+    }
+  ]
+}
+</script>
+
+
+
+  <link type="text/css"
+        rel="stylesheet"
+        href="/css/print.css"
+        media="print">
+
+  <link type="text/css"
+        rel="stylesheet"
+        href="/css/poole.css">
+
+  <link type="text/css"
+        rel="stylesheet"
+        href="/css/hyde.css">
+
+  
+
+
+  <link type="text/css" rel="stylesheet" href="/css/blog.css">
+
+  <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700&display=swap">
+
+  <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css"
+        integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk="
+        crossorigin="anonymous" />
+
+  <link rel="apple-touch-icon-precomposed"
+        sizes="144x144"
+        href="/apple-touch-icon-144-precomposed.png">
+
+  <link rel="shortcut icon" href="/favicon.png">
+
+  
+  <link href="https://example.com/index.xml" rel="alternate" type="application/rss+xml" title="SAMZONG" />
+  </head>
+<body>
+  <aside class="sidebar">
+  <div class="container">
+    <div class="sidebar-about">
+      
+      <div class="author-image">
+        <a href="https://example.com">
+          <img src="https://www.gravatar.com/avatar/c02c426714361366ea7d583950aa8fb4?s=200&d=mp" class="img-circle img-headshot center" alt="Gravatar">
+        </a>
+      </div>
+      
+
+      <h1>SAMZONG</h1>
+
+      
+      <p class="lead">Samzong&#39;s Blog</p>
+      
+    </div>
+
+    <nav>
+      <ul class="sidebar-nav">
+        <li>
+          <a href="https://example.com">Home</a>
+        </li>
+        <li>
+          <a href="/posts/">Posts</a>
+        </li><li>
+          <a href="/about/">About</a>
+        </li>
+      </ul>
+    </nav>
+
+    <section class="social-icons">
+      
+      <a href="https://www.linkedin.com/in/samzong/" rel="me" title="Linkedin" target="_blank">
+        <i class="fab fa-linkedin" aria-hidden="true"></i>
+      </a>
+      
+      <a href="https://github.com/samzong" rel="me" title="GitHub" target="_blank">
+        <i class="fab fa-github" aria-hidden="true"></i>
+      </a>
+      
+      <a href="https://twitter.com/samzong_lu" rel="me" title="Twitter" target="_blank">
+        <i class="fab fa-twitter" aria-hidden="true"></i>
+      </a>
+      
+    </section>
+  </div>
+</aside>
+
+
+  <main class="content container">
+  <div class="posts">
+      <article class="post">
+        <h1 class="post-title">
+          <a href="https://example.com/posts/git-%E4%BD%BF%E7%94%A8%E8%A7%84%E8%8C%83%E6%B5%81%E7%A8%8B/">Git 使用规范流程</a>
+        </h1>
+
+        <div class="post-date">
+          <time datetime="0001-01-01T00:00:00Z">Jan 1, 0001</time> &middot; 1 min read
+        </div>
+
+        <div>
+          团队开发中，遵循一个合理、清晰的Git使用流程，是非常重要的。否则，每个人都提交一堆杂乱无章的commit，项目很快就会变得难以协调和维护。下图是比较常规的Git使用规范流程，这能适合绝大多数团队开发的需求，推荐你们也这样使用。
+1. 分支管理   主分支Master：首先，代码库应该有一个、且仅有一个主分支。所有提供给用户使用的正式版本，都在这个主分支上发布。
+  开发分支Develop：主分支只用来分布重大版本，日常开发应该在另一条分支上完成。我们把开发用的分支，叫做Develop。
+  临时性分支
+        </div>
+
+        <div class="read-more-link">
+          <a href="https://example.com/posts/git-%E4%BD%BF%E7%94%A8%E8%A7%84%E8%8C%83%E6%B5%81%E7%A8%8B/">Read More</a>
+        </div>
+      </article>
+      <article class="post">
+        <h1 class="post-title">
+          <a href="https://example.com/posts/install_mariadb10_centos7/">How to install MariaDB 10.1 on CentOS 7.x</a>
+        </h1>
+
+        <div class="post-date">
+          <time datetime="0001-01-01T00:00:00Z">Jan 1, 0001</time> &middot; 1 min read
+        </div>
+
+        <div>
+          CentOS 7.x 默认的MariaDB版本是5.5，但是在有些情况我们需要用到10版本，注意MariaDB与MySQL版本是不一样的，下面简单降下如何快速安装MariaDB10.1 到CentOS 7.x.
+创建MariaDB 10.1的Yum源 cat &lt;&lt;EOF | sudo tee -a /etc/yum.
+        </div>
+
+        <div class="read-more-link">
+          <a href="https://example.com/posts/install_mariadb10_centos7/">Read More</a>
+        </div>
+      </article>
+      <article class="post">
+        <h1 class="post-title">
+          <a href="https://example.com/posts/install_redmine3.4_rbuy2.4.1_passenger_nginx_mysql_ubuntu16.04/">Howto Install Redmine on Ubuntu 16.04</a>
+        </h1>
+
+        <div class="post-date">
+          <time datetime="0001-01-01T00:00:00Z">Jan 1, 0001</time> &middot; 2 min read
+        </div>
+
+        <div>
+          # base apt install mysql-server libmysqlclient-dev git-core subversion imagemagick libmagickwand-dev libcurl4-openssl-dev apt install build-essential mysql-server ruby ruby-dev libmysqlclient-dev imagemagick libmagickwand-dev # install mysql systemctl enable mysql.
+        </div>
+
+        <div class="read-more-link">
+          <a href="https://example.com/posts/install_redmine3.4_rbuy2.4.1_passenger_nginx_mysql_ubuntu16.04/">Read More</a>
+        </div>
+      </article>
+      <article class="post">
+        <h1 class="post-title">
+          <a href="https://example.com/posts/howto-use-ssr-on-mac-env/">HowTo Use SSR Service on Mac</a>
+        </h1>
+
+        <div class="post-date">
+          <time datetime="0001-01-01T00:00:00Z">Jan 1, 0001</time> &middot; 1 min read
+        </div>
+
+        <div>
+          应邀制作一份关于Mac SSR的连接使用。
+准备  SSR 服务提供商，SSGlobal ，你可以到Telegram加入我们。SSGlobal Group MacOS 版本 10.
+        </div>
+
+        <div class="read-more-link">
+          <a href="https://example.com/posts/howto-use-ssr-on-mac-env/">Read More</a>
+        </div>
+      </article>
+      <article class="post">
+        <h1 class="post-title">
+          <a href="https://example.com/posts/howto-automatic-easybackup-mysqldb/">HowTo-Automatic-EasyBackup-MysqlDB</a>
+        </h1>
+
+        <div class="post-date">
+          <time datetime="0001-01-01T00:00:00Z">Jan 1, 0001</time> &middot; 4 min read
+        </div>
+
+        <div>
+          mysql是一个免费、开源中一款非常优秀关系型数据库，在现在的互联网中使用的非常广泛，无论是大型IT项目还是个人开发者的小项目，mysql都能很好的协助人们处理数据库相关的工作，同时数据库对于我们来说是非常重要，所以经常备份数据库是一个基本的操作，这会为你或者你的团队，减少非常多不必要的麻烦。
+mysqldump是一个简单而且非常流行的mysql全量备份方式，配合crontab添加自动备份任务，很好的完成了我们针对数据库备份的需求，下面我会通过一个例子来说明如何完成这项操作。
+ mysqldump是mysql自带的备份工具，所以只要你安装mysql应用包，就无需单独安装mysqldump
+ 测试环境 我搭建了一个Ghost博客环境，数据库采用是的Mysql，接下来我想在每天00:00执行数据库备份操作，并在备份完成之后，告诉我是否备份成功。
+所以我们的步骤应该：
+ 测试备份命令是否可以正常执行 安装测试命令行邮件工具mailx 安装计划任务工具Crontab 编写备份脚本 添加计划任务  测试备份命令 首先你要获得你要备份的数据库对应的select权限，仅需要select权限即可，mysql在管理方面，应该坚持只赋予必须权限的原则。
+        </div>
+
+        <div class="read-more-link">
+          <a href="https://example.com/posts/howto-automatic-easybackup-mysqldb/">Read More</a>
+        </div>
+      </article>
+      <article class="post">
+        <h1 class="post-title">
+          <a href="https://example.com/posts/howto-skip-atlassian-auth-for-sourcetree/">HowTo-Skip-Atlassian-Auth-for-SourceTree</a>
+        </h1>
+
+        <div class="post-date">
+          <time datetime="0001-01-01T00:00:00Z">Jan 1, 0001</time> &middot; 1 min read
+        </div>
+
+        <div>
+          问题 因为国内的网络的原因，导致我们在首次打开SourceTree时需要验证Atlassian账号，但是Atlassian的注册页面使用requirejs是用了Google的CDN服务，所以无法正常通过验证，如果你有翻墙工具，那么这就没有问题，下面我要讲的方法是在不翻墙的情况下跳过初始化验证。
+ 目前我解决的是在Windows平台上的问题，关于Mac平台，我稍后会更新到文档中。
+ 解决思路 我的想法是通过增加account信息，让SourceTree跳过验证；经过测试2.0.19及以下版本都支持，但是SourceTree在最新版本2.0.20时可能修订验证方式，所以导致我的这个方式不适用，大家可以在我的百度云盘共享中下载2.0.19，功能上并没发生多少变化。
+链接: https://pan.baidu.com/s/1qYsHKWs 密码: wnc3
+        </div>
+
+        <div class="read-more-link">
+          <a href="https://example.com/posts/howto-skip-atlassian-auth-for-sourcetree/">Read More</a>
+        </div>
+      </article>
+      <article class="post">
+        <h1 class="post-title">
+          <a href="https://example.com/posts/howto-use-tortoisegit-for-windows/">HowTo-use-TortoiseGit-for-Windows</a>
+        </h1>
+
+        <div class="post-date">
+          <time datetime="0001-01-01T00:00:00Z">Jan 1, 0001</time> &middot; 1 min read
+        </div>
+
+        <div>
+          Git是目前最先进的版本控制系统，越来越多的业务场景都在使用Git，风靡全球的Github更是让Git版本控制系统名声大震，但是GitHub旨在建立一个开源的生态环境，所以不适合企业内部的管理系统，在之前的文章中，我也讲到了如何搭建GitLab，可以在企业内部自建一套功能完善的Git版本控制系统。
+GitLab是一个非常成熟的服务端应用，但是作为一名开发人员，我们在使用GitLab与其他人员协同版本时，需要有一个工作对我们的每次修改更新以及推送，这也是版本控制工具的真正精髓；在不同的平台有着很多丰富的应用软件，所以挑选一款适合自己的Git GUI工具很重要。
+目前在众多Git Client之中做的比较好的是SourceTree，并且同时支持Mac和Windows双平台，但是有一个问题，当我们在初次安装时需要验证Atlassian账号，但是Atlassian的注册页面用了requirejs，而且是用了Google的CDN服务，所以必须翻墙，这对很多中国用户的使用造成了不变；所以，今天我在这里推荐一个在Windows平台下同样可以作为Git图形化客户端工具的：TortoiseGit
+TortoiseGit 是 TortoiseSVN 的 Git 版本，TortoiseGit用于迁移 TortoiseSVN 到 TortoiseGit，解决了在Windows平台之上没有合适Git图形化客户端的问题，TortoiseGit不仅免费，而且同样支持丰富的语言包，但是需要独立下载语言包安装，默认只有英文，注意语言包与程序版本一定要匹配。
+        </div>
+
+        <div class="read-more-link">
+          <a href="https://example.com/posts/howto-use-tortoisegit-for-windows/">Read More</a>
+        </div>
+      </article>
+      <article class="post">
+        <h1 class="post-title">
+          <a href="https://example.com/posts/iphoneipad%E4%B8%8D%E8%B6%8A%E7%8B%B1%E5%AE%89%E8%A3%85%E6%97%A7%E7%89%88%E7%A8%8B%E5%BA%8F/">iPhone/iPad 不越狱安装旧版程序</a>
+        </h1>
+
+        <div class="post-date">
+          <time datetime="0001-01-01T00:00:00Z">Jan 1, 0001</time> &middot; 1 min read
+        </div>
+
+        <div>
+          前言 软件版本迭代是会带来新的功能和 BUG 修复，为给用户带来更好的使用体验，我也是乐于尝鲜的性格，所以在软件推出发布新版本时都会及时更新，但用户体验其实是一个玄学的话题，有时并不能给你带来更好的体验，在 iOS 上，由于苹果商店严格的管理机制导致我们在升级后，想要回退到之前版本变得十分困难。
+虾米音乐升级到 6.0 版本之后，改变很大，作为一位老虾米非常不适应，所以就瞄准了 6.0 之前的最后一个版本：5.
+        </div>
+
+        <div class="read-more-link">
+          <a href="https://example.com/posts/iphoneipad%E4%B8%8D%E8%B6%8A%E7%8B%B1%E5%AE%89%E8%A3%85%E6%97%A7%E7%89%88%E7%A8%8B%E5%BA%8F/">Read More</a>
+        </div>
+      </article>
+      <article class="post">
+        <h1 class="post-title">
+          <a href="https://example.com/posts/blazemeter_recoding_jmx/">Jmeter(一)：使用BlazeMeter为Jmeter录制脚本</a>
+        </h1>
+
+        <div class="post-date">
+          <time datetime="0001-01-01T00:00:00Z">Jan 1, 0001</time> &middot; 1 min read
+        </div>
+
+        <div>
+          之前一直使用阿里云的PTS服务作为测试，但是今天发现阿里云的PTS服务正在升级无法使用，所以打算用Jmeter来做压力测试，并使用Chrome插件BlazeMeter来录制.jmx脚本。
+安装BlazeMeter插件 插件安装 , 需要能登录到Chrome应用商店，如果不能登录的话，可以在网上搜索下载crx包，手动加载到Chrome中即可。
+安装成功之后，在Chrome插件栏可以看到程序入口，BlazeMeter限制需要登录才能导出jmx脚本，所以首先需要注册账号。成功登陆后，完整界面如图所示：
+录制过程 填写测试脚本名称后，点击开始录制，执行一系列操作后，点停止录制，然后到处jmx文件到本地。
+导入脚本到Jmeter 在Jmeter中&quot;File-Open&quot;导入你jmx脚本，为了方便观察结果，我们需要增加一些察看报告。
+        </div>
+
+        <div class="read-more-link">
+          <a href="https://example.com/posts/blazemeter_recoding_jmx/">Read More</a>
+        </div>
+      </article>
+      <article class="post">
+        <h1 class="post-title">
+          <a href="https://example.com/posts/mac%E5%A6%82%E4%BD%95%E5%BF%AB%E9%80%9F%E5%BD%95%E5%88%B6gif%E5%B0%8F%E8%A7%86%E9%A2%91/">Mac 如何快速录制GiF小视频</a>
+        </h1>
+
+        <div class="post-date">
+          <time datetime="0001-01-01T00:00:00Z">Jan 1, 0001</time> &middot; 1 min read
+        </div>
+
+        <div>
+          在平时的沟通中经常有需要用到分享一个连续的操作等，在很多时候截图不能满足我的需求，录制视频文件的话呢，文件过大，不同平台限制过多是一个很麻烦的视频，所以录制GIF是一个非常好的解决办法，今天给大家推荐两款软件，关于录制GIF和GIF编辑。
+录制工具(1) Kap Kap是一款轻量级开源的GIF录制工具，这意味它是免费简单易用；你可以从官网下载。官网
+安装完成，启动Kap，它是以一个圆环的形式显示在状态栏上，所有的界面都在这里，你可以点击红框直接开始录制，点击后你的屏幕上会出现一个虚线框，你可以通过拖动四角调整大小。
+确定好录制范围之后，这时你发现Kap上红色录制按钮一个变成一个红色实心圆，再次单击即可开始录制。
+在你操作完成之后，再次单击，即可结束录制。
+录制工具(2) MacApp：QuickTime Player 以上管理Kap的使用GIF录制我是用过Mac自带的QuickTime Player录制，教程可以直接看 @JasonZone 的教程 链接
+        </div>
+
+        <div class="read-more-link">
+          <a href="https://example.com/posts/mac%E5%A6%82%E4%BD%95%E5%BF%AB%E9%80%9F%E5%BD%95%E5%88%B6gif%E5%B0%8F%E8%A7%86%E9%A2%91/">Read More</a>
+        </div>
+      </article>
+  </div>
+
+  
+    <ul class="pagination pagination-default">
+      <li class="page-item">
+        <a href="/" aria-label="First" class="page-link" role="button"><span aria-hidden="true">&laquo;&laquo;</span></a>
+      </li>
+      <li class="page-item">
+        <a href="/page/8/" aria-label="Previous" class="page-link" role="button"><span aria-hidden="true">&laquo;</span></a>
+      </li>
+      <li class="page-item">
+        <a href="/page/6/" aria-label="Page 6" class="page-link" role="button">6</a>
+      </li>
+      <li class="page-item">
+        <a href="/page/7/" aria-label="Page 7" class="page-link" role="button">7</a>
+      </li>
+      <li class="page-item">
+        <a href="/page/8/" aria-label="Page 8" class="page-link" role="button">8</a>
+      </li>
+      <li class="page-item active">
+        <a href="#" aria-current="page" aria-label="Page 9" class="page-link" role="button">9</a>
+      </li>
+      <li class="page-item">
+        <a href="/page/10/" aria-label="Page 10" class="page-link" role="button">10</a>
+      </li>
+      <li class="page-item">
+        <a href="/page/10/" aria-label="Next" class="page-link" role="button"><span aria-hidden="true">&raquo;</span></a>
+      </li>
+      <li class="page-item">
+        <a href="/page/10/" aria-label="Last" class="page-link" role="button"><span aria-hidden="true">&raquo;&raquo;</span></a>
+      </li>
+    </ul>
+  </main>
+
+  <footer>
+  <div>
+    <p>
+      &copy; samzong.lu 2021
+
+      &middot; <a href="https://creativecommons.org/licenses/by-sa/4.0" target="_blank">CC BY-SA 4.0</a>
+
+      
+    </p>
+  </div>
+</footer>
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/js/all.min.js"
+          integrity="sha256-MAgcygDRahs+F/Nk5Vz387whB4kSK9NXlDN3w58LLq0="
+          crossorigin="anonymous"></script>
+
+
+  <script src="/js/jquery.min.js"></script>
+  <script src="/js/soho.js"></script>
+
+  <script src="/js/blog.js"></script>
+
+  
+</body>
+</html>

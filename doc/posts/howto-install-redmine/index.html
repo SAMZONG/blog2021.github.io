@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh-CN" lang="zh-CN">
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="generator" content="Hugo 0.88.1" />
+
+  <title>HowTo Install Redmine &middot; SAMZONG</title>
+
+  <meta name="description" content="" />
+
+  
+
+<meta itemprop="name" content="HowTo Install Redmine">
+<meta itemprop="description" content="Runtime environment  CentOS 6.x Redmine 3.3.2 Ruby 2.2.6 rails 4."><meta itemprop="datePublished" content="2017-02-22T12:30:36+00:00" />
+<meta itemprop="dateModified" content="2017-02-22T12:30:36+00:00" />
+<meta itemprop="wordCount" content="341">
+<meta itemprop="keywords" content="Redmine," />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="HowTo Install Redmine"/>
+<meta name="twitter:description" content="Runtime environment  CentOS 6.x Redmine 3.3.2 Ruby 2.2.6 rails 4."/>
+
+
+<meta property="og:title" content="HowTo Install Redmine" />
+<meta property="og:description" content="Runtime environment  CentOS 6.x Redmine 3.3.2 Ruby 2.2.6 rails 4." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://example.com/posts/howto-install-redmine/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2017-02-22T12:30:36+00:00" />
+<meta property="article:modified_time" content="2017-02-22T12:30:36+00:00" />
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type":"Person",
+      "@id": "https://example.com#author",
+      "name": "samzong.lu",
+      "image": {
+        "@type":"ImageObject",
+        "url": "https://www.gravatar.com/avatar/c02c426714361366ea7d583950aa8fb4?s=400&d=mp"
+      },
+      "description": "Samzong's Blog"
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://example.com#website",
+      "url": "https://example.com",
+      "name": "SAMZONG",
+      "description": "Samzong's Blog",
+      "publisher": {
+        "@id": "https://example.com#author"
+      },
+      "inLanguage": "zh-CN"
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://example.com/posts/howto-install-redmine/#webpage",
+      "url": "https://example.com/posts/howto-install-redmine/",
+      "name": "HowTo Install Redmine",
+      "isPartOf": {
+        "@id": "https://example.com#website"
+      },
+      "about": {
+         "@id": "https://example.com#author"
+      },
+      "datePublished": "2017-02-22T12:30:36+00:00",
+      "dateModified": "2017-02-22T12:30:36+00:00",
+      "description": "Runtime environment  CentOS 6.x Redmine 3.3.2 Ruby 2.2.6 rails 4.",
+      "inLanguage": "zh-CN",
+      "potentialAction": [
+        {
+          "@type": "ReadAction",
+          "target": [
+            "https://example.com/posts/howto-install-redmine/"
+          ]
+        }
+      ]
+    },
+    {
+      "@type": "Article",
+      "isPartOf": {
+        "@id": "https://example.com/posts/howto-install-redmine/#webpage"
+      },
+      "mainEntityOfPage": {
+        "@id": "https://example.com/posts/howto-install-redmine/#webpage"
+      },
+      "headline": "HowTo Install Redmine",
+      "datePublished": "2017-02-22T12:30:36+00:00",
+      "dateModified": "2017-02-22T12:30:36+00:00",
+      "publisher": {
+        "@id": "https://example.com#author"
+      },
+      "keywords": [
+        "Redmine"
+      ],
+      "articleSection": [
+        "CentOS"
+      ],
+      "inLanguage": "zh-CN",
+      "author": {
+        "@type": "Person",
+        "name":  null 
+      },
+      "potentialAction": [
+        {
+          "@type": "CommentAction",
+          "name": "Comment",
+          "target": [
+            "https://example.com/posts/howto-install-redmine/#comments"
+          ]
+        }
+      ]
+    }
+  ]
+}
+</script>
+
+
+
+  <link type="text/css"
+        rel="stylesheet"
+        href="/css/print.css"
+        media="print">
+
+  <link type="text/css"
+        rel="stylesheet"
+        href="/css/poole.css">
+
+  <link type="text/css"
+        rel="stylesheet"
+        href="/css/hyde.css">
+
+  
+
+
+  <link type="text/css" rel="stylesheet" href="/css/blog.css">
+
+  <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700&display=swap">
+
+  <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css"
+        integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk="
+        crossorigin="anonymous" />
+
+  <link rel="apple-touch-icon-precomposed"
+        sizes="144x144"
+        href="/apple-touch-icon-144-precomposed.png">
+
+  <link rel="shortcut icon" href="/favicon.png">
+
+  
+  </head>
+<body>
+  <aside class="sidebar">
+  <div class="container">
+    <div class="sidebar-about">
+      
+      <div class="author-image">
+        <a href="https://example.com">
+          <img src="https://www.gravatar.com/avatar/c02c426714361366ea7d583950aa8fb4?s=200&d=mp" class="img-circle img-headshot center" alt="Gravatar">
+        </a>
+      </div>
+      
+
+      <h1>SAMZONG</h1>
+
+      
+      <p class="lead">Samzong&#39;s Blog</p>
+      
+    </div>
+
+    <nav>
+      <ul class="sidebar-nav">
+        <li>
+          <a href="https://example.com">Home</a>
+        </li>
+        <li>
+          <a href="/posts/">Posts</a>
+        </li><li>
+          <a href="/about/">About</a>
+        </li>
+      </ul>
+    </nav>
+
+    <section class="social-icons">
+      
+      <a href="https://www.linkedin.com/in/samzong/" rel="me" title="Linkedin" target="_blank">
+        <i class="fab fa-linkedin" aria-hidden="true"></i>
+      </a>
+      
+      <a href="https://github.com/samzong" rel="me" title="GitHub" target="_blank">
+        <i class="fab fa-github" aria-hidden="true"></i>
+      </a>
+      
+      <a href="https://twitter.com/samzong_lu" rel="me" title="Twitter" target="_blank">
+        <i class="fab fa-twitter" aria-hidden="true"></i>
+      </a>
+      
+    </section>
+  </div>
+</aside>
+
+
+  <main class="content container">
+  <div class="post">
+  <h1 class="title">HowTo Install Redmine</h1>
+  
+
+  <div class="post-date">
+    <time datetime="2017-02-22T12:30:36Z">Feb 22, 2017</time> <span class="readtime">&middot; 2 min read</span>
+  </div>
+
+  <div>
+  <h4 id="runtime-environment">Runtime environment</h4>
+<ul>
+<li>CentOS 6.x</li>
+<li>Redmine 3.3.2</li>
+<li>Ruby 2.2.6</li>
+<li>rails 4.2</li>
+<li>MySQL 5.1</li>
+<li>Nginx 1.10</li>
+</ul>
+<h4 id="安装rvm">安装rvm</h4>
+<h5 id="导入公钥">导入公钥</h5>
+<pre tabindex="0"><code>[root@localhost ~]# curl -sSL https://rvm.io/mpapis.asc | gpg --import
+</code></pre><h5 id="安装">安装</h5>
+<pre tabindex="0"><code>[root@localhost ~]# curl -L https://get.rvm.io | bash -s stable
+</code></pre><h5 id="加载rvm环境并安装基础依赖包">加载rvm环境并安装基础依赖包</h5>
+<pre tabindex="0"><code>[root@localhost ~]# source /etc/profile.d/rvm.sh
+[root@localhost ~]# rvm requirements
+</code></pre><h4 id="安装ruby">安装ruby</h4>
+<pre tabindex="0"><code>[root@localhost ~]# rvm install 2.2.6
+...
+[root@localhost ~]# rvm use 2.2.6 --default
+</code></pre><h4 id="安装rails">安装rails</h4>
+<h5 id="更换gem源">更换gem源</h5>
+<p>默认gem的源站点是https://rubygems.org 由于国内的网络原因导致无法连接，所以导致无法使用gem安装，这里换成国内淘宝的gem镜像站点</p>
+<pre tabindex="0"><code>[root@localhost ~]# gem sources -l
+*** CURRENT SOURCES ***
+
+https://rubygems.org/
+[root@localhost ~]# gem sources --remove https://rubygems.org/
+[root@localhost ~]# gem sources -a https://ruby.taobao.org/
+[root@localhost ~]# gem sources -l
+*** CURRENT SOURCES ***
+
+https://ruby.taobao.org/
+</code></pre><h5 id="安装-1">安装</h5>
+<pre tabindex="0"><code>[root@localhost ~]# gem install rails -v=4.2
+</code></pre><h4 id="安装mysql">安装MySQL</h4>
+<pre tabindex="0"><code>[root@localhost ~]# yum install -y mysql-server mysql-libs mysql-devel mysql
+[root@localhost ~]# service mysqld start
+[root@localhost ~]# mysql_secure_installation
+</code></pre><h4 id="安装redmine">安装redmine</h4>
+<h5 id="下载redmine-332">下载Redmine 3.3.2</h5>
+<pre tabindex="0"><code>[root@localhost ~]# wget http://www.redmine.org/releases/redmine-3.3.2.tar.gz
+[root@localhost ~]# tar xf redmine-3.3.2.tar.gz
+[root@localhost ~]# mv redmine-3.3.2 /opt
+</code></pre><h5 id="安装管理ruby的包管理工具bundler">安装管理ruby的包管理工具bundler</h5>
+<pre tabindex="0"><code># 注意，一定要在redmine目录下操作
+[root@localhost ~]# cd /opt/redmine-3.3.2
+[root@localhost redmine-3.3.2]# gem install bundler
+</code></pre><h5 id="安装redmine运行所需要的依赖包">安装redmine运行所需要的依赖包</h5>
+<pre tabindex="0"><code>[root@localhost redmine-3.3.2]# bundle install --without development test rmagick
+</code></pre><h5 id="为rails生产cookies秘钥">为rails生产cookies秘钥</h5>
+<pre tabindex="0"><code>[root@localhost redmine-3.3.2]# rake generate_secret_token
+</code></pre><h5 id="创建redmine的数据库">创建redmine的数据库</h5>
+<pre tabindex="0"><code>mysql&gt; create database redmine character set utf8;
+mysql&gt; grant all privileges on redmine.* to 'redmine'@'localhost' identified by 'redmine_pass';
+</code></pre><h5 id="修改redmine的databaseyml">修改redmine的database.yml</h5>
+<pre tabindex="0"><code>[root@localhost redmine-3.3.2]# cp config/database.yml.example config/database.yml
+[root@localhost redmine-3.3.2]# vim config/database.yml
+production:
+  adapter: mysql2
+  database: redmine
+  host: localhost
+  username: redmine
+  password: &quot;redmine_pass&quot;
+  encoding: utf8
+</code></pre><h5 id="创建数据库结构">创建数据库结构</h5>
+<pre tabindex="0"><code>[root@localhost redmine-3.3.2]# RAILS_ENV=production bundle exec rake db:migrate
+</code></pre><h5 id="生产缺省数据">生产缺省数据</h5>
+<pre tabindex="0"><code>[root@localhost redmine-3.3.2]# RAILS_ENV=production bundle exec rake redmine:load_default_data
+# 选择默认语言，之后可更改，初始为en
+</code></pre><h5 id="测试是否安装成功">测试是否安装成功</h5>
+<pre tabindex="0"><code>[root@localhost redmine-3.3.2]# bundle exec rails server webrick -e production -b 0.0.0.0
+</code></pre><blockquote>
+<p>默认运行3000端口，默认管理员admin/admin</p>
+</blockquote>
+<h4 id="配置redmine在nginx上运行">配置Redmine在Nginx上运行</h4>
+<p>Redmine常用的解决办法是使用passenger+nginx，但是Nginx不支持装载模块，所以需要重新编译安装Nginx，安装Nginx的Passenger有两种方式</p>
+<ul>
+<li>采用Passenger提供的脚本进行安装，适合新环境</li>
+<li>手动编译安装Nginx增加Passenger模块，适合已存在Nginx环境</li>
+</ul>
+<h5 id="采用passenger提供脚本安装">采用Passenger提供脚本安装</h5>
+<pre tabindex="0"><code>[root@localhost redmine-3.3.2]# gem install passenger
+[root@localhost redmine-3.3.2]# passenger-install-nginx-module --auto --prefix=/opt/nginx
+</code></pre><h5 id="采用重新编译nginx增加passenger模块">采用重新编译Nginx增加Passenger模块</h5>
+<pre tabindex="0"><code># 获取passenger的安装路径
+[root@localhost ~]# passenger-config --root
+/usr/local/rvm/gems/ruby-2.2.6/gems/passenger-5.1.2
+
+# 重新编译Nginx并添加模块
+[root@localhost ~]# wget http://nginx.org/download/nginx-1.10.3.tar.gz
+[root@localhost ~]# tar xf nginx-1.10.3.tar.gz
+[root@localhost ~]# cd nginx-1.10.3
+[root@localhost nginx-1.10.3]# ./configure ... -add-module=/usr/local/rvm/gems/ruby-2.2.6/gems/passenger-5.1.2
+</code></pre><h5 id="增加http模块内以下配置">增加HTTP模块内以下配置</h5>
+<pre tabindex="0"><code>passenger_root /usr/local/rvm/gems/ruby-2.2.6/gems/passenger-5.1.2
+</code></pre><h5 id="配置nginxconf-修改server模块中location的配置">配置nginx.conf 修改server模块中location的配置</h5>
+<pre tabindex="0"><code># ...
+server	{
+  # ...
+  passenger_enabled on;
+  location / {
+    root /opt/redmine-3.3.2/public;
+    index index.html index.htm;
+  }
+}
+# ...
+</code></pre><h5 id="启动nginx">启动Nginx</h5>
+<pre tabindex="0"><code>[root@localhost ~]# /root/nginx-1.10.3/sbin/nginx -c /root/nginx-1.10.3/conf/nginx.conf
+</code></pre><h4 id="其他">其他</h4>
+<p>到这里，所有的安装都完成了，过程中我遇到这些问题，你也注意下：</p>
+<h5 id="71-could-not-find-gem-mysql2--0311-in-any-of-the-gem-sources-listed-in-your-gemfile">7.1 Could not find gem &lsquo;mysql2 (~&gt; 0.3.11)&rsquo; in any of the gem sources listed in your Gemfile.</h5>
+<pre tabindex="0"><code>[root@localhost redmine-3.3.2]# rm -f Gemfile.lock
+[root@localhost redmine-3.3.2]# bundle install
+</code></pre><h5 id="72-curl-tools">7.2 curl-tools</h5>
+<pre tabindex="0"><code>yum install libcurl-devel
+</code></pre>
+  </div>
+
+  
+<div>
+  <ul class="tags">
+  <li>
+    <a href="https://example.com/tags/redmine/" class="tag-link">Redmine</a>
+  </li>
+  </ul>
+</div>
+
+
+
+  <div class="share-buttons">
+  <a class="twitter-share-button"
+     href="#"
+     title="Share on Twitter"
+     data-url="https://example.com/posts/howto-install-redmine/"
+     data-text="HowTo Install Redmine"><i class="fab fa-twitter"></i></a>
+
+  <a class="linkedin-share-button"
+     href="#"
+     title="Share on LinkedIn"
+     data-url="https://example.com/posts/howto-install-redmine/"
+     data-text="HowTo Install Redmine"><i class="fab fa-linkedin-in"></i></a>
+
+  <a class="facebook-share-button"
+     href="#"
+     title="Share on Facebook"
+     data-url="https://example.com/posts/howto-install-redmine/"
+     data-text="HowTo Install Redmine"><i class="fab fa-facebook"></i></a>
+
+  <a class="telegram-share-button"
+     href="#"
+     title="Share on Telegram"
+     data-url="https://example.com/posts/howto-install-redmine/"
+     data-text="HowTo Install Redmine"><i class="fab fa-telegram"></i></a>
+
+  <a class="pinterest-share-button"
+     href="#"
+     title="Share on Pinterest"
+     data-url="https://example.com/posts/howto-install-redmine/"
+     data-text="HowTo Install Redmine"><i class="fab fa-pinterest"></i></a>
+</div>
+
+
+  
+</div>
+  </main>
+
+  <footer>
+  <div>
+    <p>
+      &copy; samzong.lu 2021
+
+      &middot; <a href="https://creativecommons.org/licenses/by-sa/4.0" target="_blank">CC BY-SA 4.0</a>
+
+      
+    </p>
+  </div>
+</footer>
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/js/all.min.js"
+          integrity="sha256-MAgcygDRahs+F/Nk5Vz387whB4kSK9NXlDN3w58LLq0="
+          crossorigin="anonymous"></script>
+
+
+  <script src="/js/jquery.min.js"></script>
+  <script src="/js/soho.js"></script>
+
+  <script src="/js/blog.js"></script>
+
+  
+</body>
+</html>

@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh-CN" lang="zh-CN">
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="generator" content="Hugo 0.88.1" />
+
+  <title>HowTo-Skip-Atlassian-Auth-for-SourceTree &middot; SAMZONG</title>
+
+  <meta name="description" content="" />
+
+  
+
+<meta itemprop="name" content="HowTo-Skip-Atlassian-Auth-for-SourceTree">
+<meta itemprop="description" content="问题 因为国内的网络的原因，导致我们在首次打开SourceTree时需要验证Atlassian账号，但是Atlassian的注册页面使用requirejs是用了Google的CDN服务，所以无法正常通过验证，如果你有翻墙工具，那么这就没有问题，下面我要讲的方法是在不翻墙的情况下跳过初始化验证。
+ 目前我解决的是在Windows平台上的问题，关于Mac平台，我稍后会更新到文档中。
+ 解决思路 我的想法是通过增加account信息，让SourceTree跳过验证；经过测试2.0.19及以下版本都支持，但是SourceTree在最新版本2.0.20时可能修订验证方式，所以导致我的这个方式不适用，大家可以在我的百度云盘共享中下载2.0.19，功能上并没发生多少变化。
+链接: https://pan.baidu.com/s/1qYsHKWs 密码: wnc3">
+
+<meta itemprop="wordCount" content="95">
+<meta itemprop="keywords" content="Git," />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="HowTo-Skip-Atlassian-Auth-for-SourceTree"/>
+<meta name="twitter:description" content="问题 因为国内的网络的原因，导致我们在首次打开SourceTree时需要验证Atlassian账号，但是Atlassian的注册页面使用requirejs是用了Google的CDN服务，所以无法正常通过验证，如果你有翻墙工具，那么这就没有问题，下面我要讲的方法是在不翻墙的情况下跳过初始化验证。
+ 目前我解决的是在Windows平台上的问题，关于Mac平台，我稍后会更新到文档中。
+ 解决思路 我的想法是通过增加account信息，让SourceTree跳过验证；经过测试2.0.19及以下版本都支持，但是SourceTree在最新版本2.0.20时可能修订验证方式，所以导致我的这个方式不适用，大家可以在我的百度云盘共享中下载2.0.19，功能上并没发生多少变化。
+链接: https://pan.baidu.com/s/1qYsHKWs 密码: wnc3"/>
+
+
+<meta property="og:title" content="HowTo-Skip-Atlassian-Auth-for-SourceTree" />
+<meta property="og:description" content="问题 因为国内的网络的原因，导致我们在首次打开SourceTree时需要验证Atlassian账号，但是Atlassian的注册页面使用requirejs是用了Google的CDN服务，所以无法正常通过验证，如果你有翻墙工具，那么这就没有问题，下面我要讲的方法是在不翻墙的情况下跳过初始化验证。
+ 目前我解决的是在Windows平台上的问题，关于Mac平台，我稍后会更新到文档中。
+ 解决思路 我的想法是通过增加account信息，让SourceTree跳过验证；经过测试2.0.19及以下版本都支持，但是SourceTree在最新版本2.0.20时可能修订验证方式，所以导致我的这个方式不适用，大家可以在我的百度云盘共享中下载2.0.19，功能上并没发生多少变化。
+链接: https://pan.baidu.com/s/1qYsHKWs 密码: wnc3" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://example.com/posts/howto-skip-atlassian-auth-for-sourcetree/" /><meta property="article:section" content="posts" />
+
+
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type":"Person",
+      "@id": "https://example.com#author",
+      "name": "samzong.lu",
+      "image": {
+        "@type":"ImageObject",
+        "url": "https://www.gravatar.com/avatar/c02c426714361366ea7d583950aa8fb4?s=400&d=mp"
+      },
+      "description": "Samzong's Blog"
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://example.com#website",
+      "url": "https://example.com",
+      "name": "SAMZONG",
+      "description": "Samzong's Blog",
+      "publisher": {
+        "@id": "https://example.com#author"
+      },
+      "inLanguage": "zh-CN"
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://example.com/posts/howto-skip-atlassian-auth-for-sourcetree/#webpage",
+      "url": "https://example.com/posts/howto-skip-atlassian-auth-for-sourcetree/",
+      "name": "HowTo-Skip-Atlassian-Auth-for-SourceTree",
+      "isPartOf": {
+        "@id": "https://example.com#website"
+      },
+      "about": {
+         "@id": "https://example.com#author"
+      },
+      "description": "问题 因为国内的网络的原因，导致我们在首次打开SourceTree时需要验证Atlassian账号，但是Atlassian的注册页面使用requirejs是用了Google的CDN服务，所以无法正常通过验证，如果你有翻墙工具，那么这就没有问题，下面我要讲的方法是在不翻墙的情况下跳过初始化验证。\n 目前我解决的是在Windows平台上的问题，关于Mac平台，我稍后会更新到文档中。\n 解决思路 我的想法是通过增加account信息，让SourceTree跳过验证；经过测试2.0.19及以下版本都支持，但是SourceTree在最新版本2.0.20时可能修订验证方式，所以导致我的这个方式不适用，大家可以在我的百度云盘共享中下载2.0.19，功能上并没发生多少变化。\n链接: https://pan.baidu.com/s/1qYsHKWs 密码: wnc3",
+      "inLanguage": "zh-CN",
+      "potentialAction": [
+        {
+          "@type": "ReadAction",
+          "target": [
+            "https://example.com/posts/howto-skip-atlassian-auth-for-sourcetree/"
+          ]
+        }
+      ]
+    },
+    {
+      "@type": "Article",
+      "isPartOf": {
+        "@id": "https://example.com/posts/howto-skip-atlassian-auth-for-sourcetree/#webpage"
+      },
+      "mainEntityOfPage": {
+        "@id": "https://example.com/posts/howto-skip-atlassian-auth-for-sourcetree/#webpage"
+      },
+      "headline": "HowTo-Skip-Atlassian-Auth-for-SourceTree",
+      "publisher": {
+        "@id": "https://example.com#author"
+      },
+      "keywords": [
+        "Git"
+      ],
+      "articleSection": [
+        "Git"
+      ],
+      "inLanguage": "zh-CN",
+      "author": {
+        "@type": "Person",
+        "name":  null 
+      },
+      "potentialAction": [
+        {
+          "@type": "CommentAction",
+          "name": "Comment",
+          "target": [
+            "https://example.com/posts/howto-skip-atlassian-auth-for-sourcetree/#comments"
+          ]
+        }
+      ]
+    }
+  ]
+}
+</script>
+
+
+
+  <link type="text/css"
+        rel="stylesheet"
+        href="/css/print.css"
+        media="print">
+
+  <link type="text/css"
+        rel="stylesheet"
+        href="/css/poole.css">
+
+  <link type="text/css"
+        rel="stylesheet"
+        href="/css/hyde.css">
+
+  
+
+
+  <link type="text/css" rel="stylesheet" href="/css/blog.css">
+
+  <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700&display=swap">
+
+  <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css"
+        integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk="
+        crossorigin="anonymous" />
+
+  <link rel="apple-touch-icon-precomposed"
+        sizes="144x144"
+        href="/apple-touch-icon-144-precomposed.png">
+
+  <link rel="shortcut icon" href="/favicon.png">
+
+  
+  </head>
+<body>
+  <aside class="sidebar">
+  <div class="container">
+    <div class="sidebar-about">
+      
+      <div class="author-image">
+        <a href="https://example.com">
+          <img src="https://www.gravatar.com/avatar/c02c426714361366ea7d583950aa8fb4?s=200&d=mp" class="img-circle img-headshot center" alt="Gravatar">
+        </a>
+      </div>
+      
+
+      <h1>SAMZONG</h1>
+
+      
+      <p class="lead">Samzong&#39;s Blog</p>
+      
+    </div>
+
+    <nav>
+      <ul class="sidebar-nav">
+        <li>
+          <a href="https://example.com">Home</a>
+        </li>
+        <li>
+          <a href="/posts/">Posts</a>
+        </li><li>
+          <a href="/about/">About</a>
+        </li>
+      </ul>
+    </nav>
+
+    <section class="social-icons">
+      
+      <a href="https://www.linkedin.com/in/samzong/" rel="me" title="Linkedin" target="_blank">
+        <i class="fab fa-linkedin" aria-hidden="true"></i>
+      </a>
+      
+      <a href="https://github.com/samzong" rel="me" title="GitHub" target="_blank">
+        <i class="fab fa-github" aria-hidden="true"></i>
+      </a>
+      
+      <a href="https://twitter.com/samzong_lu" rel="me" title="Twitter" target="_blank">
+        <i class="fab fa-twitter" aria-hidden="true"></i>
+      </a>
+      
+    </section>
+  </div>
+</aside>
+
+
+  <main class="content container">
+  <div class="post">
+  <h1 class="title">HowTo-Skip-Atlassian-Auth-for-SourceTree</h1>
+  
+
+  <div class="post-date">
+    <time datetime="0001-01-01T00:00:00Z">Jan 1, 0001</time> <span class="readtime">&middot; 1 min read</span>
+  </div>
+
+  <div>
+  <h4 id="问题">问题</h4>
+<p><img src="https://samzong.oss-cn-shenzhen.aliyuncs.com/blog/eaxem.png" alt=""></p>
+<p>因为国内的网络的原因，导致我们在首次打开SourceTree时需要验证Atlassian账号，但是Atlassian的注册页面使用requirejs是用了Google的CDN服务，所以无法正常通过验证，如果你有翻墙工具，那么这就没有问题，下面我要讲的方法是在不翻墙的情况下跳过初始化验证。</p>
+<blockquote>
+<p>目前我解决的是在Windows平台上的问题，关于Mac平台，我稍后会更新到文档中。</p>
+</blockquote>
+<h4 id="解决思路">解决思路</h4>
+<p>我的想法是通过增加<code>account</code>信息，让<code>SourceTree</code>跳过验证；经过测试<code>2.0.19</code>及以下版本都支持，但是SourceTree在最新版本2.0.20时可能修订验证方式，所以导致我的这个方式不适用，大家可以在我的百度云盘共享中下载2.0.19，功能上并没发生多少变化。</p>
+<p>链接: <a href="https://pan.baidu.com/s/1qYsHKWs">https://pan.baidu.com/s/1qYsHKWs</a> 密码: wnc3</p>
+<h4 id="解决步骤">解决步骤</h4>
+<h5 id="net-452">.NET 4.5.2</h5>
+<p>SourceTree 依赖的.NET环境最低是4.5.2，当然在你安装的过程中，会提示你下载安装，你只需要确认即可，不过这样下载会比较慢，所以建议你使用Offline的形式安装，下面是微软官方下载地址：</p>
+<p><a href="https://www.microsoft.com/en-us/download/confirmation.aspx?id=42642">https://www.microsoft.com/en-us/download/confirmation.aspx?id=42642</a></p>
+<h5 id="sourcetree">SourceTree</h5>
+<p>安装过程中，默认一路“Next”即可，在安装完成之后，我们需要找到SourceTree在LocalAppData中的路径，请打开资源管理窗口，然后输入以下地址：</p>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-bash" data-lang="bash">%LocalAppData%<span style="color:#ae81ff">\A</span>tlassian<span style="color:#ae81ff">\S</span>ourceTree<span style="color:#ae81ff">\
+</span></code></pre></td></tr></table>
+</div>
+</div><blockquote>
+<p>如果路径不存在，创建目录即可</p>
+</blockquote>
+<p>然后将之前百度云盘的文件<!-- raw HTML omitted -->accounts.json<!-- raw HTML omitted -->复制到这个位置，它的路径应该是：</p>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-bash" data-lang="bash">%LocalAppData%<span style="color:#ae81ff">\A</span>tlassian<span style="color:#ae81ff">\S</span>ourceTree<span style="color:#ae81ff">\a</span>ccounts.json
+</code></pre></td></tr></table>
+</div>
+</div><p>文件内容：</p>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-json" data-lang="json">[
+  {
+    <span style="color:#f92672">&#34;$id&#34;</span>: <span style="color:#e6db74">&#34;1&#34;</span>,
+    <span style="color:#f92672">&#34;$type&#34;</span>: <span style="color:#e6db74">&#34;SourceTree.Api.Host.Identity.Model.IdentityAccount, SourceTree.Api.Host.Identity&#34;</span>,
+    <span style="color:#f92672">&#34;Authenticate&#34;</span>: <span style="color:#66d9ef">true</span>,
+    <span style="color:#f92672">&#34;HostInstance&#34;</span>: {
+      <span style="color:#f92672">&#34;$id&#34;</span>: <span style="color:#e6db74">&#34;2&#34;</span>,
+      <span style="color:#f92672">&#34;$type&#34;</span>: <span style="color:#e6db74">&#34;SourceTree.Host.Atlassianaccount.AtlassianAccountInstance, SourceTree.Host.AtlassianAccount&#34;</span>,
+      <span style="color:#f92672">&#34;Host&#34;</span>: {
+        <span style="color:#f92672">&#34;$id&#34;</span>: <span style="color:#e6db74">&#34;3&#34;</span>,
+        <span style="color:#f92672">&#34;$type&#34;</span>: <span style="color:#e6db74">&#34;SourceTree.Host.Atlassianaccount.AtlassianAccountHost, SourceTree.Host.AtlassianAccount&#34;</span>,
+        <span style="color:#f92672">&#34;Id&#34;</span>: <span style="color:#e6db74">&#34;atlassian account&#34;</span>
+      },
+      <span style="color:#f92672">&#34;BaseUrl&#34;</span>: <span style="color:#e6db74">&#34;https://id.atlassian.com/&#34;</span>
+    },
+    <span style="color:#f92672">&#34;Credentials&#34;</span>: {
+      <span style="color:#f92672">&#34;$id&#34;</span>: <span style="color:#e6db74">&#34;4&#34;</span>,
+      <span style="color:#f92672">&#34;$type&#34;</span>: <span style="color:#e6db74">&#34;SourceTree.Model.BasicAuthCredentials, SourceTree.Api.Account&#34;</span>,
+      <span style="color:#f92672">&#34;Username&#34;</span>: <span style="color:#e6db74">&#34;&#34;</span>,
+      <span style="color:#f92672">&#34;Email&#34;</span>: <span style="color:#66d9ef">null</span>
+    },
+    <span style="color:#f92672">&#34;IsDefault&#34;</span>: <span style="color:#66d9ef">false</span>
+  }
+]
+</code></pre></td></tr></table>
+</div>
+</div><p>添加完成之后，启动SourceTree即可发现已经跳过了验证界面。</p>
+
+  </div>
+
+  
+<div>
+  <ul class="tags">
+  <li>
+    <a href="https://example.com/tags/git/" class="tag-link">Git</a>
+  </li>
+  </ul>
+</div>
+
+
+
+  <div class="share-buttons">
+  <a class="twitter-share-button"
+     href="#"
+     title="Share on Twitter"
+     data-url="https://example.com/posts/howto-skip-atlassian-auth-for-sourcetree/"
+     data-text="HowTo-Skip-Atlassian-Auth-for-SourceTree"><i class="fab fa-twitter"></i></a>
+
+  <a class="linkedin-share-button"
+     href="#"
+     title="Share on LinkedIn"
+     data-url="https://example.com/posts/howto-skip-atlassian-auth-for-sourcetree/"
+     data-text="HowTo-Skip-Atlassian-Auth-for-SourceTree"><i class="fab fa-linkedin-in"></i></a>
+
+  <a class="facebook-share-button"
+     href="#"
+     title="Share on Facebook"
+     data-url="https://example.com/posts/howto-skip-atlassian-auth-for-sourcetree/"
+     data-text="HowTo-Skip-Atlassian-Auth-for-SourceTree"><i class="fab fa-facebook"></i></a>
+
+  <a class="telegram-share-button"
+     href="#"
+     title="Share on Telegram"
+     data-url="https://example.com/posts/howto-skip-atlassian-auth-for-sourcetree/"
+     data-text="HowTo-Skip-Atlassian-Auth-for-SourceTree"><i class="fab fa-telegram"></i></a>
+
+  <a class="pinterest-share-button"
+     href="#"
+     title="Share on Pinterest"
+     data-url="https://example.com/posts/howto-skip-atlassian-auth-for-sourcetree/"
+     data-text="HowTo-Skip-Atlassian-Auth-for-SourceTree"><i class="fab fa-pinterest"></i></a>
+</div>
+
+
+  
+</div>
+  </main>
+
+  <footer>
+  <div>
+    <p>
+      &copy; samzong.lu 2021
+
+      &middot; <a href="https://creativecommons.org/licenses/by-sa/4.0" target="_blank">CC BY-SA 4.0</a>
+
+      
+    </p>
+  </div>
+</footer>
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/js/all.min.js"
+          integrity="sha256-MAgcygDRahs+F/Nk5Vz387whB4kSK9NXlDN3w58LLq0="
+          crossorigin="anonymous"></script>
+
+
+  <script src="/js/jquery.min.js"></script>
+  <script src="/js/soho.js"></script>
+
+  <script src="/js/blog.js"></script>
+
+  
+</body>
+</html>

@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh-CN" lang="zh-CN">
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="generator" content="Hugo 0.88.1" />
+
+  <title>HowTo Install a Tomcat Server 7 &middot; SAMZONG</title>
+
+  <meta name="description" content="" />
+
+  
+
+<meta itemprop="name" content="HowTo Install a Tomcat Server 7">
+<meta itemprop="description" content="本文件是采用的模板是CentOS 6，同样适用于CentOS 系列其他发行版本。
+1. 测试环境  VMware Fushion 8 Pro # windows Use VirtualBox CentOS-6."><meta itemprop="datePublished" content="2016-09-19T10:25:53+00:00" />
+<meta itemprop="dateModified" content="2016-09-19T10:25:53+00:00" />
+<meta itemprop="wordCount" content="536">
+<meta itemprop="keywords" content="Tomcat," />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="HowTo Install a Tomcat Server 7"/>
+<meta name="twitter:description" content="本文件是采用的模板是CentOS 6，同样适用于CentOS 系列其他发行版本。
+1. 测试环境  VMware Fushion 8 Pro # windows Use VirtualBox CentOS-6."/>
+
+
+<meta property="og:title" content="HowTo Install a Tomcat Server 7" />
+<meta property="og:description" content="本文件是采用的模板是CentOS 6，同样适用于CentOS 系列其他发行版本。
+1. 测试环境  VMware Fushion 8 Pro # windows Use VirtualBox CentOS-6." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://example.com/posts/howto-install-a-tomcat-server-7/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2016-09-19T10:25:53+00:00" />
+<meta property="article:modified_time" content="2016-09-19T10:25:53+00:00" />
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type":"Person",
+      "@id": "https://example.com#author",
+      "name": "samzong.lu",
+      "image": {
+        "@type":"ImageObject",
+        "url": "https://www.gravatar.com/avatar/c02c426714361366ea7d583950aa8fb4?s=400&d=mp"
+      },
+      "description": "Samzong's Blog"
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://example.com#website",
+      "url": "https://example.com",
+      "name": "SAMZONG",
+      "description": "Samzong's Blog",
+      "publisher": {
+        "@id": "https://example.com#author"
+      },
+      "inLanguage": "zh-CN"
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://example.com/posts/howto-install-a-tomcat-server-7/#webpage",
+      "url": "https://example.com/posts/howto-install-a-tomcat-server-7/",
+      "name": "HowTo Install a Tomcat Server 7",
+      "isPartOf": {
+        "@id": "https://example.com#website"
+      },
+      "about": {
+         "@id": "https://example.com#author"
+      },
+      "datePublished": "2016-09-19T10:25:53+00:00",
+      "dateModified": "2016-09-19T10:25:53+00:00",
+      "description": "本文件是采用的模板是CentOS 6，同样适用于CentOS 系列其他发行版本。\n1. 测试环境  VMware Fushion 8 Pro # windows Use VirtualBox CentOS-6.",
+      "inLanguage": "zh-CN",
+      "potentialAction": [
+        {
+          "@type": "ReadAction",
+          "target": [
+            "https://example.com/posts/howto-install-a-tomcat-server-7/"
+          ]
+        }
+      ]
+    },
+    {
+      "@type": "Article",
+      "isPartOf": {
+        "@id": "https://example.com/posts/howto-install-a-tomcat-server-7/#webpage"
+      },
+      "mainEntityOfPage": {
+        "@id": "https://example.com/posts/howto-install-a-tomcat-server-7/#webpage"
+      },
+      "headline": "HowTo Install a Tomcat Server 7",
+      "datePublished": "2016-09-19T10:25:53+00:00",
+      "dateModified": "2016-09-19T10:25:53+00:00",
+      "publisher": {
+        "@id": "https://example.com#author"
+      },
+      "keywords": [
+        "Tomcat"
+      ],
+      "articleSection": [
+        "Tomcat"
+      ],
+      "inLanguage": "zh-CN",
+      "author": {
+        "@type": "Person",
+        "name":  null 
+      },
+      "potentialAction": [
+        {
+          "@type": "CommentAction",
+          "name": "Comment",
+          "target": [
+            "https://example.com/posts/howto-install-a-tomcat-server-7/#comments"
+          ]
+        }
+      ]
+    }
+  ]
+}
+</script>
+
+
+
+  <link type="text/css"
+        rel="stylesheet"
+        href="/css/print.css"
+        media="print">
+
+  <link type="text/css"
+        rel="stylesheet"
+        href="/css/poole.css">
+
+  <link type="text/css"
+        rel="stylesheet"
+        href="/css/hyde.css">
+
+  
+
+
+  <link type="text/css" rel="stylesheet" href="/css/blog.css">
+
+  <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700&display=swap">
+
+  <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css"
+        integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk="
+        crossorigin="anonymous" />
+
+  <link rel="apple-touch-icon-precomposed"
+        sizes="144x144"
+        href="/apple-touch-icon-144-precomposed.png">
+
+  <link rel="shortcut icon" href="/favicon.png">
+
+  
+  </head>
+<body>
+  <aside class="sidebar">
+  <div class="container">
+    <div class="sidebar-about">
+      
+      <div class="author-image">
+        <a href="https://example.com">
+          <img src="https://www.gravatar.com/avatar/c02c426714361366ea7d583950aa8fb4?s=200&d=mp" class="img-circle img-headshot center" alt="Gravatar">
+        </a>
+      </div>
+      
+
+      <h1>SAMZONG</h1>
+
+      
+      <p class="lead">Samzong&#39;s Blog</p>
+      
+    </div>
+
+    <nav>
+      <ul class="sidebar-nav">
+        <li>
+          <a href="https://example.com">Home</a>
+        </li>
+        <li>
+          <a href="/posts/">Posts</a>
+        </li><li>
+          <a href="/about/">About</a>
+        </li>
+      </ul>
+    </nav>
+
+    <section class="social-icons">
+      
+      <a href="https://www.linkedin.com/in/samzong/" rel="me" title="Linkedin" target="_blank">
+        <i class="fab fa-linkedin" aria-hidden="true"></i>
+      </a>
+      
+      <a href="https://github.com/samzong" rel="me" title="GitHub" target="_blank">
+        <i class="fab fa-github" aria-hidden="true"></i>
+      </a>
+      
+      <a href="https://twitter.com/samzong_lu" rel="me" title="Twitter" target="_blank">
+        <i class="fab fa-twitter" aria-hidden="true"></i>
+      </a>
+      
+    </section>
+  </div>
+</aside>
+
+
+  <main class="content container">
+  <div class="post">
+  <h1 class="title">HowTo Install a Tomcat Server 7</h1>
+  
+
+  <div class="post-date">
+    <time datetime="2016-09-19T10:25:53Z">Sep 19, 2016</time> <span class="readtime">&middot; 3 min read</span>
+  </div>
+
+  <div>
+  <p>       本文件是采用的模板是CentOS 6，同样适用于CentOS 系列其他发行版本。</p>
+<h4 id="1-测试环境">1. 测试环境</h4>
+<ul>
+<li>VMware Fushion 8 Pro # windows Use <a href="https://www.virtualbox.org/wiki/Downloads">VirtualBox</a></li>
+<li><a href="http://mirrors.aliyun.com/centos/6.8/isos/x86_64/CentOS-6.8-x86_64-minimal.iso">CentOS-6.8-x86_64-minimal.iso</a></li>
+<li><a href="http://www.oracle.com/technetwork/java/javase/downloads/index.html">JDK 7</a></li>
+<li><a href="http://ftp.riken.jp/net/apache/tomcat/tomcat-7/">Tomcat 7</a></li>
+</ul>
+<h4 id="2-install-java-se-development-kit-7-jdk7">2. Install Java SE Development Kit 7 (JDK7)</h4>
+<pre tabindex="0"><code>[root@ultraera ~]# curl -LO -H &quot;Cookie: oraclelicense=accept-securebackup-cookie&quot; \
+&quot;http://download.oracle.com/otn-pub/java/jdk/7u75-b13/jdk-7u75-linux-x64.rpm&quot;
+[root@ultraera ~]# rpm -Uvh jdk-7u75-linux-x64.rpm
+Preparing...                ########################################### [100%]
+   1:jdk                    ########################################### [100%]
+Unpacking JAR files...
+        rt.jar...
+        jsse.jar...
+        charsets.jar...
+        tools.jar...
+        localedata.jar...
+        jfxrt.jar...
+</code></pre><h4 id="3-build-java-environment">3. Build Java Environment.</h4>
+<pre tabindex="0"><code>[root@ultraera ~]# vi /etc/profile
+# add follows to the end
+export JAVA_HOME=/usr/java/default
+export PATH=$PATH:$JAVA_HOME/bin
+export CLASSPATH=.:$JAVA_HOME/jre/lib:$JAVA_HOME/lib:$JAVA_HOME/lib/tools.jar
+[root@ultraera ~]# source /etc/profile
+[root@ultraera ~]# java -version
+java version &quot;1.7.0_75&quot;
+Java(TM) SE Runtime Environment (build 1.7.0_75-b13)
+Java HotSpot(TM) 64-Bit Server VM (build 24.75-b04, mixed mode)
+</code></pre><h4 id="4-download-tomcat7">4. Download Tomcat7</h4>
+<p>Make sure the latest one and download it from the site below.
+=》 <a href="http://ftp.riken.jp/net/apache/tomcat/tomcat-7/">http://ftp.riken.jp/net/apache/tomcat/tomcat-7/</a></p>
+<pre tabindex="0"><code>[root@ultraera ~]# wget http://ftp.riken.jp/net/apache/tomcat/tomcat-7/v7.0.70/bin/apache-tomcat-7.0.70.tar.gz
+[root@ultraera ~]# tar zxvf apache-tomcat-7.0.70.tar.gz
+[root@ultraera ~]# mv apache-tomcat-7.0.70 /usr/tomcat7
+[root@ultraera ~]# useradd -M -d /usr/tomcat7 tomcat7
+[root@ultraera ~]# chown -R tomcat7. /usr/tomcat7
+</code></pre><h4 id="5-create-a-script--use-service-manage-tomcat7">5. create a script , use service manage tomcat7</h4>
+<pre tabindex="0"><code>[root@ultraera ~]# cat /etc/rc.d/init.d/tomcat7
+ #!/bin/bash
+
+# Tomcat7: Start/Stop Tomcat 7
+#
+# chkconfig: - 90 10
+# description: Tomcat is a Java application Server.
+
+. /etc/init.d/functions
+. /etc/sysconfig/network
+
+CATALINA_HOME=/usr/tomcat7
+TOMCAT_USER=tomcat7
+
+LOCKFILE=/var/lock/subsys/tomcat7
+
+RETVAL=0
+start(){
+    echo &quot;Starting Tomcat7: &quot;
+    su - $TOMCAT_USER -c &quot;$CATALINA_HOME/bin/startup.sh&quot;
+    RETVAL=$?
+    echo
+    [ $RETVAL -eq 0 ] &amp;&amp; touch $LOCKFILE
+    return $RETVAL
+}
+
+stop(){
+    echo &quot;Shutting down Tomcat7: &quot;
+    $CATALINA_HOME/bin/shutdown.sh
+    RETVAL=$?
+    echo
+    [ $RETVAL -eq 0 ] &amp;&amp; rm -f $LOCKFILE
+    return $RETVAL
+}
+
+case &quot;$1&quot; in
+    start)
+        start
+        ;;
+    stop)
+        stop
+        ;;
+    restart)
+        stop
+        start
+        ;;
+    *)
+        echo $&quot;Usage: $0 {start|stop|restart}&quot;
+        exit 1
+        ;;
+esac
+exit $?
+</code></pre><h4 id="6-add-tomcat7-to-system-service">6. Add tomcat7 to system service</h4>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-shell" data-lang="shell"><span style="color:#f92672">[</span>root@ultraera ~<span style="color:#f92672">]</span><span style="color:#75715e"># chmod 755 /etc/rc.d/init.d/tomcat7</span>
+<span style="color:#f92672">[</span>root@ultraera ~<span style="color:#f92672">]</span><span style="color:#75715e"># /etc/rc.d/init.d/tomcat7 start</span>
+Starting Tomcat7:
+Using CATALINA_BASE:   /usr/tomcat7
+Using CATALINA_HOME:   /usr/tomcat7
+Using CATALINA_TMPDIR: /usr/tomcat7/temp
+Using JRE_HOME:        /usr/java/default
+Using CLASSPATH:       /usr/tomcat7/bin/bootstrap.jar:/usr/tomcat7/bin/tomcat-juli.jar
+Tomcat started.
+<span style="color:#f92672">[</span>root@ultraera ~<span style="color:#f92672">]</span><span style="color:#75715e"># netstat -ntlp | grep java</span>
+tcp        <span style="color:#ae81ff">0</span>      <span style="color:#ae81ff">0</span> ::ffff:127.0.0.1:8005       :::*                        LISTEN      6326/java
+tcp        <span style="color:#ae81ff">0</span>      <span style="color:#ae81ff">0</span> :::8009                     :::*                        LISTEN      6326/java
+tcp        <span style="color:#ae81ff">0</span>      <span style="color:#ae81ff">0</span> :::8080                    :::*                        LISTEN      6326/java
+<span style="color:#f92672">[</span>root@ultraera ~<span style="color:#f92672">]</span><span style="color:#75715e"># ps axu | grep java</span>
+tomcat7       <span style="color:#ae81ff">6326</span>  8.3 85.6 <span style="color:#ae81ff">5229768</span> <span style="color:#ae81ff">2910176</span> ?     Sl   Aug22 3216:38 /usr/bin/java -Djava.util.logging.config.file<span style="color:#f92672">=</span>/usr/tomcat7/conf/logging.properties -Djava.util.logging.manager<span style="color:#f92672">=</span>org.apache.juli.ClassLoaderLogManager -server -Djava.endorsed.dirs<span style="color:#f92672">=</span>/usr/tomcat7/endorsed -classpath /usr/tomcat7/bin/bootstrap.jar:/usr/tomcat7/bin/tomcat-juli.jar -Dcatalina.base<span style="color:#f92672">=</span>/usr/tomcat7 -Dcatalina.home<span style="color:#f92672">=</span>/usr/tomcat7 -Djava.io.tmpdir<span style="color:#f92672">=</span>/usr/tomcat7/temp org.apache.catalina.startup.Bootstrap start
+<span style="color:#f92672">[</span>root@ultraera ~<span style="color:#f92672">]</span><span style="color:#75715e"># chkconfig --add tomcat7</span>
+<span style="color:#f92672">[</span>root@ultraera ~<span style="color:#f92672">]</span><span style="color:#75715e"># chkconfig tomcat7 on</span>
+</code></pre></td></tr></table>
+</div>
+</div><h4 id="7-打开浏览器测试tomcat-server搭建完成默认页面如下">7. 打开浏览器测试Tomcat Server搭建完成，默认页面如下</h4>
+<p><img src="https://samzong.oss-cn-shenzhen.aliyuncs.com/2016/09/tomcat7.jpg" alt=""></p>
+<h4 id="8-使用curl-测试">8. 使用curl 测试</h4>
+<pre tabindex="0"><code>[root@ultraera ~]# curl -I http://localhost:8080
+HTTP/1.1 200 OK
+Server: Apache-Coyote/1.1
+Content-Type: text/html;charset=ISO-8859-1
+Transfer-Encoding: chunked
+Date: Sun, 18 Sep 2016 11:14:06 GMT
+</code></pre><h4 id="9-tomcat-文件树">9. Tomcat 文件树</h4>
+<pre tabindex="0"><code>[root@ultraera /usr/tomcat7]# tree
+.
+├── bin
+│   ├── bootstrap.jar
+│   ├── catalina.bat
+│   ├── catalina.sh
+│   ├── catalina-tasks.xml
+│   ├── commons-daemon.jar
+│   ├── commons-daemon-native.tar.gz
+│   ├── configtest.bat
+│   ├── configtest.sh
+│   ├── daemon.sh
+│   ├── digest.bat
+│   ├── digest.sh
+│   ├── setclasspath.bat
+│   ├── setclasspath.sh
+│   ├── shutdown.bat
+│   ├── shutdown.sh
+│   ├── startup.bat
+│   ├── startup.sh
+│   ├── tomcat-juli.jar
+│   ├── tomcat-native.tar.gz
+│   ├── tool-wrapper.bat
+│   ├── tool-wrapper.sh
+│   ├── version.bat
+│   └── version.sh
+├── conf
+│   ├── catalina.policy
+│   ├── catalina.properties
+│   ├── context.xml
+│   ├── logging.properties
+│   ├── server.xml
+│   ├── tomcat-users.xml
+│   └── web.xml
+├── lib
+├── LICENSE
+├── logs
+│   ├── catalina.2016-09-18.log
+│   ├── catalina.out
+│   ├── host-manager.2016-09-18.log
+│   ├── localhost.2016-09-18.log
+│   └── manager.2016-09-18.log
+├── NOTICE
+├── RELEASE-NOTES
+├── RUNNING.txt
+├── temp
+├── webapps
+│   └── ROOT
+└── work
+</code></pre>
+  </div>
+
+  
+<div>
+  <ul class="tags">
+  <li>
+    <a href="https://example.com/tags/tomcat/" class="tag-link">Tomcat</a>
+  </li>
+  </ul>
+</div>
+
+
+
+  <div class="share-buttons">
+  <a class="twitter-share-button"
+     href="#"
+     title="Share on Twitter"
+     data-url="https://example.com/posts/howto-install-a-tomcat-server-7/"
+     data-text="HowTo Install a Tomcat Server 7"><i class="fab fa-twitter"></i></a>
+
+  <a class="linkedin-share-button"
+     href="#"
+     title="Share on LinkedIn"
+     data-url="https://example.com/posts/howto-install-a-tomcat-server-7/"
+     data-text="HowTo Install a Tomcat Server 7"><i class="fab fa-linkedin-in"></i></a>
+
+  <a class="facebook-share-button"
+     href="#"
+     title="Share on Facebook"
+     data-url="https://example.com/posts/howto-install-a-tomcat-server-7/"
+     data-text="HowTo Install a Tomcat Server 7"><i class="fab fa-facebook"></i></a>
+
+  <a class="telegram-share-button"
+     href="#"
+     title="Share on Telegram"
+     data-url="https://example.com/posts/howto-install-a-tomcat-server-7/"
+     data-text="HowTo Install a Tomcat Server 7"><i class="fab fa-telegram"></i></a>
+
+  <a class="pinterest-share-button"
+     href="#"
+     title="Share on Pinterest"
+     data-url="https://example.com/posts/howto-install-a-tomcat-server-7/"
+     data-text="HowTo Install a Tomcat Server 7"><i class="fab fa-pinterest"></i></a>
+</div>
+
+
+  
+</div>
+  </main>
+
+  <footer>
+  <div>
+    <p>
+      &copy; samzong.lu 2021
+
+      &middot; <a href="https://creativecommons.org/licenses/by-sa/4.0" target="_blank">CC BY-SA 4.0</a>
+
+      
+    </p>
+  </div>
+</footer>
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/js/all.min.js"
+          integrity="sha256-MAgcygDRahs+F/Nk5Vz387whB4kSK9NXlDN3w58LLq0="
+          crossorigin="anonymous"></script>
+
+
+  <script src="/js/jquery.min.js"></script>
+  <script src="/js/soho.js"></script>
+
+  <script src="/js/blog.js"></script>
+
+  
+</body>
+</html>

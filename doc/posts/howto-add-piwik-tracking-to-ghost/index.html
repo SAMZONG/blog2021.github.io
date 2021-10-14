@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh-CN" lang="zh-CN">
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="generator" content="Hugo 0.88.1" />
+
+  <title>HowTo Add Piwik Tracking to Ghost &middot; SAMZONG</title>
+
+  <meta name="description" content="" />
+
+  
+
+<meta itemprop="name" content="HowTo Add Piwik Tracking to Ghost">
+<meta itemprop="description" content="This is what about piwik on wiki. goto
+Step 1 - Getting your Piwik Tracking code The first step to having Piwik tracking your Ghost blog will be to add a new website in Piwik, if you are unfamiliar with this process you can checkout the Piwik documention on Managing Websites."><meta itemprop="datePublished" content="2016-04-27T16:51:58+00:00" />
+<meta itemprop="dateModified" content="2016-04-27T16:51:58+00:00" />
+<meta itemprop="wordCount" content="350">
+<meta itemprop="keywords" content="Piwik," />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="HowTo Add Piwik Tracking to Ghost"/>
+<meta name="twitter:description" content="This is what about piwik on wiki. goto
+Step 1 - Getting your Piwik Tracking code The first step to having Piwik tracking your Ghost blog will be to add a new website in Piwik, if you are unfamiliar with this process you can checkout the Piwik documention on Managing Websites."/>
+
+
+<meta property="og:title" content="HowTo Add Piwik Tracking to Ghost" />
+<meta property="og:description" content="This is what about piwik on wiki. goto
+Step 1 - Getting your Piwik Tracking code The first step to having Piwik tracking your Ghost blog will be to add a new website in Piwik, if you are unfamiliar with this process you can checkout the Piwik documention on Managing Websites." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://example.com/posts/howto-add-piwik-tracking-to-ghost/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2016-04-27T16:51:58+00:00" />
+<meta property="article:modified_time" content="2016-04-27T16:51:58+00:00" />
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type":"Person",
+      "@id": "https://example.com#author",
+      "name": "samzong.lu",
+      "image": {
+        "@type":"ImageObject",
+        "url": "https://www.gravatar.com/avatar/c02c426714361366ea7d583950aa8fb4?s=400&d=mp"
+      },
+      "description": "Samzong's Blog"
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://example.com#website",
+      "url": "https://example.com",
+      "name": "SAMZONG",
+      "description": "Samzong's Blog",
+      "publisher": {
+        "@id": "https://example.com#author"
+      },
+      "inLanguage": "zh-CN"
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://example.com/posts/howto-add-piwik-tracking-to-ghost/#webpage",
+      "url": "https://example.com/posts/howto-add-piwik-tracking-to-ghost/",
+      "name": "HowTo Add Piwik Tracking to Ghost",
+      "isPartOf": {
+        "@id": "https://example.com#website"
+      },
+      "about": {
+         "@id": "https://example.com#author"
+      },
+      "datePublished": "2016-04-27T16:51:58+00:00",
+      "dateModified": "2016-04-27T16:51:58+00:00",
+      "description": "This is what about piwik on wiki. goto\nStep 1 - Getting your Piwik Tracking code The first step to having Piwik tracking your Ghost blog will be to add a new website in Piwik, if you are unfamiliar with this process you can checkout the Piwik documention on Managing Websites.",
+      "inLanguage": "zh-CN",
+      "potentialAction": [
+        {
+          "@type": "ReadAction",
+          "target": [
+            "https://example.com/posts/howto-add-piwik-tracking-to-ghost/"
+          ]
+        }
+      ]
+    },
+    {
+      "@type": "Article",
+      "isPartOf": {
+        "@id": "https://example.com/posts/howto-add-piwik-tracking-to-ghost/#webpage"
+      },
+      "mainEntityOfPage": {
+        "@id": "https://example.com/posts/howto-add-piwik-tracking-to-ghost/#webpage"
+      },
+      "headline": "HowTo Add Piwik Tracking to Ghost",
+      "datePublished": "2016-04-27T16:51:58+00:00",
+      "dateModified": "2016-04-27T16:51:58+00:00",
+      "publisher": {
+        "@id": "https://example.com#author"
+      },
+      "keywords": [
+        "Piwik"
+      ],
+      "articleSection": [
+        "Ghost"
+      ],
+      "inLanguage": "zh-CN",
+      "author": {
+        "@type": "Person",
+        "name":  null 
+      },
+      "potentialAction": [
+        {
+          "@type": "CommentAction",
+          "name": "Comment",
+          "target": [
+            "https://example.com/posts/howto-add-piwik-tracking-to-ghost/#comments"
+          ]
+        }
+      ]
+    }
+  ]
+}
+</script>
+
+
+
+  <link type="text/css"
+        rel="stylesheet"
+        href="/css/print.css"
+        media="print">
+
+  <link type="text/css"
+        rel="stylesheet"
+        href="/css/poole.css">
+
+  <link type="text/css"
+        rel="stylesheet"
+        href="/css/hyde.css">
+
+  
+
+
+  <link type="text/css" rel="stylesheet" href="/css/blog.css">
+
+  <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700&display=swap">
+
+  <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css"
+        integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk="
+        crossorigin="anonymous" />
+
+  <link rel="apple-touch-icon-precomposed"
+        sizes="144x144"
+        href="/apple-touch-icon-144-precomposed.png">
+
+  <link rel="shortcut icon" href="/favicon.png">
+
+  
+  </head>
+<body>
+  <aside class="sidebar">
+  <div class="container">
+    <div class="sidebar-about">
+      
+      <div class="author-image">
+        <a href="https://example.com">
+          <img src="https://www.gravatar.com/avatar/c02c426714361366ea7d583950aa8fb4?s=200&d=mp" class="img-circle img-headshot center" alt="Gravatar">
+        </a>
+      </div>
+      
+
+      <h1>SAMZONG</h1>
+
+      
+      <p class="lead">Samzong&#39;s Blog</p>
+      
+    </div>
+
+    <nav>
+      <ul class="sidebar-nav">
+        <li>
+          <a href="https://example.com">Home</a>
+        </li>
+        <li>
+          <a href="/posts/">Posts</a>
+        </li><li>
+          <a href="/about/">About</a>
+        </li>
+      </ul>
+    </nav>
+
+    <section class="social-icons">
+      
+      <a href="https://www.linkedin.com/in/samzong/" rel="me" title="Linkedin" target="_blank">
+        <i class="fab fa-linkedin" aria-hidden="true"></i>
+      </a>
+      
+      <a href="https://github.com/samzong" rel="me" title="GitHub" target="_blank">
+        <i class="fab fa-github" aria-hidden="true"></i>
+      </a>
+      
+      <a href="https://twitter.com/samzong_lu" rel="me" title="Twitter" target="_blank">
+        <i class="fab fa-twitter" aria-hidden="true"></i>
+      </a>
+      
+    </section>
+  </div>
+</aside>
+
+
+  <main class="content container">
+  <div class="post">
+  <h1 class="title">HowTo Add Piwik Tracking to Ghost</h1>
+  
+
+  <div class="post-date">
+    <time datetime="2016-04-27T16:51:58Z">Apr 27, 2016</time> <span class="readtime">&middot; 2 min read</span>
+  </div>
+
+  <div>
+  <p>This is what about piwik on wiki. <a href="https://en.wikipedia.org/wiki/Piwik">goto</a></p>
+<h2 id="step-1---getting-your-piwik-tracking-code">Step 1 - Getting your Piwik Tracking code</h2>
+<p>The first step to having Piwik tracking your Ghost blog will be to add a new website in Piwik, if you are unfamiliar with this process you can checkout the Piwik documention on Managing Websites. With your Ghost blog added into Piwik you will end up with tracking code that will look similar to the following:</p>
+<pre tabindex="0"><code>&lt;!-- Piwik --&gt;
+&lt;script type=&quot;text/javascript&quot;&gt;
+    var _paq = _paq || [];
+    (function(){ var u=((&quot;https:&quot; == document.location.protocol) ? &quot;https://{$PIWIK_URL}/&quot; : &quot;http://{$PIWIK_URL}/&quot;);
+    _paq.push(['setSiteId', {$IDSITE}]);
+    _paq.push(['setTrackerUrl', u+'piwik.php']);
+    _paq.push(['trackPageView']);
+    _paq.push(['enableLinkTracking']);
+    var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0]; g.type='text/javascript'; g.defer=true; g.async=true; g.src=u+'piwik.js';
+    s.parentNode.insertBefore(g,s); })();
+&lt;/script&gt;
+&lt;!-- End Piwik Code --&gt;
+</code></pre><blockquote>
+<p>Where <!-- raw HTML omitted -->$PIWIK_URL<!-- raw HTML omitted --> will be the domain name you have setup for Piwik.</p>
+</blockquote>
+<h2 id="step-2---adding-piwik-tracking-code-to-ghost-theme-file">Step 2 - Adding Piwik Tracking Code To Ghost Theme File</h2>
+<p>Piwik recommends that you add the tracking code right above the <!-- raw HTML omitted -->&lt;/body&gt;<!-- raw HTML omitted --> tag, which you can find in your Ghost&rsquo;s <!-- raw HTML omitted -->default.hbs<!-- raw HTML omitted --> theme file. You will find the <!-- raw HTML omitted -->default.hbs<!-- raw HTML omitted --> file in <!-- raw HTML omitted -->/path/to/ghost/content/themes/your-theme/default.hbs<!-- raw HTML omitted -->
+How you add the tracking code to your <!-- raw HTML omitted -->default.hbs<!-- raw HTML omitted --> will depend on if you are editing the file on your local computer or directly on the server. If you are editing your theme locally you can edit this file in any text editor and when you are finished upload this file to your server. Otherwise if you are editing this file directly on the server you can use the command line editor, <!-- raw HTML omitted -->vim<!-- raw HTML omitted -->, to add the tracking code.</p>
+<h2 id="step-3---restart-ghost">Step 3 - Restart Ghost</h2>
+<p>For the changes in your theme to take effect you will need to restart Ghost. Restarting Ghost will load up a fresh copy of your theme files, with your Piwik tracking code. How you restart Ghost depends on how you started Ghost. If you followed our <!-- raw HTML omitted -->Keep Ghost Running with forever<!-- raw HTML omitted -->, then you can restart Ghost with <!-- raw HTML omitted -->forever restart ghost<!-- raw HTML omitted -->.
+Within a few moments you will start to see data coming in for your Ghost blog!
+If you have any questions about setting this up or run into any issues please leave us a comment below and we will do what we can to help.</p>
+
+  </div>
+
+  
+<div>
+  <ul class="tags">
+  <li>
+    <a href="https://example.com/tags/piwik/" class="tag-link">Piwik</a>
+  </li>
+  </ul>
+</div>
+
+
+
+  <div class="share-buttons">
+  <a class="twitter-share-button"
+     href="#"
+     title="Share on Twitter"
+     data-url="https://example.com/posts/howto-add-piwik-tracking-to-ghost/"
+     data-text="HowTo Add Piwik Tracking to Ghost"><i class="fab fa-twitter"></i></a>
+
+  <a class="linkedin-share-button"
+     href="#"
+     title="Share on LinkedIn"
+     data-url="https://example.com/posts/howto-add-piwik-tracking-to-ghost/"
+     data-text="HowTo Add Piwik Tracking to Ghost"><i class="fab fa-linkedin-in"></i></a>
+
+  <a class="facebook-share-button"
+     href="#"
+     title="Share on Facebook"
+     data-url="https://example.com/posts/howto-add-piwik-tracking-to-ghost/"
+     data-text="HowTo Add Piwik Tracking to Ghost"><i class="fab fa-facebook"></i></a>
+
+  <a class="telegram-share-button"
+     href="#"
+     title="Share on Telegram"
+     data-url="https://example.com/posts/howto-add-piwik-tracking-to-ghost/"
+     data-text="HowTo Add Piwik Tracking to Ghost"><i class="fab fa-telegram"></i></a>
+
+  <a class="pinterest-share-button"
+     href="#"
+     title="Share on Pinterest"
+     data-url="https://example.com/posts/howto-add-piwik-tracking-to-ghost/"
+     data-text="HowTo Add Piwik Tracking to Ghost"><i class="fab fa-pinterest"></i></a>
+</div>
+
+
+  
+</div>
+  </main>
+
+  <footer>
+  <div>
+    <p>
+      &copy; samzong.lu 2021
+
+      &middot; <a href="https://creativecommons.org/licenses/by-sa/4.0" target="_blank">CC BY-SA 4.0</a>
+
+      
+    </p>
+  </div>
+</footer>
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/js/all.min.js"
+          integrity="sha256-MAgcygDRahs+F/Nk5Vz387whB4kSK9NXlDN3w58LLq0="
+          crossorigin="anonymous"></script>
+
+
+  <script src="/js/jquery.min.js"></script>
+  <script src="/js/soho.js"></script>
+
+  <script src="/js/blog.js"></script>
+
+  
+</body>
+</html>

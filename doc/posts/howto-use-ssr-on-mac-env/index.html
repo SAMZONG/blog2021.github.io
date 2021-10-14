@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh-CN" lang="zh-CN">
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="generator" content="Hugo 0.88.1" />
+
+  <title>HowTo Use SSR Service on Mac &middot; SAMZONG</title>
+
+  <meta name="description" content="" />
+
+  
+
+<meta itemprop="name" content="HowTo Use SSR Service on Mac">
+<meta itemprop="description" content="应邀制作一份关于Mac SSR的连接使用。
+准备  SSR 服务提供商，SSGlobal ，你可以到Telegram加入我们。SSGlobal Group MacOS 版本 10.">
+
+<meta itemprop="wordCount" content="62">
+<meta itemprop="keywords" content="Shadowsocks," />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="HowTo Use SSR Service on Mac"/>
+<meta name="twitter:description" content="应邀制作一份关于Mac SSR的连接使用。
+准备  SSR 服务提供商，SSGlobal ，你可以到Telegram加入我们。SSGlobal Group MacOS 版本 10."/>
+
+
+<meta property="og:title" content="HowTo Use SSR Service on Mac" />
+<meta property="og:description" content="应邀制作一份关于Mac SSR的连接使用。
+准备  SSR 服务提供商，SSGlobal ，你可以到Telegram加入我们。SSGlobal Group MacOS 版本 10." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://example.com/posts/howto-use-ssr-on-mac-env/" /><meta property="article:section" content="posts" />
+
+
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type":"Person",
+      "@id": "https://example.com#author",
+      "name": "samzong.lu",
+      "image": {
+        "@type":"ImageObject",
+        "url": "https://www.gravatar.com/avatar/c02c426714361366ea7d583950aa8fb4?s=400&d=mp"
+      },
+      "description": "Samzong's Blog"
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://example.com#website",
+      "url": "https://example.com",
+      "name": "SAMZONG",
+      "description": "Samzong's Blog",
+      "publisher": {
+        "@id": "https://example.com#author"
+      },
+      "inLanguage": "zh-CN"
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://example.com/posts/howto-use-ssr-on-mac-env/#webpage",
+      "url": "https://example.com/posts/howto-use-ssr-on-mac-env/",
+      "name": "HowTo Use SSR Service on Mac",
+      "isPartOf": {
+        "@id": "https://example.com#website"
+      },
+      "about": {
+         "@id": "https://example.com#author"
+      },
+      "description": "应邀制作一份关于Mac SSR的连接使用。\n准备  SSR 服务提供商，SSGlobal ，你可以到Telegram加入我们。SSGlobal Group MacOS 版本 10.",
+      "inLanguage": "zh-CN",
+      "potentialAction": [
+        {
+          "@type": "ReadAction",
+          "target": [
+            "https://example.com/posts/howto-use-ssr-on-mac-env/"
+          ]
+        }
+      ]
+    },
+    {
+      "@type": "Article",
+      "isPartOf": {
+        "@id": "https://example.com/posts/howto-use-ssr-on-mac-env/#webpage"
+      },
+      "mainEntityOfPage": {
+        "@id": "https://example.com/posts/howto-use-ssr-on-mac-env/#webpage"
+      },
+      "headline": "HowTo Use SSR Service on Mac",
+      "publisher": {
+        "@id": "https://example.com#author"
+      },
+      "keywords": [
+        "Shadowsocks"
+      ],
+      "articleSection": [
+        "Shadowsocks"
+      ],
+      "inLanguage": "zh-CN",
+      "author": {
+        "@type": "Person",
+        "name":  null 
+      },
+      "potentialAction": [
+        {
+          "@type": "CommentAction",
+          "name": "Comment",
+          "target": [
+            "https://example.com/posts/howto-use-ssr-on-mac-env/#comments"
+          ]
+        }
+      ]
+    }
+  ]
+}
+</script>
+
+
+
+  <link type="text/css"
+        rel="stylesheet"
+        href="/css/print.css"
+        media="print">
+
+  <link type="text/css"
+        rel="stylesheet"
+        href="/css/poole.css">
+
+  <link type="text/css"
+        rel="stylesheet"
+        href="/css/hyde.css">
+
+  
+
+
+  <link type="text/css" rel="stylesheet" href="/css/blog.css">
+
+  <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700&display=swap">
+
+  <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css"
+        integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk="
+        crossorigin="anonymous" />
+
+  <link rel="apple-touch-icon-precomposed"
+        sizes="144x144"
+        href="/apple-touch-icon-144-precomposed.png">
+
+  <link rel="shortcut icon" href="/favicon.png">
+
+  
+  </head>
+<body>
+  <aside class="sidebar">
+  <div class="container">
+    <div class="sidebar-about">
+      
+      <div class="author-image">
+        <a href="https://example.com">
+          <img src="https://www.gravatar.com/avatar/c02c426714361366ea7d583950aa8fb4?s=200&d=mp" class="img-circle img-headshot center" alt="Gravatar">
+        </a>
+      </div>
+      
+
+      <h1>SAMZONG</h1>
+
+      
+      <p class="lead">Samzong&#39;s Blog</p>
+      
+    </div>
+
+    <nav>
+      <ul class="sidebar-nav">
+        <li>
+          <a href="https://example.com">Home</a>
+        </li>
+        <li>
+          <a href="/posts/">Posts</a>
+        </li><li>
+          <a href="/about/">About</a>
+        </li>
+      </ul>
+    </nav>
+
+    <section class="social-icons">
+      
+      <a href="https://www.linkedin.com/in/samzong/" rel="me" title="Linkedin" target="_blank">
+        <i class="fab fa-linkedin" aria-hidden="true"></i>
+      </a>
+      
+      <a href="https://github.com/samzong" rel="me" title="GitHub" target="_blank">
+        <i class="fab fa-github" aria-hidden="true"></i>
+      </a>
+      
+      <a href="https://twitter.com/samzong_lu" rel="me" title="Twitter" target="_blank">
+        <i class="fab fa-twitter" aria-hidden="true"></i>
+      </a>
+      
+    </section>
+  </div>
+</aside>
+
+
+  <main class="content container">
+  <div class="post">
+  <h1 class="title">HowTo Use SSR Service on Mac</h1>
+  
+
+  <div class="post-date">
+    <time datetime="0001-01-01T00:00:00Z">Jan 1, 0001</time> <span class="readtime">&middot; 1 min read</span>
+  </div>
+
+  <div>
+  <p>应邀制作一份关于Mac SSR的连接使用。</p>
+<h4 id="准备">准备</h4>
+<ol>
+<li>SSR 服务提供商，<a href="http://www.ssglobal.co/wp/">SSGlobal</a> ，你可以到Telegram加入我们。<a href="https://t.me/joinchat/ESwgR0Ckp_zXMCuRKqykqA">SSGlobal Group</a></li>
+<li>MacOS 版本 10.12.6，经过实测OS版本对实际使用影响并不大。</li>
+<li>SSR Client， <a href="http://www.ssglobal.co/wp/wp-content/uploads/2017/02/ShadowsocksX-NG-R8.dmg">下载</a></li>
+</ol>
+<h4 id="ssr服务">SSR服务</h4>
+<p>如果你需要科学上网的话，非常愿意给你推荐我正在使用的SSR服务商，但是由于其官方网站和客户沟通工具TG需要科学上网才能使用，所以你可以联系到我来介绍你们。</p>
+<p>最新定价计划：</p>
+<ul>
+<li>Plan-A：<strong>¥15.00元</strong>，1个月，无限流量，不限速，可自助切换节点。</li>
+<li>Plan-B：<strong>¥15.00元</strong>，3个月，6G流量包，不限速，可自助切换节点。</li>
+<li>增加线路：<strong>¥8.00元</strong>，1个月，1条。</li>
+</ul>
+<blockquote>
+<p>注：增加线路仅支持Plan-A用户配套购买，不超过主线路最长期限，不足1个月剩余时限用户不支持购买</p>
+</blockquote>
+<h5 id="注册账号">注册账号</h5>
+<p><a href="http://www.ssglobal.co/wp/registration/?action=register">立即注册</a></p>
+<p><img src="https://samzong.oss-cn-shenzhen.aliyuncs.com/blog/x6fbl.jpg" alt="05"></p>
+<blockquote>
+<p>这里alexman@mac.local 仅仅是演示邮箱，请填写对应属于你的邮箱.</p>
+</blockquote>
+<p>当你点击提交完成后，在你的邮箱会收到一封激活邮件，点击其中链接或将链接复制到浏览器中即可激活。</p>
+<p><img src="https://samzong.oss-cn-shenzhen.aliyuncs.com/blog/r4oo0.jpg" alt="07"></p>
+<blockquote>
+<p>这里同样是激活链接，同样仅作为演示。</p>
+</blockquote>
+<h5 id="登录系统">登录系统</h5>
+<p><a href="http://www.ssglobal.co/wp/login-2/?redirect_to=http://www.ssglobal.co/wp/registration/">立即登录</a></p>
+<p>输入注册时的用户名密码，即可登录到系统内，然后在首页找到进入后台按钮，即可看到试用信息。</p>
+<p><img src="https://samzong.oss-cn-shenzhen.aliyuncs.com/blog/lmcst.jpg" alt="06"></p>
+<blockquote>
+<p>这里填写用户名或邮箱都可以。</p>
+</blockquote>
+<p>进入系统后，找到订阅链接信息，默认情况下，你应该只有一条线路信息，付费用户享有应急通道。</p>
+<p><img src="https://samzong.oss-cn-shenzhen.aliyuncs.com/blog/xba0a.jpg" alt="04"></p>
+<blockquote>
+<p>上图中”切换“，用来切换不同服务器节点，注意，切换后要到客户端内刷新订阅信息，下面会讲到。</p>
+</blockquote>
+<h4 id="ssr-client-安装">SSR Client 安装</h4>
+<p>在本文最上面已经有了，如何下载SSR 客户端的地方，细心的朋友，应该已经在SSGlobal官网上找到了对应下载页面，其中包含全平台的客户端工具。</p>
+<h5 id="下载">下载</h5>
+<p><a href="http://www.ssglobal.co/wp/wp-content/uploads/2017/02/ShadowsocksX-NG-R8.dmg">立即下载</a></p>
+<p><img src="https://samzong.oss-cn-shenzhen.aliyuncs.com/blog/bc4jy.jpg" alt="01"></p>
+<p>下载完成后，找到你的下载文件，双击打开，将程序拖到Mac程序目录即完成安装，和Mac其他软件安装并无不同。</p>
+<p><img src="https://samzong.oss-cn-shenzhen.aliyuncs.com/blog/p7wkf.jpg" alt="02"></p>
+<h4 id="启动程序">启动程序</h4>
+<p>在Launchpad中找到最近安装的 Shadowsocks NG R8，点击启动后，Mac右上角导航栏中会有一个小飞机的图标，点击可以看到以下信息：</p>
+<p><img src="https://samzong.oss-cn-shenzhen.aliyuncs.com/blog/iycjw.jpg" alt="03"></p>
+<blockquote>
+<p>上图中已经有我的订阅信息，请忽略</p>
+</blockquote>
+<h4 id="编辑订阅信息">编辑订阅信息</h4>
+<p>选择编辑订阅信息，然后将你在SSGlobal 网站后台拿到的订阅信息添加到其中</p>
+<p><img src="https://samzong.oss-cn-shenzhen.aliyuncs.com/blog/7bbj6.jpg" alt="09"></p>
+<blockquote>
+<p>注意只要添加URL信息即可，不需要修改其他。</p>
+</blockquote>
+<p>然后选择手动更新订阅，这里在你的服务列表内，就有了你的服务器节点信息，选择对应节点即可开启科学上网</p>
+<h5 id="pac-规则">PAC 规则</h5>
+<p>首次使用PAC需要更新一次PAC规则，操作如下图。</p>
+<p><img src="https://samzong.oss-cn-shenzhen.aliyuncs.com/blog/gzrb5.jpg" alt="10"></p>
+<p>这里的PAC规则是从GFWLists更新的，由于其更新速度较慢，所以如果日常使用发现某些网站无法使用，可以手动添加到PAC规则内</p>
+<p><img src="https://samzong.oss-cn-shenzhen.aliyuncs.com/blog/9rhe6.jpg" alt="11"></p>
+<blockquote>
+<p>|| domain , 这里表示匹配所有代理</p>
+</blockquote>
+<p>更多关于用户规则，可以查看这里，<a href="https://adblockplus.org/en/filter-cheatsheet">使用手册</a></p>
+<h4 id="结语">结语</h4>
+<p>到这里，基本常用的安装和使用已经完成了，如果测试后仍旧无法正常使用，请仔细检查是否遗漏步骤，也可以与我取得沟通。</p>
+
+  </div>
+
+  
+<div>
+  <ul class="tags">
+  <li>
+    <a href="https://example.com/tags/shadowsocks/" class="tag-link">Shadowsocks</a>
+  </li>
+  </ul>
+</div>
+
+
+
+  <div class="share-buttons">
+  <a class="twitter-share-button"
+     href="#"
+     title="Share on Twitter"
+     data-url="https://example.com/posts/howto-use-ssr-on-mac-env/"
+     data-text="HowTo Use SSR Service on Mac"><i class="fab fa-twitter"></i></a>
+
+  <a class="linkedin-share-button"
+     href="#"
+     title="Share on LinkedIn"
+     data-url="https://example.com/posts/howto-use-ssr-on-mac-env/"
+     data-text="HowTo Use SSR Service on Mac"><i class="fab fa-linkedin-in"></i></a>
+
+  <a class="facebook-share-button"
+     href="#"
+     title="Share on Facebook"
+     data-url="https://example.com/posts/howto-use-ssr-on-mac-env/"
+     data-text="HowTo Use SSR Service on Mac"><i class="fab fa-facebook"></i></a>
+
+  <a class="telegram-share-button"
+     href="#"
+     title="Share on Telegram"
+     data-url="https://example.com/posts/howto-use-ssr-on-mac-env/"
+     data-text="HowTo Use SSR Service on Mac"><i class="fab fa-telegram"></i></a>
+
+  <a class="pinterest-share-button"
+     href="#"
+     title="Share on Pinterest"
+     data-url="https://example.com/posts/howto-use-ssr-on-mac-env/"
+     data-text="HowTo Use SSR Service on Mac"><i class="fab fa-pinterest"></i></a>
+</div>
+
+
+  
+</div>
+  </main>
+
+  <footer>
+  <div>
+    <p>
+      &copy; samzong.lu 2021
+
+      &middot; <a href="https://creativecommons.org/licenses/by-sa/4.0" target="_blank">CC BY-SA 4.0</a>
+
+      
+    </p>
+  </div>
+</footer>
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/js/all.min.js"
+          integrity="sha256-MAgcygDRahs+F/Nk5Vz387whB4kSK9NXlDN3w58LLq0="
+          crossorigin="anonymous"></script>
+
+
+  <script src="/js/jquery.min.js"></script>
+  <script src="/js/soho.js"></script>
+
+  <script src="/js/blog.js"></script>
+
+  
+</body>
+</html>

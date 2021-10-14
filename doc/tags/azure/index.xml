@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Azure on SAMZONG</title>
+    <link>https://example.com/tags/azure/</link>
+    <description>Recent content in Azure on SAMZONG</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Sun, 10 Jul 2016 11:21:47 +0000</lastBuildDate><atom:link href="https://example.com/tags/azure/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>HowTo Reset Azure VM Linux Password</title>
+      <link>https://example.com/posts/howto-reset-azure-vm-linux-password/</link>
+      <pubDate>Sun, 10 Jul 2016 11:21:47 +0000</pubDate>
+      
+      <guid>https://example.com/posts/howto-reset-azure-vm-linux-password/</guid>
+      <description>Setup1: 这种方法仅适用于已存在的用户，也就是说$Username是之前创建过的用户，否则不适用
+ 1. 指定虚拟机 $vm = Get-AzureVM -ServiceName &#39;云服务名称&#39; -Name &#39;虚拟机名称&#39; $vm.</description>
+    </item>
+    
+    <item>
+      <title>Azure(2) HowTo Use Azure CLI on Mac</title>
+      <link>https://example.com/posts/azure-2-howto-use-azure-cli-on-mac/</link>
+      <pubDate>Tue, 24 May 2016 07:00:12 +0000</pubDate>
+      
+      <guid>https://example.com/posts/azure-2-howto-use-azure-cli-on-mac/</guid>
+      <description>## Install azure-cli on Mac and CentOS ### In Mac 1.</description>
+    </item>
+    
+    <item>
+      <title>Azure(3) HowTo Use Azure CLI on Mac</title>
+      <link>https://example.com/posts/azure-3-howto-use-azure-cli-on-mac/</link>
+      <pubDate>Tue, 24 May 2016 06:20:43 +0000</pubDate>
+      
+      <guid>https://example.com/posts/azure-3-howto-use-azure-cli-on-mac/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Azure(4) 创建和使用Azure Redis Cache</title>
+      <link>https://example.com/posts/azure-4-%E5%88%9B%E5%BB%BA%E5%92%8C%E4%BD%BF%E7%94%A8azure-redis-cache/</link>
+      <pubDate>Thu, 12 May 2016 06:12:02 +0000</pubDate>
+      
+      <guid>https://example.com/posts/azure-4-%E5%88%9B%E5%BB%BA%E5%92%8C%E4%BD%BF%E7%94%A8azure-redis-cache/</guid>
+      <description>我们以管理员身份，运行PowerShell，执行以下命令。实现创建Standard类型，大小为13GB的Redis Cache
+#弹出界面输入用户名密码 Add-AzureAccount -Environment AzureChinaCloud #设置当前订阅名称 Select-AzureSubscription &#39;[SubscriptionName]&#39; –Current Switch-AzureMode -name AzureResourceManager #在中国东部数据中心，创建新的资源组 New-AzureResourceGroup -name [YourResourceGroupName] -Location &#39;China East&#39; #在中国东部数据中心，申请13GB的Redis Cache，类型为Standard，有SLA保证 New-AzureRedisCache -ResourceGroupName [YourResourceGroupName] -Name [RedisCacheName] -Location &#39;China East&#39; -sku &#39;Standard&#39; -Size &#39;13GB&#39; </description>
+    </item>
+    
+  </channel>
+</rss>

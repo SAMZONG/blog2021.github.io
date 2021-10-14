@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Gitlab on SAMZONG</title>
+    <link>https://example.com/tags/gitlab/</link>
+    <description>Recent content in Gitlab on SAMZONG</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Thu, 13 Apr 2017 11:18:17 +0000</lastBuildDate><atom:link href="https://example.com/tags/gitlab/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>HowTo Install GitLab</title>
+      <link>https://example.com/posts/howto-install-gitlab/</link>
+      <pubDate>Thu, 13 Apr 2017 11:18:17 +0000</pubDate>
+      
+      <guid>https://example.com/posts/howto-install-gitlab/</guid>
+      <description>目前最为主流的在线Git版本控制系统可以说是非GitHub莫属，对于个人开发者和开源项目可以直接选择GitHub作为Git版本控制系统即可，但是，对于企业内部开发管理的Git版本控制系统，在对保密性有高要求时GitHub就不合适了，这时GitLab作为一个可以完全搭建在企业内部的Git版本控制系统，而且基本囊括了GitHub的所有功能。
+目前GitLab已经整合的功能  Repository access Administration Issues Forks Code review Wiki Merge Requests Web Editor  测试环境  2 core 4GB 50GB HDD CentOS 6.</description>
+    </item>
+    
+  </channel>
+</rss>
