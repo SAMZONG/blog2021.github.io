@@ -7,7 +7,7 @@ theme = 'soho'
 # dir
 contentdir = "content"
 layoutdir = "layouts"
-publishdir = "doc"
+publishdir = "docs"
 builddrafts = true
 
 summarylength = 10
